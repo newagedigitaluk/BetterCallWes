@@ -1,0 +1,209 @@
+{
+    "name": "Facebook Lead Sniper (Email Trap)",
+    "nodes": [
+        {
+            "parameters": {
+                "options": {}
+            },
+            "name": "On New Email",
+            "type": "n8n-nodes-base.emailReadImap",
+            "typeVersion": 2,
+            "position": [
+                0,
+                0
+            ],
+            "credentials": {
+                "imap": {
+                    "id": "YOUR_IMAP_CREDENTIAL_ID",
+                    "name": "IMAP Account"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "keepOnlySet": true,
+                "values": {
+                    "string": [
+                        {
+                            "name": "body",
+                            "value": "={{ $json.text }}"
+                        },
+                        {
+                            "name": "subject",
+                            "value": "={{ $json.subject }}"
+                        },
+                        {
+                            "name": "from",
+                            "value": "={{ $json.from.text }}"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "name": "Simplify Data",
+            "type": "n8n-nodes-base.set",
+            "typeVersion": 1,
+            "position": [
+                220,
+                0
+            ]
+        },
+        {
+            "parameters": {
+                "modelId": "openai/gpt-4o-mini",
+                "prompt": "Analyze this email notification from a Facebook Group.\n\nSubject: {{ $json.subject }}\nBody: {{ $json.body }}\n\nTask: Determine if this is a potential LEAD for a plumber.\n\nRules:\n1. \"HOT\": The user is ASKING for help (e.g., \"Need a plumber\", \"Boiler broken\", \"Anyone know someone?\").\n2. \"COLD\": The user is GIVING a recommendation, it's an ad, or unrelated conversation.\n\nResponse Format:\nReturn valid JSON ONLY:\n{\n  \"status\": \"HOT\" or \"COLD\",\n  \"summary\": \"One sentence summary of the issue\",\n  \"customer_name\": \"Name of/link to the poster if found\"\n}",
+                "maxTokens": 100,
+                "temperature": 0
+            },
+            "name": "AI Filter (Straico)",
+            "type": "n8n-nodes-base.openAi",
+            "typeVersion": 1,
+            "position": [
+                440,
+                0
+            ],
+            "credentials": {
+                "openAiApi": {
+                    "id": "YOUR_STRAICO_CREDENTIAL_ID",
+                    "name": "Straico API"
+                }
+            }
+        },
+        {
+            "parameters": {
+                "message": "={{ $json.message.content }}",
+                "dataPropertyName": "ai_analysis"
+            },
+            "name": "Parse AI JSON",
+            "type": "n8n-nodes-base.jsonParse",
+            "typeVersion": 1,
+            "position": [
+                660,
+                0
+            ]
+        },
+        {
+            "parameters": {
+                "conditions": {
+                    "string": [
+                        {
+                            "value1": "={{ $json.ai_analysis.status }}",
+                            "operation": "contains",
+                            "value2": "HOT"
+                        }
+                    ]
+                }
+            },
+            "name": "Is Hot Lead?",
+            "type": "n8n-nodes-base.if",
+            "typeVersion": 1,
+            "position": [
+                880,
+                0
+            ]
+        },
+        {
+            "parameters": {
+                "requestMethod": "POST",
+                "url": "https://chat.bettercallwes.co.uk/api/v1/accounts/1/conversations",
+                "options": {},
+                "headerParametersUi": {
+                    "parameter": [
+                        {
+                            "name": "api_access_token",
+                            "value": "YOUR_CHATWOOT_TOKEN"
+                        }
+                    ]
+                },
+                "bodyParametersUi": {
+                    "parameter": [
+                        {
+                            "name": "source_id",
+                            "value": "Facebook Lead"
+                        },
+                        {
+                            "name": "inbox_id",
+                            "value": "YOUR_INBOX_ID"
+                        },
+                        {
+                            "name": "contact_attributes",
+                            "value": "={{ {\"name\": $node[\"Parse AI JSON\"].json.ai_analysis.customer_name || \"Facebook User\"} }}"
+                        },
+                        {
+                            "name": "status",
+                            "value": "open"
+                        },
+                        {
+                            "name": "additional_attributes",
+                            "value": "={{ {\"description\": \"CORE ISSUE: \" + $node[\"Parse AI JSON\"].json.ai_analysis.summary, \"company_name\": \"Facebook Group Lead\"} }}"
+                        }
+                    ]
+                }
+            },
+            "name": "Alert Chatwoot",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 3,
+            "position": [
+                1100,
+                -100
+            ]
+        }
+    ],
+    "connections": {
+        "On New Email": {
+            "main": [
+                [
+                    {
+                        "node": "Simplify Data",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Simplify Data": {
+            "main": [
+                [
+                    {
+                        "node": "AI Filter (Straico)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "AI Filter (Straico)": {
+            "main": [
+                [
+                    {
+                        "node": "Parse AI JSON",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Parse AI JSON": {
+            "main": [
+                [
+                    {
+                        "node": "Is Hot Lead?",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Is Hot Lead?": {
+            "main": [
+                [
+                    {
+                        "node": "Alert Chatwoot",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}

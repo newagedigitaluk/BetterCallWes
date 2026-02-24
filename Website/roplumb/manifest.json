@@ -1,0 +1,1081 @@
+{
+    "manifest_version": "1.0.23",
+    "title": "Roplumb - Plumbing Services Elementor Template Kit",
+    "page_builder": "elementor",
+    "kit_version": "1.0.0",
+    "templates": [
+        {
+            "name": "Global Kit Styles",
+            "screenshot": "screenshots\/global-kit-styles.jpg",
+            "source": "templates\/global.json",
+            "preview_url": "https:\/\/ronie.foxcreation.net",
+            "type": "section",
+            "category": "page",
+            "metadata": {
+                "template_type": "global-styles",
+                "include_in_zip": "1",
+                "elementor_pro_required": null,
+                "additional_template_information": [
+                    "These are the global theme styles configured through the Elementor Theme Styles area."
+                ]
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Home",
+            "screenshot": "screenshots\/home.jpg",
+            "source": "templates\/home.json",
+            "preview_url": "https:\/\/ronie.foxcreation.net\/roplumb\/template-kit\/home\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Services",
+            "screenshot": "screenshots\/services.jpg",
+            "source": "templates\/services.json",
+            "preview_url": "https:\/\/ronie.foxcreation.net\/roplumb\/template-kit\/services\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "About",
+            "screenshot": "screenshots\/about.jpg",
+            "source": "templates\/about.json",
+            "preview_url": "https:\/\/ronie.foxcreation.net\/roplumb\/template-kit\/about\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Contact",
+            "screenshot": "screenshots\/contact.jpg",
+            "source": "templates\/contact.json",
+            "preview_url": "https:\/\/ronie.foxcreation.net\/roplumb\/template-kit\/contact\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Service Details",
+            "screenshot": "screenshots\/service-details.jpg",
+            "source": "templates\/service-details.json",
+            "preview_url": "https:\/\/ronie.foxcreation.net\/roplumb\/template-kit\/service-details\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Single Post",
+            "screenshot": "screenshots\/single-post.jpg",
+            "source": "templates\/single-post.json",
+            "preview_url": "https:\/\/ronie.foxcreation.net\/roplumb\/template-kit\/single-post\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Team",
+            "screenshot": "screenshots\/team.jpg",
+            "source": "templates\/team.json",
+            "preview_url": "https:\/\/ronie.foxcreation.net\/roplumb\/template-kit\/team\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "FAQs",
+            "screenshot": "screenshots\/faqs.jpg",
+            "source": "templates\/faqs.json",
+            "preview_url": "https:\/\/ronie.foxcreation.net\/roplumb\/template-kit\/faqs\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Blog",
+            "screenshot": "screenshots\/blog.jpg",
+            "source": "templates\/blog.json",
+            "preview_url": "https:\/\/ronie.foxcreation.net\/roplumb\/template-kit\/blog\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Pricing",
+            "screenshot": "screenshots\/pricing.jpg",
+            "source": "templates\/pricing.json",
+            "preview_url": "https:\/\/ronie.foxcreation.net\/roplumb\/template-kit\/pricing\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Booking Form",
+            "screenshot": "screenshots\/booking-form.jpg",
+            "source": "templates\/booking-form.json",
+            "preview_url": "https:\/\/ronie.foxcreation.net\/roplumb\/template-kit\/booking-form\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-contact",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Contact Form",
+            "screenshot": "screenshots\/contact-form.jpg",
+            "source": "templates\/contact-form.json",
+            "preview_url": "https:\/\/ronie.foxcreation.net\/roplumb\/template-kit\/contact-form\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-contact",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Error 404",
+            "screenshot": "screenshots\/error-404.jpg",
+            "source": "templates\/error-404.json",
+            "preview_url": "https:\/\/ronie.foxcreation.net\/roplumb\/template-kit\/error-404\/",
+            "type": "page",
+            "category": "page",
+            "metadata": {
+                "template_type": "single-page",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Footer",
+            "screenshot": "screenshots\/footer.jpg",
+            "source": "templates\/footer.json",
+            "preview_url": "https:\/\/ronie.foxcreation.net\/roplumb\/template-kit\/footer\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-footer",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Newsletter Form",
+            "screenshot": "screenshots\/newsletter-form.jpg",
+            "source": "templates\/newsletter-form.json",
+            "preview_url": "https:\/\/ronie.foxcreation.net\/roplumb\/template-kit\/newsletter-form\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-contact",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        },
+        {
+            "name": "Header",
+            "screenshot": "screenshots\/header.jpg",
+            "source": "templates\/header.json",
+            "preview_url": "https:\/\/ronie.foxcreation.net\/roplumb\/template-kit\/header\/",
+            "type": "section",
+            "category": "section",
+            "metadata": {
+                "template_type": "section-header",
+                "include_in_zip": "1",
+                "elementor_pro_required": null
+            },
+            "elementor_pro_required": false
+        }
+    ],
+    "required_plugins": [
+        {
+            "name": "Elementor",
+            "version": "3.33.4",
+            "file": "elementor\/elementor.php",
+            "author": "Elementor.com"
+        },
+        {
+            "name": "ElementsKit Lite",
+            "version": "3.7.7",
+            "file": "elementskit-lite\/elementskit-lite.php",
+            "author": "Wpmet"
+        },
+        {
+            "name": "Jeg Kit for Elementor",
+            "version": "3.0.1",
+            "file": "jeg-elementor-kit\/jeg-elementor-kit.php",
+            "author": "Jegtheme"
+        },
+        {
+            "name": "MetForm",
+            "version": "4.0.8",
+            "file": "metform\/metform.php",
+            "author": "Wpmet"
+        }
+    ],
+    "images": [
+        {
+            "filename": "the-technician-checking-the-heating-system-in-the-2025-03-14-00-35-41-7BYB37L.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/the-technician-checking-the-heating-system-in-the-2025-03-14-00-35-41-7BYB37L-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/contact.json",
+                    "name": "Contact"
+                },
+                {
+                    "source": "templates\/service-details.json",
+                    "name": "Service Details"
+                },
+                {
+                    "source": "templates\/single-post.json",
+                    "name": "Single Post"
+                },
+                {
+                    "source": "templates\/blog.json",
+                    "name": "Blog"
+                }
+            ],
+            "filesize": 215439,
+            "dimensions": [
+                1536,
+                1024
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/image-7BYB37L"
+        },
+        {
+            "filename": "User-1.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/User-1-800x800.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/contact.json",
+                    "name": "Contact"
+                }
+            ],
+            "filesize": 84673,
+            "dimensions": [
+                1080,
+                1080
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/collage-of-diverse-entrepreneurs-laughing-against--4V9NAJX"
+        },
+        {
+            "filename": "User-2.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/User-2-800x800.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/contact.json",
+                    "name": "Contact"
+                }
+            ],
+            "filesize": 70004,
+            "dimensions": [
+                1080,
+                1080
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/collage-of-diverse-entrepreneurs-laughing-against--4V9NAJX"
+        },
+        {
+            "filename": "User-3.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/User-3-800x800.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/contact.json",
+                    "name": "Contact"
+                }
+            ],
+            "filesize": 56614,
+            "dimensions": [
+                1080,
+                1080
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/collage-of-diverse-entrepreneurs-laughing-against--4V9NAJX"
+        },
+        {
+            "filename": "User-4.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/User-4-800x800.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/contact.json",
+                    "name": "Contact"
+                }
+            ],
+            "filesize": 91546,
+            "dimensions": [
+                1080,
+                1080
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/collage-of-diverse-entrepreneurs-laughing-against--4V9NAJX"
+        },
+        {
+            "filename": "service-1.png",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/service-1.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                }
+            ],
+            "filesize": 19399,
+            "dimensions": [
+                800,
+                800
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/plumbing-icons-BHGH4KT"
+        },
+        {
+            "filename": "service-2.png",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/service-2.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                }
+            ],
+            "filesize": 27163,
+            "dimensions": [
+                800,
+                800
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/plumbing-icons-BHGH4KT"
+        },
+        {
+            "filename": "service-3.png",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/service-3.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                }
+            ],
+            "filesize": 27698,
+            "dimensions": [
+                800,
+                800
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/plumbing-icons-BHGH4KT"
+        },
+        {
+            "filename": "plumber-holding-water-filter-cartridge-in-kitchen-2025-09-25-16-12-24-BHLGE5T.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/plumber-holding-water-filter-cartridge-in-kitchen-2025-09-25-16-12-24-BHLGE5T-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 149324,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/image-BHLGE5T"
+        },
+        {
+            "filename": "high-angle-view-of-tool-belt-hammers-monkey-wren-2024-11-10-16-45-57-974B5KV.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/high-angle-view-of-tool-belt-hammers-monkey-wren-2024-11-10-16-45-57-974B5KV.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                }
+            ],
+            "filesize": 34189,
+            "dimensions": [
+                355,
+                500
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/image-974B5KV"
+        },
+        {
+            "filename": "smiling-handsome-plumber-standing-with-crossed-arm-2024-11-17-07-42-33-Y99Z6GE.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/smiling-handsome-plumber-standing-with-crossed-arm-2024-11-17-07-42-33-Y99Z6GE.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                }
+            ],
+            "filesize": 35115,
+            "dimensions": [
+                355,
+                500
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/image-Y99Z6GE"
+        },
+        {
+            "filename": "man-fixing-kitchen-sink-2025-02-10-12-57-28-VFJNDZ4.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/man-fixing-kitchen-sink-2025-02-10-12-57-28-VFJNDZ4-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/service-details.json",
+                    "name": "Service Details"
+                }
+            ],
+            "filesize": 170267,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/image-VFJNDZ4"
+        },
+        {
+            "filename": "logos-01.png",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/logos-01.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 4179,
+            "dimensions": [
+                350,
+                100
+            ],
+            "image_source": "self_created",
+            "image_urls": ""
+        },
+        {
+            "filename": "logos-02.png",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/logos-02.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 3924,
+            "dimensions": [
+                350,
+                100
+            ],
+            "image_source": "self_created",
+            "image_urls": ""
+        },
+        {
+            "filename": "logos-03.png",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/logos-03.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 3087,
+            "dimensions": [
+                350,
+                100
+            ],
+            "image_source": "self_created",
+            "image_urls": ""
+        },
+        {
+            "filename": "logos-04.png",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/logos-04.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 4027,
+            "dimensions": [
+                350,
+                100
+            ],
+            "image_source": "self_created",
+            "image_urls": ""
+        },
+        {
+            "filename": "logos-05.png",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/logos-05.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 4085,
+            "dimensions": [
+                350,
+                100
+            ],
+            "image_source": "self_created",
+            "image_urls": ""
+        },
+        {
+            "filename": "logos-06.png",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/logos-06.png",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 4049,
+            "dimensions": [
+                350,
+                100
+            ],
+            "image_source": "self_created",
+            "image_urls": ""
+        },
+        {
+            "filename": "male-plumber-and-female-customer-in-the-kitchen-2024-12-02-06-05-36-EKTSSW7.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/male-plumber-and-female-customer-in-the-kitchen-2024-12-02-06-05-36-EKTSSW7-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                }
+            ],
+            "filesize": 187453,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/image-EKTSSW7"
+        },
+        {
+            "filename": "senior-plumber-installing-sink-using-adjustable-wr-2025-02-20-11-32-52-CFTW698.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/senior-plumber-installing-sink-using-adjustable-wr-2025-02-20-11-32-52-CFTW698-800x1200.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/contact.json",
+                    "name": "Contact"
+                },
+                {
+                    "source": "templates\/faqs.json",
+                    "name": "FAQs"
+                }
+            ],
+            "filesize": 167269,
+            "dimensions": [
+                1280,
+                1920
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/image-CFTW698"
+        },
+        {
+            "filename": "male-worker-installing-heating-radiator-in-apartme-2025-01-16-22-06-44-FRQK54S.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/male-worker-installing-heating-radiator-in-apartme-2025-01-16-22-06-44-FRQK54S-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/home.json",
+                    "name": "Home"
+                },
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/contact.json",
+                    "name": "Contact"
+                }
+            ],
+            "filesize": 212363,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/image-FRQK54S"
+        },
+        {
+            "filename": "man-carefully-examining-bottom-of-sink-and-pipe-2024-10-18-04-54-31-DPQBJ95.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/man-carefully-examining-bottom-of-sink-and-pipe-2024-10-18-04-54-31-DPQBJ95-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                },
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                },
+                {
+                    "source": "templates\/service-details.json",
+                    "name": "Service Details"
+                }
+            ],
+            "filesize": 136020,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/image-DPQBJ95"
+        },
+        {
+            "filename": "service-4.png",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/service-4.png",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                }
+            ],
+            "filesize": 26997,
+            "dimensions": [
+                800,
+                800
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/plumbing-icons-BHGH4KT"
+        },
+        {
+            "filename": "service-5.png",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/service-5.png",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                }
+            ],
+            "filesize": 35652,
+            "dimensions": [
+                800,
+                800
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/plumbing-icons-BHGH4KT"
+        },
+        {
+            "filename": "service-6.png",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/service-6.png",
+            "templates": [
+                {
+                    "source": "templates\/services.json",
+                    "name": "Services"
+                }
+            ],
+            "filesize": 28060,
+            "dimensions": [
+                800,
+                800
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/plumbing-icons-BHGH4KT"
+        },
+        {
+            "filename": "professional-plumber-repairing-water-supply-system-2025-03-05-06-41-26-38Z2HUP.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/professional-plumber-repairing-water-supply-system-2025-03-05-06-41-26-38Z2HUP-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 193888,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/image-38Z2HUP"
+        },
+        {
+            "filename": "close-up-of-plumber-repairing-sink-with-tool-in-ba-2025-02-04-02-12-53-9XBKELG.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/close-up-of-plumber-repairing-sink-with-tool-in-ba-2025-02-04-02-12-53-9XBKELG-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/about.json",
+                    "name": "About"
+                }
+            ],
+            "filesize": 215115,
+            "dimensions": [
+                1728,
+                1152
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/image-9XBKELG"
+        },
+        {
+            "filename": "young-plumber-fixing-new-pipe-with-wrench-2025-03-13-18-38-13-WV4JKPZ.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/young-plumber-fixing-new-pipe-with-wrench-2025-03-13-18-38-13-WV4JKPZ-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/contact.json",
+                    "name": "Contact"
+                }
+            ],
+            "filesize": 207809,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/image-WV4JKPZ"
+        },
+        {
+            "filename": "senior-plumber-fixing-sink-pipe-in-bathroom-2025-02-20-11-32-52-J8QQJQW.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/senior-plumber-fixing-sink-pipe-in-bathroom-2025-02-20-11-32-52-J8QQJQW-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/service-details.json",
+                    "name": "Service Details"
+                }
+            ],
+            "filesize": 200009,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/image-J8QQJQW"
+        },
+        {
+            "filename": "pressure-gauge-shows-the-pressure-in-the-reverse-o-2025-03-07-09-29-09-E4TE7LN.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/pressure-gauge-shows-the-pressure-in-the-reverse-o-2025-03-07-09-29-09-E4TE7LN-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/single-post.json",
+                    "name": "Single Post"
+                }
+            ],
+            "filesize": 110252,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/image-E4TE7LN"
+        },
+        {
+            "filename": "repairing-sink-2025-01-29-12-51-41-JWSJCTC.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/repairing-sink-2025-01-29-12-51-41-JWSJCTC-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/team.json",
+                    "name": "Team"
+                },
+                {
+                    "source": "templates\/pricing.json",
+                    "name": "Pricing"
+                }
+            ],
+            "filesize": 175965,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/image-JWSJCTC"
+        },
+        {
+            "filename": "team-01.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/team-01-800x1200.jpg",
+            "templates": [
+                {
+                    "source": "templates\/team.json",
+                    "name": "Team"
+                }
+            ],
+            "filesize": 115279,
+            "dimensions": [
+                900,
+                1350
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/labs.envato.com\/apps\/image-gen?id=87eb2813-f1e0-43a4-85ce-ae6b5b13306b\/"
+        },
+        {
+            "filename": "team-02.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/team-02-800x1200.jpg",
+            "templates": [
+                {
+                    "source": "templates\/team.json",
+                    "name": "Team"
+                }
+            ],
+            "filesize": 84426,
+            "dimensions": [
+                900,
+                1350
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/labs.envato.com\/apps\/image-gen?id=940f29f3-01fa-4730-9788-3b1303fbbf02\/"
+        },
+        {
+            "filename": "team-03.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/team-03-800x1200.jpg",
+            "templates": [
+                {
+                    "source": "templates\/team.json",
+                    "name": "Team"
+                }
+            ],
+            "filesize": 82812,
+            "dimensions": [
+                900,
+                1350
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/labs.envato.com\/apps\/image-gen?id=217116bc-3882-44a3-b0c3-ae9152e21d75\/"
+        },
+        {
+            "filename": "team-04.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/team-04-800x1200.jpg",
+            "templates": [
+                {
+                    "source": "templates\/team.json",
+                    "name": "Team"
+                }
+            ],
+            "filesize": 74025,
+            "dimensions": [
+                900,
+                1350
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/labs.envato.com\/apps\/image-gen?id=a8d97963-665a-4886-8e80-bd77c22e6bec\/"
+        },
+        {
+            "filename": "team-05.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/team-05-800x1200.jpg",
+            "templates": [
+                {
+                    "source": "templates\/team.json",
+                    "name": "Team"
+                }
+            ],
+            "filesize": 94017,
+            "dimensions": [
+                900,
+                1350
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/labs.envato.com\/apps\/image-gen?id=7efcd080-7ed4-446f-88a1-0b4d72d6176e\/"
+        },
+        {
+            "filename": "team-06.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/team-06-800x1200.jpg",
+            "templates": [
+                {
+                    "source": "templates\/team.json",
+                    "name": "Team"
+                }
+            ],
+            "filesize": 68893,
+            "dimensions": [
+                900,
+                1350
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/labs.envato.com\/apps\/image-gen?id=30d42be2-28f6-43a0-b414-04f4ce68bfac\/"
+        },
+        {
+            "filename": "couple-fixing-kitchen-sink-2025-02-10-09-41-43-MZSH6BV.jpg",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/couple-fixing-kitchen-sink-2025-02-10-09-41-43-MZSH6BV-800x533.jpg",
+            "templates": [
+                {
+                    "source": "templates\/faqs.json",
+                    "name": "FAQs"
+                }
+            ],
+            "filesize": 170893,
+            "dimensions": [
+                1920,
+                1280
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/image-MZSH6BV"
+        },
+        {
+            "filename": "404.png",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/404-800x800.png",
+            "templates": [
+                {
+                    "source": "templates\/error-404.json",
+                    "name": "Error 404"
+                }
+            ],
+            "filesize": 70348,
+            "dimensions": [
+                1000,
+                1000
+            ],
+            "image_source": "envato_elements",
+            "image_urls": "https:\/\/elements.envato.com\/plumber-character-illustration-ZK2NZRX"
+        },
+        {
+            "filename": "Roplumb-Logo.png",
+            "thumbnail_url": "https:\/\/ronie.foxcreation.net\/roplumb\/wp-content\/uploads\/sites\/37\/2025\/12\/Roplumb-Logo-800x141.png",
+            "templates": [
+                {
+                    "source": "templates\/footer.json",
+                    "name": "Footer"
+                },
+                {
+                    "source": "templates\/header.json",
+                    "name": "Header"
+                }
+            ],
+            "filesize": 16577,
+            "dimensions": [
+                1220,
+                215
+            ],
+            "image_source": "self_created",
+            "image_urls": ""
+        }
+    ]
+}

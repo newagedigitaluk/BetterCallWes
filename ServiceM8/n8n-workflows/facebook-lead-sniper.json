@@ -1,0 +1,325 @@
+{
+    "name": "Facebook Lead Sniper (Bright Data)",
+    "description": "Monitors Facebook groups for plumbing leads using Bright Data API",
+    "nodes": [
+        {
+            "parameters": {
+                "rule": {
+                    "interval": [
+                        {
+                            "field": "minutes",
+                            "minutesInterval": 10
+                        }
+                    ]
+                }
+            },
+            "id": "schedule-trigger",
+            "name": "Every 10 Minutes",
+            "type": "n8n-nodes-base.scheduleTrigger",
+            "typeVersion": 1.1,
+            "position": [
+                250,
+                300
+            ],
+            "notes": "Runs every 10 minutes. Reduce to 5 for faster alerts (higher cost)."
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://api.brightdata.com/datasets/v3/trigger",
+                "sendHeaders": true,
+                "headerParameters": {
+                    "parameters": [
+                        {
+                            "name": "Authorization",
+                            "value": "Bearer YOUR_BRIGHTDATA_API_KEY"
+                        },
+                        {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ]
+                },
+                "sendBody": true,
+                "specifyBody": "json",
+                "jsonBody": "{\n  \"dataset_id\": \"gd_lyclf27kfu1rjbk119\",\n  \"include\": {\n    \"comments\": false\n  },\n  \"url\": [\n    \"FACEBOOK_GROUP_URL_1\",\n    \"FACEBOOK_GROUP_URL_2\",\n    \"FACEBOOK_GROUP_URL_3\"\n  ]\n}"
+            },
+            "id": "brightdata-trigger",
+            "name": "Trigger Bright Data Scrape",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.1,
+            "position": [
+                470,
+                300
+            ],
+            "notes": "Replace YOUR_BRIGHTDATA_API_KEY and add your Facebook group URLs"
+        },
+        {
+            "parameters": {
+                "amount": 30,
+                "unit": "seconds"
+            },
+            "id": "wait-node",
+            "name": "Wait 30s for Results",
+            "type": "n8n-nodes-base.wait",
+            "typeVersion": 1.1,
+            "position": [
+                670,
+                300
+            ],
+            "notes": "Wait for Bright Data to complete scraping"
+        },
+        {
+            "parameters": {
+                "method": "GET",
+                "url": "=https://api.brightdata.com/datasets/v3/snapshot/{{ $json.snapshot_id }}?format=json",
+                "sendHeaders": true,
+                "headerParameters": {
+                    "parameters": [
+                        {
+                            "name": "Authorization",
+                            "value": "Bearer YOUR_BRIGHTDATA_API_KEY"
+                        }
+                    ]
+                }
+            },
+            "id": "get-results",
+            "name": "Get Scrape Results",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.1,
+            "position": [
+                870,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "split",
+                "fieldToSplitOut": "data",
+                "options": {}
+            },
+            "id": "split-posts",
+            "name": "Split Into Posts",
+            "type": "n8n-nodes-base.itemLists",
+            "typeVersion": 3,
+            "position": [
+                1070,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "conditions": {
+                    "string": [
+                        {
+                            "value1": "={{ $json.text || $json.content || '' }}",
+                            "operation": "regex",
+                            "value2": "(?i)(plumber|plumbing|boiler|heating|leak|hot water|gas engineer|anyone know|recommend|looking for)"
+                        }
+                    ]
+                }
+            },
+            "id": "keyword-filter",
+            "name": "Contains Keywords?",
+            "type": "n8n-nodes-base.if",
+            "typeVersion": 1,
+            "position": [
+                1270,
+                300
+            ],
+            "notes": "Pre-filter before AI to save API costs"
+        },
+        {
+            "parameters": {},
+            "id": "straico-placeholder",
+            "name": "AI Filter (Straico)",
+            "type": "n8n-nodes-base.noOp",
+            "typeVersion": 1,
+            "position": [
+                1470,
+                200
+            ],
+            "notes": "REPLACE with Straico Chat Completion node.\n\nSystem: Return HOT or COLD. HOT = someone needs plumber. COLD = recommendation, ad, job listing.\n\nUser: {{ $json.text }}"
+        },
+        {
+            "parameters": {
+                "conditions": {
+                    "string": [
+                        {
+                            "value1": "={{ $json.output || $json.message || $json.content || '' }}",
+                            "operation": "contains",
+                            "value2": "HOT"
+                        }
+                    ]
+                }
+            },
+            "id": "is-hot",
+            "name": "Is Hot Lead?",
+            "type": "n8n-nodes-base.if",
+            "typeVersion": 1,
+            "position": [
+                1670,
+                200
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "https://chat.bettercallwes.co.uk/api/v1/accounts/1/conversations",
+                "sendHeaders": true,
+                "headerParameters": {
+                    "parameters": [
+                        {
+                            "name": "api_access_token",
+                            "value": "YOUR_CHATWOOT_API_TOKEN"
+                        },
+                        {
+                            "name": "Content-Type",
+                            "value": "application/json"
+                        }
+                    ]
+                },
+                "sendBody": true,
+                "specifyBody": "json",
+                "jsonBody": "={\n  \"inbox_id\": REPLACE_WITH_INBOX_ID,\n  \"message\": {\n    \"content\": \"🚨 HOT LEAD FROM FACEBOOK\\n\\n📱 Group: {{ $json.group_name || 'Unknown' }}\\n💬 Post: {{ $json.text || $json.content }}\\n🔗 Link: {{ $json.url || 'No link' }}\\n\\n👉 Open Facebook app to respond!\"\n  }\n}"
+            },
+            "id": "chatwoot-alert",
+            "name": "Send to Chatwoot",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.1,
+            "position": [
+                1870,
+                100
+            ]
+        },
+        {
+            "parameters": {},
+            "id": "cold-skip",
+            "name": "Cold Lead (Skip)",
+            "type": "n8n-nodes-base.noOp",
+            "typeVersion": 1,
+            "position": [
+                1870,
+                300
+            ]
+        },
+        {
+            "parameters": {},
+            "id": "no-keywords",
+            "name": "No Keywords (Skip)",
+            "type": "n8n-nodes-base.noOp",
+            "typeVersion": 1,
+            "position": [
+                1470,
+                400
+            ]
+        }
+    ],
+    "connections": {
+        "Every 10 Minutes": {
+            "main": [
+                [
+                    {
+                        "node": "Trigger Bright Data Scrape",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Trigger Bright Data Scrape": {
+            "main": [
+                [
+                    {
+                        "node": "Wait 30s for Results",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Wait 30s for Results": {
+            "main": [
+                [
+                    {
+                        "node": "Get Scrape Results",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Get Scrape Results": {
+            "main": [
+                [
+                    {
+                        "node": "Split Into Posts",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Split Into Posts": {
+            "main": [
+                [
+                    {
+                        "node": "Contains Keywords?",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Contains Keywords?": {
+            "main": [
+                [
+                    {
+                        "node": "AI Filter (Straico)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ],
+                [
+                    {
+                        "node": "No Keywords (Skip)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "AI Filter (Straico)": {
+            "main": [
+                [
+                    {
+                        "node": "Is Hot Lead?",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Is Hot Lead?": {
+            "main": [
+                [
+                    {
+                        "node": "Send to Chatwoot",
+                        "type": "main",
+                        "index": 0
+                    }
+                ],
+                [
+                    {
+                        "node": "Cold Lead (Skip)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    },
+    "settings": {
+        "executionOrder": "v1"
+    }
+}

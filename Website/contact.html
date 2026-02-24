@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Wes | Book Your Plumbing Appointment</title>
+    <meta name="description"
+        content="Book your plumbing appointment online. Simple form for quotes and inquiries. Serving Southampton SO14-SO19, SO30, SO40, SO50, SO53.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav-container">
+                <a href="/" class="logo">
+                    <img src="assets/logo.jpg" alt="Better Call Wes">
+                    Better Call Wes
+                </a>
+                <div class="main-nav">
+                    <a href="/" class="nav-link">Home</a>
+                    <div class="dropdown">
+                        <a href="services.html" class="nav-link">Services <i data-lucide="chevron-down"
+                                style="width: 16px; height: 16px;"></i></a>
+                        <div class="dropdown-menu">
+                            <div
+                                style="padding: 0 1rem 0.5rem; font-size: 0.75rem; letter-spacing: 1px; color: var(--color-accent); font-weight: 700; text-transform: uppercase;">
+                                Boiler Services</div>
+                            <a href="services/boiler-installation.html" class="dropdown-item">Boiler Installation</a>
+                            <a href="services/boiler-repair.html" class="dropdown-item">Boiler Repair</a>
+                            <a href="services/boiler-servicing.html" class="dropdown-item">Boiler Servicing</a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <div
+                                style="padding: 0.5rem 1rem 0.5rem; font-size: 0.75rem; letter-spacing: 1px; color: var(--color-accent); font-weight: 700; text-transform: uppercase;">
+                                Heating & Plumbing</div>
+                            <a href="services/central-heating.html" class="dropdown-item">Central Heating</a>
+                            <a href="services/plumbing-repairs.html" class="dropdown-item">Plumbing Repairs</a>
+                            <a href="services/power-flushing.html" class="dropdown-item">Power Flushing</a>
+                            <a href="services/toilet-repairs.html" class="dropdown-item">Toilet Repairs</a>
+
+                            <div class="dropdown-divider"></div>
+                            <a href="services.html" class="dropdown-item"
+                                style="text-align: center; color: var(--text-white); font-weight: 600;">View All
+                                Services →</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-link">About Wes</a>
+                    <a href="pricing.html" class="nav-link">Pricing</a>
+                    <a href="reviews.html" class="nav-link">Reviews</a>
+                    <a href="contact.html" class="nav-link" style="color: var(--color-accent);">Contact</a>
+                    <a href="tel:07700155655" class="btn btn-primary">
+                        <i data-lucide="phone" size="16"></i> 07700 155 655
+                    </a>
+                </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i data-lucide="menu" size="24"></i>
+                </button>
+            </nav>
+        </div>
+        <!-- Mobile Nav -->
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="/">Home</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About Wes</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="contact.html" style="color: var(--color-accent);">Contact</a>
+            <a href="tel:07700155655">📞 07700 155 655</a>
+        </nav>
+    </header>
+
+    <!-- Page Header (Simulated Hero) -->
+    <section class="section section-gray" style="padding-top: 150px; padding-bottom: 60px;">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 2rem;">
+                <div class="section-label">GET IN TOUCH</div>
+                <h2>Request a Quote</h2>
+                <p style="margin-top: 1rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Fill out the form below to key in a request. I typically reply same-day between jobs.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top: 40px;">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div>
+                    <div
+                        style="background: var(--color-white); padding: 2.5rem; border-radius: var(--radius-lg); border: 1px solid rgba(0,0,0,0.05); box-shadow: var(--shadow-md);">
+                        <h3 style="margin-bottom: 1.5rem;">Send a Message</h3>
+                        <p style="margin-bottom: 2rem; color: var(--text-body);">
+                            For live appointments, <a href="booking.html"
+                                style="color: var(--color-accent); font-weight: 600;">book online here</a>.
+                        </p>
+
+                        <form action="mailto:hello@bettercallwes.co.uk" method="POST" enctype="text/plain">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" id="name" name="name" class="form-input" required
+                                    placeholder="John Smith">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="form-input" required
+                                    placeholder="07700 123 456">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="postcode" class="form-label">Postcode</label>
+                                <input type="text" id="postcode" name="postcode" class="form-input" required
+                                    placeholder="SO14...">
+                                <small
+                                    style="color: var(--text-light); display:block; margin-top:4px; font-size: 0.85rem;">I
+                                    cover
+                                    SO14-SO19, SO30, SO40, SO50, SO53</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="service" class="form-label">Service Needed</label>
+                                <select id="service" name="service" class="form-select">
+                                    <option value="repair">Repair / Leak</option>
+                                    <option value="boiler-service">Boiler Service (£90)</option>
+                                    <option value="boiler-install">New Boiler Quote</option>
+                                    <option value="gas-safety">Gas Safety Cert (£80)</option>
+                                    <option value="powerflush">Powerflush</option>
+                                    <option value="other">Other Inquiry</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message" class="form-label">Details</label>
+                                <textarea id="message" name="message" class="form-textarea"
+                                    placeholder="Describe the issue... (e.g. Boiler showing error code F1, dripping tap in kitchen)"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                Send Request <i data-lucide="send" size="18"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Contact Info Side -->
+                <div class="contact-info">
+                    <div class="contact-card-item">
+                        <div class="contact-card-icon"><i data-lucide="phone"></i></div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--text-dark); margin-bottom: 0.25rem;">Phone</div>
+                            <div style="color: var(--text-body);">
+                                <a href="tel:07700155655" style="font-weight: 600;">07700 155 655</a><br>
+                                Mon-Fri, 9am - 5pm
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-card-item">
+                        <div class="contact-card-icon"><i data-lucide="mail"></i></div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--text-dark); margin-bottom: 0.25rem;">Email</div>
+                            <div style="color: var(--text-body);">
+                                <a href="mailto:hello@bettercallwes.co.uk">hello@bettercallwes.co.uk</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-card-item">
+                        <div class="contact-card-icon"><i data-lucide="map-pin"></i></div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--text-dark); margin-bottom: 0.25rem;">Service
+                                Areas</div>
+                            <div style="color: var(--text-body); font-size: 0.95rem;">
+                                SO14, SO15, SO16, SO17, SO18, SO19,<br>
+                                SO30, SO40, SO50, SO53
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        style="padding: 1.5rem; background: var(--color-primary-light); color: white; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);">
+                        <h4 style="margin-bottom: 0.5rem; color: #FCA5A5;">No Emergency Callouts</h4>
+                        <p style="font-size: 0.9rem; opacity: 0.9; line-height: 1.6;">
+                            Please note I do not offer out-of-hours or emergency call-outs.
+                            If you have a suspected gas leak, please call the National Gas Emergency Service on 0800 111
+                            999.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <img src="assets/logo.jpg" alt="Better Call Wes">
+                        Better Call Wes
+                    </a>
+                    <p>Southampton's trusted local plumber and heating engineer. Gas Safe registered (#558654).</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:07700155655">07700 155 655</a></li>
+                        <li><a href="mailto:hello@bettercallwes.co.uk">hello@bettercallwes.co.uk</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Better Call Wes Plumbing & Heating.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mobileNav');
+            nav.classList.toggle('active');
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+
+</html>
