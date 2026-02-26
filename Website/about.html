@@ -4,32 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Better Call Wes</title>
+    <title>About Better Call Wes | Your Local Southampton Plumber</title>
     <meta name="description"
-        content="Learn about Wes, Southampton's trusted Gas Safe plumber. 15+ years experience, fully insured, and dedicated to quality workmanship.">
+        content="Professional plumbing and heating services in Southampton. Gas Safe registered, transparent pricing. Boiler repairs, servicing, plumbing repairs and more.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
-        rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-
+<body>
 <body>
 
-    <!-- Header -->
-    <header class="header">
+    <!-- Top Bar -->
+    <div class="top-bar">
         <div class="container">
-            <div class="nav-container">
+            <div class="top-bar-left">
+                Serving Southampton, Eastleigh & Surrounding Areas
+            </div>
+            <div class="top-bar-right">
+                <a href="tel:07700155655"><i data-lucide="phone"
+                        style="width: 14px; height: 14px; display: inline-block; vertical-align: middle;"></i> 07700 155
+                    655</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header has-topbar">
+        <div class="container">
+            <nav class="nav-container">
                 <a href="/" class="logo">
                     <img src="assets/logo.jpg" alt="Better Call Wes">
                     Better Call Wes
                 </a>
-                <nav class="main-nav">
+                <div class="main-nav">
                     <a href="/" class="nav-link">Home</a>
-                    <a href="about.html" class="nav-link" style="color: var(--color-accent);">About</a>
                     <div class="dropdown">
                         <a href="services.html" class="nav-link">Services <i data-lucide="chevron-down"
                                 style="width: 16px; height: 16px;"></i></a>
@@ -57,204 +67,179 @@
                                 Services →</a>
                         </div>
                     </div>
+                    <a href="about.html" class="nav-link">About Me</a>
                     <a href="pricing.html" class="nav-link">Pricing</a>
                     <a href="reviews.html" class="nav-link">Reviews</a>
                     <a href="contact.html" class="nav-link">Contact</a>
-                    <a href="booking.html" class="btn btn-primary">
-                        Book Online <i data-lucide="arrow-right" size="18"></i>
+                    <a href="tel:07700155655" class="btn btn-primary">
+                        <i data-lucide="phone" size="16"></i> 07700 155 655
                     </a>
-                </nav>
-                <button class="mobile-menu-btn" aria-label="Toggle menu">
-                    <i data-lucide="menu" size="28" color="#0F172A"></i>
+                </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i data-lucide="menu" size="24"></i>
                 </button>
-            </div>
+            </nav>
         </div>
+        <!-- Mobile Nav -->
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="/">Home</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About Me</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="contact.html">Contact</a>
+            <a href="tel:07700155655">📞 07700 155 655</a>
+        </nav>
     </header>
 
-    <!-- Page Header -->
-    <section class="hero" style="text-align: center;">
-        <div class="hero-bg">
-            <img src="assets/images/van-work.png" alt="Better Call Wes Van">
-        </div>
-        <div class="container">
-            <h1>About <span>Us</span></h1>
-            <p style="max-width: 600px; margin: 1rem auto 0;">
-                Southampton's trusted plumber, dedicated to honest work and quality service.
-            </p>
+    <section class="hero" style="background: var(--color-primary); padding-top: 150px; padding-bottom: 80px;">
+        <div class="container text-center">
+            <h1 style="color: white; margin-bottom: 1.5rem; font-size: 3rem;">About Better Call Wes</h1>
+            <p style="color: rgba(255,255,255,0.8); font-size: 1.25rem; max-width: 800px; margin: 0 auto;">Local, honest, and reliable plumbing & heating services from a true Southampton independent.</p>
         </div>
     </section>
 
-    <!-- Our Story Section -->
-    <section class="section" style="padding: 80px 0; background-color: #fff;">
+    <section class="section">
         <div class="container">
-            <div class="hero-grid">
-                <div class="hero-image-wrapper">
-                    <img src="assets/images/wes-profile.png" alt="Wes - Founder"
-                        style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div>
+                    <img src="assets/images/wes-profile.png" alt="Wes - Your local Southampton plumber" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
                 </div>
                 <div>
-                    <div class="section-label">OUR STORY</div>
-                    <h2>From Apprentice to Expert</h2>
-                    <p style="margin-top: 1.5rem; color: var(--text-body);">
-                        I started my plumbing journey over 15 years ago as an apprentice, learning the trade from the
-                        ground up.
-                        After years of working for large companies, I founded Better Call Wes to provide Southampton
-                        with something different:
-                        a plumber who actually picks up the phone, shows up on time, and treats your home like their
-                        own.
-                    </p>
-                    <p style="margin-top: 1rem; color: var(--text-body);">
-                        Today, I've completed over 500 installations and helped thousands of families stay warm and
-                        comfortable.
-                        Whether it's a simple tap repair or a complete heating system overhaul, I bring the same
-                        attention to detail to every job.
-                    </p>
-                    <a href="booking.html" class="btn btn-primary" style="margin-top: 2rem;">Book a Consultation</a>
+                    <div class="section-label" style="justify-content: flex-start;">MY STORY</div>
+                    <h2 style="margin-bottom: 1.5rem;">Hi, I'm Wes</h2>
+                    <p style="color: var(--text-body); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">I started <strong>Better Call Wes</strong> because I saw a need in Southampton for a truly honest, transparent plumbing service. After spending over a decade in the trade, I got tired of seeing homeowners hit with hidden fees, unexplained charges, and engineers who didn't show up on time.</p>
+                    <p style="color: var(--text-body); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">As a sole trader and fully certified Gas Safe engineer (#558654), I handle every single job myself. From the first WhatsApp message to the final tighten of a valve, you deal directly with me. No call centers, no salesmen, just professional, straightforward plumbing.</p>
+                    
+                    <div style="background: var(--bg-color); padding: 1.5rem; border-radius: var(--radius-md); border-left: 4px solid var(--color-accent); margin-top: 2rem;">
+                        <h4 style="margin-bottom: 0.5rem;"><i data-lucide="check-circle" style="color: var(--color-accent); width: 18px; display: inline-block; vertical-align: bottom;"></i> My Personal Promise</h4>
+                        <p style="color: var(--text-body); margin: 0;">I will never recommend a repair you don't need, I will always charge exactly what is on my Master Price Guide, and I will always leave your home as clean as I found it.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Our Values Section -->
-    <section class="section" style="padding: 80px 0; background-color: #F8FAFC;">
+    <section class="section section-gray">
+        <div class="container text-center">
+            <h2 style="margin-bottom: 3rem;">My Core Qualifications</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+                    <i data-lucide="flame" style="width: 48px; height: 48px; color: var(--color-primary); margin-bottom: 1rem;"></i>
+                    <h3>Gas Safe Registered</h3>
+                    <p style="color: var(--text-body);">Register Number: 558654. Fully qualified to work safely and legally on gas appliances.</p>
+                </div>
+                <div style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+                    <i data-lucide="shield-check" style="width: 48px; height: 48px; color: var(--color-primary); margin-bottom: 1rem;"></i>
+                    <h3>Fully Insured</h3>
+                    <p style="color: var(--text-body);">Comprehensive public liability insurance to protect your property while I work.</p>
+                </div>
+                <div style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+                    <i data-lucide="award" style="width: 48px; height: 48px; color: var(--color-primary); margin-bottom: 1rem;"></i>
+                    <h3>10+ Years Experience</h3>
+                    <p style="color: var(--text-body);">Over a decade of hands-on fault finding, installations, and complex plumbing repairs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- CTA Section -->
+    <section class="cta-section">
         <div class="container">
-            <div class="section-header">
-                <div class="section-label">OUR VALUES</div>
-                <h2>What We Stand For</h2>
-            </div>
-
-            <div class="service-grid"
-                style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); margin-top: 3rem;">
-                <div class="service-card" style="background: white;">
-                    <div class="service-icon"><i data-lucide="handshake"></i></div>
-                    <h3>Honesty</h3>
-                    <p>I'll always tell you what you need, not what makes me the most money. Straight talk, no
-                        upselling.</p>
-                </div>
-                <div class="service-card" style="background: white;">
-                    <div class="service-icon"><i data-lucide="award"></i></div>
-                    <h3>Quality</h3>
-                    <p>I only fit parts I'd put in my own home. Every job comes with a 12-month workmanship guarantee.
-                    </p>
-                </div>
-                <div class="service-card" style="background: white;">
-                    <div class="service-icon"><i data-lucide="heart"></i></div>
-                    <h3>Respect</h3>
-                    <p>Your home is your sanctuary. I always wear shoe covers, tidy up, and leave things better than I
-                        found them.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="section" style="padding: 80px 0; background-color: #fff;">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">TESTIMONIALS</div>
-                <h2>What Our Customers Say</h2>
-            </div>
-
-            <div
-                style="background: #F8FAFC; padding: 2.5rem; border-radius: var(--radius-lg); text-align: center; max-width: 700px; margin: 3rem auto 0;">
-                <div style="color: #FFB800; margin-bottom: 1.5rem;">
-                    <i data-lucide="star" fill="currentColor" size="24"></i>
-                    <i data-lucide="star" fill="currentColor" size="24"></i>
-                    <i data-lucide="star" fill="currentColor" size="24"></i>
-                    <i data-lucide="star" fill="currentColor" size="24"></i>
-                    <i data-lucide="star" fill="currentColor" size="24"></i>
-                </div>
-                <p style="font-size: 1.25rem; font-style: italic; margin-bottom: 1.5rem; color: var(--text-dark);">
-                    "Wes is the only plumber I'll ever call. Honest, reliable, and does a fantastic job every time."
-                </p>
-                <strong style="color: var(--color-primary);">— Mark T., Shirley</strong>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="section" style="padding: 80px 0; background-color: var(--color-primary); color: white;">
-        <div class="container" style="text-align: center;">
-            <h2 style="color: white;">Ready to Experience the <span
-                    style="color: var(--color-accent);">Difference?</span></h2>
-            <p style="max-width: 600px; margin: 1.5rem auto; color: #94A3B8;">
-                Book your appointment online or give me a call. I'll get back to you the same day.
-            </p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
-                <a href="booking.html" class="btn btn-primary">Book Online</a>
+            <h2>Ready for Reliable Plumbing & Heating?</h2>
+            <p>Book online or send me a WhatsApp message. I aim to respond within the hour.</p>
+            <div class="cta-buttons">
+                <a href="booking.html" class="btn btn-primary">
+                    <i data-lucide="calendar" size="18"></i> Book Online
+                </a>
+                <a href="https://wa.me/447700155655" class="btn" style="background: #25D366; color: white;"
+                    target="_blank">
+                    <i data-lucide="message-circle" size="18"></i> WhatsApp Me
+                </a>
                 <a href="tel:07700155655" class="btn" style="background: white; color: var(--color-primary);">
                     <i data-lucide="phone" size="18"></i> 07700 155 655
                 </a>
             </div>
         </div>
     </section>
-
-    <!-- Footer (Same as index) -->
-    <footer style="background: #0A0F1A; color: white; padding: 60px 0 30px;">
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
-                <div>
-                    <a href="/" class="logo" style="margin-bottom: 1rem; display: inline-flex;">
-                        <img src="assets/logo.jpg" alt="Better Call Wes"
-                            style="width: 40px; height: 40px; border-radius: 50%;">
-                        <span style="margin-left: 0.5rem; font-weight: 700;">Better Call Wes</span>
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <img src="assets/logo.jpg" alt="Better Call Wes">
+                        Better Call Wes
                     </a>
-                    <p style="color: #64748B; font-size: 0.9rem; margin-top: 1rem;">
-                        Southampton's trusted plumber. Gas Safe registered, fully insured.
-                    </p>
+                    <p>Southampton's trusted local plumber and heating engineer. Gas Safe registered (#558654), fully
+                        insured, and committed to quality workmanship.</p>
                 </div>
+
                 <div>
-                    <h4 style="margin-bottom: 1rem; font-size: 1rem;">Quick Links</h4>
-                    <nav style="display: flex; flex-direction: column; gap: 0.5rem;">
-                        <a href="about.html" style="color: #94A3B8; font-size: 0.9rem;">About</a>
-                        <a href="services.html" style="color: #94A3B8; font-size: 0.9rem;">Services</a>
-                        <a href="pricing.html" style="color: #94A3B8; font-size: 0.9rem;">Pricing</a>
-                        <a href="reviews.html" style="color: #94A3B8; font-size: 0.9rem;">Reviews</a>
-                    </nav>
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Me</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
                 </div>
+
                 <div>
-                    <h4 style="margin-bottom: 1rem; font-size: 1rem;">Services</h4>
-                    <nav style="display: flex; flex-direction: column; gap: 0.5rem;">
-                        <a href="services/boiler-installation.html" style="color: #94A3B8; font-size: 0.9rem;">Boiler
-                            Installation</a>
-                        <a href="services/boiler-servicing.html" style="color: #94A3B8; font-size: 0.9rem;">Boiler
-                            Servicing</a>
-                        <a href="services/boiler-repair.html" style="color: #94A3B8; font-size: 0.9rem;">Boiler
-                            Repair</a>
-                        <a href="services/gas-safety-check.html" style="color: #94A3B8; font-size: 0.9rem;">Gas Safety
-                            Check</a>
-                    </nav>
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services/boiler-installation.html">Boiler Installation</a></li>
+                        <li><a href="services/boiler-servicing.html">Boiler Servicing</a></li>
+                        <li><a href="services/boiler-repair.html">Boiler Repair</a></li>
+                        <li><a href="services/plumbing-repairs.html">Plumbing Repairs</a></li>
+                        <li><a href="services/power-flushing.html">Power Flushing</a></li>
+                        <li><a href="services/toilet-repairs.html">Toilet Repairs</a></li>
+                    </ul>
                 </div>
+
                 <div>
-                    <h4 style="margin-bottom: 1rem; font-size: 1rem;">Contact</h4>
-                    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-                        <a href="tel:07700155655"
-                            style="color: #94A3B8; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem;">
-                            <i data-lucide="phone" size="16"></i> 07700 155 655
-                        </a>
-                        <a href="mailto:hello@bettercallwes.co.uk"
-                            style="color: #94A3B8; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem;">
-                            <i data-lucide="mail" size="16"></i> hello@bettercallwes.co.uk
-                        </a>
-                    </div>
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:07700155655">📞 07700 155 655</a></li>
+                        <li><a href="https://wa.me/447700155655">💬 WhatsApp</a></li>
+                        <li><a href="mailto:wes@bettercallwes.co.uk">✉️ wes@bettercallwes.co.uk</a></li>
+                        <li style="margin-top: 1rem;">📍 Southampton, Hampshire</li>
+                        <li>🕐 Mon-Fri: 8am-6pm</li>
+                        <li style="margin-top: 1rem;"><strong>Gas Safe Reg: 558654</strong></li>
+                    </ul>
                 </div>
             </div>
-            <div
-                style="border-top: 1px solid #1E293B; padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-                <p style="color: #64748B; font-size: 0.85rem;">© 2026 Better Call Wes. All rights reserved.</p>
-                <p style="color: #64748B; font-size: 0.85rem;">Gas Safe Reg: 558654</p>
+
+            <div class="footer-bottom">
+                <p>© 2026 Better Call Wes. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
         lucide.createIcons();
-        const header = document.querySelector('.header');
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mobileNav');
+            nav.classList.toggle('active');
+        }
+
+        // Header scroll effect
         window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.scrollY > 100);
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
     </script>
+    <a href="tel:07700155655" class="floating-cta">
+        <i data-lucide="phone"></i> Call Now
+    </a>
 </body>
 
 </html>

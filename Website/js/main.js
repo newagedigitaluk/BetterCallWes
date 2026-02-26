@@ -4,6 +4,10 @@ const CONFIG = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    // ScrollToTop Component
+    window.scrollTo(0, 0);
+    window.addEventListener('popstate', () => window.scrollTo(0, 0));
+
     // Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const mobileMenu = document.querySelector('.mobile-menu');

@@ -4,112 +4,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heating Controls Southampton | Smart Thermostats | Better Call Wes</title>
+    <title>Smart Heating Controls & Thermostats Southampton</title>
     <meta name="description"
-        content="Smart thermostat installation in Southampton. Nest, Hive, Honeywell. Save money on energy bills with smart heating controls.">
+        content="Professional plumbing and heating services in Southampton. Gas Safe registered, transparent pricing. Boiler repairs, servicing, plumbing repairs and more.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
-        rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <script src="https://unpkg.com/lucide@latest"></script>
-</head>
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Service",
+      "name": "Thermostat Installation",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Better Call Wes",
+        "telephone": "07700 155 655",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Southampton",
+          "addressRegion": "Hampshire",
+          "addressCountry": "UK"
+        }
+      },
+      "areaServed": ["Southampton", "Eastleigh", "Shirley", "Bitterne", "Hedge End"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Thermostat Installation",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Smart Heating Controls Installation"
+            },
+            "priceCurrency": "GBP",
+            "price": "120"
+          }
+        ]
+      }
+    }
+    </script>
+    
+</head>
+<body>
 <body>
 
-    <header class="header">
+    <!-- Top Bar -->
+    <div class="top-bar">
         <div class="container">
-            <div class="nav-container">
+            <div class="top-bar-left">
+                Serving Southampton, Eastleigh & Surrounding Areas
+            </div>
+            <div class="top-bar-right">
+                <a href="tel:07700155655"><i data-lucide="phone"
+                        style="width: 14px; height: 14px; display: inline-block; vertical-align: middle;"></i> 07700 155
+                    655</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header has-topbar">
+        <div class="container">
+            <nav class="nav-container">
                 <a href="../" class="logo">
                     <img src="../assets/logo.jpg" alt="Better Call Wes">
                     Better Call Wes
                 </a>
-                <nav class="main-nav">
+                <div class="main-nav">
                     <a href="../" class="nav-link">Home</a>
-                    <a href="../about.html" class="nav-link">About</a>
-                    <a href="../services.html" class="nav-link" style="color: var(--color-accent);">Services</a>
+                    <div class="dropdown">
+                        <a href="../services.html" class="nav-link">Services <i data-lucide="chevron-down"
+                                style="width: 16px; height: 16px;"></i></a>
+                        <div class="dropdown-menu">
+                            <div
+                                style="padding: 0 1rem 0.5rem; font-size: 0.75rem; letter-spacing: 1px; color: var(--color-accent); font-weight: 700; text-transform: uppercase;">
+                                Boiler Services</div>
+                            <a href="/services/boiler-installation.html" class="dropdown-item">Boiler Installation</a>
+                            <a href="/services/boiler-repair.html" class="dropdown-item">Boiler Repair</a>
+                            <a href="/services/boiler-servicing.html" class="dropdown-item">Boiler Servicing</a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <div
+                                style="padding: 0.5rem 1rem 0.5rem; font-size: 0.75rem; letter-spacing: 1px; color: var(--color-accent); font-weight: 700; text-transform: uppercase;">
+                                Heating & Plumbing</div>
+                            <a href="/services/central-heating.html" class="dropdown-item">Central Heating</a>
+                            <a href="/services/plumbing-repairs.html" class="dropdown-item">Plumbing Repairs</a>
+                            <a href="/services/power-flushing.html" class="dropdown-item">Power Flushing</a>
+                            <a href="/services/toilet-repairs.html" class="dropdown-item">Toilet Repairs</a>
+
+                            <div class="dropdown-divider"></div>
+                            <a href="../services.html" class="dropdown-item"
+                                style="text-align: center; color: var(--text-white); font-weight: 600;">View All
+                                Services →</a>
+                        </div>
+                    </div>
+                    <a href="../about.html" class="nav-link">About Me</a>
                     <a href="../pricing.html" class="nav-link">Pricing</a>
                     <a href="../reviews.html" class="nav-link">Reviews</a>
                     <a href="../contact.html" class="nav-link">Contact</a>
-                    <a href="../booking.html" class="btn btn-primary">Book Online</a>
-                </nav>
-                <button class="mobile-menu-btn"><i data-lucide="menu" size="28" color="#0F172A"></i></button>
-            </div>
+                    <a href="tel:07700155655" class="btn btn-primary">
+                        <i data-lucide="phone" size="16"></i> 07700 155 655
+                    </a>
+                </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i data-lucide="menu" size="24"></i>
+                </button>
+            </nav>
         </div>
+        <!-- Mobile Nav -->
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="../">Home</a>
+            <a href="../services.html">Services</a>
+            <a href="../about.html">About Me</a>
+            <a href="../pricing.html">Pricing</a>
+            <a href="../reviews.html">Reviews</a>
+            <a href="../contact.html">Contact</a>
+            <a href="tel:07700155655">📞 07700 155 655</a>
+        </nav>
     </header>
 
-    <section class="hero">
+    <div style="background: var(--bg-color); padding: 1rem 0; border-bottom: 1px solid var(--border-color);">
         <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <span class="badge"><i data-lucide="thermometer" size="16"></i> Smart Heating</span>
-                    <h1>Heating <span>Controls</span></h1>
-                    <p>Upgrade to smart heating controls and save money on your energy bills. I install Nest, Hive,
-                        Honeywell, and more.</p>
-                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem;">
-                        <a href="../booking.html" class="btn btn-primary">Get Quote</a>
-                        <a href="tel:07700155655" class="btn btn-dark"><i data-lucide="phone" size="18"></i> 07700 155
-                            655</a>
-                    </div>
-                </div>
-                <div class="hero-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                        alt="Smart Thermostat" class="hero-image">
-                </div>
-            </div>
+            <nav style="font-size: 0.9rem; color: var(--text-light);">
+                <a href="../" style="color: var(--color-primary); text-decoration: none;">Home</a> <i data-lucide="chevron-right" style="width: 12px; height: 12px; display: inline-block; vertical-align: middle;"></i>
+                <a href="../services.html" style="color: var(--color-primary); text-decoration: none;">Services</a> <i data-lucide="chevron-right" style="width: 12px; height: 12px; display: inline-block; vertical-align: middle;"></i>
+                <a href="../services/central-heating.html" style="color: var(--color-primary); text-decoration: none;">Central Heating</a> <i data-lucide="chevron-right" style="width: 12px; height: 12px; display: inline-block; vertical-align: middle;"></i>
+                <span style="color: var(--text-dark); font-weight: 500;">Smart Heating Controls Installation</span>
+            </nav>
         </div>
-    </section>
+    </div>
+    
 
-    <section class="section" style="padding: 80px 0; background-color: #F8FAFC;">
+    <section class="hero" style="background: var(--bg-color); padding: 60px 0;">
         <div class="container">
-            <div class="section-header">
-                <div class="section-label">BRANDS WE INSTALL</div>
-                <h2>Smart Thermostats & Controls</h2>
-            </div>
-            <div class="service-grid"
-                style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); margin-top: 3rem;">
-                <div class="service-card" style="background: white; text-align: center;">
-                    <h3>Nest</h3>
-                    <p>Google's smart learning thermostat.</p>
-                </div>
-                <div class="service-card" style="background: white; text-align: center;">
-                    <h3>Hive</h3>
-                    <p>British Gas's popular smart system.</p>
-                </div>
-                <div class="service-card" style="background: white; text-align: center;">
-                    <h3>Honeywell</h3>
-                    <p>Reliable evohome and T6 systems.</p>
-                </div>
-                <div class="service-card" style="background: white; text-align: center;">
-                    <h3>Drayton Wiser</h3>
-                    <p>Affordable multi-zone control.</p>
+            <div style="max-width: 800px;">
+                <h1 style="color: var(--color-primary); margin-bottom: 1.5rem; font-size: 2.5rem;">Smart Heating Controls Installation in Southampton</h1>
+                <p style="color: var(--text-body); font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem;">Upgrading to a smart thermostat like Hive or Nest is one of the easiest ways to reduce your gas bills. By allowing you to control your heating from your phone and learning your schedule, smart controls ensure you never heat an empty house. I provide professional, hardwired installation integrated perfectly with your existing boiler.</p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="../booking.html" class="btn btn-primary"><i data-lucide="calendar"></i> Book Online</a>
+                    <a href="https://wa.me/447700155655" class="btn btn-dark"><i data-lucide="video"></i> Send WhatsApp Video</a>
                 </div>
             </div>
         </div>
     </section>
+    
 
-    <section class="section" style="padding: 80px 0; background-color: var(--color-primary); color: white;">
-        <div class="container" style="text-align: center;">
-            <h2 style="color: white;">Ready to Go <span style="color: var(--color-accent);">Smart?</span></h2>
-            <p style="max-width: 600px; margin: 1.5rem auto; color: #94A3B8;">Control your heating from your phone. Save
-                energy and money.</p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
-                <a href="../booking.html" class="btn btn-primary">Get Quote</a>
-                <a href="tel:07700155655" class="btn" style="background: white; color: var(--color-primary);"><i
-                        data-lucide="phone" size="18"></i> 07700 155 655</a>
+    <section class="section section-gray">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div style="background: white; padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+                    <div class="service-icon" style="margin-bottom: 1rem; color: var(--color-accent);"><i data-lucide="pound-sterling" style="width: 32px; height: 32px;"></i></div>
+                    <h3>Transparent Pricing</h3>
+                    <p style="color: var(--text-body);">Starting from £120. No call-out fees during normal hours, just a flat minimum diagnostic/labour rate so you know exactly what to expect.</p>
+                </div>
+                <div style="background: white; padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+                    <div class="service-icon" style="margin-bottom: 1rem; color: var(--color-accent);"><i data-lucide="shield-check" style="width: 32px; height: 32px;"></i></div>
+                    <h3>12-Month Guarantee</h3>
+                    <p style="color: var(--text-body);">I stand behind my work. Every repair, installation, and replacement carries my standard 12-month workmanship guarantee for peace of mind.</p>
+                </div>
+                <div style="background: white; padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+                    <div class="service-icon" style="margin-bottom: 1rem; color: var(--color-accent);"><i data-lucide="clock" style="width: 32px; height: 32px;"></i></div>
+                    <h3>Reliable Scheduling</h3>
+                    <p style="color: var(--text-body);">No more waiting around all day. Book directly into our online diary and choose a specific arrival window that suits your schedule.</p>
+                </div>
             </div>
         </div>
     </section>
+    
 
-    <footer style="background: #0A0F1A; color: white; padding: 40px 0 20px;">
-        <div class="container" style="text-align: center;">
-            <p style="color: #64748B; font-size: 0.85rem;">© 2026 Better Call Wes. Gas Safe Reg: 558654</p>
+    <section class="section" style="background: var(--color-primary); color: white; text-align: center;">
+        <div class="container">
+            <h2 style="color: white; margin-bottom: 1rem;">Need Help With Smart Heating Controls Installation?</h2>
+            <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Don't let plumbing problems ruin your day. Contact your local Southampton professionals now.</p>
+            <a href="../booking.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 15px 30px;">View Availability & Book</a>
+        </div>
+    </section>
+    
+<!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../" class="logo">
+                        <img src="../assets/logo.jpg" alt="Better Call Wes">
+                        Better Call Wes
+                    </a>
+                    <p>Southampton's trusted local plumber and heating engineer. Gas Safe registered (#558654), fully
+                        insured, and committed to quality workmanship.</p>
+                </div>
+
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="../">Home</a></li>
+                        <li><a href="../services.html">Services</a></li>
+                        <li><a href="../about.html">About Me</a></li>
+                        <li><a href="../pricing.html">Pricing</a></li>
+                        <li><a href="../reviews.html">Reviews</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="/services/boiler-installation.html">Boiler Installation</a></li>
+                        <li><a href="/services/boiler-servicing.html">Boiler Servicing</a></li>
+                        <li><a href="/services/boiler-repair.html">Boiler Repair</a></li>
+                        <li><a href="/services/plumbing-repairs.html">Plumbing Repairs</a></li>
+                        <li><a href="/services/power-flushing.html">Power Flushing</a></li>
+                        <li><a href="/services/toilet-repairs.html">Toilet Repairs</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:07700155655">📞 07700 155 655</a></li>
+                        <li><a href="https://wa.me/447700155655">💬 WhatsApp</a></li>
+                        <li><a href="mailto:wes@bettercallwes.co.uk">✉️ wes@bettercallwes.co.uk</a></li>
+                        <li style="margin-top: 1rem;">📍 Southampton, Hampshire</li>
+                        <li>🕐 Mon-Fri: 8am-6pm</li>
+                        <li style="margin-top: 1rem;"><strong>Gas Safe Reg: 558654</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Better Call Wes. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <script>lucide.createIcons();</script>
+    <script>
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mobileNav');
+            nav.classList.toggle('active');
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+    <a href="tel:07700155655" class="floating-cta">
+        <i data-lucide="phone"></i> Call Now
+    </a>
 </body>
 
 </html>

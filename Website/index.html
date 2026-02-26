@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Better Call Wes - Your Local Southampton Plumber | Gas Safe Registered</title>
     <meta name="description"
-        content="Professional plumbing and heating services in Southampton. Gas Safe registered, transparent pricing, no VAT. Boiler repairs, servicing, plumbing repairs and more.">
+        content="Professional plumbing and heating services in Southampton. Gas Safe registered, transparent pricing. Boiler repairs, servicing, plumbing repairs and more.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,8 +16,22 @@
 
 <body>
 
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-left">
+                Serving Southampton, Eastleigh & Surrounding Areas
+            </div>
+            <div class="top-bar-right">
+                <a href="tel:07700155655"><i data-lucide="phone"
+                        style="width: 14px; height: 14px; display: inline-block; vertical-align: middle;"></i> 07700 155
+                    655</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
-    <header class="header">
+    <header class="header has-topbar">
         <div class="container">
             <nav class="nav-container">
                 <a href="/" class="logo">
@@ -53,7 +67,7 @@
                                 Services →</a>
                         </div>
                     </div>
-                    <a href="about.html" class="nav-link">About Wes</a>
+                    <a href="about.html" class="nav-link">About Me</a>
                     <a href="pricing.html" class="nav-link">Pricing</a>
                     <a href="reviews.html" class="nav-link">Reviews</a>
                     <a href="contact.html" class="nav-link">Contact</a>
@@ -70,14 +84,13 @@
         <nav class="mobile-nav" id="mobileNav">
             <a href="/">Home</a>
             <a href="services.html">Services</a>
-            <a href="about.html">About Wes</a>
+            <a href="about.html">About Me</a>
             <a href="pricing.html">Pricing</a>
             <a href="reviews.html">Reviews</a>
             <a href="contact.html">Contact</a>
             <a href="tel:07700155655">📞 07700 155 655</a>
         </nav>
     </header>
-
     <!-- Hero Section -->
     <section class="hero hero-home">
         <div class="hero-bg">
@@ -91,13 +104,14 @@
                 </div>
                 <h1>Boiler Broken? Pipes Leaking? <span>Call Wes!</span></h1>
                 <p>Your local Southampton plumber and heating engineer. Gas Safe registered, transparent pricing, and no
-                    VAT on labour. From boiler repairs to dripping taps – I'm here to help.</p>
+                    hidden fees. From boiler repairs to dripping taps – I'm here to help.</p>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                     <a href="booking.html" class="btn btn-primary">
                         <i data-lucide="calendar" size="18"></i> Book Online
                     </a>
-                    <a href="https://wa.me/447700155655" class="btn btn-dark" target="_blank">
-                        <i data-lucide="message-circle" size="18"></i> WhatsApp Me
+                    <a href="tel:07700155655" class="btn btn-outline"
+                        style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); color: white;">
+                        <i data-lucide="message-circle" size="18"></i> Call Now
                     </a>
                 </div>
 
@@ -124,171 +138,204 @@
         <div class="container">
             <div class="section-header">
                 <div class="section-label">WHY CHOOSE WES</div>
-                <h2>Why Southampton Trusts Wes</h2>
+                <h2>The Southampton Plumbing Difference</h2>
             </div>
 
-            <div class="service-grid">
+            <div class="service-grid" style="grid-template-columns: repeat(3, 1fr);">
                 <div class="service-card text-center">
-                    <div class="service-icon mx-auto"><i data-lucide="clock"></i></div>
-                    <h3>Punctual</h3>
-                    <p>I respect your time. Clear arrival windows and I stick to them.</p>
+                    <div class="service-icon mx-auto"><i data-lucide="video"></i></div>
+                    <h3>WhatsApp Video Quoting</h3>
+                    <p>Send me a video or photo on WhatsApp for a fast, free quote before I even arrive.</p>
+                </div>
+                <div class="service-card text-center">
+                    <div class="service-icon mx-auto"><i data-lucide="calendar-check"></i></div>
+                    <h3>Online Booking System</h3>
+                    <p>Book directly into my diary online at a time that suits you. No phone calls needed.</p>
+                </div>
+                <div class="service-card text-center">
+                    <div class="service-icon mx-auto"><i data-lucide="tag"></i></div>
+                    <h3>Transparent Pricing</h3>
+                    <p>Fair, upfront pricing from my Master Price Guide. What I quote is what you pay.</p>
                 </div>
                 <div class="service-card text-center">
                     <div class="service-icon mx-auto"><i data-lucide="shield-check"></i></div>
-                    <h3>Reliable</h3>
-                    <p>Gas Safe registered (#558654) and fully insured for your peace of mind.</p>
+                    <h3>12-Month Guarantee</h3>
+                    <p>Standard 12-Month Workmanship Guarantee on all jobs. Gas Safe registered (#558654).</p>
                 </div>
                 <div class="service-card text-center">
-                    <div class="service-icon mx-auto"><i data-lucide="pound-sterling"></i></div>
-                    <h3>Fair Value</h3>
-                    <p>No VAT charged. Clear pricing upfront. No hidden surprises.</p>
+                    <div class="service-icon mx-auto"><i data-lucide="clock"></i></div>
+                    <h3>Honest Availability</h3>
+                    <p>Appointments based on daily availability. No false promises, just reliable service.</p>
                 </div>
                 <div class="service-card text-center">
-                    <div class="service-icon mx-auto"><i data-lucide="star"></i></div>
-                    <h3>Satisfaction Guaranteed</h3>
-                    <p>200+ happy customers in Southampton can't be wrong.</p>
+                    <div class="service-icon mx-auto"><i data-lucide="map-pin"></i></div>
+                    <h3>Local & Independent</h3>
+                    <p>I'm a sole trader who personally handles every job. You deal directly with me, always.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Main Services -->
-    <section class="section section-gray">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">OUR SERVICES</div>
-                <h2>Plumbing & Heating Services</h2>
-                <p style="margin-top: 1rem;">Complete range of services to keep your home running smoothly</p>
-            </div>
-
-            <div class="service-grid">
-                <!-- Boiler Installation -->
-                <div class="service-card">
-                    <div class="service-icon"><i data-lucide="flame"></i></div>
-                    <h3>Boiler Installation</h3>
-                    <p>Gas Safe certified. Professional installation of all major brands including Worcester Bosch,
-                        Vaillant, and more.</p>
-                    <div style="font-weight: 600; color: var(--color-accent); margin-bottom: 1rem;">From £2,500</div>
-                    <a href="services/boiler-installation.html" class="learn-more">Learn More <i
-                            data-lucide="arrow-right" size="16"></i></a>
-                </div>
-
-                <!-- Boiler Servicing -->
-                <div class="service-card">
-                    <div class="service-icon"><i data-lucide="clipboard-check"></i></div>
-                    <h3>Boiler Servicing</h3>
-                    <p>Annual servicing to keep your heating running efficiently and warranty valid. All safety checks
-                        included.</p>
-                    <div style="font-weight: 600; color: var(--color-accent); margin-bottom: 1rem;">From £85</div>
-                    <a href="services/boiler-servicing.html" class="learn-more">Learn More <i data-lucide="arrow-right"
-                            size="16"></i></a>
-                </div>
-
-                <!-- Boiler Repair -->
-                <div class="service-card">
-                    <div class="service-icon"><i data-lucide="wrench"></i></div>
-                    <h3>Boiler Repair</h3>
-                    <p>Same-day service for boiler faults. Fast diagnosis on all makes and models. Most repairs
-                        completed in one visit.</p>
-                    <div style="font-weight: 600; color: var(--color-accent); margin-bottom: 1rem;">From £80</div>
-                    <a href="services/boiler-repair.html" class="learn-more">Learn More <i data-lucide="arrow-right"
-                            size="16"></i></a>
-                </div>
-
-                <!-- Plumbing Repairs -->
-                <div class="service-card">
-                    <div class="service-icon"><i data-lucide="droplets"></i></div>
-                    <h3>Plumbing Repairs</h3>
-                    <p>Fast response for all plumbing issues. Leaking pipes, blocked drains, tap repairs – no job too
-                        small.</p>
-                    <div style="font-weight: 600; color: var(--color-accent); margin-bottom: 1rem;">From £60</div>
-                    <a href="services/plumbing-repairs.html" class="learn-more">Learn More <i data-lucide="arrow-right"
-                            size="16"></i></a>
-                </div>
-
-                <!-- Power Flushing -->
-                <div class="service-card">
-                    <div class="service-icon"><i data-lucide="waves"></i></div>
-                    <h3>Power Flushing</h3>
-                    <p>Improve heating efficiency and extend radiator life. Removes sludge and debris from your central
-                        heating system.</p>
-                    <div style="font-weight: 600; color: var(--color-accent); margin-bottom: 1rem;">From £400</div>
-                    <a href="services/power-flushing.html" class="learn-more">Learn More <i data-lucide="arrow-right"
-                            size="16"></i></a>
-                </div>
-
-                <!-- Toilet Repairs -->
-                <div class="service-card">
-                    <div class="service-icon"><i data-lucide="bath"></i></div>
-                    <h3>Toilet Repairs</h3>
-                    <p>Complete toilet repair and replacement service. Running toilets, blockages, faulty flushes –
-                        quick solutions.</p>
-                    <div style="font-weight: 600; color: var(--color-accent); margin-bottom: 1rem;">From £75</div>
-                    <a href="services/toilet-repairs.html" class="learn-more">Learn More <i data-lucide="arrow-right"
-                            size="16"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Additional Services -->
+    <!-- Customer Testimonials -->
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">ADDITIONAL SERVICES</div>
-                <h2>Complete Range of Services</h2>
-                <p style="margin-top: 1rem;">Everything you need to keep your plumbing and heating in top shape</p>
+                <div class="section-label">REAL CUSTOMER STORIES</div>
+                <h2>What Southampton Homeowners Say</h2>
             </div>
 
-            <div class="service-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+            <div class="service-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
                 <div class="service-card">
-                    <div class="service-icon"><i data-lucide="home"></i></div>
-                    <h3>Central Heating Installation</h3>
-                    <p>Complete central heating system installation including boiler, radiators, pipework, and controls.
-                    </p>
-                    <a href="services/central-heating.html" class="learn-more">Learn More <i data-lucide="arrow-right"
-                            size="16"></i></a>
+                    <div style="display: flex; gap: 0.25rem; color: #FFB800; margin-bottom: 1rem;">★★★★★</div>
+                    <p style="font-style: italic; margin-bottom: 1.5rem;">"Wes came out the same day our boiler broke
+                        down. He diagnosed the problem quickly and had it fixed within the hour. Really reasonable price
+                        too. Would definitely recommend!"</p>
+                    <div style="font-weight: 600; color: var(--text-dark);">Sarah M.</div>
+                    <div style="font-size: 0.9rem; color: var(--text-light);">Shirley, Southampton</div>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon"><i data-lucide="thermometer"></i></div>
-                    <h3>Radiator Installation & Repair</h3>
-                    <p>Professional radiator installation, repair, and replacement service for all radiator types.</p>
-                    <a href="services/radiators.html" class="learn-more">Learn More <i data-lucide="arrow-right"
-                            size="16"></i></a>
+                    <div style="display: flex; gap: 0.25rem; color: #FFB800; margin-bottom: 1rem;">★★★★★</div>
+                    <p style="font-style: italic; margin-bottom: 1.5rem;">"Needed a few small plumbing jobs done that
+                        other plumbers wouldn't touch. Wes was happy to help and did a brilliant job. Really tidy worker
+                        and explained everything clearly."</p>
+                    <div style="font-weight: 600; color: var(--text-dark);">James T.</div>
+                    <div style="font-size: 0.9rem; color: var(--text-light);">Bitterne, Southampton</div>
                 </div>
 
                 <div class="service-card">
-                    <div class="service-icon"><i data-lucide="smartphone"></i></div>
-                    <h3>Smart Heating Controls</h3>
-                    <p>Smart heating controls installation including thermostats, programmers, and zone controls.</p>
-                    <a href="services/smart-controls.html" class="learn-more">Learn More <i data-lucide="arrow-right"
-                            size="16"></i></a>
+                    <div style="display: flex; gap: 0.25rem; color: #FFB800; margin-bottom: 1rem;">★★★★★</div>
+                    <p style="font-style: italic; margin-bottom: 1.5rem;">"Had Wes service our boiler – very thorough,
+                        on time, and upfront pricing saved us money. Already booked him for next year. Highly recommend
+                        for
+                        anyone in Southampton."</p>
+                    <div style="font-weight: 600; color: var(--text-dark);">Helen W.</div>
+                    <div style="font-size: 0.9rem; color: var(--text-light);">Woolston, Southampton</div>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 2rem;"><a href="reviews.html"
+                    style="color: var(--color-accent); font-weight: 600;">See All Reviews →</a></p>
+        </div>
+    </section>
+
+    <!-- Lead Capture / Booking Integration -->
+    <section class="section section-gray" id="book-online">
+        <div class="container">
+            <div
+                style="background: var(--color-primary); color: white; border-radius: var(--radius-xl); padding: 4rem 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; box-shadow: var(--shadow-lg); overflow: hidden; position: relative;">
+                <div style="position: absolute; right: -10%; top: -20%; opacity: 0.05; transform: scale(3);">
+                    <i data-lucide="calendar"></i>
+                </div>
+                <div style="position: relative; z-index: 10;">
+                    <div class="section-label"
+                        style="justify-content: flex-start; color: var(--color-accent); margin-bottom: 1rem;">BOOK IN
+                        SECONDS</div>
+                    <h2 style="margin-bottom: 1.5rem; color: white;">Skip the Call. Book Online.</h2>
+                    <p style="margin-bottom: 2rem; font-size: 1.15rem; color: rgba(255,255,255,0.8);">My online booking
+                        system is the fastest, easiest way to secure your appointment. Choose a time that works
+                        perfectly for your schedule.</p>
+                    <ul
+                        style="list-style: none; padding: 0; margin-bottom: 2.5rem; display: flex; flex-direction: column; gap: 1rem;">
+                        <li style="display: flex; align-items: center; gap: 0.75rem;"><i data-lucide="check-circle"
+                                style="color: var(--color-accent);"></i> See real-time availability</li>
+                        <li style="display: flex; align-items: center; gap: 0.75rem;"><i data-lucide="check-circle"
+                                style="color: var(--color-accent);"></i> Instant confirmation</li>
+                        <li style="display: flex; align-items: center; gap: 0.75rem;"><i data-lucide="check-circle"
+                                style="color: var(--color-accent);"></i> No waiting on hold</li>
+                    </ul>
+                    <a href="booking.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 18px 40px;">
+                        <i data-lucide="calendar"></i> Open Booking Diary
+                    </a>
+                </div>
+                <div
+                    style="background: white; border-radius: var(--radius-lg); padding: 3rem; text-align: center; position: relative; z-index: 10;">
+                    <h3 style="color: var(--text-dark); margin-bottom: 1rem;">Need a Quote First?</h3>
+                    <p style="color: var(--text-body); margin-bottom: 2rem;">Don't want to pay a call-out fee just for a
+                        quote? Send me a quick video showing the issue on WhatsApp.</p>
+                    <a href="https://wa.me/447700155655" class="btn"
+                        style="background: #25D366; color: white; width: 100%;">
+                        <i data-lucide="message-circle"></i> Send WhatsApp Video
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Core Services -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">MY EXPERTISE</div>
+                <h2>Southampton's Plumbing & Heating Specialists</h2>
+                <p style="margin-top: 1rem;">I've prioritized my most in-demand services for rapid response and
+                    reliable solutions.</p>
+            </div>
+
+            <div class="service-grid">
+                <!-- Boiler Repair (Core) -->
+                <div class="service-card">
+                    <img src="assets/images/boiler-repair.png" alt="Boiler repair in Southampton"
+                        style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+                    <div class="service-icon"><i data-lucide="wrench"></i></div>
+                    <h3>Boiler Repair & Breakdowns</h3>
+                    <p>Fast diagnosis and repair for all makes and models. I carry common parts to fix most faults in a
+                        single visit.</p>
+                    <div style="font-weight: 600; color: var(--color-accent); margin-bottom: 1rem;">Diagnostics from
+                        £100</div>
+                    <a href="services/boiler-repair.html" class="learn-more">View Repair Options <i
+                            data-lucide="arrow-right" size="16"></i></a>
                 </div>
 
+                <!-- Boiler Servicing (Core) -->
                 <div class="service-card">
-                    <div class="service-icon"><i data-lucide="droplet"></i></div>
-                    <h3>Tap Replacement & Repairs</h3>
-                    <p>Professional tap installation and repair service for kitchen and bathroom taps.</p>
-                    <a href="services/taps.html" class="learn-more">Learn More <i data-lucide="arrow-right"
-                            size="16"></i></a>
+                    <img src="assets/images/gas-safety.png" alt="Gas safety check and boiler servicing"
+                        style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+                    <div class="service-icon"><i data-lucide="clipboard-check"></i></div>
+                    <h3>Boiler Servicing & Maintenance</h3>
+                    <p>Keep your heating efficient and safe. Includes full strip-down services and landlord Gas Safety
+                        Certificates (CP12).</p>
+                    <div style="font-weight: 600; color: var(--color-accent); margin-bottom: 1rem;">Standard Service
+                        £100</div>
+                    <a href="services/boiler-servicing.html" class="learn-more">View Maintenance Plans <i
+                            data-lucide="arrow-right" size="16"></i></a>
                 </div>
 
+                <!-- Plumbing Repairs (Core) -->
                 <div class="service-card">
-                    <div class="service-icon"><i data-lucide="shower-head"></i></div>
-                    <h3>Shower Replacement & Repairs</h3>
-                    <p>Complete shower installation and repair service including electric and mixer showers.</p>
-                    <a href="services/showers.html" class="learn-more">Learn More <i data-lucide="arrow-right"
-                            size="16"></i></a>
+                    <img src="assets/images/plumbing-repairs.png" alt="Professional plumbing repairs"
+                        style="width: 100%; height: 180px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+                    <div class="service-icon"><i data-lucide="droplets"></i></div>
+                    <h3>Plumbing Repairs</h3>
+                    <p>Leaking taps, blocked toilets, faulty valves, and broken showers. Reliable fixes for annoying
+                        everyday plumbing problems.</p>
+                    <div style="font-weight: 600; color: var(--color-accent); margin-bottom: 1rem;">Labour from £100
+                    </div>
+                    <a href="services/plumbing-repairs.html" class="learn-more">View Plumbing Services <i
+                            data-lucide="arrow-right" size="16"></i></a>
                 </div>
+            </div>
 
-                <div class="service-card">
-                    <div class="service-icon"><i data-lucide="fence"></i></div>
-                    <h3>Outdoor Taps</h3>
-                    <p>External tap installation and repair service for gardens and outdoor areas.</p>
-                    <a href="services/outdoor-taps.html" class="learn-more">Learn More <i data-lucide="arrow-right"
-                            size="16"></i></a>
-                </div>
+            <div style="margin-top: 4rem; text-align: center;">
+                <p style="margin-bottom: 1rem;">Looking for Boiler Installations, Central Heating, or Gas Engineering?
+                </p>
+                <a href="services.html" class="btn btn-outline">Explore All Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Break - Craftsmanship -->
+    <section style="position: relative; height: 300px; overflow: hidden;">
+        <img src="assets/images/copper-pipework.png" alt="Professional copper pipework installation"
+            style="width: 100%; height: 100%; object-fit: cover;">
+        <div
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(15,41,66,0.85) 0%, rgba(15,41,66,0.4) 60%, rgba(15,41,66,0.1) 100%); display: flex; align-items: center;">
+            <div class="container">
+                <h2 style="color: white; margin-bottom: 0.75rem; font-size: 2rem;">Quality Craftsmanship, Every Time
+                </h2>
+                <p style="color: rgba(255,255,255,0.8); font-size: 1.15rem; max-width: 500px;">Neat, professional
+                    pipework is my signature. I take pride in leaving every job looking as good as it works.</p>
             </div>
         </div>
     </section>
@@ -329,71 +376,115 @@
             </div>
         </div>
     </section>
-
-    <!-- Customer Testimonials -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">REAL CUSTOMER STORIES</div>
-                <h2>What Southampton Homeowners Say</h2>
-            </div>
-
-            <div class="service-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
-                <div class="service-card">
-                    <div style="display: flex; gap: 0.25rem; color: #FFB800; margin-bottom: 1rem;">★★★★★</div>
-                    <p style="font-style: italic; margin-bottom: 1.5rem;">"Wes came out the same day our boiler broke
-                        down. He diagnosed the problem quickly and had it fixed within the hour. Really reasonable price
-                        too. Would definitely recommend!"</p>
-                    <div style="font-weight: 600; color: var(--text-dark);">Sarah M.</div>
-                    <div style="font-size: 0.9rem; color: var(--text-light);">Shirley, Southampton</div>
-                </div>
-
-                <div class="service-card">
-                    <div style="display: flex; gap: 0.25rem; color: #FFB800; margin-bottom: 1rem;">★★★★★</div>
-                    <p style="font-style: italic; margin-bottom: 1.5rem;">"Needed a few small plumbing jobs done that
-                        other plumbers wouldn't touch. Wes was happy to help and did a brilliant job. Really tidy worker
-                        and explained everything clearly."</p>
-                    <div style="font-weight: 600; color: var(--text-dark);">James T.</div>
-                    <div style="font-size: 0.9rem; color: var(--text-light);">Bitterne, Southampton</div>
-                </div>
-
-                <div class="service-card">
-                    <div style="display: flex; gap: 0.25rem; color: #FFB800; margin-bottom: 1rem;">★★★★★</div>
-                    <p style="font-style: italic; margin-bottom: 1.5rem;">"Had Wes service our boiler – very thorough,
-                        on time, and no VAT which saved us money. Already booked him for next year. Highly recommend for
-                        anyone in Southampton."</p>
-                    <div style="font-weight: 600; color: var(--text-dark);">Helen W.</div>
-                    <div style="font-size: 0.9rem; color: var(--text-light);">Woolston, Southampton</div>
-                </div>
-            </div>
-
-            <p style="text-align: center; margin-top: 2rem;"><a href="reviews.html"
-                    style="color: var(--color-accent); font-weight: 600;">See All Reviews →</a></p>
-        </div>
-    </section>
-
     <!-- Service Areas -->
     <section class="section section-gray">
         <div class="container">
             <div class="section-header">
-                <div class="section-label">AREAS WE SERVE</div>
+                <div class="section-label">AREAS I SERVE</div>
                 <h2>Covering Southampton & Surrounding Areas</h2>
             </div>
 
             <div
                 style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; max-width: 800px; margin: 0 auto;">
-                <span class="badge">SO14 - City Centre</span>
-                <span class="badge">SO15 - Shirley</span>
-                <span class="badge">SO16 - Bassett</span>
-                <span class="badge">SO17 - Portswood</span>
-                <span class="badge">SO18 - Bitterne</span>
-                <span class="badge">SO19 - Woolston</span>
-                <span class="badge">SO30 - Hedge End</span>
-                <span class="badge">SO31 - Hamble</span>
-                <span class="badge">SO40 - Totton</span>
-                <span class="badge">SO45 - Hythe</span>
-                <span class="badge">SO50 - Eastleigh</span>
-                <span class="badge">SO51 - Romsey</span>
+                <a href="locations/eastleigh.html" class="badge"
+                    style="text-decoration: none; color: inherit;">Eastleigh</a>
+                <a href="locations/southampton.html" class="badge"
+                    style="text-decoration: none; color: inherit;">Southampton</a>
+                <a href="locations/chandlers-ford.html" class="badge"
+                    style="text-decoration: none; color: inherit;">Chandler's Ford</a>
+                <a href="locations/shirley.html" class="badge"
+                    style="text-decoration: none; color: inherit;">Shirley</a>
+                <a href="locations/bitterne.html" class="badge"
+                    style="text-decoration: none; color: inherit;">Bitterne</a>
+                <a href="locations/st-denys.html" class="badge" style="text-decoration: none; color: inherit;">St
+                    Denys</a>
+                <a href="locations/harefield.html" class="badge"
+                    style="text-decoration: none; color: inherit;">Harefield</a>
+                <a href="locations/hedge-end.html" class="badge" style="text-decoration: none; color: inherit;">Hedge
+                    End</a>
+                <a href="locations/millbrook.html" class="badge"
+                    style="text-decoration: none; color: inherit;">Millbrook</a>
+                <a href="locations/portswood.html" class="badge"
+                    style="text-decoration: none; color: inherit;">Portswood</a>
+                <a href="locations/swaythling.html" class="badge"
+                    style="text-decoration: none; color: inherit;">Swaythling</a>
+                <a href="locations/bassett.html" class="badge"
+                    style="text-decoration: none; color: inherit;">Bassett</a>
+                <a href="locations/highfield.html" class="badge"
+                    style="text-decoration: none; color: inherit;">Highfield</a>
+                <a href="locations/lordshill.html" class="badge"
+                    style="text-decoration: none; color: inherit;">Lordshill</a>
+                <a href="locations/lordswood.html" class="badge"
+                    style="text-decoration: none; color: inherit;">Lordswood</a>
+                <a href="locations/freemantle.html" class="badge"
+                    style="text-decoration: none; color: inherit;">Freemantle</a>
+                <a href="locations/bitterne-village.html" class="badge"
+                    style="text-decoration: none; color: inherit;">Bitterne Village</a>
+                <a href="locations/maybush.html" class="badge"
+                    style="text-decoration: none; color: inherit;">Maybush</a>
+                <a href="locations/bitterne-park.html" class="badge"
+                    style="text-decoration: none; color: inherit;">Bitterne Park</a>
+                <a href="locations/bitterne-manor.html" class="badge"
+                    style="text-decoration: none; color: inherit;">Bitterne Manor</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section with Schema Hooks -->
+    <section class="section section-gray">
+        <div class="container" style="max-width: 800px;">
+            <div class="section-header">
+                <div class="section-label">COMMON QUESTIONS</div>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+
+            <div class="faq-accordion" style="display: flex; flex-direction: column; gap: 1rem;">
+                <div
+                    style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
+                    <h3
+                        style="font-size: 1.15rem; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between;">
+                        Do you handle plumbing emergencies? <i data-lucide="chevron-down"></i></h3>
+                    <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes, I handle urgent issues
+                        like major leaks or total boiler breakdowns. Please call me directly for the fastest response.
+                    </p>
+                </div>
+                <div
+                    style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
+                    <h3
+                        style="font-size: 1.15rem; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between;">
+                        How quickly can you get to me? <i data-lucide="chevron-down"></i></h3>
+                    <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">I prioritize based on my daily
+                        availability and the urgency of the problem. If you book online, you can select the very next
+                        available slot that works for you.</p>
+                </div>
+                <div
+                    style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
+                    <h3
+                        style="font-size: 1.15rem; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between;">
+                        Do you offer free quotes? <i data-lucide="chevron-down"></i></h3>
+                    <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">For large jobs like boiler
+                        installations, yes. For repairs, I highly recommend my WhatsApp Video Quote service. Send me a
+                        video of the problem, and I'll give you a free, accurate estimate before ever stepping foot in
+                        your home.</p>
+                </div>
+                <div
+                    style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
+                    <h3
+                        style="font-size: 1.15rem; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between;">
+                        What areas do you cover? <i data-lucide="chevron-down"></i></h3>
+                    <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">I serve Southampton and the
+                        surrounding areas within the SO postcode region, including Eastleigh, Shirley, Bitterne, Hedge
+                        End, and Chandler's Ford.</p>
+                </div>
+                <div
+                    style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
+                    <h3
+                        style="font-size: 1.15rem; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between;">
+                        Are you Gas Safe Registered? <i data-lucide="chevron-down"></i></h3>
+                    <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes. My Gas Safe Registration
+                        number is 558654. I am fully qualified to work on gas boilers, unvented cylinders, and central
+                        heating systems.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -417,7 +508,6 @@
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -436,7 +526,7 @@
                     <ul class="footer-links">
                         <li><a href="/">Home</a></li>
                         <li><a href="services.html">Services</a></li>
-                        <li><a href="about.html">About Wes</a></li>
+                        <li><a href="about.html">About Me</a></li>
                         <li><a href="pricing.html">Pricing</a></li>
                         <li><a href="reviews.html">Reviews</a></li>
                         <li><a href="contact.html">Contact</a></li>
@@ -460,7 +550,7 @@
                     <ul class="footer-links">
                         <li><a href="tel:07700155655">📞 07700 155 655</a></li>
                         <li><a href="https://wa.me/447700155655">💬 WhatsApp</a></li>
-                        <li><a href="mailto:hello@bettercallwes.co.uk">✉️ hello@bettercallwes.co.uk</a></li>
+                        <li><a href="mailto:wes@bettercallwes.co.uk">✉️ wes@bettercallwes.co.uk</a></li>
                         <li style="margin-top: 1rem;">📍 Southampton, Hampshire</li>
                         <li>🕐 Mon-Fri: 8am-6pm</li>
                         <li style="margin-top: 1rem;"><strong>Gas Safe Reg: 558654</strong></li>
@@ -493,6 +583,9 @@
             }
         });
     </script>
+    <a href="tel:07700155655" class="floating-cta">
+        <i data-lucide="phone"></i> Call Now
+    </a>
 </body>
 
 </html>

@@ -1,0 +1,25 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+
+# Development
+site/
+Antigravity/
+ui-ux-pro-max-skill/
+
+# IDE
+.vscode/
+.idea/
+
+# Old/unused generators
+build_location_pages.py
+build_distinct_location_pages.py
+generate_placeholders.js
+fix_links.py
+fix_links_regex.py
+replace_pronouns.py
+stitch.json
