@@ -10,36 +10,25 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=1.3">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" href="assets/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
 </head>
 
 <body>
 
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="top-bar-left">
-                Serving Southampton, Eastleigh & Surrounding Areas
-            </div>
-            <div class="top-bar-right">
-                <a href="tel:07700155655"><i data-lucide="phone"
-                        style="width: 14px; height: 14px; display: inline-block; vertical-align: middle;"></i> 07700 155
-                    655</a>
-            </div>
-        </div>
-    </div>
+    
 
     <!-- Header -->
-    <header class="header has-topbar">
+    <header class="header">
         <div class="container">
             <nav class="nav-container">
-                <a href="/" class="logo">
-                    <img src="assets/logo.jpg" alt="Better Call Wes">
-                    Better Call Wes
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.png?v=3" alt="Better Call Wes">
                 </a>
                 <div class="main-nav">
-                    <a href="/" class="nav-link">Home</a>
+                    <a href="index.html" class="nav-link">Home</a>
                     <div class="dropdown">
                         <a href="services.html" class="nav-link">Services <i data-lucide="chevron-down"
                                 style="width: 16px; height: 16px;"></i></a>
@@ -82,7 +71,7 @@
         </div>
         <!-- Mobile Nav -->
         <nav class="mobile-nav" id="mobileNav">
-            <a href="/">Home</a>
+            <a href="index.html">Home</a>
             <a href="services.html">Services</a>
             <a href="about.html">About Me</a>
             <a href="pricing.html">Pricing</a>
@@ -184,34 +173,13 @@
                 <h2>What Southampton Homeowners Say</h2>
             </div>
 
-            <div class="service-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
-                <div class="service-card">
-                    <div style="display: flex; gap: 0.25rem; color: #FFB800; margin-bottom: 1rem;">★★★★★</div>
-                    <p style="font-style: italic; margin-bottom: 1.5rem;">"Wes came out the same day our boiler broke
-                        down. He diagnosed the problem quickly and had it fixed within the hour. Really reasonable price
-                        too. Would definitely recommend!"</p>
-                    <div style="font-weight: 600; color: var(--text-dark);">Sarah M.</div>
-                    <div style="font-size: 0.9rem; color: var(--text-light);">Shirley, Southampton</div>
-                </div>
-
-                <div class="service-card">
-                    <div style="display: flex; gap: 0.25rem; color: #FFB800; margin-bottom: 1rem;">★★★★★</div>
-                    <p style="font-style: italic; margin-bottom: 1.5rem;">"Needed a few small plumbing jobs done that
-                        other plumbers wouldn't touch. Wes was happy to help and did a brilliant job. Really tidy worker
-                        and explained everything clearly."</p>
-                    <div style="font-weight: 600; color: var(--text-dark);">James T.</div>
-                    <div style="font-size: 0.9rem; color: var(--text-light);">Bitterne, Southampton</div>
-                </div>
-
-                <div class="service-card">
-                    <div style="display: flex; gap: 0.25rem; color: #FFB800; margin-bottom: 1rem;">★★★★★</div>
-                    <p style="font-style: italic; margin-bottom: 1.5rem;">"Had Wes service our boiler – very thorough,
-                        on time, and upfront pricing saved us money. Already booked him for next year. Highly recommend
-                        for
-                        anyone in Southampton."</p>
-                    <div style="font-weight: 600; color: var(--text-dark);">Helen W.</div>
-                    <div style="font-size: 0.9rem; color: var(--text-light);">Woolston, Southampton</div>
-                </div>
+            <div style="padding-bottom: 3rem;">
+                <!-- Live Reviews Widget -->
+                <script type='text/javascript'
+                    src='https://i.bettercallwes.co.uk/reputation/assets/review-widget.js'></script><iframe
+                    class='lc_reviews_widget'
+                    src='https://i.bettercallwes.co.uk/reputation/widgets/review_widget/7sUSfobemejSgrc2sd3v'
+                    frameborder='0' scrolling='no' style='min-width: 100%; width: 100%;'></iframe>
             </div>
 
             <p style="text-align: center; margin-top: 2rem;"><a href="reviews.html"
@@ -513,9 +481,8 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <a href="/" class="logo">
-                        <img src="assets/logo.jpg" alt="Better Call Wes">
-                        Better Call Wes
+                    <a href="index.html" class="logo">
+                        <img src="assets/logo.png?v=3" alt="Better Call Wes">
                     </a>
                     <p>Southampton's trusted local plumber and heating engineer. Gas Safe registered (#558654), fully
                         insured, and committed to quality workmanship.</p>
@@ -524,7 +491,7 @@
                 <div>
                     <h4>Quick Links</h4>
                     <ul class="footer-links">
-                        <li><a href="/">Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="about.html">About Me</a></li>
                         <li><a href="pricing.html">Pricing</a></li>

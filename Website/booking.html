@@ -10,25 +10,23 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=1.3">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" href="assets/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
 </head>
 
 <body>
 
+    <!-- Header -->
     <header class="header">
         <div class="container">
-            <div class="nav-container">
-                <a href="/" class="logo">
-                    <img src="assets/logo.jpg" alt="Better Call Wes">
-                    Better Call Wes
+            <nav class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.png?v=3" alt="">
                 </a>
-                <nav class="main-nav">
-                    <a href="/" class="nav-link">Home</a>
-                    <a href="about.html" class="nav-link">About</a>
+                <div class="main-nav">
+                    <a href="index.html" class="nav-link">Home</a>
                     <div class="dropdown">
                         <a href="services.html" class="nav-link">Services <i data-lucide="chevron-down"
                                 style="width: 16px; height: 16px;"></i></a>
@@ -52,58 +50,148 @@
 
                             <div class="dropdown-divider"></div>
                             <a href="services.html" class="dropdown-item"
-                                style="text-align: center; color: var(--text-white); font-weight: 600;">View All
+                                style="text-align: center; color: var(--text-dark); font-weight: 600;">View All
                                 Services →</a>
                         </div>
                     </div>
+                    <a href="about.html" class="nav-link">About Me</a>
                     <a href="pricing.html" class="nav-link">Pricing</a>
                     <a href="reviews.html" class="nav-link">Reviews</a>
                     <a href="contact.html" class="nav-link">Contact</a>
-                    <a href="booking.html" class="btn btn-primary" style="background: var(--color-accent);">Book
-                        Online</a>
-                </nav>
-                <button class="mobile-menu-btn"><i data-lucide="menu" size="28" color="#0F172A"></i></button>
-            </div>
+                    <a href="tel:07700155655" class="btn btn-primary">
+                        <i data-lucide="phone" size="16"></i> 07700 155 655
+                    </a>
+                </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i data-lucide="menu" size="24"></i>
+                </button>
+            </nav>
         </div>
+        <!-- Mobile Nav -->
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About Me</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="contact.html">Contact</a>
+            <a href="tel:07700155655">📞 07700 155 655</a>
+        </nav>
     </header>
 
-    <section class="hero" style="text-align: center;">
+    <div style="padding-top: 140px; padding-bottom: 20px; background: var(--color-bg); text-align: center;">
         <div class="container">
-            <span class="badge"><i data-lucide="calendar" size="16"></i> Live Availability</span>
-            <h1>Book Your <span>Appointment</span></h1>
-            <p style="max-width: 600px; margin: 1rem auto 0; color: var(--text-body);">Choose a time that works for you.
-                No payment required upfront.</p>
+            <span class="badge"
+                style="background: white; border: 1px solid #E2E8F0; color: var(--text-dark); margin-bottom: 1rem; display: inline-flex;"><i
+                    data-lucide="calendar" size="16" style="color: var(--color-accent); margin-right: 0.5rem;"></i> Live
+                Availability</span>
+            <h1 style="color: var(--text-dark); margin-bottom: 1rem;">Book Your <span
+                    style="color: var(--color-accent);">Appointment</span></h1>
+            <p style="max-width: 600px; margin: 0 auto; color: var(--text-body); font-size: 1.1rem;">Choose a time that
+                works for you. No payment required upfront.</p>
         </div>
-    </section>
+    </div>
 
-    <section class="section" style="padding: 20px 0 80px;">
+    <section class="section" style="padding: 20px 0 80px; background: var(--color-bg);">
         <div class="container">
             <div
-                style="background: white; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); overflow: hidden; max-width: 800px; margin: 0 auto;">
+                style="background: white; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); overflow: hidden; max-width: 800px; margin: 0 auto; border: 1px solid rgba(0,0,0,0.05);">
                 <!-- ServiceM8 Booking Iframe with header cropping -->
                 <div style="overflow: hidden; height: 900px;">
                     <iframe
                         src="https://book.servicem8.com/request_service_booking?strVendorUUID=84fea8b1-7f3c-4454-af9c-f37e298001db"
                         width="100%" height="1010px" frameborder="0" style="border: none; margin-top: -110px;"
-                        title="Book Service">
-                    </iframe>
+                        title="Book Service"></iframe>
                 </div>
             </div>
 
-            <div style="text-align: center; margin-top: 2rem; color: var(--text-body);">
-                <p>Prefer to call? <a href="tel:07700155655" style="color: var(--color-accent); font-weight: 600;">07700
-                        155 655</a></p>
+            <div
+                style="text-align: center; margin-top: 3rem; color: var(--text-body); background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); max-width: 500px; margin-inline: auto;">
+                <h3 style="margin-bottom: 1rem;">Prefer to call?</h3>
+                <a href="tel:07700155655" class="btn btn-primary" style="font-size: 1.1rem;"><i data-lucide="phone"></i>
+                    07700 155 655</a>
             </div>
         </div>
     </section>
 
-    <footer style="background: #0A0F1A; color: white; padding: 40px 0 20px;">
-        <div class="container" style="text-align: center;">
-            <p style="color: #64748B; font-size: 0.85rem;">© 2026 Better Call Wes. Gas Safe Reg: 558654</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="logo" style="margin-bottom: 1.5rem; display: inline-block;">
+                        <img src="assets/logo.png?v=3" alt="" style="max-width: 200px; height: auto;">
+                    </a>
+                    <p>Southampton's trusted local plumber and heating engineer. Gas Safe registered (#558654), fully
+                        insured, and committed to quality workmanship.</p>
+                </div>
+
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Me</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="services/boiler-installation.html">Boiler Installation</a></li>
+                        <li><a href="services/boiler-servicing.html">Boiler Servicing</a></li>
+                        <li><a href="services/boiler-repair.html">Boiler Repair</a></li>
+                        <li><a href="services/plumbing-repairs.html">Plumbing Repairs</a></li>
+                        <li><a href="services/power-flushing.html">Power Flushing</a></li>
+                        <li><a href="services/toilet-repairs.html">Toilet Repairs</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:07700155655">📞 07700 155 655</a></li>
+                        <li><a href="https://wa.me/447700155655">💬 WhatsApp</a></li>
+                        <li><a href="mailto:wes@bettercallwes.co.uk">✉️ wes@bettercallwes.co.uk</a></li>
+                        <li style="margin-top: 1rem;">📍 Southampton, Hampshire</li>
+                        <li>🕐 Mon-Fri: 8am-6pm</li>
+                        <li style="margin-top: 1rem;"><strong>Gas Safe Reg: 558654</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Better Call Wes. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
-    <script>lucide.createIcons();</script>
+    <script src="js/main.js?v=1.1"></script>
+    <script>
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const nav = document.getElementById('mobileNav');
+            nav.classList.toggle('active');
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+    <a href="tel:07700155655" class="floating-cta">
+        <i data-lucide="phone"></i> Call Now
+    </a>
 </body>
 
 </html>

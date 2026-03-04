@@ -105,17 +105,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Header scroll background effect
-    const header = document.querySelector('.header');
-    if (header) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
-                header.style.background = 'rgba(15, 23, 42, 0.98)';
-            } else {
-                header.style.boxShadow = 'none';
-                header.style.background = 'rgba(15, 23, 42, 0.95)';
-            }
-        });
-    }
 });
