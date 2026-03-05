@@ -559,6 +559,31 @@ a {
   padding-top: 80px;
 }
 
+/* Inner page hero (About, Contact etc) */
+.page-hero {
+  padding-top: 140px;
+  padding-bottom: 70px;
+}
+
+@media (max-width: 768px) {
+  .page-hero {
+    padding-top: 100px;
+    padding-bottom: 50px;
+  }
+}
+
+/* Responsive map embed */
+.map-embed {
+  height: 450px;
+}
+
+@media (max-width: 768px) {
+  .map-embed {
+    height: 280px;
+  }
+}
+
+
 .hero-bg {
   position: absolute;
   top: 0;
