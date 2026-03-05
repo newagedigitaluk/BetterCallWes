@@ -1424,3 +1424,172 @@ a {
   background: var(--color-accent);
   opacity: 1;
 }
+
+/* ============================================
+   MOBILE IMPROVEMENTS — comprehensive overrides
+   ============================================ */
+
+/* Utility class for 2-col grids that need to stack on mobile */
+.grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.grid-booking {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+
+  /* === Header === */
+  .header {
+    top: 0.5rem;
+  }
+
+  .header .container {
+    padding: 0.4rem 1rem;
+    border-radius: 14px;
+  }
+
+  .logo img {
+    height: 48px;
+    max-width: 200px;
+  }
+
+  /* === Sections — reduce massive vertical padding === */
+  .section {
+    padding: 60px 0;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  /* === Typography scaling === */
+  h1 {
+    font-size: clamp(1.9rem, 8vw, 3rem);
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+  }
+
+  /* === Hero === */
+  .hero-home {
+    padding-top: 110px;
+    padding-bottom: 50px;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-content>div[style*="display: flex"] {
+    justify-content: center;
+  }
+
+  .hero-stats {
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+
+  .hero-stat-number {
+    font-size: 2rem;
+  }
+
+  /* Make hero buttons full-width and stacked */
+  .hero-content [style*="display: flex"][style*="gap"] {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-content .btn {
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* === Service grid (class-based) - already handled at 600px === */
+  .service-grid[style*="repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* === 2-col utility grids === */
+  .grid-2col,
+  .grid-booking {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* === Booking section reverse order (text first, then button card) === */
+  .grid-booking>div:last-child {
+    order: -1;
+  }
+
+  /* === Visual break banner === */
+  section[style*="height: 300px"] {
+    height: auto !important;
+    padding: 60px 0;
+  }
+
+  /* === CTA section === */
+  .cta-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cta-buttons .btn {
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* === Footer grid === */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-brand img {
+    height: 48px;
+  }
+
+  /* === Container padding === */
+  .container {
+    padding: 0 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header .container {
+    padding: 0.35rem 0.75rem;
+  }
+
+  .logo img {
+    height: 40px;
+  }
+
+  h1 {
+    font-size: clamp(1.7rem, 9vw, 2.2rem);
+  }
+
+  .section {
+    padding: 50px 0;
+  }
+
+  .service-card {
+    padding: 1.5rem;
+  }
+}
