@@ -77,6 +77,58 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* FAQ Accordion */
+.faq-item {
+  background: white;
+  border-radius: var(--radius-md);
+  margin-bottom: 0.75rem;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  cursor: pointer;
+  gap: 1rem;
+}
+
+.faq-question i {
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.3s ease;
+  padding: 0 1.5rem;
+}
+
+.faq-answer p {
+  padding-bottom: 1.25rem;
+  color: var(--text-body);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.faq-item.active .faq-question i {
+  transform: rotate(180deg);
+}
+
+.faq-item.active .faq-answer {
+  max-height: 300px;
+}
+
 /* Floating CTA */
 .floating-cta {
   position: fixed;
