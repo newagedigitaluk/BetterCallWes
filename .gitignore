@@ -23,3 +23,10 @@ fix_links.py
 fix_links_regex.py
 replace_pronouns.py
 stitch.json
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
