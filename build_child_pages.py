@@ -208,7 +208,7 @@ def generate_child_page(data):
 
     custom_head = base_head.replace('<title>Better Call Wes - Your Local Southampton Plumber | Gas Safe Registered</title>', f'<title>{data["title"]}</title>')
     custom_head = re.sub(r'<meta name="description".*?>', f'<meta name="description" content="{data["desc"]}">', custom_head)
-    custom_head = custom_head.replace('</head>', f'{schema}\\n</head>')
+    custom_head = custom_head.replace('</head>', f'{schema}\n</head>')
 
     hero_section = f"""
     <section class="hero" style="background: var(--color-primary); min-height: 40vh; padding-top: 150px; padding-bottom: 80px;">
@@ -314,14 +314,14 @@ def generate_child_page(data):
     """
 
     final_html = (
-        custom_head + "\\n<body>\\n" +
-        base_top + "\\n" +
-        hero_section + "\\n" +
-        warning_section + "\\n" +
-        guarantee_section + "\\n" +
-        process_section + "\\n" +
-        faq_section + "\\n" +
-        coverage_section + "\\n" +
+        custom_head + "\n" +
+        base_top + "\n" +
+        hero_section + "\n" +
+        warning_section + "\n" +
+        guarantee_section + "\n" +
+        process_section + "\n" +
+        faq_section + "\n" +
+        coverage_section + "\n" +
         base_footer
     )
 
