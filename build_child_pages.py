@@ -12,7 +12,7 @@ def write_file(path, content):
 index_html = read_file('/home/antigravity/Projects/Better Call Wes/Website/index.html')
 
 head_match = re.search(r'(<!DOCTYPE html>.*?</head>)', index_html, re.DOTALL)
-top_match = re.search(r'(<body>\s*<!-- Top Bar -->.*?</header>)', index_html, re.DOTALL)
+top_match = re.search(r'(<body>\s*<!-- Header -->.*?</header>)', index_html, re.DOTALL)
 footer_match = re.search(r'(<!-- Footer -->.*?</html>)', index_html, re.DOTALL)
 
 base_head = head_match.group(1).replace('href="css/', 'href="../css/').replace('src="assets/', 'src="../assets/')
@@ -208,78 +208,120 @@ def generate_child_page(data):
 
     custom_head = base_head.replace('<title>Better Call Wes - Your Local Southampton Plumber | Gas Safe Registered</title>', f'<title>{data["title"]}</title>')
     custom_head = re.sub(r'<meta name="description".*?>', f'<meta name="description" content="{data["desc"]}">', custom_head)
-    custom_head = custom_head.replace('</head>', f'{schema}\n</head>')
-
-    # Breadcrumb
-    breadcrumb = f"""
-    <div style="background: var(--bg-color); padding: 1rem 0; border-bottom: 1px solid var(--border-color);">
-        <div class="container">
-            <nav style="font-size: 0.9rem; color: var(--text-light);">
-                <a href="../" style="color: var(--color-primary); text-decoration: none;">Home</a> <i data-lucide="chevron-right" style="width: 12px; height: 12px; display: inline-block; vertical-align: middle;"></i>
-                <a href="../services.html" style="color: var(--color-primary); text-decoration: none;">Services</a> <i data-lucide="chevron-right" style="width: 12px; height: 12px; display: inline-block; vertical-align: middle;"></i>
-                <a href="..{data['parent'][1]}" style="color: var(--color-primary); text-decoration: none;">{data['parent'][0]}</a> <i data-lucide="chevron-right" style="width: 12px; height: 12px; display: inline-block; vertical-align: middle;"></i>
-                <span style="color: var(--text-dark); font-weight: 500;">{data['h1']}</span>
-            </nav>
-        </div>
-    </div>
-    """
+    custom_head = custom_head.replace('</head>', f'{schema}\\n</head>')
 
     hero_section = f"""
-    <section class="hero" style="background: var(--bg-color); padding: 60px 0;">
+    <section class="hero" style="background: var(--color-primary); min-height: 40vh; padding-top: 150px; padding-bottom: 80px;">
         <div class="container">
-            <div style="max-width: 800px;">
-                <h1 style="color: var(--color-primary); margin-bottom: 1.5rem; font-size: 2.5rem;">{data['h1']} in Southampton</h1>
-                <p style="color: var(--text-body); font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem;">{data['content_p']}</p>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <div class="hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h1 style="color: white; margin-bottom: 1.5rem;">{data['h1']} in Southampton</h1>
+                <p style="color: rgba(255,255,255,0.8); font-size: 1.25rem; margin-bottom: 2rem;">{data['content_p']}</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <a href="../booking.html" class="btn btn-primary"><i data-lucide="calendar"></i> Book Online</a>
-                    <a href="https://wa.me/447700155655" class="btn btn-dark"><i data-lucide="video"></i> Send WhatsApp Video</a>
+                    <a href="https://wa.me/447700155655" class="btn btn-outline" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); color: white;"><i data-lucide="video"></i> WhatsApp Quote</a>
                 </div>
             </div>
         </div>
     </section>
     """
 
-    feature_section = f"""
+    warning_section = f"""
     <section class="section section-gray">
         <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                <div style="background: white; padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
-                    <div class="service-icon" style="margin-bottom: 1rem; color: var(--color-accent);"><i data-lucide="pound-sterling" style="width: 32px; height: 32px;"></i></div>
-                    <h3>Transparent Pricing</h3>
-                    <p style="color: var(--text-body);">Starting from {data['price']}. No call-out fees during normal hours, just a flat minimum diagnostic/labour rate so you know exactly what to expect.</p>
+            <div class="section-header">
+                <div class="section-label">WARNING SIGNS</div>
+                <h2>When to Call a Professional for {data['h1']}</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+                <div style="background: white; padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border-top: 4px solid var(--color-accent);">
+                    <h3 style="margin-bottom: 1rem; color: var(--color-primary);">Unexpected Noises or Leaks</h3>
+                    <p style="color: var(--text-body);">If the system is making strange noises or you notice water pooling, it's time to get a professional assessment before it causes property damage.</p>
                 </div>
-                <div style="background: white; padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
-                    <div class="service-icon" style="margin-bottom: 1rem; color: var(--color-accent);"><i data-lucide="shield-check" style="width: 32px; height: 32px;"></i></div>
-                    <h3>12-Month Guarantee</h3>
-                    <p style="color: var(--text-body);">I stand behind my work. Every repair, installation, and replacement carries my standard 12-month workmanship guarantee for peace of mind.</p>
-                </div>
-                <div style="background: white; padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
-                    <div class="service-icon" style="margin-bottom: 1rem; color: var(--color-accent);"><i data-lucide="clock" style="width: 32px; height: 32px;"></i></div>
-                    <h3>Reliable Scheduling</h3>
-                    <p style="color: var(--text-body);">No more waiting around all day. Book directly into our online diary and choose a specific arrival window that suits your schedule.</p>
+                <div style="background: white; padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border-top: 4px solid var(--color-accent);">
+                    <h3 style="margin-bottom: 1rem; color: var(--color-primary);">Loss of Performance</h3>
+                    <p style="color: var(--text-body);">A drop in pressure, cold spots, or a system that takes too long to respond usually indicates an underlying issue that needs expert attention.</p>
                 </div>
             </div>
         </div>
     </section>
     """
-    
-    cta_banner = f"""
-    <section class="section" style="background: var(--color-primary); color: white; text-align: center;">
+
+    guarantee_section = f"""
+    <section style="position: relative; height: 280px; overflow: hidden;">
+        <img src="../assets/images/copper-pipework.webp" alt="{data['h1']}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(15,41,66,0.85) 0%, rgba(15,41,66,0.4) 60%, rgba(15,41,66,0.1) 100%); display: flex; align-items: center;">
+            <div class="container">
+                <h2 style="color: white; margin-bottom: 0.75rem; font-size: 2rem;">Professional Workmanship Guaranteed</h2>
+                <p style="color: rgba(255,255,255,0.8); font-size: 1.15rem; max-width: 500px;">Every {data['h1'].lower()} job comes with a 12-month workmanship guarantee and is backed by my Gas Safe registration (#558654).</p>
+            </div>
+        </div>
+    </section>
+    """
+
+    process_section = f"""
+    <section class="section" style="background: var(--color-primary); color: white;">
         <div class="container">
-            <h2 style="color: white; margin-bottom: 1rem;">Need Help With {data['h1']}?</h2>
-            <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Don't let plumbing problems ruin your day. Contact your local Southampton professionals now.</p>
-            <a href="../booking.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 15px 30px;">View Availability & Book</a>
+            <div class="section-header">
+                <div class="section-label" style="color: var(--color-accent);">HOW IT WORKS</div>
+                <h2 style="color: white;">My Simple Process</h2>
+                <p style="color: rgba(255,255,255,0.8); max-width: 600px; margin: 1rem auto; font-size: 1.2rem;">1. Send a WhatsApp Video or Book Online. 2. I diagnose or quote. 3. Fast, clean execution. 4. 12-month guarantee.</p>
+            </div>
+            <div style="text-align: center;">
+                <p style="margin-bottom: 2rem; color: rgba(255,255,255,0.9);">I know dealing with plumbing issues is stressful. My goal is to make it as frictionless as possible. From transparent quoting to professional execution.</p>
+                <a href="../booking.html" class="btn btn-primary">Book Your Appointment</a>
+            </div>
+        </div>
+    </section>
+    """
+
+    faq_section = f"""
+    <section class="section section-gray">
+        <div class="container" style="max-width: 800px;">
+            <div class="section-header">
+                <div class="section-label">FAQS</div>
+                <h2>Questions about {data['h1']}</h2>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
+                    <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How much does it cost?</h3>
+                    <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Pricing starts from {data['price']} depending on the complexity of the job. I always provide a clear, upfront quote before starting any work so there are no surprises.</p>
+                </div>
+                <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
+                    <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Do you offer a guarantee?</h3>
+                    <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes, all workmanship is backed by a 12-month guarantee. Any parts supplied also come with their standard manufacturer warranty.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    """
+
+    coverage_section = f"""
+    <section class="section">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center;">
+                <div style="text-align: center;">
+                    <h2>Serving Southampton & Beyond</h2>
+                    <p style="max-width: 700px; margin: 1rem auto; font-size: 1.1rem; color: var(--text-body);">
+                        As a fully mobile Gas Safe registered plumber, I cover the entire Southampton area, including SO14 to SO51 postcodes. Whether you need {data['h1'].lower()} in Bitterne, Shirley, Eastleigh, or Chandler's Ford, I'm your trusted local professional.
+                    </p>
+                </div>
+                <div>
+                    <img src="../assets/images/plumber-tools.webp" alt="Professional plumbing tools" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);" loading="lazy" decoding="async">
+                </div>
+            </div>
         </div>
     </section>
     """
 
     final_html = (
-        custom_head + "\n<body>\n" +
-        base_top + "\n" +
-        breadcrumb + "\n" +
-        hero_section + "\n" +
-        feature_section + "\n" +
-        cta_banner + "\n" +
+        custom_head + "\\n<body>\\n" +
+        base_top + "\\n" +
+        hero_section + "\\n" +
+        warning_section + "\\n" +
+        guarantee_section + "\\n" +
+        process_section + "\\n" +
+        faq_section + "\\n" +
+        coverage_section + "\\n" +
         base_footer
     )
 
