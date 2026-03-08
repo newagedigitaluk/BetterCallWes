@@ -37,10 +37,10 @@ pages_data = [
             ("Pilot Light Goes Out", "A common issue caused by a broken thermocouple or draught.")
         ],
         "services": [
-            ("Diverter Valve Replacement", "/services/boiler-repair.html"),
-            ("Expansion Vessel Recharge", "/services/boiler-repair.html"),
-            ("Pump & Fan Replacement", "/services/boiler-repair.html"),
-            ("PCB Diagnostics & Fitting", "/services/boiler-repair.html")
+            ("Diverter Valve Replacement", "/booking.html"),
+            ("Expansion Vessel Recharge", "/booking.html"),
+            ("Pump & Fan Replacement", "/booking.html"),
+            ("PCB Diagnostics & Fitting", "/booking.html")
         ],
         "process": "1. Send a WhatsApp Video. 2. I diagnose or quote. 3. Fast, clean repair. 4. 12-month guarantee.",
         "faq": [
@@ -64,10 +64,10 @@ pages_data = [
             ("Takes Long to Heat", "If radiators take ages to warm up, the boiler needs a tune-up or system needs flushing.")
         ],
         "services": [
-            ("Standard Annual Service", "/services/boiler-servicing.html"),
-            ("Full Strip-Down Service", "/services/boiler-servicing.html"),
+            ("Standard Annual Service", "/booking.html"),
+            ("Full Strip-Down Service", "/booking.html"),
             ("Landlord Gas Safety (CP12)", "/services/landlord-gas-safety-certificates.html"),
-            ("System Health Check", "/services/boiler-servicing.html")
+            ("System Health Check", "/booking.html")
         ],
         "process": "1. Book your slot online. 2. Gas Safe inspection. 3. Flue & emissions test. 4. Digital service record provided.",
         "faq": [
@@ -145,10 +145,10 @@ pages_data = [
             ("Thermostat Not Working", "If your boiler runs constantly or won't turn on, the controls may need replacing.")
         ],
         "services": [
-            ("Power Flushing", "/services/central-heating.html"),
+            ("Power Flushing", "/services/power-flushing.html"),
             ("Radiator Installs", "/services/radiators.html"),
-            ("Smart Controls", "/services/heating-controls.html"),
-            ("Unvented Cylinders", "/services/central-heating.html")
+            ("Smart Controls", "/services/smart-controls.html"),
+            ("Unvented Cylinders", "/booking.html")
         ],
         "process": "1. Assess your heating needs. 2. Recommend efficiency upgrades. 3. Professional installation. 4. Comprehensive system testing.",
         "faq": [
@@ -269,7 +269,7 @@ def generate_page(data):
     <div class="service-card">
         <div class="service-icon"><i data-lucide="check-circle"></i></div>
         <h3>{srv[0]}</h3>
-        <a href="..{srv[1]}" class="learn-more">Learn More <i data-lucide="arrow-right" size="16"></i></a>
+        <a href="..{srv[1]}" class="learn-more">{'Book Now' if 'booking.html' in srv[1] else 'Learn More'} <i data-lucide="arrow-right" size="16"></i></a>
     </div>
     """ for srv in data["services"]])
 
