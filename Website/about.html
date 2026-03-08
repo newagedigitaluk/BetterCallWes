@@ -5,11 +5,11 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GD5D6TC4DS"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-      gtag('config', 'G-GD5D6TC4DS');
+        gtag('config', 'G-GD5D6TC4DS');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,8 +21,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="css/styles.css?v=1.7">
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Wes",
+        "jobTitle": "Gas Safe Registered Plumber",
+        "description": "Local, honest, and reliable plumbing & heating services from a true Southampton independent.",
+        "worksFor": {
+          "@type": "LocalBusiness",
+          "name": "Better Call Wes",
+          "url": "https://bettercallwes.co.uk/"
+        }
+      }
+    }
+    </script>
+
     <link rel="icon" href="assets/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="assets/favicon.png">
+    <link rel="canonical" href="https://bettercallwes.co.uk/about.html" />
 </head>
 
 <body>
@@ -106,7 +126,8 @@
                 <div class="grid-2col">
                     <div>
                         <img src="assets/images/wes-profile.webp" alt="Wes - Your local Southampton plumber"
-                            style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);" loading="lazy" decoding="async">
+                            style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);" loading="lazy"
+                            decoding="async">
                     </div>
                     <div>
                         <div class="section-label" style="justify-content: flex-start;">MY STORY</div>
@@ -262,10 +283,8 @@
             });
         </script>
         <a href="https://wa.me/447700155655" class="floating-cta"><i data-lucide="message-circle"></i> WhatsApp</a>
-    <script
-  src="https://i.bettercallwes.co.uk/js/external-tracking.js"
-  data-tracking-id="tk_7328a539b1e343b8a44f6f9bf8537fd6"
-></script>
-</body>
+        <script src="https://i.bettercallwes.co.uk/js/external-tracking.js"
+            data-tracking-id="tk_7328a539b1e343b8a44f6f9bf8537fd6"></script>
+    </body>
 
 </html>
