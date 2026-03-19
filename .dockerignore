@@ -1,0 +1,9 @@
+# Exclude everything by default, then whitelist what the build needs
+**
+
+# Website files (the actual site)
+!Website/
+!Website/**
+
+# Nginx config
+!nginx.conf

@@ -1,6 +1,45 @@
 # 🚀 Deploying Better Call Wes
 
-## Step-by-Step: Cloudflare Pages Setup
+## Step-by-Step: Coolify Setup (Current)
+
+The site runs as a Docker container (nginx serving static files). Coolify builds the
+Dockerfile automatically on every push to `main`.
+
+### 1. Create a New Resource in Coolify
+- Go to your Coolify dashboard → **New Resource** → **Application**
+- Select **GitHub** and authorise the `newagedigitaluk/BetterCallWes` repo
+- Set **Branch** to `main`
+- Set **Build Pack** to `Dockerfile` (it will detect the Dockerfile automatically)
+
+### 2. Configure the Application
+| Setting | Value |
+|---------|-------|
+| **Port** | `80` |
+| **Build command** | *(leave empty — Dockerfile handles it)* |
+| **Health check path** | `/` |
+
+### 3. Add Domain
+- Under **Domains**, add `bettercallwes.co.uk` and `www.bettercallwes.co.uk`
+- Enable **HTTPS / Let's Encrypt** — Coolify handles the cert automatically
+
+### 4. DNS (Cloudflare)
+Point your DNS to your Coolify server's IP address:
+
+| Type | Name | Content |
+|------|------|---------|
+| A | `@` | *(your Coolify server IP)* |
+| A | `www` | *(your Coolify server IP)* |
+
+> ⚠️ If using Cloudflare proxy (orange cloud), set SSL/TLS mode to **Full** in Cloudflare
+> to avoid redirect loops. Or turn the proxy off (grey cloud) for a direct connection.
+
+### 5. Deploy
+- Click **Deploy** in Coolify — it will build the Docker image and start the container
+- Push to `main` in future to trigger auto-redeploy
+
+---
+
+## Step-by-Step: Cloudflare Pages Setup (Legacy)
 
 ### 1. Create a Cloudflare Account
 - Go to [dash.cloudflare.com](https://dash.cloudflare.com) and sign up (free)
