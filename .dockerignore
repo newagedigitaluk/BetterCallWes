@@ -1,6 +1,9 @@
 # Exclude everything by default, then whitelist what the build needs
 **
 
+# Dockerfile itself (needed for build!)
+!Dockerfile
+
 # Website files (the actual site)
 !Website/
 !Website/**
