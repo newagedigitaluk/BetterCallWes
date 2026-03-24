@@ -16,7 +16,9 @@
     "used_asset_images": [
       "/home/wes/Coding/Projects/Better Call Wes/Website/assets/images/boiler-repair.webp",
       "/home/wes/Coding/Projects/Better Call Wes/Website/assets/images/boiler-repair.png",
-      "/home/wes/Coding/Projects/Better Call Wes/website/Brand Images/IMG_1253.JPG"
+      "/home/wes/Coding/Projects/Better Call Wes/website/Brand Images/IMG_1253.JPG",
+      "/home/wes/Coding/Projects/Better Call Wes/website/Brand Images/logo-trans.png",
+      "/home/wes/Coding/Projects/Better Call Wes/website/Brand Images/IMG_1250.JPG"
     ]
   },
   "posts": [
@@ -149,9 +151,9 @@
       "image_type": "asset",
       "caption": "What a boiler service actually covers 🔧",
       "image_prompt": "Add bold white text 'What a boiler service actually covers 🔧' as a clean caption banner at the top of a boiler servicing image. Semi-transparent dark background behind text. Modern professional social media card style.",
-      "status": "approved",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-03-24T13:08:53.172137+00:00",
+      "image_url_used": "https://tempfile.aiquickdraw.com/image-format-converter/1774357682816-kmtqoylo18.jpg",
       "approved_at": "2026-03-20T09:34:09.276677"
     },
     {
@@ -166,9 +168,9 @@
       "image_type": "asset",
       "caption": "New boiler? Fixed quote upfront 💷",
       "image_prompt": "Add bold white text 'New boiler? Fixed quote upfront 💷' as a clean caption banner at the top of a new boiler installation image. Semi-transparent dark background behind text. Modern professional social media card style.",
-      "status": "approved",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-03-24T18:08:57.729119+00:00",
+      "image_url_used": "https://tempfile.aiquickdraw.com/image-format-converter/1774375689041-hfmd2f89hyu.jpg",
       "approved_at": "2026-03-20T09:34:17.027742"
     },
     {

@@ -194,7 +194,7 @@ def main():
         log("   Generate more: python social/generate_posts.py <posts.json>")
         sys.exit(1)
 
-    if pending <= 5:
+    if pending <= 15:
         log(f"⚠️  Only {pending} posts remaining — generate more soon!")
 
     # Get next post

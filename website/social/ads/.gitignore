@@ -1,0 +1,6 @@
+# Ignore generated ad images — keep scripts only
+*.jpg
+*.jpeg
+*.png
+*.webp
+manifest.json
