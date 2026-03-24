@@ -10,7 +10,9 @@
     "used_brand_images": [
       "/home/wes/Coding/Projects/Better Call Wes/Brand Images/IMG_1246.JPG"
     ],
-    "used_work_images": [],
+    "used_work_images": [
+      "/home/wes/Coding/Projects/Better Call Wes/website/Brand Images/Work Images/IMG_2382.jpg"
+    ],
     "used_asset_images": [
       "/home/wes/Coding/Projects/Better Call Wes/Website/assets/images/boiler-repair.webp",
       "/home/wes/Coding/Projects/Better Call Wes/Website/assets/images/boiler-repair.png",
@@ -113,10 +115,10 @@
       "image_type": "ai",
       "caption": "Repair or replace? The honest answer",
       "image_prompt": "Split image concept: left side shows a worn old boiler with a red X indicator, right side shows a modern new boiler with a green checkmark. Clean, simple graphic style with warm home background. Text 'Repair or Replace?' in bold at the top. Professional social media card.",
-      "status": "approved",
-      "sent_at": null,
-      "image_url_used": null,
-      "approved_at": "2026-03-20T09:33:43.214367"
+      "status": "sent",
+      "sent_at": "2026-03-24T08:11:25.448376+00:00",
+      "approved_at": "2026-03-20T09:33:43.214367",
+      "image_url_used": "https://tempfile.aiquickdraw.com/image-format-converter/1774339831991-ag9k7nta3z6.jpg"
     },
     {
       "id": "post_007",
@@ -130,9 +132,9 @@
       "image_type": "work",
       "caption": "Diagnosed and fixed — same day ✅",
       "image_prompt": "Add bold white text 'Diagnosed and fixed — same day ✅' as a clean caption banner at the bottom of a boiler repair job photo. Semi-transparent dark background behind text. Keep the job image clearly visible. Professional social media card style.",
-      "status": "approved",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-03-24T08:08:12.384318+00:00",
+      "image_url_used": "https://tempfile.aiquickdraw.com/image-format-converter/1774339682337-98q1fca5ioc.jpg",
       "approved_at": "2026-03-20T09:34:00.193902"
     },
     {

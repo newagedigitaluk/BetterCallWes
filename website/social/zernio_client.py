@@ -164,7 +164,7 @@ class ZernioClient:
         """
         payload = {
             "content": content,
-            "accountIds": [account_id],
+            "platforms": [{"accountId": account_id, "platform": platform}],
             "publishNow": publish_now,
         }
 
