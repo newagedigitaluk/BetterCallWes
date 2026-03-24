@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Template Mockup</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 40px;
+            color: #1f2937;
+        }
+
+        .invoice-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 20px;
+        }
+
+        .logo {
+            max-width: 200px;
+            height: auto;
+        }
+
+        .invoice-title {
+            text-align: right;
+        }
+
+        .invoice-title h1 {
+            color: #2563eb;
+            /* Blue primary color */
+            margin: 0;
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .invoice-meta {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        /* Addresses */
+        .addresses {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .from-address,
+        .to-address {
+            width: 48%;
+        }
+
+        h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #9ca3af;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .address-box {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .address-box strong {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #111827;
+        }
+
+        /* Job Details Grid */
+        .job-details {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 40px;
+        }
+
+        .detail-item strong {
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #6b7280;
+            margin-bottom: 4px;
+        }
+
+        .detail-item span {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        /* Items Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+        }
+
+        th {
+            text-align: left;
+            padding: 12px 16px;
+            background-color: #f3f4f6;
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #4b5563;
+            font-weight: 700;
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 14px;
+        }
+
+        td.total,
+        th.total {
+            text-align: right;
+        }
+
+        /* Totals */
+        .totals-section {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .totals-box {
+            width: 300px;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+
+        .total-row.final {
+            font-size: 18px;
+            font-weight: 700;
+            border-top: 2px solid #e5e7eb;
+            margin-top: 8px;
+            padding-top: 16px;
+            color: #2563eb;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 13px;
+            color: #9ca3af;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="invoice-container">
+        <!-- Header -->
+        <div class="header">
+            <img src="../Brand Images/a1781cea-8d5b-423d-bd16-14e4f373f63c.png" alt="Company Logo" class="logo">
+            <div class="invoice-title">
+                <h1>Tax Invoice</h1>
+                <div class="invoice-meta">#{job.generated_job_id}</div>
+            </div>
+        </div>
+
+        <!-- Job Details Bar -->
+        <div class="job-details">
+            <div class="detail-item">
+                <strong>Job ID</strong>
+                <span>{job.generated_job_id}</span>
+            </div>
+            <div class="detail-item">
+                <strong>PO Number</strong>
+                <span>{job.purchase_order_number}</span>
+            </div>
+            <div class="detail-item">
+                <strong>Date</strong>
+                <span>{job.invoice_date_extended}</span>
+            </div>
+            <div class="detail-item">
+                <strong>Due Date</strong>
+                <span>Due on Receipt</span>
+            </div>
+        </div>
+
+        <!-- Addresses -->
+        <div class="addresses">
+            <div class="from-address">
+                <h3>From</h3>
+                <div class="address-box">
+                    <strong>{vendor.name}</strong>
+                    {vendor.email}<br>
+                    {vendor.website}<br>
+                    {location.phone_1}
+                </div>
+            </div>
+            <div class="to-address">
+                <h3>Bill To</h3>
+                <div class="address-box">
+                    <strong>{job.company_name}</strong>
+                    {job.contact_first} {job.contact_last}<br>
+                    {job.billing_address}
+                </div>
+            </div>
+        </div>
+
+        <!-- Work Description -->
+        <div style="margin-bottom: 30px;">
+            <h3>Work Description</h3>
+            <p style="font-size: 14px; color: #4b5563; line-height: 1.5;">
+                {job.work_done_description}
+            </p>
+        </div>
+
+        <!-- Items Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Item / Description</th>
+                    <th>Qty</th>
+                    <th class="total">Unit Price</th>
+                    <th class="total">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <strong>{jobMaterial.name}</strong>
+                    </td>
+                    <td>{jobMaterial.quantity}</td>
+                    <td class="total">{jobMaterial.price_ex_tax}</td>
+                    <td class="total">{jobMaterial.total_price_ex_tax}</td>
+                </tr>
+                <!-- Filler rows for visual -->
+                <tr>
+                    <td>
+                        <strong>Labor - Standard</strong>
+                    </td>
+                    <td>2</td>
+                    <td class="total">$85.00</td>
+                    <td class="total">$170.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Totals -->
+        <div class="totals-section">
+            <div class="totals-box">
+                <div class="total-row">
+                    <span>Subtotal</span>
+                    <span>{job.subtotal_price}</span>
+                </div>
+                <div class="total-row">
+                    <span>Tax</span>
+                    <span>{job.total_tax_price}</span>
+                </div>
+                <div class="total-row final">
+                    <span>Total</span>
+                    <span>{job.total_price}</span>
+                </div>
+                <div class="total-row" style="color: #059669; font-weight: 600; margin-top: 10px;">
+                    <span>Amount Paid</span>
+                    <span>{job.amount_paid}</span>
+                </div>
+                <div class="total-row"
+                    style="color: #dc2626; font-weight: 700; border-top: 1px dashed #e5e7eb; padding-top: 10px; margin-top: 5px;">
+                    <span>Balance Due</span>
+                    <span>{job.balance_due}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Thank you for your business!</p>
+            <p>Payment Details: 1234 5678 | Sort Code: 12-34-56</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
