@@ -1,7 +1,7 @@
 FROM nginx:alpine
 
 # Copy the static site
-COPY Website /usr/share/nginx/html
+COPY site/Website /usr/share/nginx/html
 
 # Replace the default nginx config with ours
 COPY nginx.conf /etc/nginx/conf.d/default.conf
