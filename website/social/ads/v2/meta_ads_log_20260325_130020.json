@@ -1,0 +1,68 @@
+{
+  "campaign_id": "120241781075410241",
+  "cold_ad_set_id": "120241781075560241",
+  "warm_ad_set_id": "120241781076290241",
+  "ads": [
+    {
+      "id": "face_smile",
+      "ad_id": "120241781135300241",
+      "creative_id": "951904417281672",
+      "status": "created"
+    },
+    {
+      "id": "before_after_heatex",
+      "ad_id": "120241781135830241",
+      "creative_id": "1662717775143317",
+      "status": "created"
+    },
+    {
+      "id": "magnetic_filter_sludge",
+      "ad_id": "120241781137260241",
+      "creative_id": "2001214131279578",
+      "status": "created"
+    },
+    {
+      "id": "old_boiler_stripped",
+      "ad_id": "120241781137890241",
+      "creative_id": "934958325941715",
+      "status": "created"
+    },
+    {
+      "id": "face_whatsapp",
+      "ad_id": "120241781139510241",
+      "creative_id": "2819971138346653",
+      "status": "created"
+    },
+    {
+      "id": "loft_install",
+      "ad_id": "120241781140590241",
+      "creative_id": "956050574267888",
+      "status": "created"
+    },
+    {
+      "id": "corrosion_inhibitor",
+      "ad_id": "120241781142850241",
+      "creative_id": "923657120444440",
+      "status": "created"
+    },
+    {
+      "id": "smart_boiler",
+      "ad_id": "120241781144050241",
+      "creative_id": "979211361432402",
+      "status": "created"
+    },
+    {
+      "id": "system_install_cylinder",
+      "ad_id": "120241781145370241",
+      "creative_id": "2093855178079094",
+      "status": "created"
+    },
+    {
+      "id": "column_radiator",
+      "ad_id": "120241781147920241",
+      "creative_id": "2214299766041465",
+      "status": "created"
+    }
+  ],
+  "created_at": "2026-03-25T13:00:20.305514"
+}

@@ -100,3 +100,253 @@
 [2026-03-22 08:08:48]    Image: IMG_1246.JPG
 [2026-03-22 08:08:48]    Pending posts remaining: 28
 [2026-03-22 08:08:48]    Kie AI credits remaining: 9583.0
+[2026-03-23 13:07:01] 📝 Posting: 'What the £100 boiler diagnostic actually covers' (pillar: pricing, status: ✅ approved)
+[2026-03-23 13:07:01]   ℹ️  No Twitter/X account — connect one at zernio.com to enable X posts
+[2026-03-23 13:07:02] 🖼  Image type: ai
+[2026-03-23 13:07:03] 🎨 Generating image via Kie AI (base=no)...
+  [Kie AI] Task created: 20a7d70cb2813f3ec8783fd26524b142
+  [Kie AI] Status: waiting (5s)
+  [Kie AI] Status: waiting (10s)
+  [Kie AI] Status: waiting (15s)
+  [Kie AI] Status: waiting (20s)
+  [Kie AI] Status: waiting (25s)
+  [Kie AI] Status: waiting (30s)
+  [Kie AI] Status: waiting (35s)
+  [Kie AI] Status: waiting (40s)
+  [Kie AI] Status: waiting (45s)
+  [Kie AI] Status: success (50s)
+[2026-03-23 13:07:56]   ✅ Image generated: https://tempfile.aiquickdraw.com/image-format-converter/1774...
+[2026-03-23 13:07:56] 📤 Rehosting Kie AI image to catbox.moe for permanent URL...
+  [catbox] Rehosted Kie AI image: https://files.catbox.moe/cjg7fy.jpg
+[2026-03-23 13:07:58] 🖼  Permanent image URL: https://files.catbox.moe/cjg7fy.jpg
+[2026-03-23 13:07:58] 🚀 Publishing to social platforms...
+  [Zernio] Posted to facebook: post ID 69c13b33e940dddee8e6577c
+[2026-03-23 13:08:19]   ✅ Facebook: posted successfully
+  [Zernio] Posted to instagram: post ID 69c13b49e940dddee8e659a1
+[2026-03-23 13:08:40]   ✅ Instagram: posted successfully
+[2026-03-23 13:08:40]   ℹ️  Skipping twitter — no account ID configured
+  [Zernio] Posted to googlebusiness: post ID 69c13b5ee940dddee8e65c3b
+[2026-03-23 13:09:02]   ✅ Googlebusiness: posted successfully
+[2026-03-23 13:09:02] 
+✅ Posted: 'What the £100 boiler diagnostic actually covers'
+[2026-03-23 13:09:02]    Image: AI generated
+[2026-03-23 13:09:02]    Pending posts remaining: 57
+[2026-03-23 13:09:02]    Kie AI credits remaining: 9575.0
+[2026-03-23 18:07:01] 📝 Posting: 'How to check your boiler pressure and top it up safely' (pillar: tips, status: ✅ approved)
+[2026-03-23 18:07:01]   ℹ️  No Twitter/X account — connect one at zernio.com to enable X posts
+[2026-03-23 18:07:02] 🖼  Image type: asset
+  [ImagePicker] No images found for type 'asset'. Falling back to brand.
+  [ImagePicker] Selected: IMG_1253.JPG
+[2026-03-23 18:07:03] 📤 Uploading base photo for Kie AI: IMG_1253.JPG
+  [catbox] Uploaded: https://files.catbox.moe/chco9j.JPG
+[2026-03-23 18:07:06] 🎨 Generating image via Kie AI (base=yes)...
+  [Kie AI] Task created: 0bd60c100f27b954ca50515fb93940f0
+  [Kie AI] Status: waiting (5s)
+  [Kie AI] Status: waiting (10s)
+  [Kie AI] Status: waiting (15s)
+  [Kie AI] Status: waiting (20s)
+  [Kie AI] Status: waiting (25s)
+  [Kie AI] Status: waiting (30s)
+  [Kie AI] Status: waiting (35s)
+  [Kie AI] Status: waiting (40s)
+  [Kie AI] Status: waiting (45s)
+  [Kie AI] Status: success (50s)
+[2026-03-23 18:07:59]   ✅ Image generated: https://tempfile.aiquickdraw.com/image-format-converter/1774...
+[2026-03-23 18:07:59] 📤 Rehosting Kie AI image to catbox.moe for permanent URL...
+  [catbox] Rehosted Kie AI image: https://files.catbox.moe/bsm127.jpg
+[2026-03-23 18:08:01] 🖼  Permanent image URL: https://files.catbox.moe/bsm127.jpg
+[2026-03-23 18:08:01] 🚀 Publishing to social platforms...
+  [Zernio] Posted to facebook: post ID 69c181874b77f7550390b86d
+[2026-03-23 18:08:24]   ✅ Facebook: posted successfully
+  [Zernio] Posted to instagram: post ID 69c1819e021bf6da2621a040
+[2026-03-23 18:08:47]   ✅ Instagram: posted successfully
+[2026-03-23 18:08:47]   ℹ️  Skipping twitter — no account ID configured
+[2026-03-23 18:08:50]   ❌ Googlebusiness failed: 429 Client Error: Too Many Requests for url: https://zernio.com/api/v1/posts
+[2026-03-23 18:08:50] 
+✅ Posted: 'How to check your boiler pressure and top it up safely'
+[2026-03-23 18:08:50]    Image: IMG_1253.JPG
+[2026-03-23 18:08:50]    Pending posts remaining: 56
+[2026-03-23 18:08:50]    Kie AI credits remaining: 9567.0
+[2026-03-24 08:07:01] 📝 Posting: 'No heating in January — diagnosed and sorted same day' (pillar: before_after, status: ✅ approved)
+[2026-03-24 08:07:01]   ℹ️  No Twitter/X account — connect one at zernio.com to enable X posts
+[2026-03-24 08:07:02] 🖼  Image type: work
+  [ImagePicker] Selected: IMG_2382.jpg
+[2026-03-24 08:07:03] 📤 Uploading base photo for Kie AI: IMG_2382.jpg
+  [catbox] Uploaded: https://files.catbox.moe/ep2rnx.jpg
+[2026-03-24 08:07:05] 🎨 Generating image via Kie AI (base=yes)...
+  [Kie AI] Task created: b997061bedd7f2aa3a9317e006c7641c
+  [Kie AI] Status: waiting (5s)
+  [Kie AI] Status: waiting (10s)
+  [Kie AI] Status: waiting (15s)
+  [Kie AI] Status: waiting (20s)
+  [Kie AI] Status: waiting (25s)
+  [Kie AI] Status: waiting (30s)
+  [Kie AI] Status: waiting (35s)
+  [Kie AI] Status: waiting (40s)
+  [Kie AI] Status: waiting (45s)
+  [Kie AI] Status: waiting (50s)
+  [Kie AI] Status: waiting (55s)
+  [Kie AI] Status: success (60s)
+[2026-03-24 08:08:07]   ✅ Image generated: https://tempfile.aiquickdraw.com/image-format-converter/1774...
+[2026-03-24 08:08:07] 📤 Rehosting Kie AI image to catbox.moe for permanent URL...
+  [catbox] Rehosted Kie AI image: https://files.catbox.moe/l0i9dw.jpg
+[2026-03-24 08:08:09] 🖼  Permanent image URL: https://files.catbox.moe/l0i9dw.jpg
+[2026-03-24 08:08:09] 🚀 Publishing to social platforms...
+[2026-03-24 08:08:10]   ❌ Facebook failed: 400 Client Error: Bad Request for url: https://zernio.com/api/v1/posts
+[2026-03-24 08:08:11]   ❌ Instagram failed: 400 Client Error: Bad Request for url: https://zernio.com/api/v1/posts
+[2026-03-24 08:08:11]   ℹ️  Skipping twitter — no account ID configured
+[2026-03-24 08:08:12]   ❌ Googlebusiness failed: 400 Client Error: Bad Request for url: https://zernio.com/api/v1/posts
+[2026-03-24 08:08:12] 
+✅ Posted: 'No heating in January — diagnosed and sorted same day'
+[2026-03-24 08:08:12]    Image: IMG_2382.jpg
+[2026-03-24 08:08:12]    Pending posts remaining: 54
+[2026-03-24 08:08:12]    Kie AI credits remaining: 9491.0
+[2026-03-24 13:07:01] 📝 Posting: 'Annual boiler service — what actually happens and why it matters' (pillar: tips, status: ✅ approved)
+[2026-03-24 13:07:01]   ℹ️  No Twitter/X account — connect one at zernio.com to enable X posts
+[2026-03-24 13:07:02] 🖼  Image type: asset
+  [ImagePicker] No images found for type 'asset'. Falling back to brand.
+  [ImagePicker] Selected: logo-trans.png
+[2026-03-24 13:07:02] 📤 Uploading base photo for Kie AI: logo-trans.png
+  [catbox] Uploaded: https://files.catbox.moe/emxuuq.png
+[2026-03-24 13:07:05] 🎨 Generating image via Kie AI (base=yes)...
+  [Kie AI] Task created: 3d0fbd3279ad8743c47310b471622ff8
+  [Kie AI] Status: waiting (5s)
+  [Kie AI] Status: waiting (10s)
+  [Kie AI] Status: waiting (15s)
+  [Kie AI] Status: waiting (20s)
+  [Kie AI] Status: waiting (25s)
+  [Kie AI] Status: waiting (30s)
+  [Kie AI] Status: waiting (35s)
+  [Kie AI] Status: waiting (40s)
+  [Kie AI] Status: waiting (45s)
+  [Kie AI] Status: waiting (50s)
+  [Kie AI] Status: waiting (55s)
+  [Kie AI] Status: success (60s)
+[2026-03-24 13:08:08]   ✅ Image generated: https://tempfile.aiquickdraw.com/image-format-converter/1774...
+[2026-03-24 13:08:08] 📤 Rehosting Kie AI image to catbox.moe for permanent URL...
+  [catbox] Rehosted Kie AI image: https://files.catbox.moe/6c0ln5.jpg
+[2026-03-24 13:08:10] 🖼  Permanent image URL: https://files.catbox.moe/6c0ln5.jpg
+[2026-03-24 13:08:10] 🚀 Publishing to social platforms...
+  [Zernio] Posted to facebook: post ID 69c28cbd6769aa5703d7d32b
+[2026-03-24 13:08:24]   ✅ Facebook: posted successfully
+  [Zernio] Posted to instagram: post ID 69c28ccb227e00687652c6f3
+[2026-03-24 13:08:43]   ✅ Instagram: posted successfully
+[2026-03-24 13:08:43]   ℹ️  Skipping twitter — no account ID configured
+  [Zernio] Posted to googlebusiness: post ID 69c28cde38fafad3947537c3
+[2026-03-24 13:08:53]   ✅ Googlebusiness: posted successfully
+[2026-03-24 13:08:53] 
+✅ Posted: 'Annual boiler service — what actually happens and why it matters'
+[2026-03-24 13:08:53]    Image: logo-trans.png
+[2026-03-24 13:08:53]    Pending posts remaining: 53
+[2026-03-24 13:08:53]    Kie AI credits remaining: 9355.0
+[2026-03-24 18:07:02] 📝 Posting: 'New boiler installation — what affects the price' (pillar: pricing, status: ✅ approved)
+[2026-03-24 18:07:02]   ℹ️  No Twitter/X account — connect one at zernio.com to enable X posts
+[2026-03-24 18:07:02] 🖼  Image type: asset
+  [ImagePicker] No images found for type 'asset'. Falling back to brand.
+  [ImagePicker] Selected: IMG_1250.JPG
+[2026-03-24 18:07:02] 📤 Uploading base photo for Kie AI: IMG_1250.JPG
+  [catbox] Uploaded: https://files.catbox.moe/81ehjt.JPG
+[2026-03-24 18:07:05] 🎨 Generating image via Kie AI (base=yes)...
+  [Kie AI] Task created: 5fdc57e8533f06e0db92d4a7ac9ac337
+  [Kie AI] Status: waiting (5s)
+  [Kie AI] Status: waiting (10s)
+  [Kie AI] Status: waiting (15s)
+  [Kie AI] Status: waiting (20s)
+  [Kie AI] Status: waiting (25s)
+  [Kie AI] Status: waiting (30s)
+  [Kie AI] Status: waiting (35s)
+  [Kie AI] Status: waiting (40s)
+  [Kie AI] Status: waiting (45s)
+  [Kie AI] Status: waiting (50s)
+  [Kie AI] Status: waiting (55s)
+  [Kie AI] Status: waiting (60s)
+  [Kie AI] Status: success (65s)
+[2026-03-24 18:08:14]   ✅ Image generated: https://tempfile.aiquickdraw.com/image-format-converter/1774...
+[2026-03-24 18:08:14] 📤 Rehosting Kie AI image to catbox.moe for permanent URL...
+  [catbox] Rehosted Kie AI image: https://files.catbox.moe/qw9ugk.jpg
+[2026-03-24 18:08:15] 🖼  Permanent image URL: https://files.catbox.moe/qw9ugk.jpg
+[2026-03-24 18:08:15] 🚀 Publishing to social platforms...
+  [Zernio] Posted to facebook: post ID 69c2d312576f0e9bab9bf45f
+[2026-03-24 18:08:27]   ✅ Facebook: posted successfully
+  [Zernio] Posted to instagram: post ID 69c2d31e9d3b3738a32447c1
+[2026-03-24 18:08:48]   ✅ Instagram: posted successfully
+[2026-03-24 18:08:48]   ℹ️  Skipping twitter — no account ID configured
+  [Zernio] Posted to googlebusiness: post ID 69c2d33307a73571f0838fb9
+[2026-03-24 18:08:57]   ✅ Googlebusiness: posted successfully
+[2026-03-24 18:08:57] 
+✅ Posted: 'New boiler installation — what affects the price'
+[2026-03-24 18:08:57]    Image: IMG_1250.JPG
+[2026-03-24 18:08:57]    Pending posts remaining: 52
+[2026-03-24 18:08:57]    Kie AI credits remaining: 9311.0
+[2026-03-25 08:07:01] 📝 Posting: 'What to do if your boiler breaks down out of hours' (pillar: emergency, status: ✅ approved)
+[2026-03-25 08:07:01]   ℹ️  No Twitter/X account — connect one at zernio.com to enable X posts
+[2026-03-25 08:07:02] 🖼  Image type: brand
+  [ImagePicker] Selected: IMG_1248.JPG
+[2026-03-25 08:07:03] 📤 Uploading base photo for Kie AI: IMG_1248.JPG
+  [catbox] Uploaded: https://files.catbox.moe/4l303u.JPG
+[2026-03-25 08:07:05] 🎨 Generating image via Kie AI (base=yes)...
+  [Kie AI] Task created: 3c0bf742c0644946404d70c188b15c30
+  [Kie AI] Status: waiting (5s)
+  [Kie AI] Status: waiting (10s)
+  [Kie AI] Status: waiting (15s)
+  [Kie AI] Status: waiting (20s)
+  [Kie AI] Status: waiting (25s)
+  [Kie AI] Status: waiting (30s)
+  [Kie AI] Status: waiting (35s)
+  [Kie AI] Status: waiting (40s)
+  [Kie AI] Status: waiting (45s)
+  [Kie AI] Status: waiting (50s)
+  [Kie AI] Status: waiting (55s)
+  [Kie AI] Status: waiting (60s)
+  [Kie AI] Status: waiting (65s)
+  [Kie AI] Status: waiting (70s)
+  [Kie AI] Status: success (75s)
+[2026-03-25 08:08:24]   ✅ Image generated: https://tempfile.aiquickdraw.com/image-format-converter/1774...
+[2026-03-25 08:08:24] 📤 Rehosting Kie AI image to catbox.moe for permanent URL...
+  [catbox] Rehosted Kie AI image: https://files.catbox.moe/dax74q.jpg
+[2026-03-25 08:08:26] 🖼  Permanent image URL: https://files.catbox.moe/dax74q.jpg
+[2026-03-25 08:08:26] 🚀 Publishing to social platforms...
+  [Zernio] Posted to facebook: post ID 69c397fd9d197a0c10c2a862
+[2026-03-25 08:08:37]   ✅ Facebook: posted successfully
+  [Zernio] Posted to instagram: post ID 69c398099d197a0c10c2a9a1
+[2026-03-25 08:08:55]   ✅ Instagram: posted successfully
+[2026-03-25 08:08:55]   ℹ️  Skipping twitter — no account ID configured
+  [Zernio] Posted to googlebusiness: post ID 69c3981a9d197a0c10c2ab0a
+[2026-03-25 08:09:03]   ✅ Googlebusiness: posted successfully
+[2026-03-25 08:09:04] 
+✅ Posted: 'What to do if your boiler breaks down out of hours'
+[2026-03-25 08:09:04]    Image: IMG_1248.JPG
+[2026-03-25 08:09:04]    Pending posts remaining: 51
+[2026-03-25 08:09:04]    Kie AI credits remaining: 9291.0
+[2026-03-25 13:07:01] 📝 Posting: '12-month workmanship guarantee on every repair' (pillar: trust, status: ✅ approved)
+[2026-03-25 13:07:01]   ℹ️  No Twitter/X account — connect one at zernio.com to enable X posts
+[2026-03-25 13:07:01] 🖼  Image type: brand
+  [ImagePicker] Selected: image.jpg
+[2026-03-25 13:07:02] 📤 Uploading base photo for Kie AI: image.jpg
+  [catbox] Uploaded: https://files.catbox.moe/519xpo.jpg
+[2026-03-25 13:07:03] 🎨 Generating image via Kie AI (base=yes)...
+  [Kie AI] Task created: 9c2672fa22d1b5b7d339d3a33adb9668
+  [Kie AI] Status: waiting (5s)
+  [Kie AI] Status: waiting (10s)
+  [Kie AI] Status: waiting (15s)
+  [Kie AI] Status: waiting (20s)
+  [Kie AI] Status: waiting (25s)
+  [Kie AI] Status: waiting (30s)
+  [Kie AI] Status: success (35s)
+[2026-03-25 13:07:43]   ✅ Image generated: https://tempfile.aiquickdraw.com/image-format-converter/1774...
+[2026-03-25 13:07:43] 📤 Rehosting Kie AI image to catbox.moe for permanent URL...
+  [catbox] Rehosted Kie AI image: https://files.catbox.moe/optjmd.jpg
+[2026-03-25 13:07:45] 🖼  Permanent image URL: https://files.catbox.moe/optjmd.jpg
+[2026-03-25 13:07:45] 🚀 Publishing to social platforms...
+  [Zernio] Posted to facebook: post ID 69c3de2445d5e2c0cbad49aa
+[2026-03-25 13:07:58]   ✅ Facebook: posted successfully
+  [Zernio] Posted to instagram: post ID 69c3de3145d5e2c0cbad4d60
+[2026-03-25 13:08:18]   ✅ Instagram: posted successfully
+[2026-03-25 13:08:18]   ℹ️  Skipping twitter — no account ID configured
+  [Zernio] Posted to googlebusiness: post ID 69c3de4545d5e2c0cbad50ce
+[2026-03-25 13:08:27]   ✅ Googlebusiness: posted successfully
+[2026-03-25 13:08:27] 
+✅ Posted: '12-month workmanship guarantee on every repair'
+[2026-03-25 13:08:27]    Image: image.jpg
+[2026-03-25 13:08:27]    Pending posts remaining: 50
+[2026-03-25 13:08:27]    Kie AI credits remaining: 9283.0

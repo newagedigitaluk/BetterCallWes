@@ -8,7 +8,9 @@
       "googlebusiness": "693f5827f43160a0bc99b494"
     },
     "used_brand_images": [
-      "/home/wes/Coding/Projects/Better Call Wes/Brand Images/IMG_1246.JPG"
+      "/home/wes/Coding/Projects/Better Call Wes/Brand Images/IMG_1246.JPG",
+      "/home/wes/Coding/Projects/Better Call Wes/website/Brand Images/IMG_1248.JPG",
+      "/home/wes/Coding/Projects/Better Call Wes/website/Brand Images/image.jpg"
     ],
     "used_work_images": [
       "/home/wes/Coding/Projects/Better Call Wes/website/Brand Images/Work Images/IMG_2382.jpg"
@@ -185,9 +187,9 @@
       "image_type": "brand",
       "caption": "Boiler broken? Here's your plan 🚨",
       "image_prompt": "Add bold white text 'Boiler broken? Here's your plan 🚨' as a caption banner at the top of a photo of a heating engineer looking at a boiler. Semi-transparent dark background behind text. Urgent but reassuring tone. Professional social media card style.",
-      "status": "approved",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-03-25T08:09:03.839001+00:00",
+      "image_url_used": "https://tempfile.aiquickdraw.com/image-format-converter/1774426099093-0481p4z203ei.jpg",
       "approved_at": "2026-03-20T09:34:29.176286"
     },
     {
@@ -202,9 +204,9 @@
       "image_type": "brand",
       "caption": "12-month guarantee on every repair ✅",
       "image_prompt": "Add bold white text '12-month guarantee on every repair ✅' as a caption banner at the top of a photo of a confident heating engineer. Semi-transparent dark background strip behind text. Trustworthy, professional social media card style. Keep the person clearly visible.",
-      "status": "approved",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-03-25T13:08:27.775917+00:00",
+      "image_url_used": "https://tempfile.aiquickdraw.com/image-format-converter/1774444059829-tzwvmk8i699.jpg",
       "approved_at": "2026-03-20T09:34:32.612928"
     },
     {
