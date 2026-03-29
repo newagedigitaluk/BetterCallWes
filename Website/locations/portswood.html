@@ -98,6 +98,13 @@
     </script>
     
     <link rel="canonical" href="https://bettercallwes.co.uk/locations/portswood.html" />
+    <!-- Growify Pixel -->
+    <script
+        src="https://cdn.growify.ai/pixel.min.js"
+        data-website-id="b1da141995f354578b374c1c1ce45287:f1a6af4ef5e14a02766e2e7a3d1eb1f18b3747e02f785abec67091bc988276db9726d52ebb3f4a61f998aff8c550d978"
+        data-endpoint="api_v2"
+        data-platform="web"
+    ></script>
 </head>
 <body>
 
@@ -365,6 +372,32 @@
   src="https://i.bettercallwes.co.uk/js/external-tracking.js"
   data-tracking-id="tk_7328a539b1e343b8a44f6f9bf8537fd6"
 ></script>
+
+    <!-- Growify WhatsApp Conversion Event -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp"]').forEach(function (el) {
+          el.addEventListener('click', function () {
+            window.grpQueue = window.grpQueue || [];
+            if (!window.grp) {
+              window.grp = function () { window.grpQueue.push(arguments); };
+            }
+            var service = document.title.replace(' | Better Call Wes', '').trim();
+            window.grp('conversion', {
+              orderId: 'WA-' + Date.now(),
+              products: [{
+                productId: 'whatsapp-enquiry',
+                productName: service || 'Plumbing & Heating Enquiry',
+                productPrice: 0,
+                productBrand: 'Better Call Wes',
+                productQuantity: 1,
+                purchaseValue: 0
+              }]
+            });
+          });
+        });
+      });
+    </script>
 </body>
 
 </html>

@@ -13,17 +13,104 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Online | Better Call Wes</title>
+    <title>Book Your Appointment Online | Better Call Wes</title>
     <meta name="description"
-        content="Book your plumbing appointment online. Live availability, no payment required upfront.">
+        content="Book your plumbing or heating appointment online with Better Call Wes. Live availability, instant confirmation, no payment required upfront. Gas Safe registered engineer serving Southampton.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="css/styles.css?v=1.7">
+    <link rel="stylesheet" href="css/styles.css?v=1.8">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="icon" href="assets/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="assets/favicon.png">
     <link rel="canonical" href="https://bettercallwes.co.uk/booking.html" />
+
+    <style>
+        .booking-hero {
+            background: linear-gradient(135deg, #0F2942 0%, #1A3A5A 100%);
+            padding-top: 160px;
+            padding-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -25%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 107, 0, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
+            align-items: start;
+            gap: 1.5rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #FF6B00 0%, #EA580C 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .booking-iframe-container {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .alternative-contact {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .booking-hero {
+                padding-top: 120px;
+                padding-bottom: 60px;
+            }
+
+            .benefit-card {
+                padding: 1.5rem;
+            }
+
+            .alternative-contact {
+                padding: 2rem;
+            }
+        }
+    </style>
+    <!-- Growify Pixel -->
+    <script
+        src="https://cdn.growify.ai/pixel.min.js"
+        data-website-id="b1da141995f354578b374c1c1ce45287:f1a6af4ef5e14a02766e2e7a3d1eb1f18b3747e02f785abec67091bc988276db9726d52ebb3f4a61f998aff8c550d978"
+        data-endpoint="api_v2"
+        data-platform="web"
+    ></script>
 </head>
 
 <body>
@@ -33,7 +120,7 @@
         <div class="container">
             <nav class="nav-container">
                 <a href="index.html" class="logo">
-                    <img src="assets/logo.webp?v=3" alt="">
+                    <img src="assets/logo.webp?v=3" alt="Better Call Wes">
                 </a>
                 <div class="main-nav">
                     <a href="index.html" class="nav-link">Home</a>
@@ -89,23 +176,61 @@
         </nav>
     </header>
 
-    <div style="padding-top: 140px; padding-bottom: 20px; background: var(--color-bg); text-align: center;">
+    <!-- Hero Section -->
+    <section class="booking-hero">
         <div class="container">
-            <span class="badge"
-                style="background: white; border: 1px solid #E2E8F0; color: var(--text-dark); margin-bottom: 1rem; display: inline-flex;"><i
-                    data-lucide="calendar" size="16" style="color: var(--color-accent); margin-right: 0.5rem;"></i> Live
-                Availability</span>
-            <h1 style="color: var(--text-dark); margin-bottom: 1rem;">Book Your <span
-                    style="color: var(--color-accent);">Appointment</span></h1>
-            <p style="max-width: 600px; margin: 0 auto; color: var(--text-body); font-size: 1.1rem;">Choose a time that
-                works for you. No payment required upfront.</p>
+            <div style="max-width: 700px; margin: 0 auto; text-align: center; position: relative; z-index: 1;">
+                <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255, 107, 0, 0.1); border: 1px solid rgba(255, 107, 0, 0.2); padding: 0.75rem 1.5rem; border-radius: 9999px; margin-bottom: 2rem; color: #FF6B00; font-weight: 600;">
+                    <i data-lucide="calendar-check" size="20"></i>
+                    Live Availability
+                </div>
+                <h1 style="color: white; margin-bottom: 1.5rem;">Book Your <span style="color: #FF6B00;">Appointment</span></h1>
+                <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem; line-height: 1.6;">Choose a time that works for you. Get instant confirmation. No payment required upfront.</p>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <section class="section" style="padding: 20px 0 80px; background: var(--color-bg);">
+    <!-- Benefits Section -->
+    <section class="section" style="background: #F8FAFC; padding: 60px 0;">
         <div class="container">
-            <div
-                style="background: white; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); overflow: hidden; max-width: 800px; margin: 0 auto; border: 1px solid rgba(0,0,0,0.05);">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="clock" size="28" style="color: white;"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: #0F2942;">Real-Time Availability</h3>
+                        <p style="color: #64748B; font-size: 0.95rem; margin: 0;">See live availability and book instantly without waiting for callbacks.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="shield-check" size="28" style="color: white;"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: #0F2942;">No Payment Upfront</h3>
+                        <p style="color: #64748B; font-size: 0.95rem; margin: 0;">Book your slot with confidence. Payment only required after the job is complete.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="bell" size="28" style="color: white;"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: #0F2942;">Instant Confirmation</h3>
+                        <p style="color: #64748B; font-size: 0.95rem; margin: 0;">Receive booking confirmation via email and SMS immediately after booking.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section class="section" style="padding: 60px 0 80px; background: var(--color-bg);">
+        <div class="container">
+            <div class="booking-iframe-container" style="max-width: 900px; margin: 0 auto;">
                 <!-- ServiceM8 Booking Iframe with header cropping -->
                 <div style="overflow: hidden; height: 900px;">
                     <iframe
@@ -114,12 +239,22 @@
                         title="Book Service"></iframe>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div
-                style="text-align: center; margin-top: 3rem; color: var(--text-body); background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); max-width: 500px; margin-inline: auto;">
-                <h3 style="margin-bottom: 1rem;">Prefer to call?</h3>
-                <a href="tel:07700155655" class="btn btn-primary" style="font-size: 1.1rem;"><i data-lucide="phone"></i>
-                    07700 155 655</a>
+    <!-- Alternative Contact Options -->
+    <section class="section" style="background: #F8FAFC; padding: 60px 0;">
+        <div class="container" style="max-width: 700px;">
+            <div class="alternative-contact">
+                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #FF6B00 0%, #EA580C 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem;">
+                    <i data-lucide="phone" size="40" style="color: white;"></i>
+                </div>
+                <h2 style="margin-bottom: 1rem; color: #0F2942;">Prefer to Speak to Someone?</h2>
+                <p style="color: #64748B; font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.7;">No problem! Give me a call or send a WhatsApp message and I'll get you booked in.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="tel:07700155655" class="btn btn-primary" style="font-size: 1.1rem;"><i data-lucide="phone"></i> 07700 155 655</a>
+                    <a href="https://wa.me/447700155655" class="btn btn-whatsapp" style="font-size: 1.1rem;"><i data-lucide="message-circle"></i> WhatsApp</a>
+                </div>
             </div>
         </div>
     </section>
@@ -128,9 +263,9 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
-                <div>
-                    <a href="index.html" class="logo" style="margin-bottom: 1.5rem; display: inline-block;">
-                        <img src="assets/logo.webp?v=3" alt="" style="max-width: 200px; height: auto;">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="assets/logo.webp?v=3" alt="Better Call Wes">
                     </a>
                     <p>Southampton's trusted local plumber and heating engineer. Gas Safe registered (#558654), fully
                         insured, and committed to quality workmanship.</p>
@@ -179,7 +314,6 @@
         </div>
     </footer>
 
-    <script src="js/main.js?v=1.1"></script>
     <script>
         lucide.createIcons();
 
@@ -204,6 +338,32 @@
   src="https://i.bettercallwes.co.uk/js/external-tracking.js"
   data-tracking-id="tk_7328a539b1e343b8a44f6f9bf8537fd6"
 ></script>
+
+    <!-- Growify WhatsApp Conversion Event -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp"]').forEach(function (el) {
+          el.addEventListener('click', function () {
+            window.grpQueue = window.grpQueue || [];
+            if (!window.grp) {
+              window.grp = function () { window.grpQueue.push(arguments); };
+            }
+            var service = document.title.replace(' | Better Call Wes', '').trim();
+            window.grp('conversion', {
+              orderId: 'WA-' + Date.now(),
+              products: [{
+                productId: 'whatsapp-enquiry',
+                productName: service || 'Plumbing & Heating Enquiry',
+                productPrice: 0,
+                productBrand: 'Better Call Wes',
+                productQuantity: 1,
+                purchaseValue: 0
+              }]
+            });
+          });
+        });
+      });
+    </script>
 </body>
 
 </html>
