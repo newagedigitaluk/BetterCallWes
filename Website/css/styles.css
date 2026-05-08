@@ -108,9 +108,14 @@ body {
 }
 
 .faq-answer {
-  max-height: 0;
+  display: grid;
+  grid-template-rows: 0fr;
   overflow: hidden;
-  transition: max-height 0.35s ease, padding 0.3s ease;
+  transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-answer > * {
+  min-height: 0;
   padding: 0 1.5rem;
 }
 
@@ -126,7 +131,7 @@ body {
 }
 
 .faq-item.active .faq-answer {
-  max-height: 300px;
+  grid-template-rows: 1fr;
 }
 
 /* Floating CTA */
@@ -328,14 +333,11 @@ a {
 }
 
 .header .container {
-  /* Creating the floating effect on the container inside */
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  background: #ffffff;
+  border: 1px solid rgba(15, 41, 66, 0.08);
   border-radius: var(--radius-full);
   padding: 0.75rem 2rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(15, 41, 66, 0.06);
 }
 
 .header.scrolled {
@@ -645,10 +647,7 @@ a {
 }
 
 .hero h1 span {
-  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--color-accent);
   display: inline-block;
 }
 
@@ -925,7 +924,7 @@ a {
    FOOTER - Multi-column Clean
    ============================================ */
 .footer {
-  background: #000000;
+  background: #0A1A2E;
   color: var(--text-white);
   padding: 80px 0 40px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);

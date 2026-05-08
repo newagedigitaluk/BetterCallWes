@@ -233,11 +233,11 @@ def generate_child_page(data):
                 <h2>When to Call a Professional for {data['h1']}</h2>
             </div>
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
-                <div style="background: white; padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border-top: 4px solid var(--color-accent);">
+                <div style="background: white; padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
                     <h3 style="margin-bottom: 1rem; color: var(--color-primary);">Unexpected Noises or Leaks</h3>
                     <p style="color: var(--text-body);">If the system is making strange noises or you notice water pooling, it's time to get a professional assessment before it causes property damage.</p>
                 </div>
-                <div style="background: white; padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border-top: 4px solid var(--color-accent);">
+                <div style="background: white; padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
                     <h3 style="margin-bottom: 1rem; color: var(--color-primary);">Loss of Performance</h3>
                     <p style="color: var(--text-body);">A drop in pressure, cold spots, or a system that takes too long to respond usually indicates an underlying issue that needs expert attention.</p>
                 </div>

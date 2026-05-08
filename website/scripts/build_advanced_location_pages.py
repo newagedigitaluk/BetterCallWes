@@ -24,7 +24,7 @@ base_footer = footer_match.group(1).replace('href="css/', 'href="../css/').repla
 
 locations = json.loads(read_file('/home/antigravity/Projects/Better Call Wes/SEO Site Design/location_data.json'))
 
-# Content Variations (No VAT mentioned)
+# Content Variations (transparent pricing)
 headlines = [
     "Your Local Plumber in {display}",
     "Expert Plumbing & Heating Engineer in {display}",

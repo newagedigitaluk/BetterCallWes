@@ -42,7 +42,7 @@ about_content = """
                     <p style="color: var(--text-body); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">I started <strong>Better Call Wes</strong> because I saw a need in Southampton for a truly honest, transparent plumbing service. After spending over a decade in the trade, I got tired of seeing homeowners hit with hidden fees, unexplained charges, and engineers who didn't show up on time.</p>
                     <p style="color: var(--text-body); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">As a sole trader and fully certified Gas Safe engineer (#558654), I handle every single job myself. From the first WhatsApp message to the final tighten of a valve, you deal directly with me. No call centers, no salesmen, just professional, straightforward plumbing.</p>
                     
-                    <div style="background: var(--bg-color); padding: 1.5rem; border-radius: var(--radius-md); border-left: 4px solid var(--color-accent); margin-top: 2rem;">
+                    <div style="background: var(--bg-color); padding: 1.5rem; border-radius: var(--radius-md); margin-top: 2rem;">
                         <h4 style="margin-bottom: 0.5rem;"><i data-lucide="check-circle" style="color: var(--color-accent); width: 18px; display: inline-block; vertical-align: bottom;"></i> My Personal Promise</h4>
                         <p style="color: var(--text-body); margin: 0;">I will never recommend a repair you don't need, I will always charge exactly what is on my Master Price Guide, and I will always leave your home as clean as I found it.</p>
                     </div>

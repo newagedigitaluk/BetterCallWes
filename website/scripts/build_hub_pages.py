@@ -44,7 +44,7 @@ pages_data = [
         ],
         "process": "1. Send a WhatsApp Video. 2. I diagnose or quote. 3. Fast, clean repair. 4. 12-month guarantee.",
         "faq": [
-            ("How much does a boiler repair cost?", "I charge a flat flat £100 diagnostic fee for the first hour, which covers most minor repairs. If parts are needed, I quote upfront before proceeding. No hidden fees."),
+            ("How much does a boiler repair cost?", "I charge a flat £100 diagnostic fee for the first hour, which covers most minor repairs. If parts are needed, I quote upfront before proceeding. No hidden fees."),
             ("Do you carry spare parts?", "Yes, I stock common parts for major brands like Worcester Bosch, Vaillant, Baxi, and Ideal to ensure I can fix most issues on the first visit.")
         ]
     },
@@ -245,7 +245,7 @@ def generate_page(data):
     """
 
     signs_html = "".join([f"""
-    <div style="background: white; padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border-top: 4px solid var(--color-accent);">
+    <div style="background: white; padding: 2rem; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
         <h3 style="margin-bottom: 1rem; color: var(--color-primary);">{sign[0]}</h3>
         <p style="color: var(--text-body);">{sign[1]}</p>
     </div>
