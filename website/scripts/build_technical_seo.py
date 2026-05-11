@@ -1,9 +1,33 @@
 import os
 import re
-from datetime import datetime
+import subprocess
+from datetime import datetime, timezone
 
 base_url = "https://bettercallwes.co.uk"
-website_dir = "/home/antigravity/Projects/Better Call Wes/Website"
+# Resolve website_dir relative to the repo root, so the script works on any host
+script_dir = os.path.dirname(os.path.abspath(__file__))
+repo_root = os.path.abspath(os.path.join(script_dir, "..", ".."))
+website_dir = os.path.join(repo_root, "Website")
+
+
+def file_lastmod(path):
+    """Return YYYY-MM-DD for a file. Prefer git's last-commit date; fall back to mtime."""
+    try:
+        result = subprocess.run(
+            ["git", "log", "-1", "--format=%cI", "--", path],
+            cwd=repo_root,
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+        iso = result.stdout.strip()
+        if iso:
+            return iso[:10]
+    except Exception:
+        pass
+    mtime = os.path.getmtime(path)
+    return datetime.fromtimestamp(mtime, tz=timezone.utc).strftime("%Y-%m-%d")
+
 
 html_files = []
 for root, dirs, files in os.walk(website_dir):
@@ -14,14 +38,13 @@ for root, dirs, files in os.walk(website_dir):
             html_files.append(rel_path)
 
 # 1. Generate sitemap.xml
-date_str = datetime.now().strftime("%Y-%m-%d")
 sitemap_content = ['<?xml version="1.0" encoding="UTF-8"?>']
 sitemap_content.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
 
 for rel_path in html_files:
     if rel_path == "404.html":
         continue
-    
+
     # Prioritize certain pages
     priority = "0.5"
     if rel_path == "index.html":
@@ -29,24 +52,27 @@ for rel_path in html_files:
         priority = "1.0"
     elif rel_path.startswith("services/") and "/" not in rel_path[9:]:
         url = base_url + "/" + rel_path.replace("\\", "/")
-        priority = "0.9" # Hub pages
+        priority = "0.9"  # Hub pages
     elif rel_path in ["about.html", "contact.html", "pricing.html", "reviews.html", "services.html", "booking.html"]:
         url = base_url + "/" + rel_path.replace("\\", "/")
         priority = "0.8"
     else:
-        url = base_url + "/" + rel_path.replace("\\", "/") # Child services and locations
+        url = base_url + "/" + rel_path.replace("\\", "/")  # Child services and locations
         priority = "0.7"
+
+    # Per-file lastmod (git commit date if available, else file mtime)
+    lastmod = file_lastmod(os.path.join(website_dir, rel_path))
 
     sitemap_content.append('  <url>')
     sitemap_content.append(f'    <loc>{url}</loc>')
-    sitemap_content.append(f'    <lastmod>{date_str}</lastmod>')
+    sitemap_content.append(f'    <lastmod>{lastmod}</lastmod>')
     sitemap_content.append(f'    <priority>{priority}</priority>')
     sitemap_content.append('  </url>')
 
 sitemap_content.append('</urlset>')
 
 with open(os.path.join(website_dir, "sitemap.xml"), "w", encoding="utf-8") as f:
-    f.write("\\n".join(sitemap_content))
+    f.write("\n".join(sitemap_content) + "\n")
 
 # 2. Generate robots.txt
 robots_content = f"""User-agent: *
@@ -66,12 +92,19 @@ head_match = re.search(r'(<!DOCTYPE html>.*?</head>)', index_html, re.DOTALL)
 top_match = re.search(r'(<body>\s*<!-- Top Bar -->.*?</header>)', index_html, re.DOTALL)
 footer_match = re.search(r'(<!-- Footer -->.*?</html>)', index_html, re.DOTALL)
 
-base_head = head_match.group(1).replace('<title>Better Call Wes - Your Local Southampton Plumber | Gas Safe Registered</title>', '<title>Page Not Found | Better Call Wes</title>')
-base_head = re.sub(r'<meta name="description".*?>', '<meta name="description" content="The page you are looking for does not exist. Return to Better Call Wes.">', base_head)
+base_head = head_match.group(1).replace(
+    '<title>Better Call Wes - Your Local Southampton Plumber | Gas Safe Registered</title>',
+    '<title>Page Not Found | Better Call Wes</title>',
+)
+base_head = re.sub(
+    r'<meta name="description".*?>',
+    '<meta name="description" content="The page you are looking for does not exist. Return to Better Call Wes.">',
+    base_head,
+)
 base_head = base_head.replace('</head>', '<meta name="robots" content="noindex, follow">\n</head>')
 
-base_top = top_match.group(1)
-base_footer = footer_match.group(1)
+base_top = top_match.group(1) if top_match else ''
+base_footer = footer_match.group(1) if footer_match else ''
 
 not_found_content = """
     <section class="hero text-center" style="background: var(--color-primary); min-height: 60vh; padding-top: 180px; padding-bottom: 80px; display: flex; align-items: center;">
