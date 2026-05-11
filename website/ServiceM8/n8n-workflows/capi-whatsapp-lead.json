@@ -1,0 +1,101 @@
+{
+  "name": "BCW — CAPI WhatsApp Lead",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "bcw-whatsapp-lead",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "a1b2c3d4-0001-0001-0001-000000000001",
+      "name": "Webhook — GHL CTWA",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "webhookId": "bcw-whatsapp-lead"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extract contact + attribution data from GHL webhook payload.\n// GHL's webhook shape varies by trigger type, so we check many possible keys.\nconst body = $input.first().json.body || $input.first().json;\n\nconst rawPhone =\n  body?.phone ||\n  body?.contact?.phone ||\n  body?.contactPhone ||\n  body?.data?.phone ||\n  body?.customData?.phone ||\n  '';\n\nlet phone = String(rawPhone).replace(/\\D/g, '');\nif (phone.startsWith('0')) phone = '44' + phone.slice(1);\nif (!phone.startsWith('44') && phone.length === 10) phone = '44' + phone;\n\nconst email = (body?.email || body?.contact?.email || body?.data?.email || '').toLowerCase().trim();\nconst firstName = (body?.firstName || body?.first_name || body?.contact?.firstName || '').toLowerCase().trim();\nconst lastName = (body?.lastName || body?.last_name || body?.contact?.lastName || '').toLowerCase().trim();\n\nfunction pickAttribution(key) {\n  const candidates = [\n    body?.[key],\n    body?.contact?.[key],\n    body?.attributionSource?.[key],\n    body?.lastAttributionSource?.[key],\n    body?.firstAttributionSource?.[key],\n    body?.customData?.[key],\n    body?.customFields?.[key],\n    body?.contact?.customFields?.[key]\n  ];\n  for (const v of candidates) if (v) return v;\n  return null;\n}\n\nlet ctwaClid = pickAttribution('ctwa_clid') || pickAttribution('ctwaClid') || pickAttribution('ctwa');\nlet adId = pickAttribution('ad_id') || pickAttribution('adId');\nlet adHeadline = pickAttribution('ad_name') || pickAttribution('adName') || pickAttribution('headline');\nlet campaignId = pickAttribution('campaign_id') || pickAttribution('campaignId');\nlet campaignName = pickAttribution('campaign_name') || pickAttribution('campaignName');\nlet sourceUrl = pickAttribution('source_url') || pickAttribution('sourceUrl');\n\n// Fallback: scrape the message body for prepended Headline / Source URL\nconst lastMessage = body?.lastMessage?.body || body?.message?.body || body?.body || '';\nif (typeof lastMessage === 'string') {\n  if (!adHeadline) {\n    const m = lastMessage.match(/Headline:\\s*(.+?)(?:\\n|$)/i);\n    if (m) adHeadline = m[1].trim();\n  }\n  if (!sourceUrl) {\n    const m = lastMessage.match(/Source URL:\\s*(\\S+)/i);\n    if (m) sourceUrl = m[1].trim();\n  }\n}\n\nconst contactId = body?.contact_id || body?.contactId || body?.id || body?.contact?.id || '';\nconst eventTime = Math.floor(Date.now() / 1000);\n// Stable event_id for dedup: contact + ctwa_clid if available, else contact + day bucket\nconst idSeed = ctwaClid ? `${contactId}_${ctwaClid}` : `${contactId}_${Math.floor(eventTime / 86400)}`;\nconst eventId = `lead_${idSeed}`;\n\nreturn [{\n  json: {\n    phone, email, firstName, lastName, contactId,\n    ctwaClid, adId, adHeadline, campaignId, campaignName, sourceUrl,\n    eventTime, eventId,\n    rawPayload: body\n  }\n}];"
+      },
+      "id": "a1b2c3d4-0002-0002-0002-000000000002",
+      "name": "Extract Contact + Attribution",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const crypto = require('crypto');\nconst data = $input.first().json;\n\n// Guard: Meta's business_messaging channel requires a real ctwa_clid.\n// If the inbound message wasn't a CTWA click, skip the CAPI call entirely.\nif (!data.ctwaClid) { return []; }\nconst sha256 = v => v ? crypto.createHash('sha256').update(String(v)).digest('hex') : null;\n\nconst userData = {};\nif (data.phone) userData.ph = [sha256(data.phone)];\nif (data.email) userData.em = [sha256(data.email)];\nif (data.firstName) userData.fn = [sha256(data.firstName)];\nif (data.lastName) userData.ln = [sha256(data.lastName)];\nif (data.contactId) userData.external_id = [sha256(data.contactId)];\n// ctwa_clid is NOT hashed per Meta CAPI spec\nif (data.ctwaClid) userData.ctwa_clid = data.ctwaClid;\nuserData.page_id = '178728745664355';\n\nconst customData = {\n  content_category: 'WhatsApp Enquiry'\n};\nif (data.adId) customData.ad_id = data.adId;\nif (data.adHeadline) customData.ad_headline = data.adHeadline;\nif (data.campaignId) customData.campaign_id = data.campaignId;\nif (data.campaignName) customData.campaign_name = data.campaignName;\n\nconst payload = {\n  data: [{\n    event_name: 'LeadSubmitted',\n    event_time: data.eventTime,\n    event_id: data.eventId,\n    action_source: 'business_messaging',\n    messaging_channel: 'whatsapp',\n    user_data: userData,\n    custom_data: customData\n  }],\n  access_token: 'REPLACE_WITH_META_ACCESS_TOKEN'\n};\n\nreturn [{ json: { payload, debug: { contactId: data.contactId, eventId: data.eventId, hasCtwa: !!data.ctwaClid } } }];"
+      },
+      "id": "a1b2c3d4-0003-0003-0003-000000000003",
+      "name": "Build CAPI Payload",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v21.0/1612104182479593/events",
+        "sendBody": true,
+        "bodyContentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.payload }}",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "id": "a1b2c3d4-0004-0004-0004-000000000004",
+      "name": "Send CAPI Lead Event",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const response = $input.first().json;\nconst status = response.statusCode || 200;\nconst body = response.body || response;\nconst success = status === 200 && body?.events_received > 0;\nreturn [{ json: { success, events_received: body?.events_received || 0, status, fbtrace_id: body?.fbtrace_id, response: body } }];"
+      },
+      "id": "a1b2c3d4-0005-0005-0005-000000000005",
+      "name": "Log Result",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true }) }}",
+        "options": {}
+      },
+      "id": "a1b2c3d4-0006-0006-0006-000000000006",
+      "name": "Respond to GHL",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1120, 480]
+    }
+  ],
+  "connections": {
+    "Webhook — GHL CTWA": {
+      "main": [[{"node": "Extract Contact + Attribution", "type": "main", "index": 0}]]
+    },
+    "Extract Contact + Attribution": {
+      "main": [[{"node": "Build CAPI Payload", "type": "main", "index": 0}]]
+    },
+    "Build CAPI Payload": {
+      "main": [[{"node": "Send CAPI Lead Event", "type": "main", "index": 0}]]
+    },
+    "Send CAPI Lead Event": {
+      "main": [[
+        {"node": "Log Result", "type": "main", "index": 0},
+        {"node": "Respond to GHL", "type": "main", "index": 0}
+      ]]
+    }
+  },
+  "settings": {"executionOrder": "v1"}
+}

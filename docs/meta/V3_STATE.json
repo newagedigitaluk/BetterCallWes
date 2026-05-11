@@ -1,0 +1,37 @@
+{
+  "campaign_id": "120243119276060241",
+  "adset_id": "120243119524580241",
+  "creatives": [
+    [
+      "1492836375662274",
+      "V3 \u2014 Wes Portrait"
+    ],
+    [
+      "1447260397141667",
+      "V3 \u2014 Magnetic Filter"
+    ],
+    [
+      "4328183007423688",
+      "V3 \u2014 Worcester Range"
+    ]
+  ],
+  "ads": [
+    [
+      "120243119618790241",
+      "V3 \u2014 Wes Portrait"
+    ],
+    [
+      "120243119621760241",
+      "V3 \u2014 Magnetic Filter"
+    ],
+    [
+      "120243119625010241",
+      "V3 \u2014 Worcester Range"
+    ]
+  ],
+  "image_hashes": {
+    "wes_portrait": "bf172d0c53a90239e0a6c31c58e3e7f5",
+    "magnetic_filter": "5a4d031d139b15881960df8fce583a6a",
+    "worcester_4000": "435dcfd00947b50c3c7edecf071ada55"
+  }
+}

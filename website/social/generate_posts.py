@@ -63,6 +63,19 @@ def validate_post(post: dict, index: int) -> list:
     if image_type not in VALID_IMAGE_TYPES:
         errors.append(f"Invalid image_type '{image_type}' (must be brand/work/asset/ai)")
 
+    # Wes is a Black African man — any brand/work prompt depicting a person must say so.
+    # Without this, Kie AI defaults to generating a white person, which is wrong and off-brand.
+    if image_type in ("brand", "work"):
+        prompt = post.get("image_prompt", "").lower()
+        has_appearance = any(kw in prompt for kw in ("black african", "dark skin", "black man"))
+        # Van/equipment prompts don't depict a person — skip the check for those
+        has_person = any(kw in prompt for kw in ("photo of", "tradesperson", "engineer", "person", "wes", "man"))
+        if has_person and not has_appearance:
+            errors.append(
+                "brand/work image_prompt depicts a person but doesn't specify Wes's appearance. "
+                "Add: 'Black African British man, dark skin, professional navy uniform'"
+            )
+
     twitter = post.get("twitter", "")
     if len(twitter) > 280:
         errors.append(f"Twitter text is {len(twitter)} chars (max 280)")

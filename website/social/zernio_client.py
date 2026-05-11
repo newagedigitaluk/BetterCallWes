@@ -86,12 +86,31 @@ class ZernioClient:
         )
 
         with open(local_path, "rb") as f:
+            image_bytes = f.read()
+
+        # Try litterbox.catbox.moe (anonymous, 72h expiry — long enough for posting)
+        try:
             resp = requests.post(
-                "https://catbox.moe/user/api.php",
-                data={"reqtype": "fileupload", "userhash": ""},
-                files={"fileToUpload": (filename, f, content_type)},
+                "https://litterbox.catbox.moe/resources/internals/api.php",
+                data={"reqtype": "fileupload", "time": "72h"},
+                files={"fileToUpload": (filename, io.BytesIO(image_bytes), content_type)},
                 timeout=60,
             )
+            resp.raise_for_status()
+            public_url = resp.text.strip()
+            if public_url.startswith("http"):
+                print(f"  [litterbox] Uploaded: {public_url}")
+                return public_url
+        except Exception as e:
+            print(f"  [litterbox] Failed ({e}), trying catbox...")
+
+        # Fallback: catbox.moe permanent anonymous upload
+        resp = requests.post(
+            "https://catbox.moe/user/api.php",
+            data={"reqtype": "fileupload", "userhash": ""},
+            files={"fileToUpload": (filename, io.BytesIO(image_bytes), content_type)},
+            timeout=60,
+        )
         resp.raise_for_status()
         public_url = resp.text.strip()
         if not public_url.startswith("http"):
@@ -127,7 +146,22 @@ class ZernioClient:
         ext = ext_map.get(content_type, ".jpg")
         filename = f"kie_generated{ext}"
 
-        # Upload to catbox.moe
+        # Try litterbox first, then catbox as fallback
+        try:
+            resp = requests.post(
+                "https://litterbox.catbox.moe/resources/internals/api.php",
+                data={"reqtype": "fileupload", "time": "72h"},
+                files={"fileToUpload": (filename, io.BytesIO(image_bytes), content_type)},
+                timeout=60,
+            )
+            resp.raise_for_status()
+            public_url = resp.text.strip()
+            if public_url.startswith("http"):
+                print(f"  [litterbox] Rehosted Kie AI image: {public_url}")
+                return public_url
+        except Exception as e:
+            print(f"  [litterbox] Rehost failed ({e}), trying catbox...")
+
         resp = requests.post(
             "https://catbox.moe/user/api.php",
             data={"reqtype": "fileupload", "userhash": ""},

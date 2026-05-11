@@ -1,0 +1,287 @@
+{
+  "name": "BCW — Invoice & Receipt Forwarder",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 0 19 * * *"
+            }
+          ]
+        }
+      },
+      "id": "b1c2d3e4-0001-0001-0001-000000000001",
+      "name": "Daily 19:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [220, 320],
+      "notes": "Fires every day at 19:00 in the n8n instance's timezone. Set timezone to Europe/London in n8n settings."
+    },
+    {
+      "parameters": {
+        "jsCode": "// Build a Microsoft Graph $filter for messages that:\n//  - arrived in the last 25 hours (overlap of 1h to be safe)\n//  - haven't already been categorised as 'Invoices-Forwarded'\nconst since = new Date(Date.now() - 25 * 60 * 60 * 1000).toISOString();\nconst filter = `receivedDateTime ge ${since} and (categories/any(c:c eq 'Invoices-Forwarded') eq false)`;\nreturn [{ json: { filter, since } }];"
+      },
+      "id": "b1c2d3e4-0002-0002-0002-000000000002",
+      "name": "Build Filter",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [420, 320]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "getAll",
+        "returnAll": true,
+        "filters": {
+          "folderId": "Inbox",
+          "filter": "={{ $json.filter }}"
+        },
+        "additionalFields": {
+          "fields": [
+            "id",
+            "subject",
+            "from",
+            "receivedDateTime",
+            "bodyPreview",
+            "hasAttachments",
+            "categories"
+          ]
+        }
+      },
+      "id": "b1c2d3e4-0003-0003-0003-000000000003",
+      "name": "Fetch New Inbox Messages",
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [640, 320],
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "REPLACE_WITH_OUTLOOK_OAUTH_CREDENTIAL_ID",
+          "name": "Outlook — wes@bettercallwes.co.uk"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// One item per message arrives here. Normalise the fields the LLM needs.\nconst m = $input.first().json;\nconst senderEmail = m.from?.emailAddress?.address || '';\nconst senderName  = m.from?.emailAddress?.name || '';\nreturn [{\n  json: {\n    messageId: m.id,\n    subject: m.subject || '',\n    senderEmail,\n    senderName,\n    receivedAt: m.receivedDateTime,\n    bodyPreview: (m.bodyPreview || '').slice(0, 1500),\n    hasAttachments: !!m.hasAttachments\n  }\n}];"
+      },
+      "id": "b1c2d3e4-0004-0004-0004-000000000004",
+      "name": "Normalise Message",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [860, 320]
+    },
+    {
+      "parameters": {
+        "modelId": "openai/gpt-4o-mini",
+        "prompt": "You are reviewing an email received by Better Call Wes (a sole-trader plumbing & heating business in Southampton, UK). Decide whether this email represents a COST TO THE BUSINESS that should be sent to bookkeeping (Dext).\n\nForward = TRUE when the email is:\n- A supplier invoice (Screwfix, BES, Plumb Center, City Plumbing, Wolseley, Toolstation, etc.)\n- A purchase receipt (fuel, tools, materials, parking, software subscriptions)\n- A subscription / SaaS billing receipt (Google, Microsoft, Coolify, ServiceM8, Meta ads, GoHighLevel, etc.)\n- A utility / service bill for the business (van insurance, phone, public liability)\n- An order confirmation from a supplier IF it includes a price/total\n\nForward = FALSE when the email is:\n- A customer invoice the BUSINESS sent OUT (revenue, not cost)\n- Marketing, newsletters, promotions\n- Quote requests, lead enquiries, customer messages\n- Personal mail\n- Bank statements, HMRC notices (handled separately)\n- Delivery tracking with no price\n- Anything ambiguous or non-financial\n\nEmail to classify:\nFrom: {{ $json.senderName }} <{{ $json.senderEmail }}>\nSubject: {{ $json.subject }}\nHas attachments: {{ $json.hasAttachments }}\nBody preview: {{ $json.bodyPreview }}\n\nRespond with strict JSON only, no markdown:\n{\"is_cost_doc\": true|false, \"confidence\": 0.0-1.0, \"supplier\": \"name or null\", \"amount_gbp\": number or null, \"reason\": \"one short sentence\"}",
+        "maxTokens": 200,
+        "temperature": 0
+      },
+      "id": "b1c2d3e4-0005-0005-0005-000000000005",
+      "name": "Classify (Straico)",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [1080, 320],
+      "credentials": {
+        "openAiApi": {
+          "id": "REPLACE_WITH_STRAICO_CREDENTIAL_ID",
+          "name": "Straico API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse the LLM's JSON response and merge with the message context.\nconst raw = $input.first().json.message?.content || $input.first().json.content || '{}';\nlet parsed = {};\ntry { parsed = JSON.parse(raw.trim().replace(/^```json|```$/g, '').trim()); }\ncatch (e) { parsed = { is_cost_doc: false, confidence: 0, reason: 'parse_failed: ' + e.message }; }\n\nconst src = $node['Normalise Message'].json;\nreturn [{\n  json: {\n    ...src,\n    classification: parsed,\n    shouldForward: parsed.is_cost_doc === true && (parsed.confidence ?? 0) >= 0.7\n  }\n}];"
+      },
+      "id": "b1c2d3e4-0006-0006-0006-000000000006",
+      "name": "Parse Classification",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1300, 320]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.shouldForward }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "b1c2d3e4-0007-0007-0007-000000000007",
+      "name": "Should Forward?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [1520, 320]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "forward",
+        "messageId": "={{ $json.messageId }}",
+        "to": "akwetey.bortier.akwetey.bortier@dext.cc",
+        "additionalFields": {
+          "comment": "Auto-forwarded by Better Call Wes invoice bot — classified as supplier cost doc.\nSupplier: {{ $json.classification.supplier || 'unknown' }}\nAmount: £{{ $json.classification.amount_gbp || '?' }}\nConfidence: {{ $json.classification.confidence }}"
+        }
+      },
+      "id": "b1c2d3e4-0008-0008-0008-000000000008",
+      "name": "Forward → Dext",
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [1740, 240],
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "REPLACE_WITH_OUTLOOK_OAUTH_CREDENTIAL_ID",
+          "name": "Outlook — wes@bettercallwes.co.uk"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "forward",
+        "messageId": "={{ $json.messageId }}",
+        "to": "invoice_a4b25ba2@import.servicem8.com",
+        "additionalFields": {
+          "comment": "Auto-forwarded by Better Call Wes invoice bot — classified as supplier cost doc.\nSupplier: {{ $json.classification.supplier || 'unknown' }}\nAmount: £{{ $json.classification.amount_gbp || '?' }}"
+        }
+      },
+      "id": "b1c2d3e4-0009-0009-0009-000000000009",
+      "name": "Forward → ServiceM8",
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [1740, 400],
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "REPLACE_WITH_OUTLOOK_OAUTH_CREDENTIAL_ID",
+          "name": "Outlook — wes@bettercallwes.co.uk"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "update",
+        "messageId": "={{ $json.messageId }}",
+        "updateFields": {
+          "categories": ["Invoices-Forwarded"],
+          "isRead": true
+        }
+      },
+      "id": "b1c2d3e4-000a-000a-000a-00000000000a",
+      "name": "Tag as Forwarded",
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [1960, 320],
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "REPLACE_WITH_OUTLOOK_OAUTH_CREDENTIAL_ID",
+          "name": "Outlook — wes@bettercallwes.co.uk"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Aggregate every item that flowed through forwarding into a single summary item.\nconst items = $input.all();\nconst forwarded = items.map(i => i.json).filter(j => j.shouldForward);\nconst lines = forwarded.map(j => {\n  const c = j.classification || {};\n  const supplier = c.supplier || j.senderName || j.senderEmail;\n  const amount = c.amount_gbp != null ? `£${c.amount_gbp}` : '£?';\n  return `• ${supplier} — ${amount} — \"${j.subject}\"`;\n});\nconst summary = forwarded.length\n  ? `Forwarded ${forwarded.length} invoice${forwarded.length === 1 ? '' : 's'} to Dext + ServiceM8:\\n\\n${lines.join('\\n')}`\n  : null;\nreturn [{ json: { count: forwarded.length, summary, forwarded } }];"
+      },
+      "id": "b1c2d3e4-000b-000b-000b-00000000000b",
+      "name": "Build Summary",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2180, 320]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{ $json.count }}",
+              "operation": "larger",
+              "value2": 0
+            }
+          ]
+        }
+      },
+      "id": "b1c2d3e4-000c-000c-000c-00000000000c",
+      "name": "Anything Forwarded?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [2400, 320]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "subject": "Invoice forwarder — {{ $json.count }} forwarded today",
+        "bodyContent": "={{ $json.summary }}",
+        "toRecipients": "wes@bettercallwes.co.uk",
+        "additionalFields": {
+          "bodyContentType": "Text"
+        }
+      },
+      "id": "b1c2d3e4-000d-000d-000d-00000000000d",
+      "name": "Email Daily Summary",
+      "type": "n8n-nodes-base.microsoftOutlook",
+      "typeVersion": 2,
+      "position": [2620, 320],
+      "credentials": {
+        "microsoftOutlookOAuth2Api": {
+          "id": "REPLACE_WITH_OUTLOOK_OAUTH_CREDENTIAL_ID",
+          "name": "Outlook — wes@bettercallwes.co.uk"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Daily 19:00": {
+      "main": [[{"node": "Build Filter", "type": "main", "index": 0}]]
+    },
+    "Build Filter": {
+      "main": [[{"node": "Fetch New Inbox Messages", "type": "main", "index": 0}]]
+    },
+    "Fetch New Inbox Messages": {
+      "main": [[{"node": "Normalise Message", "type": "main", "index": 0}]]
+    },
+    "Normalise Message": {
+      "main": [[{"node": "Classify (Straico)", "type": "main", "index": 0}]]
+    },
+    "Classify (Straico)": {
+      "main": [[{"node": "Parse Classification", "type": "main", "index": 0}]]
+    },
+    "Parse Classification": {
+      "main": [[{"node": "Should Forward?", "type": "main", "index": 0}]]
+    },
+    "Should Forward?": {
+      "main": [
+        [
+          {"node": "Forward → Dext", "type": "main", "index": 0},
+          {"node": "Forward → ServiceM8", "type": "main", "index": 0}
+        ],
+        [{"node": "Build Summary", "type": "main", "index": 0}]
+      ]
+    },
+    "Forward → Dext": {
+      "main": [[{"node": "Tag as Forwarded", "type": "main", "index": 0}]]
+    },
+    "Forward → ServiceM8": {
+      "main": [[{"node": "Tag as Forwarded", "type": "main", "index": 0}]]
+    },
+    "Tag as Forwarded": {
+      "main": [[{"node": "Build Summary", "type": "main", "index": 0}]]
+    },
+    "Build Summary": {
+      "main": [[{"node": "Anything Forwarded?", "type": "main", "index": 0}]]
+    },
+    "Anything Forwarded?": {
+      "main": [
+        [{"node": "Email Daily Summary", "type": "main", "index": 0}],
+        []
+      ]
+    }
+  },
+  "settings": {"executionOrder": "v1"}
+}

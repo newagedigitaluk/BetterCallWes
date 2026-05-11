@@ -1,64 +1,72 @@
-import os
+"""Validate internal links in website/site/.
+
+Walks every .html file, extracts hrefs and srcs, and checks that each
+points at a file (or directory containing index.html) that actually
+exists on disk. Externals, anchors, and mailto/tel/wa.me links are
+skipped.
+"""
+
+from __future__ import annotations
+
 import re
-from urllib.parse import urlparse
+from pathlib import Path
 
-website_dir = "/home/antigravity/Projects/Better Call Wes/Website"
+SITE = Path(__file__).resolve().parents[1] / "site"
+SKIP_PREFIXES = ("http://", "https://", "mailto:", "tel:", "javascript:", "wa.me", "data:", "#")
 
-html_files = []
-for root, dirs, files in os.walk(website_dir):
-    for file in files:
-        if file.endswith(".html"):
-            html_files.append(os.path.join(root, file))
 
-valid_paths = set()
-for file_path in html_files:
-    rel_path = os.path.relpath(file_path, website_dir)
-    valid_paths.add(rel_path.replace("\\", "/"))
-    # Also add the directory if the file is index.html
-    if file_path.endswith("index.html"):
-        valid_paths.add(os.path.dirname(rel_path).replace("\\", "/"))
-
-errors = []
-
-for file_path in html_files:
-    with open(file_path, 'r', encoding='utf-8') as f:
-        content = f.read()
-    
-    # Simple regex to find hrefs
-    links = re.findall(r'href=["\'](.*?)["\']', content)
-    
-    for link in links:
-        # Ignore external links, mailto, tel, anchors
-        if link.startswith("http") or link.startswith("mailto:") or link.startswith("tel:") or link.startswith("#") or link.startswith("https://wa.me"):
+def main() -> int:
+    valid: set[str] = set()
+    for f in SITE.rglob("*"):
+        if not f.is_file():
             continue
-            
-        # Ignore CSS/JS/Image links
-        if link.endswith(".css") or link.endswith(".png") or link.endswith(".jpg") or link.endswith(".svg"):
-            continue
+        rel = f.relative_to(SITE).as_posix()
+        valid.add(rel)
 
-        # Clean the link
-        clean_link = link.split('#')[0].strip()
-        if not clean_link:
-            continue
+    href_re = re.compile(r'(?:href|src)=["\']([^"\']+)["\']')
+    errors: list[str] = []
 
-        # Resolve relative path using os.path.abspath logic manually
-        # Since it's a simple flat-ish structure we can do it textually
-        base_dir = os.path.dirname(file_path)
-        resolved_path = os.path.normpath(os.path.join(base_dir, clean_link))
-        
-        # Convert to relpath from website_dir
-        try:
-            rel_resolved = os.path.relpath(resolved_path, website_dir).replace("\\", "/")
-            if rel_resolved not in valid_paths and rel_resolved + "/index.html" not in valid_paths and clean_link != "/":
-                # Special case: "/" link resolves to index.html
-                if not (clean_link == "/" and "index.html" in valid_paths):
-                    errors.append(f"Broken link: '{link}' found in {os.path.basename(file_path)}")
-        except ValueError:
-            pass
+    for f in SITE.rglob("*.html"):
+        text = f.read_text(encoding="utf-8", errors="ignore")
+        rel_file = f.relative_to(SITE).as_posix()
+        for url in href_re.findall(text):
+            if not url or url.startswith(SKIP_PREFIXES):
+                continue
+            # Strip query and fragment
+            clean = url.split("?", 1)[0].split("#", 1)[0]
+            if not clean:
+                continue
+            # Resolve site-absolute paths from SITE root; relative paths from the file's dir.
+            base = SITE if clean.startswith("/") else f.parent
+            try:
+                resolved = (base / clean.lstrip("/")).resolve().relative_to(SITE.resolve()).as_posix()
+            except ValueError:
+                errors.append(f"{rel_file}: '{url}' resolves outside site")
+                continue
+            # Exact file match
+            if resolved in valid:
+                continue
+            # Resolves to site root
+            if resolved in ("", "."):
+                if "index.html" in valid:
+                    continue
+            # Directory → index.html match
+            index_candidate = (resolved.rstrip("/") + "/index.html").lstrip("/")
+            if index_candidate in valid:
+                continue
+            # Clean URL → .html match
+            if (resolved + ".html") in valid:
+                continue
+            errors.append(f"{rel_file}: '{url}' → {resolved}")
 
-if errors:
-    print("Found broken links:")
-    for e in errors:
-        print(" - " + e)
-else:
-    print("All internal links validated successfully. No broken links found.")
+    if errors:
+        print(f"Broken links: {len(errors)}")
+        for e in errors:
+            print(f"  - {e}")
+        return 1
+    print(f"All internal links validated successfully. {sum(1 for _ in SITE.rglob('*.html'))} HTML files scanned.")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

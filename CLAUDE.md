@@ -15,15 +15,17 @@ This repository contains both the website and the business workspace:
 ```
 Better Call Wes/
 ├── CLAUDE.md                  ← You are here
-├── website/                   ← Website code, scripts, and deployment
-│   ├── site/                  ← HTML/CSS files (the actual website)
-│   ├── scripts/               ← Python build scripts (SEO, images, etc.)
+├── Dockerfile                 ← Docker build config (copies website/site → nginx)
+├── nginx.conf                 ← Web server config
+├── website/                   ← Single umbrella for everything website-related
+│   ├── site/                  ← THE DEPLOYABLE static site (HTML/CSS/JS/images)
+│   ├── scripts/               ← Python build scripts + scripts/seo/ pipeline
 │   ├── docs/                  ← DESIGN.md, SITE.md, deployment docs
-│   ├── Dockerfile            ← Docker build config
-│   ├── nginx.conf            ← Web server config
-│   ├── ServiceM8/            ← Job management workflows
-│   ├── social/               ← Social media content bank
-│   └── marketingskills/      ← Marketing content library
+│   ├── social/                ← Social media content bank + posting automation
+│   ├── ServiceM8/             ← Job management forms + n8n workflows
+│   ├── marketingskills/       ← Marketing content library
+│   ├── Brand Images/          ← Brand + work photos for ads/social
+│   └── SEO Site Design/       ← Original SEO design brief
 └── workspace/                 ← Business operations and session management
     ├── obsidian/              ← Quotes, customers, suppliers, templates
     ├── scripts/               ← start-session.sh, end-session.sh
@@ -132,3 +134,14 @@ If any significant decisions were made during the session, add an entry at the *
 ```
 
 Only add a decision entry if an architectural, tooling, or strategy decision was made. Skip if the session was purely implementation of a previously agreed approach.
+
+
+---
+
+## Environment & File Access
+
+This project lives on the VPS at `/home/wes/Coding/Projects/<this project>/` on local **ext4** disk (migrated 2026-04-25 from a fuse.rclone gdrive mount). The Mac browses these files via **SSHFS at `~/VPS/Projects/<this project>/`** (FUSE-T, auto-mounted on login by `com.wes.vps-sshfs.plist`).
+
+**Do not run `npm install`, builds, test runners, `pip install`, or other heavy tooling through the Mac SSHFS mount** — every file access goes over the network and will be slow. Run all dev work on the VPS directly (SSH or VS Code Remote-SSH). The SSHFS mount is for browsing, opening files in Mac apps, and quick edits only.
+
+Nightly archival to `gdrive:Coding-Backup/latest/` runs at 03:30 UTC. Logs: `~/.local/share/rclone/archival.log`.

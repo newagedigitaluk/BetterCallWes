@@ -1,3 +1,17 @@
+# n8n Workflows — Better Call Wes
+
+This folder holds version-controlled n8n workflow JSON for the BCW automations.
+
+| Workflow | Purpose | Setup guide |
+|---|---|---|
+| `capi-whatsapp-lead.json` | Sends Meta CAPI events when a WhatsApp lead arrives via GHL | (inline credentials) |
+| `n8n_email_trap.json` | Watches Facebook group notifications for plumbing leads | this README, below |
+| `facebook-lead-sniper.json` | Bright Data scraper for Facebook lead surfacing | inline |
+| `android-lead-relay.json` | MacroDroid → n8n webhook relay | `ANDROID_SETUP.md` |
+| `invoice-forwarder.json` | **Daily 19:00**: scans Outlook for supplier invoices/receipts and auto-forwards to Dext + ServiceM8 | `INVOICE-FORWARDER-SETUP.md` |
+
+---
+
 # Facebook Lead Sniper Setup Guide
 
 ## 1. Facebook Settings (Crucial)

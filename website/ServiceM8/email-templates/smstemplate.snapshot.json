@@ -1,0 +1,86 @@
+[
+  {
+    "uuid": "fca35a71-bae9-4728-86bb-4916487e29db",
+    "edit_date": "2015-02-04 13:33:22",
+    "active": 1,
+    "name": "Tech Delayed Template",
+    "message": "Hi {job.contact_first},\nplease be advised the technician servicing your area has been delayed on a previous job.\nApologies for any inconvenience, {vendor.name}."
+  },
+  {
+    "uuid": "b360b357-d431-4f77-9ade-cbc64ee85fab",
+    "edit_date": "2015-02-04 13:33:22",
+    "active": 1,
+    "name": "Parts Ordered Template",
+    "message": "Hi {job.contact_first},\nyour parts have been ordered and you will be contacted when they arrive and are ready for installation.\nThank you, {vendor.name}."
+  },
+  {
+    "uuid": "85f704a3-cf03-4da2-9415-5b25714314cb",
+    "edit_date": "2021-12-07 22:13:44",
+    "active": 0,
+    "name": "Rated People SMS",
+    "message": "Hi job.company_name},\r\n\r\nI am contacting you regarding an ad you left on Rated People. If you could contact us back on 020 8123 3663 we can discuss this further.\r\n\r\nThanks\r\n\r\n{vendor.name}"
+  },
+  {
+    "uuid": "f5e49cde-72b7-467e-b0c6-ad618e74bc0b",
+    "edit_date": "2025-07-09 21:53:49",
+    "active": 0,
+    "name": "CheckaTrade review",
+    "message": "Hi when you have a chance could you please leave a review for the work carried out on checkatrade using the following link.\nhttps://www.checkatrade.com/GiveFeedback/default.aspx?id=&Member=NewAgePlumbingandHeating"
+  },
+  {
+    "uuid": "fca940ba-0a12-4088-b547-d50e076e6c8b",
+    "edit_date": "2019-09-16 00:14:31",
+    "active": 1,
+    "name": "SMS Invoice",
+    "message": "Please find your {vendor.name} invoice attached for {job.total_price}\n\n{document}\n\nIf you are unable to open the invoice please call our office on {location.phone_1} and quote job #{job.generated_job_id}"
+  },
+  {
+    "uuid": "67460c41-d528-4504-a7b4-e714a657702b",
+    "edit_date": "2019-09-16 00:14:31",
+    "active": 1,
+    "name": "SMS Quote",
+    "message": "Please find your {vendor.name} quote attached for {job.total_price}\n\n{document}\n\nIf you are unable to open the quote please call our office on {location.phone_1} and quote job #{job.generated_job_id}"
+  },
+  {
+    "uuid": "271a3354-3cb0-4db7-93e7-1bd94713c20b",
+    "edit_date": "2025-07-09 21:53:53",
+    "active": 0,
+    "name": "Google Review",
+    "message": "Hi {job.contact_first} thank you for hiring {vendor.name}. We really appreciate your business, support and feedback, and truly value you as a customer. Our goal is to provide the very best service and we are always looking for ways to improve. We are looking to gain feedback on our service so that we can enhance your experience and make our customers happy. When you have a chance could you please leave a review for the work carried out on Google using the following link. https://g.page/newageph/review"
+  },
+  {
+    "uuid": "818295c1-a5c9-49de-a90d-1ef08db4da5b",
+    "edit_date": "2024-01-11 21:40:49",
+    "active": 1,
+    "name": "Aqualogic Appointment OT",
+    "message": "Hi {job.contact_first} {job.contact_last},\n\nI have received your details from Aqualogic, who are working on behalf of Southern Water. They recently conducted a water assessment at your property and discovered a leak from a toilet.\n\nI am reaching out to schedule an appointment at a convenient date and time. We will be in your area on xx/xx/xxxx. Please click the link below to select a suitable time. If none of the available options work for you, please let us know and we will provide alternative options.\n\nThank you, \nWesley"
+  },
+  {
+    "uuid": "df0f5415-bc30-43e3-96b3-1ef60e2c8a2b",
+    "edit_date": "2022-09-14 15:26:57",
+    "active": 1,
+    "name": "Book Appointment Reminder",
+    "message": "Hi {job.contact_first} {job.billing_contact_last},\r\nThis is just a reminder, to book your appointment for your {job.category}. At your earliest convienence.\r\nThanks Wesley "
+  },
+  {
+    "uuid": "f555043d-0da6-49a4-a33f-1efc4090e5ab",
+    "edit_date": "2022-09-21 00:07:12",
+    "active": 1,
+    "name": "Navigate To Job Template",
+    "message": "Hello {job.contact_first},This is a courtesy message to let you know {staff.first} from {vendor.name} is on the way to carry out your {job.category} {and_will_be_arriving_in_approximately_x_minutes}. Please call {location.phone_1} if you are unable to be at the premises at this time."
+  },
+  {
+    "uuid": "063da071-37de-4a39-ae1d-20da1a08eecb",
+    "edit_date": "2024-01-11 21:42:25",
+    "active": 1,
+    "name": "Aqualogic Appointment",
+    "message": "Hi {job.contact_first} {job.contact_last}, I have received your details from Aqualogic, who are working on behalf of Southern Water. They recently conducted a water assessment at your property and discovered a toilet leak. I am reaching out to schedule an appointment at a convenient date and time. Please click the link below to select a suitable date and time. Thank you, Wesley."
+  },
+  {
+    "uuid": "e51d4945-fb1f-4698-b4e8-2363574ecb7b",
+    "edit_date": "2025-10-21 08:37:32",
+    "active": 1,
+    "name": "SJM Arrival",
+    "message": "Hi there, it's Wes. Just to let you know I'll be with you in 20-30 minutes for your Plumbing or Gas appointment booked for today."
+  }
+]

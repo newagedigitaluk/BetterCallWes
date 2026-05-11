@@ -160,9 +160,45 @@ Each post needs an image. Choose the right type for the content:
 
 `caption`: The text that appears overlaid on the image. Keep it short — max 8 words, punchy, matches the post hook.
 
-`image_prompt`:
-- For `brand`/`work`/`asset`: Describe the text overlay treatment — e.g. "Add bold white text '[CAPTION]' as a clean caption banner at the top of this image. Semi-transparent dark background behind the text. Modern professional social media card style."
-- For `ai`: Describe the full scene to generate — e.g. "Clean invoice on clipboard, 'Upfront pricing, no surprises' text visible, warm UK home setting, soft lighting, professional photography style."
+`image_prompt`: Structured prompts engineered for **GPT Image 2** (OpenAI's image model exposed via Kie.ai). GPT Image 2 is best-in-class on text rendering but the Kie.ai wrapper doesn't expose a mask parameter — every image-to-image call is a full re-render guided by the source. Preservation is entirely prompt-driven, so prompts MUST be structured and explicit.
+
+**Required structure for `brand` / `work` / `asset` prompts (image-to-image):**
+
+```
+TASK: Add a caption banner overlay to the source photo.
+
+SOURCE: The input image shows [precise subject description — what IS in the photo, anatomically accurate, including any hardware the model must render correctly]. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.
+
+CHANGE: Add ONE caption banner in the [upper third / lower third].
+- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges
+- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner
+- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): "[CAPTION]"
+- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility
+
+CONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.
+
+USE CASE: Instagram social post, square 1:1, 1080x1080.
+```
+
+**Required structure for `ai` prompts (text-to-image):**
+
+```
+SCENE: [setting — e.g. warm UK home, utility room, kitchen worktop — with lighting + camera style]
+SUBJECT: [hero element]. Text reads (EXACT TEXT, verbatim, no substitutions, no duplicates): "[CAPTION]"
+DETAILS: [supporting props and colour palette]
+USE CASE: Instagram social post, square 1:1, 1080x1080.
+CONSTRAINTS: Render text verbatim, no extra words, no duplicate lines, no fake logos. Photorealistic, not illustrative.
+```
+
+**Critical rules:**
+
+- **Be anatomically specific** in the SOURCE description. A bleed valve is a small square socket at the top-corner of a radiator, NOT a key on the front face. If you don't describe it, the model will invent it.
+- **Quote-wrap all literal text** with `EXACT TEXT, verbatim, no substitutions, no duplicates`.
+- **Enumerate what's in the source** and explicitly forbid additions: "do not add additional pipes, brackets, valves, tools, or fittings beyond those in the source."
+- **For brand/work prompts depicting a person**: always include `Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source.`
+- **Never reference a different van** — Wes's van is a black Ford Transit Custom SWB panel van. Always that van, no others.
+
+Reference: [OpenAI Cookbook — GPT Image Prompting Guide](https://cookbook.openai.com/examples/multimodal/image-gen-1.5-prompting_guide) + [fal GPT Image 2 guide](https://fal.ai/learn/tools/prompting-gpt-image-2).
 
 ---
 

@@ -1,9 +1,9 @@
 """
-Kie AI client for image generation via Nano Banana 2.
+Kie AI client for image generation via GPT Image 2.
 
-Usage:
-  - Brand/work/asset posts: provide image_input_url (real photo) + caption overlay prompt
-  - AI posts: provide prompt only (fully generated image)
+Two models depending on whether a base image is supplied:
+  - gpt-image-2-image-to-image: edit/overlay an existing photo (brand/work/asset)
+  - gpt-image-2-text-to-image:  pure generation from prompt (ai)
 
 API docs: https://docs.kie.ai
 """
@@ -34,20 +34,24 @@ class KieClient:
         prompt: str,
         image_input_url: str = None,
         aspect_ratio: str = "1:1",
-        resolution: str = "1K",
-        output_format: str = "jpg",
+        resolution: str = None,
+        output_format: str = None,
         poll_interval: int = 5,
-        timeout: int = 180,
+        timeout: int = 300,
     ) -> str:
         """
-        Generate or edit an image using Kie AI Nano Banana 2.
+        Generate or edit an image using Kie AI GPT Image 2.
+
+        The right model is selected automatically from image_input_url:
+          - With a base image → gpt-image-2-image-to-image
+          - Without           → gpt-image-2-text-to-image
 
         Args:
             prompt: Text description (for ai type) or overlay instruction (for brand/work/asset)
             image_input_url: Public URL of a base image to edit (None for pure generation)
-            aspect_ratio: '1:1' recommended for all platforms
-            resolution: '1K', '2K', or '4K'
-            output_format: 'jpg' or 'png'
+            aspect_ratio: '1:1' recommended for social feeds (see Kie docs for full list)
+            resolution: Accepted for backwards compatibility but ignored by GPT Image 2
+            output_format: Accepted for backwards compatibility but ignored by GPT Image 2
             poll_interval: Seconds between status checks
             timeout: Max seconds to wait for generation
 
@@ -57,16 +61,25 @@ class KieClient:
         Raises:
             RuntimeError: If generation fails or times out
         """
-        payload = {
-            "model": "nano-banana-2",
-            "input": {
-                "prompt": prompt,
-                "aspect_ratio": aspect_ratio,
-                "resolution": resolution,
-                "output_format": output_format,
-                "image_input": [image_input_url] if image_input_url else [],
-            },
-        }
+        if image_input_url:
+            payload = {
+                "model": "gpt-image-2-image-to-image",
+                "input": {
+                    "prompt": prompt,
+                    "input_urls": [image_input_url],
+                    "aspect_ratio": aspect_ratio,
+                    "nsfw_checker": True,
+                },
+            }
+        else:
+            payload = {
+                "model": "gpt-image-2-text-to-image",
+                "input": {
+                    "prompt": prompt,
+                    "aspect_ratio": aspect_ratio,
+                    "nsfw_checker": True,
+                },
+            }
 
         # Submit task
         resp = self.session.post(f"{BASE_URL}/jobs/createTask", json=payload)

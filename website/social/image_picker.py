@@ -21,7 +21,8 @@ PROJECT_ROOT = Path(__file__).parent.parent
 
 BRAND_DIR = PROJECT_ROOT / "Brand Images"
 WORK_DIR  = PROJECT_ROOT / "Brand Images" / "Work Images"
-ASSET_DIR = PROJECT_ROOT / "Website" / "assets" / "images"
+# Assets live in Website/ at the repo root, one level above website/
+ASSET_DIR = PROJECT_ROOT.parent / "Website" / "assets" / "images"
 
 # Asset images mapped by topic keywords for smarter selection
 ASSET_KEYWORD_MAP = {

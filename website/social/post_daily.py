@@ -231,17 +231,41 @@ def main():
         return
 
     # Step 2: Get public URL for real photo (needed as Kie AI image_input)
-    # Upload local file to catbox.moe (free, no auth) to get a public URL
     from zernio_client import ZernioClient
     zernio = ZernioClient()
     base_image_url = None
+    upload_failed = False
     if real_image_path:
         log(f"📤 Uploading base photo for Kie AI: {os.path.basename(real_image_path)}")
         try:
             base_image_url = zernio.upload_image_for_kie(real_image_path)
         except Exception as e:
-            log(f"  ⚠️  Failed to upload base photo: {e}. Will generate pure AI image.")
+            log(f"  ⚠️  Failed to upload base photo: {e}.")
+            upload_failed = True
             base_image_url = None
+
+    # SAFEGUARD: If image type is 'brand' or 'work' (shows a person / Wes) and
+    # the photo upload failed, do NOT let Kie AI generate a person from scratch —
+    # that produces generic white people which is completely wrong and off-brand.
+    # Instead, skip Kie AI and post without an image for this run.
+    if upload_failed and image_type in ("brand", "work"):
+        log("  🛑 Skipping Kie AI generation — brand/work post requires a real photo base.")
+        log("     Post will be published without an image rather than risk wrong AI output.")
+        kie_image_url = None
+        media_url = None
+        # Skip straight to posting
+        log("🚀 Publishing to social platforms (no image)...")
+        post_to_platforms(post, accounts, media_url, dry_run=False)
+        post["status"] = "sent"
+        post["sent_at"] = datetime.now(timezone.utc).isoformat()
+        post["image_url_used"] = None
+        if real_image_path:
+            update_used_log(bank, image_type, real_image_path)
+        save_content_bank(bank)
+        remaining = count_pending(bank)
+        log(f"\n✅ Posted: '{post['topic']}' (text only — image upload failed)")
+        log(f"   Pending posts remaining: {remaining}")
+        return
 
     # Step 3: Generate image via Kie AI
     log(f"🎨 Generating image via Kie AI (base={'yes' if base_image_url else 'no'})...")
