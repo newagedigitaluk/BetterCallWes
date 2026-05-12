@@ -284,12 +284,18 @@ async def get_availability(
 
     requested = duration_min or svc.get("base_duration_min", 60)
 
-    # Booking rules (lead-time buffer + same-day cutoff). Tunable from
-    # services.json so Wes can adjust without a redeploy of this service.
+    # Booking rules (lead-time buffer + same-day cutoff + latest start time).
+    # Tunable from services.json so Wes can adjust without a redeploy of
+    # this service.
     rules = config["config"].get("booking_rules", {})
     min_lead_hours = float(rules.get("min_lead_time_hours", 0))
     same_day_cutoff = rules.get("same_day_cutoff_hour")
     whole_day_lead_days = int(rules.get("whole_day_min_lead_days", 1))
+    latest_start_raw = rules.get("latest_start_time")
+    latest_start = (
+        datetime.strptime(latest_start_raw, "%H:%M").time()
+        if latest_start_raw else None
+    )
 
     # Power Flush + similar full-day services
     if requested >= 360:  # 6+ hours = block the whole day
@@ -310,6 +316,7 @@ async def get_availability(
                 hours=hours,
                 min_lead_time_hours=min_lead_hours,
                 same_day_cutoff_hour=same_day_cutoff,
+                latest_start_time=latest_start,
             )
         )
 

@@ -15,6 +15,7 @@
     "booking_rules": {
       "min_lead_time_hours": 2,
       "same_day_cutoff_hour": 15,
+      "latest_start_time": "16:30",
       "whole_day_min_lead_days": 1
     },
     "service_area": {

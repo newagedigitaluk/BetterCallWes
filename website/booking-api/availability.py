@@ -95,6 +95,7 @@ def free_slots(
     now: datetime | None = None,
     min_lead_time_hours: float = 0,
     same_day_cutoff_hour: int | None = None,
+    latest_start_time: time | None = None,
 ) -> Iterator[TimeBlock]:
     """Walk forward day by day, yielding free slots that fit duration_min.
 
@@ -109,6 +110,10 @@ def free_slots(
         same_day_cutoff_hour: if now.hour >= this value, no same-day slots are
              offered at all (Wes's day is too far gone to take more work).
              None disables the cutoff.
+        latest_start_time: a slot may not START later than this time-of-day
+             on any day. Tighter than the natural work_end cap — e.g. set to
+             16:30 to keep most jobs finishing close to 17:00 even though
+             working hours end at 17:00. None disables the rule.
     """
     if now is None:
         now = datetime.now()
@@ -135,7 +140,12 @@ def free_slots(
                     start=cursor,
                     end=cursor + timedelta(minutes=duration_min),
                 )
-                if proposed.start >= earliest and not any(
+                start_ok = proposed.start >= earliest
+                latest_ok = (
+                    latest_start_time is None
+                    or proposed.start.time() <= latest_start_time
+                )
+                if start_ok and latest_ok and not any(
                     proposed.overlaps(b) for b in relevant
                 ):
                     yield proposed
