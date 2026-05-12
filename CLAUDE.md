@@ -4,7 +4,7 @@
 
 Better Call Wes is a sole-trader plumbing and heating business based in Southampton, Hampshire. Wes holds Gas Safe registration #558654. The business serves SO14–SO51 postcodes. The site is a static HTML/CSS build served via Nginx in Docker, deployed through Coolify on a self-hosted Ubuntu VPS.
 
-Key contact details: phone 07700 155 655, email hello@bettercallwes.co.uk.
+Key contact details: phone 07700 155 655, email wes@bettercallwes.co.uk.
 
 ---
 
