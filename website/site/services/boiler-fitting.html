@@ -71,6 +71,13 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
+
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
 </head>
 <body>
 
@@ -197,22 +204,22 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How long does a boiler installation take?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Most combi swaps take a single day if it's a like-for-like replacement. A system change or relocation can take two days.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What size boiler do I need?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">For a 3-bed semi a 24kW to 30kW combi is usually right. I size it properly during the survey rather than guessing from the old unit.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Do you supply the boiler, or do I?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Either works. If I supply, you get the warranty registered through me and a better trade price. If you've already bought one, I'll just fit it.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What boiler brands do you fit?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Worcester Bosch, Vaillant, Baxi, and Ideal. I tend to recommend Worcester Bosch for reliability or Vaillant if you want efficiency.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How long does a boiler installation take?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Most combi swaps take a single day if it's a like-for-like replacement. A system change or relocation can take two days.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What size boiler do I need?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">For a 3-bed semi a 24kW to 30kW combi is usually right. I size it properly during the survey rather than guessing from the old unit.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Do you supply the boiler, or do I?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Either works. If I supply, you get the warranty registered through me and a better trade price. If you've already bought one, I'll just fit it.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What boiler brands do you fit?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Worcester Bosch, Vaillant, Baxi, and Ideal. I tend to recommend Worcester Bosch for reliability or Vaillant if you want efficiency.</p>
+      </details>
     </div>
   </div>
 </section>

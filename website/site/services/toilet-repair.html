@@ -169,6 +169,13 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
+
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
 </head>
 <body>
 
@@ -333,22 +340,22 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How much does a toilet repair cost?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">£100 for the first hour. Most flush, fill, and isolation issues are fixed within that.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Why does my toilet keep running?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Usually a worn fill valve or flush valve diaphragm. Both are replaceable parts, costs £15 to £30 in materials plus labour.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What about a leaking toilet?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Could be the wax or rubber pan seal, the cistern bolts, or a cracked cistern. I diagnose before quoting the fix.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Can you replace the whole toilet?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes. Like-for-like toilet replacement £180 to £280 fitted. Wall-hung or back-to-wall units take longer and cost more.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How much does a toilet repair cost?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">£100 for the first hour. Most flush, fill, and isolation issues are fixed within that.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Why does my toilet keep running?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Usually a worn fill valve or flush valve diaphragm. Both are replaceable parts, costs £15 to £30 in materials plus labour.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What about a leaking toilet?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Could be the wax or rubber pan seal, the cistern bolts, or a cracked cistern. I diagnose before quoting the fix.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Can you replace the whole toilet?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Yes. Like-for-like toilet replacement £180 to £280 fitted. Wall-hung or back-to-wall units take longer and cost more.</p>
+      </details>
     </div>
   </div>
 </section>

@@ -169,6 +169,13 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
+
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
 </head>
 <body>
 
@@ -333,22 +340,22 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How much does a new combi boiler cost installed?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">A like-for-like combi swap in Southampton is typically £1,800 to £2,500 all-in. A relocation or system change pushes it higher.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Which combi boiler is best?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Worcester Bosch is the most reliable in my experience. Vaillant is the most efficient. Ideal is the best value. I recommend based on your house and budget.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How long do new combis last?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">With annual servicing, 12 to 15 years. Most manufacturers offer 7 to 10 year warranties on new installs, longer if a certified installer fits it.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Can I get a combi installed in a flat?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Usually yes. Flue route and gas supply have to be right but most flats are fine. I'll survey before quoting.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How much does a new combi boiler cost installed?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">A like-for-like combi swap in Southampton is typically £1,800 to £2,500 all-in. A relocation or system change pushes it higher.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Which combi boiler is best?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Worcester Bosch is the most reliable in my experience. Vaillant is the most efficient. Ideal is the best value. I recommend based on your house and budget.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How long do new combis last?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">With annual servicing, 12 to 15 years. Most manufacturers offer 7 to 10 year warranties on new installs, longer if a certified installer fits it.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Can I get a combi installed in a flat?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Usually yes. Flue route and gas supply have to be right but most flats are fine. I'll survey before quoting.</p>
+      </details>
     </div>
   </div>
 </section>

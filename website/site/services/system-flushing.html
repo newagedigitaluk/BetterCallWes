@@ -75,6 +75,13 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
+
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
 </head>
 
 <body>
@@ -257,22 +264,22 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What's the difference between a power flush and a chemical flush?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Power flushing uses a pump to physically scour the system at low pressure. Chemical-only is cheaper but slower and won't shift heavy sludge.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How much does a system flush cost?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Chemical clean is £150 to £200. Full power flush £400 to £600 depending on radiator count.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How often should I flush my heating system?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Most systems benefit from a chemical clean every 5 to 7 years. Power flush only when needed (sludge, cold radiators, new boiler install).</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Do new boiler installations need the old system flushed?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes. Manufacturer warranties usually require it. Installing a clean boiler on a dirty system invalidates the warranty.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What's the difference between a power flush and a chemical flush?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Power flushing uses a pump to physically scour the system at low pressure. Chemical-only is cheaper but slower and won't shift heavy sludge.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How much does a system flush cost?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Chemical clean is £150 to £200. Full power flush £400 to £600 depending on radiator count.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How often should I flush my heating system?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Most systems benefit from a chemical clean every 5 to 7 years. Power flush only when needed (sludge, cold radiators, new boiler install).</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Do new boiler installations need the old system flushed?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Yes. Manufacturer warranties usually require it. Installing a clean boiler on a dirty system invalidates the warranty.</p>
+      </details>
     </div>
   </div>
 </section>

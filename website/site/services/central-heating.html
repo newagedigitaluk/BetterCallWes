@@ -116,6 +116,13 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
+
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
 </head>
 <body>
 
@@ -330,22 +337,22 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How long does a full central heating install take?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">A complete new system in an average house takes 3 to 5 days depending on radiator count and pipework.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Can you upgrade my radiators?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes. Single panels to doubles, towel rails, designer rads. I calculate the heat output the room needs rather than just matching the old one.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Should I get a power flush before new radiators?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">If your existing system has any sludge, yes. Putting clean new rads on dirty pipework shortens their life. I check the system first.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Do you fit zone controls and smart thermostats?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes: Nest, Hive, Tado, Honeywell. Wired and wireless setups, including weather compensation if your boiler supports it.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How long does a full central heating install take?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">A complete new system in an average house takes 3 to 5 days depending on radiator count and pipework.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Can you upgrade my radiators?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Yes. Single panels to doubles, towel rails, designer rads. I calculate the heat output the room needs rather than just matching the old one.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Should I get a power flush before new radiators?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">If your existing system has any sludge, yes. Putting clean new rads on dirty pipework shortens their life. I check the system first.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Do you fit zone controls and smart thermostats?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Yes: Nest, Hive, Tado, Honeywell. Wired and wireless setups, including weather compensation if your boiler supports it.</p>
+      </details>
     </div>
   </div>
 </section>

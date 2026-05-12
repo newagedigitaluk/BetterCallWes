@@ -169,6 +169,13 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
+
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
 </head>
 <body>
 
@@ -333,22 +340,22 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Can you run a new gas supply for a hob, fire, or extension?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes. I install gas pipework in copper or steel, sized for the appliance and tested to current standards.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Do I need building regs for a new gas pipe?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Notification under Gas Safe regulations is automatic when I do the work. You don't need to organise anything separately.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How much does new gas pipework cost?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Short runs (under 5m) typically £150 to £300. Longer runs through walls and floors depend on access and the route.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Can you connect an outdoor BBQ or patio heater?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes. External gas points need an isolation valve and weather-rated fittings. I can run a buried or surface-mounted line.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Can you run a new gas supply for a hob, fire, or extension?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Yes. I install gas pipework in copper or steel, sized for the appliance and tested to current standards.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Do I need building regs for a new gas pipe?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Notification under Gas Safe regulations is automatic when I do the work. You don't need to organise anything separately.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How much does new gas pipework cost?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Short runs (under 5m) typically £150 to £300. Longer runs through walls and floors depend on access and the route.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Can you connect an outdoor BBQ or patio heater?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Yes. External gas points need an isolation valve and weather-rated fittings. I can run a buried or surface-mounted line.</p>
+      </details>
     </div>
   </div>
 </section>

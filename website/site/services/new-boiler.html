@@ -79,7 +79,14 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
- </head>
+ 
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
+</head>
 <body>
 
 
@@ -216,26 +223,26 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How much should it cost to have a new boiler fitted?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Around £2,100 for a standard combi swap in Southampton, including the boiler, flue, fittings, and a day's labour. Larger systems or conversions cost more, we quote for free.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What size boiler do I need?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">For most three-bedroom homes a 24–30 kW combi is right. Larger houses with two bathrooms or high hot-water demand may need 35 kW or a system boiler with a cylinder. We'll size it properly during the quote, not just match the old unit.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What brands of combi boiler are most reliable?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Worcester Bosch, Vaillant, and Ideal Logic+ all have strong track records and a Gas Safe install network. We'll recommend based on your home, budget, and warranty preferences rather than push a single brand.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How long does a new boiler last?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Twelve to fifteen years if it's serviced annually. Skipping the service usually halves that and voids the warranty.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Do I need a power flush with a new boiler?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Most manufacturers require the system to be cleaned before fitting a new boiler, otherwise the warranty doesn't apply. We include a chemical flush as standard; a full power flush is £440 if the system shows heavy sludge.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How much should it cost to have a new boiler fitted?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Around £2,100 for a standard combi swap in Southampton, including the boiler, flue, fittings, and a day's labour. Larger systems or conversions cost more, we quote for free.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What size boiler do I need?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">For most three-bedroom homes a 24–30 kW combi is right. Larger houses with two bathrooms or high hot-water demand may need 35 kW or a system boiler with a cylinder. We'll size it properly during the quote, not just match the old unit.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What brands of combi boiler are most reliable?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Worcester Bosch, Vaillant, and Ideal Logic+ all have strong track records and a Gas Safe install network. We'll recommend based on your home, budget, and warranty preferences rather than push a single brand.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How long does a new boiler last?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Twelve to fifteen years if it's serviced annually. Skipping the service usually halves that and voids the warranty.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Do I need a power flush with a new boiler?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Most manufacturers require the system to be cleaned before fitting a new boiler, otherwise the warranty doesn't apply. We include a chemical flush as standard; a full power flush is £440 if the system shows heavy sludge.</p>
+      </details>
     </div>
   </div>
 </section>

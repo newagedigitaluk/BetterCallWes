@@ -124,7 +124,14 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
- </head>
+ 
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
+</head>
 <body>
 
  
@@ -348,26 +355,26 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How much do UK plumbers charge per hour?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Most Gas Safe plumbers in the south of England charge £80–£120 for the first hour. Our diagnostic fee is £100, which covers the first hour and often the full job for smaller repairs. After that it's £50 per 30 minutes.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What is the minimum charge for a plumber?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">£100, which covers up to an hour on site. That includes diagnosis, parts that are already on the van for common jobs, and most small fixes, a stuck tap, a running toilet, a slow drain.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What is a normal plumber call-out fee?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">£100 in Southampton for standard hours. We don't add a separate call-out fee on top, the £100 is the diagnostic and the first hour of work combined.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How to spot a dodgy plumber?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Three checks. Ask for the Gas Safe ID card for any gas work and verify it on the Gas Safe register. Get the quote in writing before work starts, itemised for labour and parts. And look for reviews on the company name, not just stars, the wording of the reviews.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Do you give a guarantee on plumbing work?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes, a 12-month workmanship guarantee on every job. Parts carry whatever the manufacturer warranty is, usually two years for most boiler components and longer for major parts.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How much do UK plumbers charge per hour?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Most Gas Safe plumbers in the south of England charge £80–£120 for the first hour. Our diagnostic fee is £100, which covers the first hour and often the full job for smaller repairs. After that it's £50 per 30 minutes.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What is the minimum charge for a plumber?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">£100, which covers up to an hour on site. That includes diagnosis, parts that are already on the van for common jobs, and most small fixes, a stuck tap, a running toilet, a slow drain.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What is a normal plumber call-out fee?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">£100 in Southampton for standard hours. We don't add a separate call-out fee on top, the £100 is the diagnostic and the first hour of work combined.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How to spot a dodgy plumber?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Three checks. Ask for the Gas Safe ID card for any gas work and verify it on the Gas Safe register. Get the quote in writing before work starts, itemised for labour and parts. And look for reviews on the company name, not just stars, the wording of the reviews.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Do you give a guarantee on plumbing work?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Yes, a 12-month workmanship guarantee on every job. Parts carry whatever the manufacturer warranty is, usually two years for most boiler components and longer for major parts.</p>
+      </details>
     </div>
   </div>
 </section>

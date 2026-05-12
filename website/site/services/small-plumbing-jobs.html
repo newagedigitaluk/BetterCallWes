@@ -75,6 +75,13 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
+
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
 </head>
 
 <body>
@@ -228,22 +235,22 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Do you take on small jobs?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes. Most of my work is small jobs: leaks, taps, toilets, valves, isolations, overflow problems.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What's your minimum charge?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">£100 for the first hour, which usually covers a small repair start to finish. No call-out fee on top.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Will you give a quote before starting?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes. I send a WhatsApp video quote first where it makes sense, or quote on site before any work begins.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How quickly can you come out?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Same-day or next-day for most small jobs in Southampton, depending on diary. I'm honest about it: I don't promise emergency response if I can't deliver.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Do you take on small jobs?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Yes. Most of my work is small jobs: leaks, taps, toilets, valves, isolations, overflow problems.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What's your minimum charge?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">£100 for the first hour, which usually covers a small repair start to finish. No call-out fee on top.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Will you give a quote before starting?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Yes. I send a WhatsApp video quote first where it makes sense, or quote on site before any work begins.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How quickly can you come out?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Same-day or next-day for most small jobs in Southampton, depending on diary. I'm honest about it: I don't promise emergency response if I can't deliver.</p>
+      </details>
     </div>
   </div>
 </section>

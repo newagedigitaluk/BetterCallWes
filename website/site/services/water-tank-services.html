@@ -71,6 +71,13 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
+
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
 </head>
 <body>
 
@@ -198,22 +205,22 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Do you work on cold water tanks in the loft?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes. Replacement, cleaning, insulation, and removing tanks when converting to combi systems.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How much to remove an old loft tank?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">£200 to £300 depending on access and whether the system is being converted at the same time.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Can you fit an unvented cylinder?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes. I'm G3-qualified for unvented hot water cylinders. Most replacements £900 to £1,400 fitted depending on size.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Should I keep my cold water tank or convert to mains-fed?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Depends on your mains pressure and flow. I test the supply first. Mains-fed simplifies things and frees up loft space, but only works if your pressure is good enough.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Do you work on cold water tanks in the loft?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Yes. Replacement, cleaning, insulation, and removing tanks when converting to combi systems.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How much to remove an old loft tank?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">£200 to £300 depending on access and whether the system is being converted at the same time.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Can you fit an unvented cylinder?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Yes. I'm G3-qualified for unvented hot water cylinders. Most replacements £900 to £1,400 fitted depending on size.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Should I keep my cold water tank or convert to mains-fed?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Depends on your mains pressure and flow. I test the supply first. Mains-fed simplifies things and frees up loft space, but only works if your pressure is good enough.</p>
+      </details>
     </div>
   </div>
 </section>

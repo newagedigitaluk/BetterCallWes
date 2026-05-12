@@ -116,6 +116,13 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
+
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
 </head>
 <body>
 
@@ -330,22 +337,22 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What gas work are you qualified for?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">I'm Gas Safe registered for boilers, central heating, gas pipework, cookers, fires, and gas safety inspections.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How do I check a plumber is Gas Safe?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Look them up at gassaferegister.co.uk. My registration number is 558654 if you want to verify.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Do you do landlord gas safety certificates?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes. CP12 certificates are £80 for one appliance, £20 per additional. I issue digitally on the same day.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Is gas work expensive?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">It's regulated so it costs more than basic plumbing, but the prices are predictable. I quote upfront before starting.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What gas work are you qualified for?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">I'm Gas Safe registered for boilers, central heating, gas pipework, cookers, fires, and gas safety inspections.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How do I check a plumber is Gas Safe?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Look them up at gassaferegister.co.uk. My registration number is 558654 if you want to verify.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Do you do landlord gas safety certificates?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Yes. CP12 certificates are £80 for one appliance, £20 per additional. I issue digitally on the same day.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Is gas work expensive?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">It's regulated so it costs more than basic plumbing, but the prices are predictable. I quote upfront before starting.</p>
+      </details>
     </div>
   </div>
 </section>

@@ -72,6 +72,13 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
+
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
 </head>
 
 <body>
@@ -323,22 +330,22 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What types of showers can you install?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Mixer showers, electric showers, power showers with pumps, and digital shower systems.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How much does a new shower installation cost?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">£200 to £450 fitted depending on type. Electric showers at the lower end, pumped mains-fed setups at the top.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Do you tile and seal the shower area?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">I focus on plumbing. I work alongside trusted local tilers if you need a full bathroom refit, or I'll fit into your existing tiled enclosure.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Can I have a power shower in a flat?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Sometimes. Mains-fed flats often have enough pressure without a pump. I test the supply pressure during the survey.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What types of showers can you install?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Mixer showers, electric showers, power showers with pumps, and digital shower systems.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How much does a new shower installation cost?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">£200 to £450 fitted depending on type. Electric showers at the lower end, pumped mains-fed setups at the top.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Do you tile and seal the shower area?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">I focus on plumbing. I work alongside trusted local tilers if you need a full bathroom refit, or I'll fit into your existing tiled enclosure.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Can I have a power shower in a flat?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Sometimes. Mains-fed flats often have enough pressure without a pump. I test the supply pressure during the survey.</p>
+      </details>
     </div>
   </div>
 </section>

@@ -169,6 +169,13 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
+
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
 </head>
 <body>
 
@@ -333,22 +340,22 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What is a power flush and do I need one?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">It's a deep clean of the heating system using a pump and chemicals to remove sludge and corrosion. You need one if radiators are cold at the bottom, the boiler keeps cutting out, or you're fitting a new boiler to an old system.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How much does a power flush cost?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">£400 to £600 depending on the radiator count. A 3-bed house with 8 to 10 radiators sits around £450.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How long does a power flush take?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Usually a full day for a typical house, longer if the system is very dirty.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Will a power flush damage my old radiators?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Properly done, no. If a radiator is on its last legs the flush can show it up, but it didn't cause the problem, it just revealed it.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What is a power flush and do I need one?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">It's a deep clean of the heating system using a pump and chemicals to remove sludge and corrosion. You need one if radiators are cold at the bottom, the boiler keeps cutting out, or you're fitting a new boiler to an old system.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How much does a power flush cost?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">£400 to £600 depending on the radiator count. A 3-bed house with 8 to 10 radiators sits around £450.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How long does a power flush take?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Usually a full day for a typical house, longer if the system is very dirty.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Will a power flush damage my old radiators?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Properly done, no. If a radiator is on its last legs the flush can show it up, but it didn't cause the problem, it just revealed it.</p>
+      </details>
     </div>
   </div>
 </section>

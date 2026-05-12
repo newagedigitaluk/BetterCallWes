@@ -169,6 +169,13 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
+
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
 </head>
 <body>
 
@@ -333,22 +340,22 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What shower problems can you fix?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Low pressure, dripping shower heads, cartridge replacements, leaking shower trays, blocked drains, and faulty electric showers.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How much does a shower repair cost?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">£100 for the first hour, which covers most diagnostics and cartridge or seal replacements. Pump or valve replacements run £150 to £250.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Can you fix an electric shower?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes, the plumbing and connection side. Heater element and PCB faults usually mean replacement is cheaper than repair.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Why is my shower pressure low?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Most commonly a blocked shower head or limescale buildup. Sometimes a pressure issue with the cold supply or a failed pump.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What shower problems can you fix?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Low pressure, dripping shower heads, cartridge replacements, leaking shower trays, blocked drains, and faulty electric showers.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How much does a shower repair cost?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">£100 for the first hour, which covers most diagnostics and cartridge or seal replacements. Pump or valve replacements run £150 to £250.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Can you fix an electric shower?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Yes, the plumbing and connection side. Heater element and PCB faults usually mean replacement is cheaper than repair.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Why is my shower pressure low?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Most commonly a blocked shower head or limescale buildup. Sometimes a pressure issue with the cold supply or a failed pump.</p>
+      </details>
     </div>
   </div>
 </section>

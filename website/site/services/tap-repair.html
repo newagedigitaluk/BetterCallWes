@@ -169,6 +169,13 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
+
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
 </head>
 <body>
 
@@ -333,22 +340,22 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How much does it cost to fix a dripping tap?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">£100 for the first hour, which covers most cartridge or washer replacements. Ceramic disc cartridges are the most common fix.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Can you fix a tap or do I need a new one?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Most modern taps are repairable. Mixer taps with ceramic cartridges, kitchen monobloc taps, traditional pillar taps. If the tap body is corroded a replacement makes more sense.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How long does a tap repair take?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Most repairs are under an hour, including isolating the supply and testing afterwards.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Why is my tap juddering or hammering?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Usually a worn cartridge or an issue with the supply pipework being unsecured. Both fixable.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How much does it cost to fix a dripping tap?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">£100 for the first hour, which covers most cartridge or washer replacements. Ceramic disc cartridges are the most common fix.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Can you fix a tap or do I need a new one?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Most modern taps are repairable. Mixer taps with ceramic cartridges, kitchen monobloc taps, traditional pillar taps. If the tap body is corroded a replacement makes more sense.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How long does a tap repair take?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Most repairs are under an hour, including isolating the supply and testing afterwards.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Why is my tap juddering or hammering?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Usually a worn cartridge or an issue with the supply pipework being unsecured. Both fixable.</p>
+      </details>
     </div>
   </div>
 </section>

@@ -204,7 +204,14 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
- </head>
+ 
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
+</head>
 <body>
 
  
@@ -454,26 +461,26 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How much should a full boiler service cost?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">A standard annual service is £100. A full strip-down service, where the burner and heat exchanger are cleaned properly, is £160. Both include a written report.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How frequently should a boiler be serviced?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Once a year. Most manufacturers also require an annual service to keep the warranty valid, skipping a year usually voids the cover.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Is it worth replacing a 15 year old boiler?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">It's worth getting an honest assessment. A well-maintained fifteen-year-old boiler can still run safely, but efficiency is typically 70–80% versus 90%+ for a modern A-rated unit. The gas-bill saving often pays back a new boiler within seven to ten years.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What are signs that my boiler needs a service?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Louder than usual, taking longer to heat up, higher gas bills, the flame burning yellow instead of blue, or any error code that clears itself. A service catches small faults before they become breakdown call-outs.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How long does a boiler service take?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Around 45–60 minutes for a standard service, longer for a full strip-down. We arrive in a marked van and won't leave any mess behind.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How much should a full boiler service cost?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">A standard annual service is £100. A full strip-down service, where the burner and heat exchanger are cleaned properly, is £160. Both include a written report.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How frequently should a boiler be serviced?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Once a year. Most manufacturers also require an annual service to keep the warranty valid, skipping a year usually voids the cover.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Is it worth replacing a 15 year old boiler?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">It's worth getting an honest assessment. A well-maintained fifteen-year-old boiler can still run safely, but efficiency is typically 70–80% versus 90%+ for a modern A-rated unit. The gas-bill saving often pays back a new boiler within seven to ten years.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What are signs that my boiler needs a service?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Louder than usual, taking longer to heat up, higher gas bills, the flame burning yellow instead of blue, or any error code that clears itself. A service catches small faults before they become breakdown call-outs.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How long does a boiler service take?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Around 45–60 minutes for a standard service, longer for a full strip-down. We arrive in a marked van and won't leave any mess behind.</p>
+      </details>
     </div>
   </div>
 </section>

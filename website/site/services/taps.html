@@ -72,6 +72,13 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
+
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
 </head>
 
 <body>
@@ -323,22 +330,22 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How much to fit a new tap?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">£100 to £150 for a like-for-like swap including labour. Adding new pipework or fitting a kitchen mixer where there's only single taps is more.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Can you fit a boiling water tap (Quooker, Fohen, similar)?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes. They need a power supply under the sink and a dedicated cold feed. I supply and fit, or fit if you've bought one.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What about a filter tap?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes. 3-in-1 and 4-in-1 filter taps are straightforward to install if there's space under the sink for the filter housing.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Should I get a kitchen monobloc or two separate taps?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Modern preference is monobloc for a cleaner look and one hot-cold control. Traditional kitchens sometimes look better with two-pillar taps.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How much to fit a new tap?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">£100 to £150 for a like-for-like swap including labour. Adding new pipework or fitting a kitchen mixer where there's only single taps is more.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Can you fit a boiling water tap (Quooker, Fohen, similar)?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Yes. They need a power supply under the sink and a dedicated cold feed. I supply and fit, or fit if you've bought one.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What about a filter tap?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Yes. 3-in-1 and 4-in-1 filter taps are straightforward to install if there's space under the sink for the filter housing.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Should I get a kitchen monobloc or two separate taps?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Modern preference is monobloc for a cleaner look and one hot-cold control. Traditional kitchens sometimes look better with two-pillar taps.</p>
+      </details>
     </div>
   </div>
 </section>

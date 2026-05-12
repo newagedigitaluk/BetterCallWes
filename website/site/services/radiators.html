@@ -169,6 +169,13 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
+
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
 </head>
 <body>
 
@@ -333,22 +340,22 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How much does it cost to fit a new radiator?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">£150 to £250 for a like-for-like swap depending on size and access. Adding a brand new radiator with new pipework runs higher.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Can you fit a designer or column radiator?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes. Vertical radiators, towel rails, traditional column rads. I calculate heat output to make sure it actually warms the room.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Why is my radiator cold at the bottom?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Sludge build-up at the base. Often fixable by bleeding and chemical cleaning. Sometimes it needs a full power flush.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Why is one radiator not heating?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Usually a stuck valve, trapped air, or imbalance in the system. Easy diagnostic, often fixable in under an hour.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How much does it cost to fit a new radiator?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">£150 to £250 for a like-for-like swap depending on size and access. Adding a brand new radiator with new pipework runs higher.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Can you fit a designer or column radiator?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Yes. Vertical radiators, towel rails, traditional column rads. I calculate heat output to make sure it actually warms the room.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Why is my radiator cold at the bottom?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Sludge build-up at the base. Often fixable by bleeding and chemical cleaning. Sometimes it needs a full power flush.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Why is one radiator not heating?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Usually a stuck valve, trapped air, or imbalance in the system. Easy diagnostic, often fixable in under an hour.</p>
+      </details>
     </div>
   </div>
 </section>

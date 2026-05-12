@@ -204,7 +204,14 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
- </head>
+ 
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
+</head>
 <body>
 
  
@@ -454,26 +461,26 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How much does a boiler repair usually cost?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Most boiler repairs land between £100 and £280, including parts and labour. The £100 covers the first hour, which is the diagnostic, that's enough time to fix many faults outright. Bigger jobs like a PCB replacement run £250–£350.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Is it worth repairing a boiler?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Usually yes if the boiler is under twelve years old and the repair cost is below a third of the price of a new one. Once you're past that, the maths starts favouring replacement, especially if the boiler has had multiple faults in a year.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What is the lifespan of a boiler?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">A modern combi boiler typically lasts twelve to fifteen years with annual servicing. Older system or back boilers can run longer, but parts get harder to find and efficiency drops off.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What is the most expensive part of a boiler to replace?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">The PCB, the control board, at £250–£350 fitted. Heat exchangers and gas valves are the next tier down, typically £200–£300.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What are the signs of a failing boiler?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Banging or kettling noises, needing to re-pressurise more than once a month, a yellow rather than blue flame, error codes that keep coming back, or hot water that runs cold mid-shower. Any of those is worth a diagnostic before it gets worse.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How much does a boiler repair usually cost?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Most boiler repairs land between £100 and £280, including parts and labour. The £100 covers the first hour, which is the diagnostic, that's enough time to fix many faults outright. Bigger jobs like a PCB replacement run £250–£350.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Is it worth repairing a boiler?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Usually yes if the boiler is under twelve years old and the repair cost is below a third of the price of a new one. Once you're past that, the maths starts favouring replacement, especially if the boiler has had multiple faults in a year.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What is the lifespan of a boiler?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">A modern combi boiler typically lasts twelve to fifteen years with annual servicing. Older system or back boilers can run longer, but parts get harder to find and efficiency drops off.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What is the most expensive part of a boiler to replace?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">The PCB, the control board, at £250–£350 fitted. Heat exchangers and gas valves are the next tier down, typically £200–£300.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What are the signs of a failing boiler?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Banging or kettling noises, needing to re-pressurise more than once a month, a yellow rather than blue flame, error codes that keep coming back, or hot water that runs cold mid-shower. Any of those is worth a diagnostic before it gets worse.</p>
+      </details>
     </div>
   </div>
 </section>

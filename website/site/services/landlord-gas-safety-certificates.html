@@ -177,7 +177,14 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
- </head>
+ 
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
+</head>
 <body>
 
 
@@ -351,26 +358,26 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How much does a landlord gas safety certificate cost?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">£90 for up to two appliances, typically a boiler and a cooker. Each additional appliance is £20–£50. You get the CP12 certificate by email the same day.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How often do I need a landlord gas safety check?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Every twelve months. The check must be done by a Gas Safe registered engineer, and you must give the tenant a copy of the certificate within 28 days of the check or before they move in.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What is a CP12 certificate?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">It's the landlord's gas safety record, the paperwork that proves every gas appliance in the property has been checked and is safe to use. CP12 is the historical name; the official term is Landlord Gas Safety Record.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What happens if I don't have a valid gas safety certificate?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">You're breaking the law. The Health and Safety Executive can fine you up to £6,000 per appliance, and you can't legally serve a Section 21 eviction notice. Your insurance is also likely to be void.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Do I need a gas safety check if my tenant has been there for years?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes. It's an annual requirement regardless of how long the tenancy has run. We can usually book the check within a week, sooner if the previous certificate is about to expire.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How much does a landlord gas safety certificate cost?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">£90 for up to two appliances, typically a boiler and a cooker. Each additional appliance is £20–£50. You get the CP12 certificate by email the same day.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How often do I need a landlord gas safety check?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Every twelve months. The check must be done by a Gas Safe registered engineer, and you must give the tenant a copy of the certificate within 28 days of the check or before they move in.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What is a CP12 certificate?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">It's the landlord's gas safety record, the paperwork that proves every gas appliance in the property has been checked and is safe to use. CP12 is the historical name; the official term is Landlord Gas Safety Record.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What happens if I don't have a valid gas safety certificate?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">You're breaking the law. The Health and Safety Executive can fine you up to £6,000 per appliance, and you can't legally serve a Section 21 eviction notice. Your insurance is also likely to be void.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Do I need a gas safety check if my tenant has been there for years?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Yes. It's an annual requirement regardless of how long the tenancy has run. We can usually book the check within a week, sooner if the previous certificate is about to expire.</p>
+      </details>
     </div>
   </div>
 </section>

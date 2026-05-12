@@ -169,6 +169,13 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
+
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
 </head>
 <body>
 
@@ -333,22 +340,22 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What gas appliances do you service?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Boilers, gas hobs, gas cookers, and gas fires. Anything covered by my Gas Safe registration.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How often should a gas appliance be serviced?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Once a year for boilers and gas fires. Cookers and hobs only need attention if there's a problem or before a property sale.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What's checked during a gas service?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Gas pressure, flue gases, internal components, seals, ventilation, and a flue gas analyser reading. I leave a written record of all of it.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Do you do gas appliance disconnections for property sales?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes. I can cap off and certify a disconnection for an estate agent or solicitor.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What gas appliances do you service?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Boilers, gas hobs, gas cookers, and gas fires. Anything covered by my Gas Safe registration.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How often should a gas appliance be serviced?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Once a year for boilers and gas fires. Cookers and hobs only need attention if there's a problem or before a property sale.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What's checked during a gas service?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Gas pressure, flue gases, internal components, seals, ventilation, and a flue gas analyser reading. I leave a written record of all of it.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Do you do gas appliance disconnections for property sales?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Yes. I can cap off and certify a disconnection for an estate agent or solicitor.</p>
+      </details>
     </div>
   </div>
 </section>

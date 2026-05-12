@@ -72,6 +72,13 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
+
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
 </head>
 
 <body>
@@ -319,22 +326,22 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Which smart heating controls do you fit?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Nest, Hive, Tado, Honeywell, Drayton Wiser. I'm happy to fit whichever you've picked.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Will a smart thermostat work with my old boiler?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Most modern smart controls work with most boilers made in the last 15 years. Older systems sometimes need a relay. I check during the survey.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Can you fit smart TRVs as well as the main thermostat?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Yes. Per-room control through smart TRVs is one of the biggest wins for energy use, especially in larger houses.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How long does a smart control install take?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Single thermostat 1 to 2 hours. Full multi-zone setup with smart TRVs can take half a day.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Which smart heating controls do you fit?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Nest, Hive, Tado, Honeywell, Drayton Wiser. I'm happy to fit whichever you've picked.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Will a smart thermostat work with my old boiler?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Most modern smart controls work with most boilers made in the last 15 years. Older systems sometimes need a relay. I check during the survey.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Can you fit smart TRVs as well as the main thermostat?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Yes. Per-room control through smart TRVs is one of the biggest wins for energy use, especially in larger houses.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How long does a smart control install take?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Single thermostat 1 to 2 hours. Full multi-zone setup with smart TRVs can take half a day.</p>
+      </details>
     </div>
   </div>
 </section>

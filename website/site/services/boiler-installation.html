@@ -192,7 +192,14 @@
 }
 </script>
 <!-- END FAQ JSON-LD -->
- </head>
+ 
+  <style>
+    /* FAQ accordion marker */
+    details summary::after { content: "+"; float: right; font-weight: 400; color: var(--color-accent); transition: transform 0.2s; }
+    details[open] summary::after { content: "−"; }
+    details summary::-webkit-details-marker { display: none; }
+  </style>
+</head>
 <body>
 
  
@@ -442,26 +449,26 @@
       <h2>Common questions, plain answers</h2>
     </div>
     <div style="display: flex; flex-direction: column; gap: 1rem;">
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How much does a new boiler cost?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">A standard combi-to-combi swap starts at £2,100 including the boiler, parts, and a day's labour. System and regular boiler installs are quoted individually because the pipework and cylinder work varies.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How long does a boiler installation take?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">A straightforward combi swap is one full day. A boiler conversion (e.g. system to combi) is typically two days because the hot water cylinder and pipework need rearranging.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">What is the best month to replace a boiler?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Late summer or early autumn. Installers are less busy, lead times are shorter, and you're sorted before the first cold snap. Replacing in January when your old boiler has failed is usually the worst time, emergency installs cost more and choice is limited.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">How much should it cost to have a new boiler fitted in 2026?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">Between £2,100 and £3,500 for most domestic installs, including a quality A-rated boiler, a magnetic filter, and a power flush if needed. The price varies with boiler brand, flue routing, and any system upgrades.</p>
-        </div>
-        <div style="background: white; border-radius: var(--radius-md); padding: 1.5rem; box-shadow: var(--shadow-sm);">
-          <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-primary);">Can I get a government grant for a new boiler?</h3>
-          <p style="color: var(--text-body); margin: 0; padding-top: 0.5rem;">The ECO4 scheme funds boiler replacements for some low-income households or those on means-tested benefits. Eligibility depends on the property's EPC rating and your circumstances. We can talk you through whether you're likely to qualify before you apply.</p>
-        </div>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How much does a new boiler cost?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">A standard combi-to-combi swap starts at £2,100 including the boiler, parts, and a day's labour. System and regular boiler installs are quoted individually because the pipework and cylinder work varies.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How long does a boiler installation take?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">A straightforward combi swap is one full day. A boiler conversion (e.g. system to combi) is typically two days because the hot water cylinder and pipework need rearranging.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">What is the best month to replace a boiler?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Late summer or early autumn. Installers are less busy, lead times are shorter, and you're sorted before the first cold snap. Replacing in January when your old boiler has failed is usually the worst time, emergency installs cost more and choice is limited.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">How much should it cost to have a new boiler fitted in 2026?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">Between £2,100 and £3,500 for most domestic installs, including a quality A-rated boiler, a magnetic filter, and a power flush if needed. The price varies with boiler brand, flue routing, and any system upgrades.</p>
+      </details>
+        <details style="background: white; border-radius: var(--radius-md); padding: 1.25rem 1.5rem; box-shadow: var(--shadow-sm);">
+        <summary style="font-size: 1.1rem; font-weight: 600; color: var(--color-primary); cursor: pointer; list-style: none;">Can I get a government grant for a new boiler?</summary>
+        <p style="color: var(--text-body); margin: 0.75rem 0 0;">The ECO4 scheme funds boiler replacements for some low-income households or those on means-tested benefits. Eligibility depends on the property's EPC rating and your circumstances. We can talk you through whether you're likely to qualify before you apply.</p>
+      </details>
     </div>
   </div>
 </section>
