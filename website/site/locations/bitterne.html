@@ -127,8 +127,6 @@
 </head>
 <body>
 
-
-
  <!-- Header -->
  <header class="header">
  <div class="container">
@@ -190,23 +188,40 @@
  </nav>
  </header>
 
- <section class="hero" style="background: var(--color-primary); min-height: 40vh; padding-top: 150px; padding-bottom: 80px;">
- <div class="container text-center">
- <div class="rating-badge mx-auto mb-4" style="justify-content: center; display: inline-flex;">
- <span class="stars">★★★★★</span>
- <span>Top Rated in Bitterne</span>
- </div>
- <h1 style="color: white; margin-bottom: 1.5rem; font-size: 3rem;">Your Local Plumber & Gas Engineer in Bitterne</h1>
- <p style="color: rgba(255,255,255,0.8); font-size: 1.25rem; max-width: 800px; margin: 0 auto 2rem;">Bitterne is one of the most active areas I cover, a busy residential community on the eastern side of Southampton with a real mix of housing types and ages. If you've got a boiler problem or a plumbing issue, I can usually be with you the same day.</p>
- <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
- <a href="../booking.html" class="btn btn-primary"><i data-lucide="calendar"></i> Book Online Now</a>
- <a href="https://wa.me/447700155655" class="btn btn-outline" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); color: white;"><i data-lucide="video"></i> Get a WhatsApp Quote</a>
- </div>
- </div>
+ <!-- Photo-led hero (Wes+van background) -->
+ <section class="hero page-hero" style="position: relative; min-height: 55vh; padding-top: 150px; padding-bottom: 60px; overflow: hidden;">
+   <div style="position: absolute; inset: 0; z-index: 0;">
+     <img src="../assets/images/van-work.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: center 50%;" fetchpriority="high" decoding="async">
+     <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15,41,66,0.92) 0%, rgba(15,41,66,0.78) 55%, rgba(15,41,66,0.35) 100%);"></div>
+   </div>
+   <div class="container" style="position: relative; z-index: 1;">
+     <div style="max-width: 640px;">
+       <h1 style="color: white; margin-bottom: 1rem; font-size: clamp(2.2rem, 4.5vw, 3.2rem);">Plumber &amp; Gas Engineer in Bitterne</h1>
+       <p style="color: rgba(255,255,255,0.92); font-size: 1.15rem; margin-bottom: 1.5rem;">
+         Same-week appointments across Bitterne. Fixed quote before any work starts.
+       </p>
+       <div style="display: flex; gap: 1.25rem; flex-wrap: wrap; font-size: 0.92rem; color: rgba(255,255,255,0.92); margin-bottom: 2rem;">
+         <span style="display: inline-flex; align-items: center; gap: 0.4rem;"><i data-lucide="shield-check" style="color: var(--color-accent); width: 18px; height: 18px;"></i> Gas Safe #558654</span>
+         <span style="display: inline-flex; align-items: center; gap: 0.4rem;"><i data-lucide="star" style="color: var(--color-accent); width: 18px; height: 18px;"></i> 4.9 from 200+ reviews</span>
+         <span style="display: inline-flex; align-items: center; gap: 0.4rem;"><i data-lucide="award" style="color: var(--color-accent); width: 18px; height: 18px;"></i> 12-month workmanship guarantee</span>
+       </div>
+       <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+         <a href="../booking.html" class="btn btn-primary"><i data-lucide="calendar"></i> Book a fixed-price service</a>
+         <a href="https://wa.me/447700155655" class="btn" style="background: #25D366; color: white;" target="_blank" rel="noopener noreferrer"><i data-lucide="message-circle"></i> WhatsApp video quote</a>
+       </div>
+     </div>
+   </div>
  </section>
- 
 
- <section class="section section-gray">
+ <!-- Postcode strip -->
+ <section style="background: var(--color-bg-alt, #f1f5f9); padding: 1.5rem 0;">
+   <div class="container" style="display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; align-items: center;">
+     <span style="color: var(--text-body); font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-right: 0.5rem;">Postcodes covered:</span>
+       <span class="badge" style="background: white; border: 1px solid rgba(15,41,66,0.1);">SO18</span>
+       <span class="badge" style="background: white; border: 1px solid rgba(15,41,66,0.1);">SO19</span>
+   </div>
+ </section>
+<section class="section section-gray">
  <div class="container">
  <div class="section-header">
  <div class="section-label">LOCAL EXPERTISE</div>
@@ -231,76 +246,57 @@
  </div>
  </div>
  </section>
- 
 
+ <!-- What I do in Bitterne (image-led service tiles) -->
+ 
+ <!-- What I do in Bitterne (image-led service tiles) -->
  <section class="section">
- <div class="container">
- <div class="section-header">
- <div class="section-label">SERVICES IN BITTERNE</div>
- <h2>How We Help Homes in Bitterne</h2>
- <p style="margin-top: 1rem;">We provide a complete range of plumbing and heating solutions tailored for Bitterne.</p>
- </div>
- <div class="service-grid">
- <div class="service-card">
- <div class="service-icon"><i data-lucide="flame"></i></div>
- <h3>Boiler Repairs & Servicing</h3>
- <p>Emergency breakdown attendance and annual maintenance for all major boiler brands in Bitterne.</p>
- <a href="../services/boiler-repair.html" class="learn-more">Learn More <i data-lucide="arrow-right" size="16"></i></a>
- </div>
- <div class="service-card">
- <div class="service-icon"><i data-lucide="droplets"></i></div>
- <h3>General Plumbing Fixes</h3>
- <p>From dripping taps in Bitterne kitchens to blocked toilets and leaking pipework.</p>
- <a href="../services/plumbing-repairs.html" class="learn-more">Learn More <i data-lucide="arrow-right" size="16"></i></a>
- </div>
- <div class="service-card">
- <div class="service-icon"><i data-lucide="thermometer"></i></div>
- <h3>Central Heating Upgrades</h3>
- <p>Power flushing, new radiators, and smart thermostat installations across Bitterne, Southampton, UK.</p>
- <a href="../services/central-heating.html" class="learn-more">Learn More <i data-lucide="arrow-right" size="16"></i></a>
- </div>
- </div>
- </div>
+   <div class="container">
+     <div class="section-header">
+       <div class="section-label">SERVICES IN BITTERNE</div>
+       <h2>What I do in Bitterne</h2>
+     </div>
+     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto;">
+       <a href="../services/boiler-repair.html" style="display: block; background: white; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s;"
+          onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 24px rgba(0,0,0,0.1)';"
+          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='';">
+         <img src="../assets/images/boiler-repair.webp" alt="Boiler Repair in Bitterne" style="width: 100%; height: 180px; object-fit: cover;" loading="lazy" decoding="async">
+         <div style="padding: 1.25rem 1.5rem;">
+           <h3 style="margin: 0 0 0.25rem; font-size: 1.1rem; color: var(--color-primary);">Boiler Repair</h3>
+           <p style="color: var(--text-body); margin: 0; font-size: 0.95rem;">See pricing and details &rarr;</p>
+         </div>
+       </a>
+       <a href="../services/central-heating.html" style="display: block; background: white; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s;"
+          onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 24px rgba(0,0,0,0.1)';"
+          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='';">
+         <img src="../assets/images/central-heating.webp" alt="Central Heating in Bitterne" style="width: 100%; height: 180px; object-fit: cover;" loading="lazy" decoding="async">
+         <div style="padding: 1.25rem 1.5rem;">
+           <h3 style="margin: 0 0 0.25rem; font-size: 1.1rem; color: var(--color-primary);">Central Heating</h3>
+           <p style="color: var(--text-body); margin: 0; font-size: 0.95rem;">See pricing and details &rarr;</p>
+         </div>
+       </a>
+       <a href="../services/power-flushing.html" style="display: block; background: white; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s;"
+          onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 24px rgba(0,0,0,0.1)';"
+          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='';">
+         <img src="../assets/images/power-flushing.webp" alt="Power Flushing in Bitterne" style="width: 100%; height: 180px; object-fit: cover;" loading="lazy" decoding="async">
+         <div style="padding: 1.25rem 1.5rem;">
+           <h3 style="margin: 0 0 0.25rem; font-size: 1.1rem; color: var(--color-primary);">Power Flushing</h3>
+           <p style="color: var(--text-body); margin: 0; font-size: 0.95rem;">See pricing and details &rarr;</p>
+         </div>
+       </a>
+       <a href="../services/gas-safety-check.html" style="display: block; background: white; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s;"
+          onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 12px 24px rgba(0,0,0,0.1)';"
+          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='';">
+         <img src="../assets/images/gas-safety.webp" alt="Gas Safety Check in Bitterne" style="width: 100%; height: 180px; object-fit: cover;" loading="lazy" decoding="async">
+         <div style="padding: 1.25rem 1.5rem;">
+           <h3 style="margin: 0 0 0.25rem; font-size: 1.1rem; color: var(--color-primary);">Gas Safety Check</h3>
+           <p style="color: var(--text-body); margin: 0; font-size: 0.95rem;">See pricing and details &rarr;</p>
+         </div>
+       </a>
+     </div>
+   </div>
  </section>
- 
-
- <section class="section section-gray">
- <div class="container">
- <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
- <div>
- <img src="../assets/images/wes-profile.webp" alt="Plumber in Bitterne" style="border-radius: 20px; box-shadow: var(--shadow-lg);" loading="lazy" decoding="async">
- </div>
- <div>
- <div class="section-label" style="justify-content: flex-start;">WHY CHOOSE WES</div>
- <h2 style="margin-bottom: 1.5rem;">The Trusted Choice for Bitterne Residents</h2>
- <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1rem;">
- <li style="display: flex; align-items: flex-start; gap: 1rem;">
- <i data-lucide="check-circle" style="color: var(--color-accent); flex-shrink: 0; margin-top: 4px;"></i>
- <div>
- <strong style="display: block; font-size: 1.1rem; color: var(--text-dark);">Truly Local Service</strong>
- <span style="color: var(--text-body);">I'm based in Southampton and regularly serve the Bitterne community, so I can get to you quickly when emergencies happen.</span>
- </div>
- </li>
- <li style="display: flex; align-items: flex-start; gap: 1rem;">
- <i data-lucide="check-circle" style="color: var(--color-accent); flex-shrink: 0; margin-top: 4px;"></i>
- <div>
- <strong style="display: block; font-size: 1.1rem; color: var(--text-dark);">Transparent Pricing</strong>
- <span style="color: var(--text-body);">No hidden fees. I work to a strict Master Price Guide so Bitterne homeowners know exactly what they will pay.</span>
- </div>
- </li>
- <li style="display: flex; align-items: flex-start; gap: 1rem;">
- <i data-lucide="check-circle" style="color: var(--color-accent); flex-shrink: 0; margin-top: 4px;"></i>
- <div>
- <strong style="display: block; font-size: 1.1rem; color: var(--text-dark);">Gas Safe Registered</strong>
- <span style="color: var(--text-body);">Registration #558654 ensures all your boiler and gas work is legally compliant and safe.</span>
- </div>
- </li>
- </ul>
- </div>
- </div>
- </div>
- </section>
- <section class="section section-gray">
+<section class="section section-gray">
  <div class="container">
  <div class="section-header">
  <div class="section-label">FAQS</div>
@@ -322,19 +318,19 @@
  </div>
  </div>
  </section>
- 
- 
 
+ <!-- Final CTA: two-path -->
+ <!-- Final CTA: two-path -->
  <section class="section" style="background: var(--color-primary); color: white; text-align: center;">
- <div class="container">
- <h2 style="color: white; margin-bottom: 1rem;">Need a Plumber in Bitterne Today?</h2>
- <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Book directly into my diary or send me a WhatsApp video for a rapid quote.</p>
- <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
- <a href="../booking.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 15px 30px;"><i data-lucide="calendar"></i> Check Availability</a>
- </div>
- </div>
+   <div class="container">
+     <h2 style="color: white; margin-bottom: 1rem;">Need a plumber in Bitterne?</h2>
+     <p style="color: rgba(255,255,255,0.85); font-size: 1.1rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Book a fixed-price service direct, or WhatsApp me a quick video for a quote on anything else.</p>
+     <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+       <a href="../booking.html" class="btn btn-primary" style="font-size: 1.05rem; padding: 14px 28px;"><i data-lucide="calendar"></i> Book online</a>
+       <a href="https://wa.me/447700155655" class="btn" style="background: #25D366; color: white; font-size: 1.05rem; padding: 14px 28px;" target="_blank" rel="noopener noreferrer"><i data-lucide="message-circle"></i> WhatsApp quote</a>
+     </div>
+   </div>
  </section>
- 
 <!-- Footer -->
  <footer class="footer">
  <div class="container">
@@ -386,6 +382,8 @@
 
  <div class="footer-bottom">
  <p>© 2026 Better Call Wes. All rights reserved.</p>
+ <p style="color: var(--text-body); font-size: 1.05rem; line-height: 1.7; padding: 1rem 0 0; border-top: 1px solid rgba(15,41,66,0.08); margin-top: 1rem;"><strong style="color: var(--color-primary);">Where in Bitterne:</strong> I work most often around the Bitterne Precinct, Mousehole Lane, and the residential streets running down toward the River Itchen.</p>
+ 
  </div>
  </div>
  </footer>
