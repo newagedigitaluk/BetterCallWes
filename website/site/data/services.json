@@ -12,6 +12,11 @@
       "lunch_break": "12:00-13:00",
       "timezone": "Europe/London"
     },
+    "booking_rules": {
+      "min_lead_time_hours": 2,
+      "same_day_cutoff_hour": 15,
+      "whole_day_min_lead_days": 1
+    },
     "service_area": {
       "postcodes": [
         "SO14", "SO15", "SO16", "SO17", "SO18", "SO19",

@@ -92,22 +92,40 @@ def free_slots(
     hours: WorkingHours,
     today: date | None = None,
     step_min: int = 30,
-    skip_today: bool = True,
+    now: datetime | None = None,
+    min_lead_time_hours: float = 0,
+    same_day_cutoff_hour: int | None = None,
 ) -> Iterator[TimeBlock]:
     """Walk forward day by day, yielding free slots that fit duration_min.
 
-    step_min: how finely to step the start time within each working block.
-              30 mins gives "9:00, 9:30, 10:00..." starts.
-    skip_today: don't offer same-day slots (gives Wes lead time).
+    Args:
+        step_min: how finely to step the start time within each working block.
+                  30 mins gives "9:00, 9:30, 10:00..." starts.
+        now: the current moment (defaults to datetime.now()). Used to enforce
+             lead-time and same-day-cutoff rules. Override in tests.
+        min_lead_time_hours: a slot's start must be at least this many hours
+             after `now`. Applies to all days but in practice only filters
+             today's earliest slots.
+        same_day_cutoff_hour: if now.hour >= this value, no same-day slots are
+             offered at all (Wes's day is too far gone to take more work).
+             None disables the cutoff.
     """
+    if now is None:
+        now = datetime.now()
     if today is None:
-        today = date.today()
+        today = now.date()
+
+    earliest = now + timedelta(hours=min_lead_time_hours)
+    cutoff_skip_today = (
+        same_day_cutoff_hour is not None and now.hour >= same_day_cutoff_hour
+    )
 
     busy_sorted = sorted(busy, key=lambda b: b.start)
 
-    start_day = today + timedelta(days=1 if skip_today else 0)
     for offset in range(days_ahead):
-        d = start_day + timedelta(days=offset)
+        d = today + timedelta(days=offset)
+        if d == today and cutoff_skip_today:
+            continue
         for work in hours.working_blocks(d):
             # Find busy blocks that intersect this working block
             relevant = [b for b in busy_sorted if b.overlaps(work)]
@@ -117,7 +135,9 @@ def free_slots(
                     start=cursor,
                     end=cursor + timedelta(minutes=duration_min),
                 )
-                if not any(proposed.overlaps(b) for b in relevant):
+                if proposed.start >= earliest and not any(
+                    proposed.overlaps(b) for b in relevant
+                ):
                     yield proposed
                 cursor += timedelta(minutes=step_min)
 
@@ -128,16 +148,24 @@ def whole_day_slots(
     busy: list[TimeBlock],
     hours: WorkingHours,
     today: date | None = None,
-    skip_today: bool = True,
+    now: datetime | None = None,
+    whole_day_min_lead_days: int = 1,
 ) -> Iterator[TimeBlock]:
     """For full-day services (Power Flush). Yields one slot per fully-free workday.
 
     A day counts as free if no busy block overlaps either working window.
+
+    Args:
+        whole_day_min_lead_days: earliest offered day is `today + N days`.
+             Default 1 means "no same-day whole-day bookings" — Power Flush
+             needs prep so we never offer it for today.
     """
+    if now is None:
+        now = datetime.now()
     if today is None:
-        today = date.today()
+        today = now.date()
     busy_sorted = sorted(busy, key=lambda b: b.start)
-    start_day = today + timedelta(days=1 if skip_today else 0)
+    start_day = today + timedelta(days=max(0, whole_day_min_lead_days))
     for offset in range(days_ahead):
         d = start_day + timedelta(days=offset)
         blocks = hours.working_blocks(d)
