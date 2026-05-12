@@ -417,11 +417,10 @@
     "plumbing": {
       "name": "General Plumbing",
       "short_description": "Hourly call-out for plumbing fixes and installs. From £100 first hour, parts quoted on the day.",
-      "template_uuid": "TBC-PLUMBING-TEMPLATE-UUID",
+      "template_uuid": "602b6343-b1ba-40ca-80cf-242e0fb6255d",
       "category_default_uuid": "6dcbecdc-0123-4acf-a500-1bd94ed20dfb",
       "base_material_item": "LAB-HOUR-001",
       "base_duration_min": 60,
-      "$comment_template": "Wes still needs to create a BCW Plumbing template in SM8. Once created, set the template_uuid here.",
       "questions": [
         {
           "id": "job-type",
