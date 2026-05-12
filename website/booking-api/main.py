@@ -36,6 +36,13 @@ from availability import (
     whole_day_slots,
 )
 from cache import TTLCache
+from confirmation import (
+    ConfirmationContext,
+    normalise_uk_mobile,
+    parse_name,
+    render_email,
+    render_sms,
+)
 from sm8 import ServiceM8Client, ServiceM8Error
 
 load_dotenv()
@@ -68,6 +75,9 @@ sm8: ServiceM8Client | None = None  # initialised in lifespan
 # Caches
 materials_cache: TTLCache[list[dict]] | None = None
 activity_cache: TTLCache[list[dict]] | None = None
+
+# Wes's staff UUID — used for the optional <platform-user-signature/> tag
+DEFAULT_STAFF_UUID = "5673d021-27b2-4356-a14b-1760cabfcd3b"
 
 
 # ─────────── Pydantic models ───────────
@@ -536,6 +546,48 @@ async def book(req: BookingRequest) -> BookingResponse:
         await sm8.update_job(job_uuid, patch_fields)
     except Exception:  # noqa: BLE001
         log.exception("update_job (geo + category) failed")
+
+    # ─ 6) Send confirmation email + SMS to the customer ─
+    # SM8's auto-confirmation flow only fires for bookings via SM8's
+    # own widget. API-created jobs need us to send manually via the
+    # Messaging API endpoints (X-Api-Key auth, despite the public docs
+    # claiming OAuth — verified working).
+    first_name, last_name = parse_name(req.customer_name)
+    confirmation_ctx = ConfirmationContext(
+        customer_first=first_name,
+        customer_last=last_name,
+        customer_email=req.customer_email,
+        customer_phone=req.customer_phone,
+        service_name=svc.get("name", req.service),
+        slot_start=req.slot_start,
+        slot_end=req.slot_end,
+        job_address=full_address,
+        estimated_total=estimated_total,
+        job_uuid=job_uuid,
+    )
+    try:
+        subject, text_body, html_body = render_email(confirmation_ctx)
+        await sm8.send_email(
+            to=req.customer_email,
+            subject=subject,
+            text_body=text_body,
+            html_body=html_body,
+            reply_to="wes@bettercallwes.co.uk",
+            regarding_job_uuid=job_uuid,
+        )
+    except Exception:  # noqa: BLE001
+        log.exception("send confirmation email failed (booking still succeeded)")
+
+    try:
+        sms_message = render_sms(confirmation_ctx)
+        sms_to = normalise_uk_mobile(req.customer_phone)
+        await sm8.send_sms(
+            to=sms_to,
+            message=sms_message,
+            regarding_job_uuid=job_uuid,
+        )
+    except Exception:  # noqa: BLE001
+        log.exception("send confirmation SMS failed (booking still succeeded)")
 
     # Invalidate availability cache so the next /api/availability reflects the new slot
     activity_cache.invalidate()

@@ -263,3 +263,84 @@ class ServiceM8Client:
         resp = await self._client.post("/companycontact.json", json=body)
         resp.raise_for_status()
         return resp.headers.get("x-record-uuid", "")
+
+    # ─────────── Messaging API ───────────
+    #
+    # Despite the public docs claiming the Messaging API requires
+    # OAuth 2.0, X-Api-Key auth works fine — verified against a live
+    # endpoint and confirmed by ServiceM8's own n8n community node
+    # which uses only the API key. The Messaging endpoints sit at
+    # api.servicem8.com/platform_service_* (note: NOT under /api_1.0/).
+
+    async def send_email(
+        self,
+        *,
+        to: str,
+        subject: str,
+        text_body: str = "",
+        html_body: str = "",
+        reply_to: str | None = None,
+        regarding_job_uuid: str | None = None,
+        impersonate_uuid: str | None = None,
+    ) -> dict[str, Any]:
+        """POST /platform_service_email. Sends through SM8's email service.
+
+        At least one of text_body or html_body must be provided.
+        regarding_job_uuid links the email to a job (appears in its diary).
+        impersonate_uuid is required if the body uses <platform-user-signature/>.
+        """
+        if not (text_body or html_body):
+            raise ValueError("send_email: textBody or htmlBody required")
+        body: dict[str, Any] = {"to": to, "subject": subject}
+        if text_body:
+            body["textBody"] = text_body
+        if html_body:
+            body["htmlBody"] = html_body
+        if reply_to:
+            body["replyTo"] = reply_to
+        if regarding_job_uuid:
+            body["regardingJobUUID"] = regarding_job_uuid
+        headers = {
+            "X-Api-Key": self._api_key,
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        }
+        if impersonate_uuid:
+            headers["x-impersonate-uuid"] = impersonate_uuid
+        async with httpx.AsyncClient(timeout=20) as client:
+            resp = await client.post(
+                "https://api.servicem8.com/platform_service_email",
+                json=body,
+                headers=headers,
+            )
+        resp.raise_for_status()
+        return resp.json()
+
+    async def send_sms(
+        self,
+        *,
+        to: str,
+        message: str,
+        regarding_job_uuid: str | None = None,
+    ) -> dict[str, Any]:
+        """POST /platform_service_sms. Sends through SM8's SMS service.
+
+        SM8 charges per outbound SMS — typically a few pence per UK msg.
+        regarding_job_uuid links the SMS to a job (appears in its diary).
+        """
+        body: dict[str, Any] = {"to": to, "message": message}
+        if regarding_job_uuid:
+            body["regardingJobUUID"] = regarding_job_uuid
+        headers = {
+            "X-Api-Key": self._api_key,
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        }
+        async with httpx.AsyncClient(timeout=20) as client:
+            resp = await client.post(
+                "https://api.servicem8.com/platform_service_sms",
+                json=body,
+                headers=headers,
+            )
+        resp.raise_for_status()
+        return resp.json()
