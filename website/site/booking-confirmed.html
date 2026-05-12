@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GD5D6TC4DS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-GD5D6TC4DS');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking confirmed | Better Call Wes</title>
+  <meta name="description" content="Your booking with Wes is confirmed. Look out for a confirmation email and SMS shortly.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/styles.css?v=1.7">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
+  <link rel="canonical" href="https://bettercallwes.co.uk/booking-confirmed.html" />
+
+  <style>
+    body { background: var(--color-bg); }
+    .confirm-header {
+      background: white;
+      border-bottom: 1px solid rgba(15,41,66,0.08);
+      padding: 0.75rem 0;
+    }
+    .confirm-header .container { display: flex; justify-content: center; }
+    .confirm-header img { height: 44px; width: auto; }
+    .confirm-page {
+      max-width: 680px; margin: 0 auto; padding: 2rem 1rem 4rem;
+    }
+    .tick-circle {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: #25D366; color: white;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+    .tick-circle i { width: 40px; height: 40px; }
+    .confirm-page h1 {
+      text-align: center; margin: 0 0 0.5rem; font-size: clamp(1.6rem, 4vw, 2.2rem);
+    }
+    .confirm-page .lede {
+      text-align: center; color: var(--text-body); font-size: 1.1rem; margin: 0 0 2rem;
+    }
+    .card {
+      background: white; border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      padding: 1.5rem 1.25rem; margin-bottom: 1.25rem;
+    }
+    @media (min-width: 600px) { .card { padding: 2rem; } }
+    .card h2 { margin: 0 0 1rem; font-size: 1.2rem; color: var(--color-primary); }
+    .booking-row { display: flex; align-items: baseline; gap: 1rem; padding: 0.4rem 0; }
+    .booking-row dt { min-width: 100px; font-weight: 600; color: var(--color-primary); }
+    .booking-row dd { margin: 0; color: var(--text-body); }
+
+    .what-next ol { padding-left: 1.2rem; margin: 0; }
+    .what-next li { margin-bottom: 0.65rem; line-height: 1.5; color: var(--text-body); }
+    .what-next li strong { color: var(--color-primary); }
+
+    .meet-wes {
+      display: flex; gap: 1rem; align-items: center;
+    }
+    .meet-wes img {
+      width: 80px; height: 80px; border-radius: 50%; object-fit: cover; flex-shrink: 0;
+    }
+    .meet-wes p { margin: 0; line-height: 1.5; color: var(--text-body); }
+    .meet-wes p strong { color: var(--color-primary); }
+
+    .save-contact {
+      display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    @media (min-width: 600px) { .save-contact { flex-direction: row; } }
+    .save-contact a {
+      flex: 1; padding: 0.85rem 1rem; text-align: center;
+      border-radius: var(--radius-md); font-weight: 700; text-decoration: none;
+      transition: transform 0.15s, background 0.15s;
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    }
+    .save-contact a:hover { transform: translateY(-2px); }
+    .btn-whatsapp { background: #25D366; color: white; }
+    .btn-call { background: white; color: var(--color-primary); border: 2px solid var(--color-primary); }
+
+    .home-link {
+      display: block; text-align: center; margin-top: 2rem;
+      color: var(--text-body); font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+<header class="confirm-header">
+  <div class="container">
+    <a href="index.html" aria-label="Better Call Wes home">
+      <img src="assets/logo.webp?v=3" alt="Better Call Wes">
+    </a>
+  </div>
+</header>
+
+<main class="confirm-page">
+  <div class="tick-circle"><i data-lucide="check"></i></div>
+  <h1>You're booked in.</h1>
+  <p class="lede">A confirmation has been sent to your inbox.</p>
+
+  <!-- Booking summary populated from URL params -->
+  <div class="card" id="summary-card" hidden>
+    <h2>Your booking</h2>
+    <dl id="summary-dl"></dl>
+  </div>
+
+  <div class="card what-next">
+    <h2>What happens next</h2>
+    <ol>
+      <li><strong>You'll get a confirmation email</strong> from my ServiceM8 diary within a few minutes. If it doesn't arrive, check your spam folder.</li>
+      <li><strong>A reminder will land 24 hours before</strong> your slot so you don't forget.</li>
+      <li><strong>On the day</strong> I'll arrive in a black Ford Transit Custom van with "Better Call Wes" on the side. Park clear if you can.</li>
+      <li><strong>For fixed-price services</strong> the price you saw at booking is what you'll pay. For repair work, I'll quote any larger work on site before I start.</li>
+      <li><strong>Need to reschedule?</strong> Just WhatsApp me with as much notice as you can manage.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>Meet me</h2>
+    <div class="meet-wes">
+      <img src="assets/images/wes-profile.webp" alt="Wes, your Gas Safe plumber">
+      <p><strong>I'm Wes.</strong> Gas Safe registered #558654, fully insured, working out of Southampton across SO14 to SO53. One person, one van — every job from booking to invoice handled by me.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Save my number</h2>
+    <p style="margin: 0 0 1rem; color: var(--text-body);">Add me to your contacts so you don't have to dig through emails next time something's leaking.</p>
+    <div class="save-contact">
+      <a href="https://wa.me/447700155655" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+        <i data-lucide="message-circle" style="width:20px;height:20px;"></i> WhatsApp me
+      </a>
+      <a href="tel:07700155655" class="btn-call">
+        <i data-lucide="phone" style="width:20px;height:20px;"></i> 07700 155 655
+      </a>
+    </div>
+  </div>
+
+  <a href="index.html" class="home-link">&larr; Back to home</a>
+</main>
+
+<script>
+  // ─── Fire conversion events on page load ──────────────────────────────
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const jobUuid = params.get('job') || '';
+    const total = parseFloat(params.get('total')) || 0;
+    const service = params.get('service') || '';
+    const start = params.get('start') || '';
+
+    // ─ Render booking summary if we have data ─
+    if (service || start || total) {
+      document.getElementById('summary-card').hidden = false;
+      const dl = document.getElementById('summary-dl');
+      const serviceNames = {
+        'boiler-service': 'Boiler Service',
+        'gas-safety-check': 'Gas Safety Check',
+        'boiler-repair': 'Boiler Repair',
+        'power-flush': 'Power Flush',
+        'plumbing': 'General Plumbing',
+      };
+      function row(label, value) {
+        const wrap = document.createElement('div');
+        wrap.className = 'booking-row';
+        const dt = document.createElement('dt'); dt.textContent = label;
+        const dd = document.createElement('dd'); dd.textContent = value;
+        wrap.appendChild(dt); wrap.appendChild(dd);
+        dl.appendChild(wrap);
+      }
+      if (service && serviceNames[service]) row('Service', serviceNames[service]);
+      if (start) {
+        try {
+          const d = new Date(start);
+          row('When', d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' }) +
+            ', ' + d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false }));
+        } catch (e) { /* ignore */ }
+      }
+      if (total > 0) row('Estimated total', new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0 }).format(total));
+    }
+
+    // ─ Fire conversion events (only if we have a real job UUID — prevents
+    //   double-fire if someone refreshes or hits the URL directly) ─
+    if (jobUuid) {
+      // GA4 generate_lead event
+      try {
+        gtag('event', 'generate_lead', {
+          currency: 'GBP',
+          value: total,
+          service: service,
+          transaction_id: jobUuid,
+        });
+      } catch (e) { console.warn('gtag fire failed', e); }
+
+      // Growify conversion (matches the WhatsApp pattern used elsewhere on the site)
+      try {
+        window.grpQueue = window.grpQueue || [];
+        if (!window.grp) {
+          window.grp = function () { window.grpQueue.push(arguments); };
+        }
+        window.grp('conversion', {
+          orderId: jobUuid,
+          products: [{
+            productId: 'online-booking-' + service,
+            productName: 'Online booking — ' + service,
+            productPrice: total,
+            productBrand: 'Better Call Wes',
+            productQuantity: 1,
+            purchaseValue: total,
+          }],
+        });
+      } catch (e) { console.warn('growify fire failed', e); }
+    }
+  })();
+
+  lucide.createIcons();
+</script>
+
+<!-- Growify pixel -->
+<script
+    src="https://cdn.growify.ai/pixel.min.js"
+    data-website-id="b1da141995f354578b374c1c1ce45287:f1a6af4ef5e14a02766e2e7a3d1eb1f18b3747e02f785abec67091bc988276db9726d52ebb3f4a61f998aff8c550d978"
+    data-endpoint="api_v2"
+    data-platform="web"
+></script>
+<script
+  src="https://i.bettercallwes.co.uk/js/external-tracking.js"
+  data-tracking-id="tk_7328a539b1e343b8a44f6f9bf8537fd6"
+></script>
+
+</body>
+</html>

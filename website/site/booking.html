@@ -1,369 +1,431 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
- <!-- Google tag (gtag.js) -->
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-GD5D6TC4DS"></script>
- <script>
- window.dataLayer = window.dataLayer || [];
- function gtag(){dataLayer.push(arguments);}
- gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GD5D6TC4DS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-GD5D6TC4DS');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a plumber in Southampton | Better Call Wes</title>
+  <meta name="description" content="Book Wes online for boiler service, gas safety check, boiler repair, power flush, or general plumbing. Real-time availability, fixed prices.">
 
- gtag('config', 'G-GD5D6TC4DS');
- </script>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Book Your Appointment Online | Better Call Wes</title>
- <meta name="description"
- content="Book your plumbing or heating appointment online with Better Call Wes. Live availability, instant confirmation, no payment required upfront. Gas Safe registered engineer serving Southampton.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/styles.css?v=1.7">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
+  <link rel="canonical" href="https://bettercallwes.co.uk/booking.html" />
 
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link rel="stylesheet" href="css/styles.css?v=1.8">
- <script src="https://unpkg.com/lucide@latest"></script>
- <link rel="icon" href="assets/favicon.ico" sizes="any">
- <link rel="apple-touch-icon" href="assets/favicon.png">
- <link rel="canonical" href="https://bettercallwes.co.uk/booking.html" />
+  <style>
+    /* Conversion-focused booking page — minimal chrome, focused form */
+    body { background: var(--color-bg); }
 
- <style>
- .booking-hero {
- background: linear-gradient(135deg, #0F2942 0%, #1A3A5A 100%);
- padding-top: 160px;
- padding-bottom: 80px;
- position: relative;
- overflow: hidden;
- }
+    /* Minimal header: logo + phone only */
+    .booking-header {
+      position: sticky; top: 0; z-index: 100;
+      background: #ffffff;
+      border-bottom: 1px solid rgba(15,41,66,0.08);
+      padding: 0.75rem 0;
+    }
+    .booking-header .container {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem;
+    }
+    .booking-header .logo img { height: 44px; width: auto; }
+    .booking-header .phone {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--color-primary); font-weight: 700; text-decoration: none;
+      font-size: 0.95rem;
+    }
 
- .booking-hero::before {
- content: '';
- position: absolute;
- top: -50%;
- right: -25%;
- width: 600px;
- height: 600px;
- background: radial-gradient(circle, rgba(255, 107, 0, 0.1) 0%, transparent 70%);
- pointer-events: none;
- }
+    /* Trust band */
+    .trust-band {
+      background: var(--color-primary); color: white;
+      padding: 0.6rem 0; font-size: 0.85rem;
+    }
+    .trust-band .container {
+      display: flex; flex-wrap: wrap; gap: 1rem 1.5rem;
+      justify-content: center; align-items: center;
+    }
+    .trust-band span {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+    }
+    .trust-band i { width: 16px; height: 16px; color: var(--color-accent); }
 
- .benefit-card {
- background: rgba(255, 255, 255, 0.95);
- backdrop-filter: blur(12px);
- border-radius: 16px;
- padding: 2rem;
- display: flex;
- align-items: start;
- gap: 1.5rem;
- box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
- transition: transform 0.3s ease;
- }
+    /* Page-level wrap */
+    .booking-page { max-width: 760px; margin: 0 auto; padding: 1.5rem 1rem 6rem; }
+    .booking-page h1 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      margin: 0 0 0.5rem;
+    }
+    .booking-page .lede {
+      color: var(--text-body); font-size: 1.05rem; margin: 0 0 2rem;
+    }
 
- .benefit-card:hover {
- transform: translateY(-4px);
- }
+    /* Steps */
+    .step {
+      background: white; border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      padding: 1.5rem 1.25rem; margin-bottom: 1.25rem;
+      scroll-margin-top: 80px;
+    }
+    @media (min-width: 600px) {
+      .step { padding: 2rem; }
+    }
+    .step h2 {
+      margin: 0 0 1rem; font-size: 1.3rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .step h2 .num {
+      background: var(--color-accent); color: white;
+      width: 28px; height: 28px; border-radius: 50%;
+      font-size: 0.9rem; display: inline-flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .step.locked { opacity: 0.5; pointer-events: none; }
+    .step.locked h2 .num { background: #94a3b8; }
 
- .benefit-icon {
- width: 60px;
- height: 60px;
- background: linear-gradient(135deg, #FF6B00 0%, #EA580C 100%);
- border-radius: 12px;
- display: flex;
- align-items: center;
- justify-content: center;
- flex-shrink: 0;
- }
+    /* Service picker cards */
+    .service-grid {
+      display: grid; gap: 0.75rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 480px) { .service-grid { grid-template-columns: 1fr 1fr; } }
+    .service-card {
+      cursor: pointer;
+      border: 2px solid rgba(15,41,66,0.1);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      background: white;
+      text-align: left;
+      font-family: inherit;
+      transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+    }
+    .service-card:hover { border-color: var(--color-accent); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+    .service-card.selected {
+      border-color: var(--color-accent);
+      background: rgba(255,107,0,0.04);
+    }
+    .service-card .name { font-weight: 700; color: var(--color-primary); margin-bottom: 0.25rem; }
+    .service-card .desc { font-size: 0.85rem; color: var(--text-body); line-height: 1.4; }
+    .service-card .from {
+      font-size: 0.85rem; font-weight: 600; color: var(--color-accent); margin-top: 0.5rem;
+    }
 
- .booking-iframe-container {
- background: white;
- border-radius: 24px;
- box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.15);
- overflow: hidden;
- border: 1px solid rgba(0, 0, 0, 0.05);
- }
+    /* Questions */
+    .question { margin-bottom: 1.25rem; }
+    .question:last-child { margin-bottom: 0; }
+    .question label.q-label {
+      display: block; font-weight: 600; color: var(--color-primary);
+      margin-bottom: 0.4rem; font-size: 0.98rem;
+    }
+    .question .q-sub {
+      display: block; font-size: 0.85rem; color: var(--text-body);
+      margin-bottom: 0.5rem; line-height: 1.4;
+    }
+    .question .options { display: flex; flex-direction: column; gap: 0.5rem; }
+    .question .opt {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      padding: 0.7rem 0.9rem;
+      border: 1px solid rgba(15,41,66,0.12);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .question .opt:hover { border-color: var(--color-accent); }
+    .question .opt.selected {
+      border-color: var(--color-accent);
+      background: rgba(255,107,0,0.04);
+    }
+    .question .opt input { margin-top: 0.2rem; flex-shrink: 0; }
+    .question .opt .opt-label { flex: 1; font-size: 0.95rem; }
+    .question .opt .price-delta {
+      font-size: 0.85rem; font-weight: 600; color: var(--color-accent);
+      white-space: nowrap;
+    }
+    .question input[type="text"],
+    .question input[type="number"],
+    .question input[type="tel"],
+    .question input[type="email"],
+    .question select,
+    .question textarea {
+      width: 100%; padding: 0.7rem 0.9rem;
+      border: 1px solid rgba(15,41,66,0.15);
+      border-radius: var(--radius-md);
+      font-size: 1rem; font-family: inherit;
+      background: white;
+    }
+    .question textarea { min-height: 90px; resize: vertical; }
+    .question input:focus, .question select:focus, .question textarea:focus {
+      outline: 2px solid var(--color-accent); outline-offset: 1px;
+      border-color: var(--color-accent);
+    }
 
- .alternative-contact {
- background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
- backdrop-filter: blur(12px);
- border-radius: 20px;
- padding: 3rem;
- box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
- text-align: center;
- }
+    /* Slot picker */
+    .day-strip {
+      display: flex; gap: 0.5rem; overflow-x: auto;
+      padding: 0.25rem 0 0.5rem; margin: 0 -0.25rem 1rem;
+      -webkit-overflow-scrolling: touch;
+    }
+    .day-pill {
+      flex-shrink: 0;
+      border: 1px solid rgba(15,41,66,0.12);
+      background: white; border-radius: var(--radius-md);
+      padding: 0.6rem 0.75rem;
+      cursor: pointer;
+      text-align: center; min-width: 78px;
+      font-family: inherit;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .day-pill .dow {
+      display: block; font-size: 0.75rem; text-transform: uppercase;
+      color: var(--text-body); letter-spacing: 0.5px;
+    }
+    .day-pill .date {
+      display: block; font-size: 1.15rem; font-weight: 700; color: var(--color-primary);
+    }
+    .day-pill .month { display: block; font-size: 0.7rem; color: var(--text-body); }
+    .day-pill:hover { border-color: var(--color-accent); }
+    .day-pill.selected {
+      border-color: var(--color-accent); background: rgba(255,107,0,0.08);
+    }
+    .slot-list {
+      display: grid; gap: 0.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    }
+    .slot {
+      border: 1px solid rgba(15,41,66,0.12);
+      background: white; border-radius: var(--radius-md);
+      padding: 0.6rem 0.5rem;
+      cursor: pointer; font-family: inherit;
+      font-size: 0.95rem; color: var(--color-primary); font-weight: 600;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .slot:hover { border-color: var(--color-accent); }
+    .slot.selected {
+      background: var(--color-accent); color: white; border-color: var(--color-accent);
+    }
+    .slot-empty {
+      grid-column: 1 / -1;
+      text-align: center; color: var(--text-body); padding: 1.5rem;
+      font-size: 0.95rem;
+    }
+    .slot-whole-day { font-size: 0.9rem; }
 
- @media (max-width: 768px) {
- .booking-hero {
- padding-top: 120px;
- padding-bottom: 60px;
- }
+    /* Running total — sticky bottom on mobile */
+    .running-total {
+      position: fixed; left: 0; right: 0; bottom: 0;
+      background: white;
+      border-top: 1px solid rgba(15,41,66,0.1);
+      box-shadow: 0 -4px 16px rgba(0,0,0,0.06);
+      padding: 0.75rem 1rem;
+      z-index: 50;
+      display: none;
+    }
+    .running-total.show { display: block; }
+    .running-total .inner {
+      max-width: 760px; margin: 0 auto;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .running-total .label { font-size: 0.8rem; color: var(--text-body); display: block; }
+    .running-total .amount {
+      font-size: 1.4rem; font-weight: 800; color: var(--color-primary);
+    }
+    .running-total .cta { margin-left: auto; }
 
- .benefit-card {
- padding: 1.5rem;
- }
+    /* Submit panel */
+    .summary { background: var(--color-bg); border-radius: var(--radius-md);
+      padding: 1rem 1.25rem; margin-bottom: 1.25rem; font-size: 0.95rem; }
+    .summary dt { font-weight: 600; color: var(--color-primary); margin-top: 0.5rem; }
+    .summary dt:first-child { margin-top: 0; }
+    .summary dd { margin: 0.1rem 0 0; color: var(--text-body); }
+    .summary .total-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding-top: 0.75rem; margin-top: 0.75rem;
+      border-top: 1px solid rgba(15,41,66,0.1);
+    }
+    .summary .total-row .amount {
+      font-size: 1.4rem; font-weight: 800; color: var(--color-accent);
+    }
 
- .alternative-contact {
- padding: 2rem;
- }
- }
- </style>
- <!-- Growify Pixel -->
- <script
- src="https://cdn.growify.ai/pixel.min.js"
- data-website-id="b1da141995f354578b374c1c1ce45287:f1a6af4ef5e14a02766e2e7a3d1eb1f18b3747e02f785abec67091bc988276db9726d52ebb3f4a61f998aff8c550d978"
- data-endpoint="api_v2"
- data-platform="web"
- ></script>
+    /* Errors / loading */
+    .error {
+      background: #fee; color: #b00; padding: 0.75rem 1rem;
+      border-radius: var(--radius-md); margin: 0.75rem 0;
+      font-size: 0.95rem;
+    }
+    .loading {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      color: var(--text-body); font-size: 0.95rem;
+    }
+    .spinner {
+      width: 18px; height: 18px;
+      border: 2px solid rgba(15,41,66,0.2);
+      border-top-color: var(--color-accent);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Submit button big & friendly */
+    #submit-btn {
+      width: 100%; padding: 1rem;
+      font-size: 1.1rem; font-weight: 700;
+      background: var(--color-accent); color: white;
+      border: none; border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: background 0.15s, transform 0.15s;
+    }
+    #submit-btn:hover { background: #ea580c; }
+    #submit-btn:active { transform: translateY(1px); }
+    #submit-btn:disabled { background: #94a3b8; cursor: not-allowed; }
+
+    /* Footer minimal */
+    .booking-footer {
+      text-align: center; padding: 2rem 1rem;
+      font-size: 0.85rem; color: var(--text-body);
+      background: var(--color-bg);
+    }
+    .booking-footer a { color: var(--text-body); text-decoration: underline; }
+
+    /* WhatsApp escape hatch (always visible) */
+    .escape-hatch {
+      background: rgba(37,211,102,0.08);
+      border: 1px solid rgba(37,211,102,0.3);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1rem;
+      margin-bottom: 1.25rem;
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.95rem;
+      flex-wrap: wrap;
+    }
+    .escape-hatch i { color: #25D366; flex-shrink: 0; }
+    .escape-hatch a {
+      color: #1a7a40; font-weight: 700; text-decoration: none;
+      margin-left: auto; flex-shrink: 0;
+    }
+  </style>
 </head>
-
 <body>
 
- <!-- Header -->
- <header class="header">
- <div class="container">
- <nav class="nav-container">
- <a href="index.html" class="logo">
- <img src="assets/logo.webp?v=3" alt="Better Call Wes">
- </a>
- <div class="main-nav">
- <a href="index.html" class="nav-link">Home</a>
- <div class="dropdown">
- <a href="services.html" class="nav-link">Services <i data-lucide="chevron-down"
- style="width: 16px; height: 16px;"></i></a>
- <div class="dropdown-menu">
- <div
- style="padding: 0 1rem 0.5rem; font-size: 0.75rem; letter-spacing: 1px; color: var(--color-accent); font-weight: 700; text-transform: uppercase;">
- Boiler Services</div>
- <a href="services/boiler-installation.html" class="dropdown-item">Boiler Installation</a>
- <a href="services/boiler-repair.html" class="dropdown-item">Boiler Repair</a>
- <a href="services/boiler-servicing.html" class="dropdown-item">Boiler Servicing</a>
+<!-- Minimal sticky header (no nav exits on conversion page) -->
+<header class="booking-header">
+  <div class="container">
+    <a href="index.html" class="logo" aria-label="Better Call Wes">
+      <img src="assets/logo.webp?v=3" alt="Better Call Wes">
+    </a>
+    <a href="tel:07700155655" class="phone">
+      <i data-lucide="phone" style="width:16px;height:16px;"></i> 07700 155 655
+    </a>
+  </div>
+</header>
 
- <div class="dropdown-divider"></div>
+<!-- Trust band -->
+<div class="trust-band">
+  <div class="container">
+    <span><i data-lucide="shield-check"></i> Gas Safe #558654</span>
+    <span><i data-lucide="star"></i> 4.9 from 200+ reviews</span>
+    <span><i data-lucide="award"></i> 12-month workmanship guarantee</span>
+    <span><i data-lucide="map-pin"></i> SO14&ndash;SO53</span>
+  </div>
+</div>
 
- <div
- style="padding: 0.5rem 1rem 0.5rem; font-size: 0.75rem; letter-spacing: 1px; color: var(--color-accent); font-weight: 700; text-transform: uppercase;">
- Heating & Plumbing</div>
- <a href="services/central-heating.html" class="dropdown-item">Central Heating</a>
- <a href="services/plumbing-repairs.html" class="dropdown-item">Plumbing Repairs</a>
- <a href="services/power-flushing.html" class="dropdown-item">Power Flushing</a>
- <a href="services/toilet-repairs.html" class="dropdown-item">Toilet Repairs</a>
+<main class="booking-page">
+  <h1>Book Wes</h1>
+  <p class="lede">Pick a service, choose a slot, done in 2 minutes. You'll get a confirmation by email and SMS straight from my diary.</p>
 
- <div class="dropdown-divider"></div>
- <a href="services.html" class="dropdown-item"
- style="text-align: center; color: var(--text-dark); font-weight: 600;">View All
- Services →</a>
- </div>
- </div>
- <a href="about.html" class="nav-link">About Me</a>
- <a href="pricing.html" class="nav-link">Pricing</a>
- <a href="reviews.html" class="nav-link">Reviews</a>
- <a href="contact.html" class="nav-link">Contact</a>
- <a href="tel:07700155655" class="btn btn-primary">
- <i data-lucide="phone" size="16"></i> 07700 155 655
- </a>
- </div>
- <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
- <i data-lucide="menu" size="24"></i>
- </button>
- </nav>
- </div>
- <!-- Mobile Nav -->
- <nav class="mobile-nav" id="mobileNav">
- <a href="index.html">Home</a>
- <a href="services.html">Services</a>
- <a href="about.html">About Me</a>
- <a href="pricing.html">Pricing</a>
- <a href="reviews.html">Reviews</a>
- <a href="contact.html">Contact</a>
- <a href="tel:07700155655">📞 07700 155 655</a>
- </nav>
- </header>
+  <!-- Escape hatch: people who'd rather not book online -->
+  <div class="escape-hatch">
+    <i data-lucide="message-circle" style="width:24px;height:24px;"></i>
+    <span>Need a quote first or have questions?</span>
+    <a href="https://wa.me/447700155655" target="_blank" rel="noopener noreferrer">WhatsApp Wes &rarr;</a>
+  </div>
 
- <!-- Hero Section -->
- <section class="booking-hero">
- <div class="container">
- <div style="max-width: 700px; margin: 0 auto; text-align: center; position: relative; z-index: 1;">
- <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255, 107, 0, 0.1); border: 1px solid rgba(255, 107, 0, 0.2); padding: 0.75rem 1.5rem; border-radius: 9999px; margin-bottom: 2rem; color: #FF6B00; font-weight: 600;">
- <i data-lucide="calendar-check" size="20"></i>
- Live Availability
- </div>
- <h1 style="color: white; margin-bottom: 1.5rem;">Book Your <span style="color: #FF6B00;">Appointment</span></h1>
- <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem; line-height: 1.6;">Choose a time that works for you. Get instant confirmation. No payment required upfront.</p>
- </div>
- </div>
- </section>
+  <!-- Step 1: pick a service -->
+  <section class="step" id="step-service" aria-labelledby="step-service-title">
+    <h2 id="step-service-title"><span class="num">1</span> What do you need?</h2>
+    <div class="service-grid" id="service-grid">
+      <div class="loading"><span class="spinner"></span> Loading services&hellip;</div>
+    </div>
+  </section>
 
- <!-- Benefits Section -->
- <section class="section" style="background: #F8FAFC; padding: 60px 0;">
- <div class="container">
- <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
- <div class="benefit-card">
- <div class="benefit-icon">
- <i data-lucide="clock" size="28" style="color: white;"></i>
- </div>
- <div>
- <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: #0F2942;">Real-Time Availability</h3>
- <p style="color: #64748B; font-size: 0.95rem; margin: 0;">See live availability and book instantly without waiting for callbacks.</p>
- </div>
- </div>
+  <!-- Step 2: questions -->
+  <section class="step locked" id="step-questions" aria-labelledby="step-questions-title" hidden>
+    <h2 id="step-questions-title"><span class="num">2</span> Tell me about the job</h2>
+    <form id="questions-form" novalidate></form>
+  </section>
 
- <div class="benefit-card">
- <div class="benefit-icon">
- <i data-lucide="shield-check" size="28" style="color: white;"></i>
- </div>
- <div>
- <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: #0F2942;">No Payment Upfront</h3>
- <p style="color: #64748B; font-size: 0.95rem; margin: 0;">Book your slot with confidence. Payment only required after the job is complete.</p>
- </div>
- </div>
+  <!-- Step 3: pick a slot -->
+  <section class="step locked" id="step-slot" aria-labelledby="step-slot-title" hidden>
+    <h2 id="step-slot-title"><span class="num">3</span> Pick a time</h2>
+    <div id="slot-area">
+      <div class="loading"><span class="spinner"></span> Loading availability&hellip;</div>
+    </div>
+  </section>
 
- <div class="benefit-card">
- <div class="benefit-icon">
- <i data-lucide="bell" size="28" style="color: white;"></i>
- </div>
- <div>
- <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: #0F2942;">Instant Confirmation</h3>
- <p style="color: #64748B; font-size: 0.95rem; margin: 0;">Receive booking confirmation via email and SMS immediately after booking.</p>
- </div>
- </div>
- </div>
- </div>
- </section>
+  <!-- Step 4: your details -->
+  <section class="step locked" id="step-details" aria-labelledby="step-details-title" hidden>
+    <h2 id="step-details-title"><span class="num">4</span> Your details</h2>
+    <form id="details-form" novalidate>
+      <div class="question">
+        <label class="q-label" for="customer_name">Your name</label>
+        <input type="text" id="customer_name" name="customer_name" required minlength="2" autocomplete="name">
+      </div>
+      <div class="question">
+        <label class="q-label" for="customer_phone">Mobile number</label>
+        <input type="tel" id="customer_phone" name="customer_phone" required autocomplete="tel" inputmode="tel" placeholder="07&hellip;">
+      </div>
+      <div class="question">
+        <label class="q-label" for="customer_email">Email</label>
+        <input type="email" id="customer_email" name="customer_email" required autocomplete="email" inputmode="email" placeholder="you@example.com">
+      </div>
+      <div class="question">
+        <label class="q-label" for="customer_postcode">Postcode</label>
+        <span class="q-sub">Must be SO14 to SO53.</span>
+        <input type="text" id="customer_postcode" name="customer_postcode" required autocomplete="postal-code" placeholder="SO15 1AA" style="text-transform:uppercase;">
+      </div>
+      <div class="question">
+        <label class="q-label" for="customer_address">Full address</label>
+        <textarea id="customer_address" name="customer_address" required autocomplete="street-address" placeholder="House number, street, area"></textarea>
+      </div>
+    </form>
+  </section>
 
- <!-- Booking Form Section -->
- <section class="section" style="padding: 60px 0 80px; background: var(--color-bg);">
- <div class="container">
- <div class="booking-iframe-container" style="max-width: 900px; margin: 0 auto;">
- <!-- ServiceM8 Booking Iframe with header cropping -->
- <div style="overflow: hidden; height: 900px;">
- <iframe
- src="https://book.servicem8.com/request_service_booking?strVendorUUID=84fea8b1-7f3c-4454-af9c-f37e298001db"
- width="100%" height="1010px" frameborder="0" style="border: none; margin-top: -110px;"
- title="Book Service"></iframe>
- </div>
- </div>
- </div>
- </section>
+  <!-- Step 5: review + submit -->
+  <section class="step locked" id="step-submit" aria-labelledby="step-submit-title" hidden>
+    <h2 id="step-submit-title"><span class="num">5</span> Review &amp; book</h2>
+    <dl class="summary" id="summary"></dl>
+    <div id="submit-error" class="error" hidden></div>
+    <button type="button" id="submit-btn">
+      <i data-lucide="calendar-check" style="width:20px;height:20px;vertical-align:middle;margin-right:0.4rem;"></i>
+      Confirm booking
+    </button>
+  </section>
+</main>
 
- <!-- Alternative Contact Options -->
- <section class="section" style="background: #F8FAFC; padding: 60px 0;">
- <div class="container" style="max-width: 700px;">
- <div class="alternative-contact">
- <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #FF6B00 0%, #EA580C 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem;">
- <i data-lucide="phone" size="40" style="color: white;"></i>
- </div>
- <h2 style="margin-bottom: 1rem; color: #0F2942;">Prefer to Speak to Someone?</h2>
- <p style="color: #64748B; font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.7;">No problem! Give me a call or send a WhatsApp message and I'll get you booked in.</p>
- <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
- <a href="tel:07700155655" class="btn btn-primary" style="font-size: 1.1rem;"><i data-lucide="phone"></i> 07700 155 655</a>
- <a href="https://wa.me/447700155655" class="btn btn-whatsapp" style="font-size: 1.1rem;"><i data-lucide="message-circle"></i> WhatsApp</a>
- </div>
- </div>
- </div>
- </section>
+<!-- Sticky running total on mobile -->
+<aside class="running-total" id="running-total" hidden>
+  <div class="inner">
+    <div>
+      <span class="label">Estimated total</span>
+      <span class="amount" id="running-amount">&pound;0</span>
+    </div>
+  </div>
+</aside>
 
- <!-- Footer -->
- <footer class="footer">
- <div class="container">
- <div class="footer-grid">
- <div class="footer-brand">
- <a href="index.html" class="logo">
- <img src="assets/logo.webp?v=3" alt="Better Call Wes">
- </a>
- <p>Southampton's trusted local plumber and heating engineer. Gas Safe registered (#558654), fully
- insured, and committed to quality workmanship.</p>
- </div>
+<!-- Minimal footer -->
+<footer class="booking-footer">
+  <p>Gas Safe #558654 &middot; Fully insured &middot; <a href="privacy-policy.html">Privacy</a> &middot; <a href="terms.html">Terms</a></p>
+  <p>&copy; 2026 Better Call Wes. All rights reserved.</p>
+</footer>
 
- <div>
- <h3>Quick Links</h3>
- <ul class="footer-links">
- <li><a href="index.html">Home</a></li>
- <li><a href="services.html">Services</a></li>
- <li><a href="about.html">About Me</a></li>
- <li><a href="pricing.html">Pricing</a></li>
- <li><a href="reviews.html">Reviews</a></li>
- <li><a href="contact.html">Contact</a></li>
- </ul>
- </div>
-
- <div>
- <h3>Services</h3>
- <ul class="footer-links">
- <li><a href="services/boiler-installation.html">Boiler Installation</a></li>
- <li><a href="services/boiler-servicing.html">Boiler Servicing</a></li>
- <li><a href="services/boiler-repair.html">Boiler Repair</a></li>
- <li><a href="services/plumbing-repairs.html">Plumbing Repairs</a></li>
- <li><a href="services/power-flushing.html">Power Flushing</a></li>
- <li><a href="services/toilet-repairs.html">Toilet Repairs</a></li>
- </ul>
- </div>
-
- <div>
- <h3>Contact</h3>
- <ul class="footer-links">
- <li><a href="tel:07700155655">📞 07700 155 655</a></li>
- <li><a href="https://wa.me/447700155655">💬 WhatsApp</a></li>
- <li><a href="mailto:wes@bettercallwes.co.uk">✉️ wes@bettercallwes.co.uk</a></li>
- <li style="margin-top: 1rem;">📍 Southampton, Hampshire</li>
- <li>🕐 Mon-Fri: 9am-5pm</li>
- <li style="margin-top: 1rem;"><strong>Gas Safe Reg: 558654</strong></li>
- </ul>
- </div>
- </div>
-
- <div class="footer-bottom">
- <p>© 2026 Better Call Wes. All rights reserved. | <a href="privacy-policy.html" style="color: rgba(255, 255, 255, 0.6);">Privacy Policy</a> | <a href="terms.html" style="color: rgba(255, 255, 255, 0.6);">Terms of Service</a></p>
- </div>
- </div>
- </footer>
-
- <script>
- lucide.createIcons();
-
- // Mobile menu toggle
- function toggleMobileMenu() {
- const nav = document.getElementById('mobileNav');
- nav.classList.toggle('active');
- }
-
- // Header scroll effect
- window.addEventListener('scroll', () => {
- const header = document.querySelector('.header');
- if (window.scrollY > 50) {
- header.classList.add('scrolled');
- } else {
- header.classList.remove('scrolled');
- }
- });
- </script>
- <a href="https://wa.me/447700155655" class="floating-cta"><i data-lucide="message-circle"></i> WhatsApp</a>
-<script
- src="https://i.bettercallwes.co.uk/js/external-tracking.js"
- data-tracking-id="tk_7328a539b1e343b8a44f6f9bf8537fd6"
-></script>
-
- <!-- Growify WhatsApp Conversion Event -->
- <script>
- document.addEventListener('DOMContentLoaded', function () {
- document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp"]').forEach(function (el) {
- el.addEventListener('click', function () {
- window.grpQueue = window.grpQueue || [];
- if (!window.grp) {
- window.grp = function () { window.grpQueue.push(arguments); };
- }
- var service = document.title.replace(' | Better Call Wes', '').trim();
- window.grp('conversion', {
- orderId: 'WA-' + Date.now(),
- products: [{
- productId: 'whatsapp-enquiry',
- productName: service || 'Plumbing & Heating Enquiry',
- productPrice: 0,
- productBrand: 'Better Call Wes',
- productQuantity: 1,
- purchaseValue: 0
- }]
- });
- });
- });
- });
- </script>
+<script src="js/booking.js?v=1.0"></script>
+<script>lucide.createIcons();</script>
 </body>
-
 </html>
