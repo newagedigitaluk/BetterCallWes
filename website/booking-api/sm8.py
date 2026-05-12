@@ -190,6 +190,12 @@ class ServiceM8Client:
             raise ServiceM8Error(f"create_job: no jobUUID in response: {data}")
         return CreatedJob(uuid=job_uuid, location=data.get("location", ""))
 
+    async def get_job(self, job_uuid: str) -> dict[str, Any]:
+        """Fetch a single job record by UUID."""
+        resp = await self._client.get(f"/job/{job_uuid}.json")
+        resp.raise_for_status()
+        return resp.json()
+
     async def update_job(self, job_uuid: str, fields: dict[str, Any]) -> None:
         """Update specific fields on a job (e.g. category_uuid)."""
         resp = await self._client.post(f"/job/{job_uuid}.json", json=fields)

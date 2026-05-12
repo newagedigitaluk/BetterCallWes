@@ -420,11 +420,27 @@ async def book(req: BookingRequest) -> BookingResponse:
             "Create the template in ServiceM8 and update services.json.",
         )
 
+    # Combine address + postcode so SM8's geocoder doesn't drift to the
+    # wrong city (e.g. picking a Smith Street in Birmingham instead of
+    # Southampton). Customer's free-form address often omits the postcode
+    # or city; appending both anchors the geocoder.
+    address_lower = req.customer_address.lower()
+    pc_clean = req.customer_postcode.upper().strip()
+    if pc_clean.replace(" ", "") not in address_lower.replace(" ", "").upper():
+        full_address = f"{req.customer_address}, {pc_clean}"
+    else:
+        full_address = req.customer_address
+    if "southampton" not in address_lower and "hampshire" not in address_lower:
+        # Postcode is in SO14-SO53 (verified above), so this is safe to append
+        full_address = f"{full_address}, Southampton, UK"
+    else:
+        full_address = f"{full_address}, UK"
+
     try:
         created = await sm8.create_job_from_template(
             template_uuid=template_uuid,
             company_name=req.customer_name,
-            job_address=req.customer_address,
+            job_address=full_address,
             job_description=description,
         )
     except (httpx.HTTPStatusError, ServiceM8Error) as e:
@@ -461,7 +477,33 @@ async def book(req: BookingRequest) -> BookingResponse:
             log.exception("add_job_material failed for %s", item_number)
             # Continue on partial failure — better a job with some lines than rolled-back
 
-    # ─ 3) Lock the slot on Wes's diary ─
+    # ─ 3) Attach customer contact to the company so SM8 has someone to
+    #    send the badge-driven confirmation email/SMS to. The auto-
+    #    created company from create_job_from_template has no contact
+    #    records by default — only the company name + address — so
+    #    SM8's automation has no email/phone to fire against.
+    name_parts = req.customer_name.strip().split(maxsplit=1)
+    first_name = name_parts[0]
+    last_name = name_parts[1] if len(name_parts) > 1 else ""
+    try:
+        job_record = await sm8.get_job(job_uuid)
+        company_uuid = job_record.get("company_uuid", "")
+        if company_uuid:
+            await sm8.add_company_contact(
+                company_uuid=company_uuid,
+                first=first_name,
+                last=last_name,
+                mobile=req.customer_phone,
+                phone=req.customer_phone,
+                email=req.customer_email,
+                type_="JOB",
+            )
+        else:
+            log.warning("job %s has no company_uuid; skipping contact creation", job_uuid)
+    except Exception:  # noqa: BLE001
+        log.exception("add_company_contact failed (job exists but no contact attached)")
+
+    # ─ 4) Lock the slot on Wes's diary ─
     staff_uuid = config["config"]["staff_uuid"]
     try:
         await sm8.create_activity(
@@ -474,7 +516,7 @@ async def book(req: BookingRequest) -> BookingResponse:
         log.exception("create_activity failed (job created but diary not locked)")
         # Don't fail the booking — Wes will see the job and can schedule manually
 
-    # ─ 4) Set category if different from template default ─
+    # ─ 5) Set category if different from template default ─
     if category_uuid and category_uuid != svc.get("category_uuid"):
         try:
             await sm8.update_job(job_uuid, {"category_uuid": category_uuid})
