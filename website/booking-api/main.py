@@ -420,21 +420,26 @@ async def book(req: BookingRequest) -> BookingResponse:
             "Create the template in ServiceM8 and update services.json.",
         )
 
-    # Combine address + postcode so SM8's geocoder doesn't drift to the
-    # wrong city (e.g. picking a Smith Street in Birmingham instead of
-    # Southampton). Customer's free-form address often omits the postcode
-    # or city; appending both anchors the geocoder.
-    address_lower = req.customer_address.lower()
+    # Construct a UK-style address string + remember the structured
+    # components so we can explicitly set them on the job after creation.
+    # SM8 auto-extracts geo_city/geo_postcode/geo_country from job_address
+    # but only if the address is well-formed; we want the structured
+    # fields populated reliably regardless of how the customer typed
+    # the address.
+    address_text = req.customer_address.strip()
+    address_lower = address_text.lower()
     pc_clean = req.customer_postcode.upper().strip()
-    if pc_clean.replace(" ", "") not in address_lower.replace(" ", "").upper():
-        full_address = f"{req.customer_address}, {pc_clean}"
-    else:
-        full_address = req.customer_address
+    # Strip any trailing commas to avoid double-comma noise
+    if address_text.endswith(","):
+        address_text = address_text[:-1].rstrip()
+    parts = [address_text]
     if "southampton" not in address_lower and "hampshire" not in address_lower:
-        # Postcode is in SO14-SO53 (verified above), so this is safe to append
-        full_address = f"{full_address}, Southampton, UK"
-    else:
-        full_address = f"{full_address}, UK"
+        # Postcode is verified to be SO14-SO53, so the city is always Southampton
+        parts.append("Southampton")
+    if pc_clean.replace(" ", "") not in address_lower.replace(" ", "").upper():
+        parts.append(pc_clean)
+    parts.append("United Kingdom")
+    full_address = ", ".join(parts)
 
     try:
         created = await sm8.create_job_from_template(
@@ -516,12 +521,21 @@ async def book(req: BookingRequest) -> BookingResponse:
         log.exception("create_activity failed (job created but diary not locked)")
         # Don't fail the booking — Wes will see the job and can schedule manually
 
-    # ─ 5) Set category if different from template default ─
+    # ─ 5) Patch the job with explicit address + category fields ─
+    # Belt-and-braces: even if SM8's geocoder didn't parse the address
+    # string correctly, setting geo_postcode / geo_city / geo_country
+    # directly guarantees the structured fields exist on the record.
+    patch_fields: dict[str, Any] = {
+        "geo_postcode": pc_clean,
+        "geo_city": "Southampton",
+        "geo_country": "United Kingdom",
+    }
     if category_uuid and category_uuid != svc.get("category_uuid"):
-        try:
-            await sm8.update_job(job_uuid, {"category_uuid": category_uuid})
-        except Exception:  # noqa: BLE001
-            log.exception("update_job category failed")
+        patch_fields["category_uuid"] = category_uuid
+    try:
+        await sm8.update_job(job_uuid, patch_fields)
+    except Exception:  # noqa: BLE001
+        log.exception("update_job (geo + category) failed")
 
     # Invalidate availability cache so the next /api/availability reflects the new slot
     activity_cache.invalidate()
