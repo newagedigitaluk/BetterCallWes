@@ -23,7 +23,7 @@
       "dateModified": "2026-05-09", "serviceType": "Toilet Repair", "provider": { "@type": "LocalBusiness", "name": "Better Call Wes", "telephone": "07700155655" }, "areaServed": "Southampton" }
  </script>
 
- <link rel="stylesheet" href="../css/styles.css?v=1.7">
+ <link rel="stylesheet" href="../css/styles.css?v=1.8">
  <script src="https://unpkg.com/lucide@latest"></script>
  <link rel="icon" href="../assets/favicon.ico" sizes="any">
  <link rel="apple-touch-icon" href="../assets/favicon.png">
@@ -125,8 +125,10 @@
  <a href="../pricing.html" class="nav-link">Pricing</a>
  <a href="../reviews.html" class="nav-link">Reviews</a>
  <a href="../contact.html" class="nav-link">Contact</a>
- <a href="tel:07700155655" class="btn btn-primary"><i data-lucide="phone" size="16"></i> 07700 155
- 655</a>
+ <a href="tel:07700155655" class="nav-phone"><i data-lucide="phone" style="width:14px;height:14px;"></i> 07700 155 655</a>
+                 <a href="../booking.html" class="btn btn-primary">
+                     <i data-lucide="calendar-check" size="16"></i> Book Online
+                 </a>
  </div>
  <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><i data-lucide="menu"
  size="24"></i></button>
@@ -282,8 +284,10 @@
  emergency callouts across Southampton.
  </p>
  <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
- <a href="tel:07700155655" class="btn btn-primary" style="font-size: 1.1rem;"><i data-lucide="phone"
- size="18"></i> 07700 155 655</a>
+ <a href="tel:07700155655" class="nav-phone"><i data-lucide="phone" style="width:14px;height:14px;"></i> 07700 155 655</a>
+                 <a href="../booking.html" class="btn btn-primary">
+                     <i data-lucide="calendar-check" size="16"></i> Book Online
+                 </a>
  <a href="https://wa.me/447700155655" class="btn"
  style="background: #25D366; color: white; font-size: 1.1rem;"><i data-lucide="message-circle"
  size="18"></i> WhatsApp</a>
@@ -530,7 +534,10 @@
  });
  });
  </script>
-<a href="https://wa.me/447700155655" class="floating-cta"><i data-lucide="message-circle"></i> WhatsApp</a>
+<div class="floating-cta-group">
+    <a href="../booking.html" class="floating-book"><i data-lucide="calendar-check"></i> Book Online</a>
+    <a href="https://wa.me/447700155655" class="floating-cta" target="_blank" rel="noopener noreferrer"><i data-lucide="message-circle"></i> WhatsApp</a>
+</div>
 </body>
 
 </html>
