@@ -448,7 +448,8 @@ async def book(req: BookingRequest) -> BookingResponse:
         parts.append("Southampton")
     if pc_clean.replace(" ", "") not in address_lower.replace(" ", "").upper():
         parts.append(pc_clean)
-    parts.append("United Kingdom")
+    # Country is set on the job record via geo_country (UK-only business — no
+    # need to clutter the displayed address with it).
     full_address = ", ".join(parts)
 
     try:
