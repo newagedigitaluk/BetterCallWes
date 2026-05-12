@@ -24,6 +24,41 @@
  <link rel="icon" href="assets/favicon.ico" sizes="any">
  <link rel="apple-touch-icon" href="assets/favicon.png">
  <link rel="canonical" href="https://bettercallwes.co.uk/reviews.html" />
+
+ <!-- AggregateRating schema: this is the canonical reviews page, so the rating lives here -->
+ <script type="application/ld+json">
+ {
+   "@context": "https://schema.org",
+   "@type": "Plumber",
+   "name": "Better Call Wes",
+   "@id": "https://bettercallwes.co.uk/",
+   "url": "https://bettercallwes.co.uk/reviews.html",
+   "telephone": "07700155655",
+   "image": "https://bettercallwes.co.uk/assets/logo.webp",
+   "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "Southampton",
+     "addressRegion": "Hampshire",
+     "addressCountry": "UK"
+   },
+   "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": "4.9",
+     "reviewCount": "200",
+     "bestRating": "5",
+     "worstRating": "1"
+   },
+   "identifier": {
+     "@type": "PropertyValue",
+     "name": "Gas Safe Register Number",
+     "value": "558654"
+   },
+   "dateModified": "2026-05-12"
+ }
+ </script>
+ <!-- TODO: add individual Review schema with real Google review content (author, date, body, rating).
+      Source: LeadConnector reputation widget feed. Needs real review data so no fabrication. -->
+
  <!-- Growify Pixel -->
  <script
  src="https://cdn.growify.ai/pixel.min.js"
@@ -109,7 +144,7 @@
  </div>
  <p style="color: rgba(255,255,255,0.8); font-size: 1.25rem; max-width: 800px; margin: 0 auto;">I'm
  committed to providing reliable, high-quality plumbing and heating services that meet and exceed my
- customers' expectations. But don't just take my word for it — read what my customers have to say.</p>
+ customers' expectations. But don't just take my word for it, read what my customers have to say.</p>
  </div>
  </section>
 
@@ -346,7 +381,7 @@
  <ul class="footer-links">
  <li><a href="tel:07700155655">📞 07700 155 655</a></li>
  <li><a href="https://wa.me/447700155655">💬 WhatsApp</a></li>
- <li><a href="mailto:wes@bettercallwes.co.uk">✉️ wes@bettercallwes.co.uk</a></li>
+ <li><a href="mailto:hello@bettercallwes.co.uk">✉️ hello@bettercallwes.co.uk</a></li>
  <li style="margin-top: 1rem;">📍 Southampton, Hampshire</li>
  <li>🕐 Mon-Fri: 9am-5pm</li>
  <li style="margin-top: 1rem;"><strong>Gas Safe Reg: 558654</strong></li>

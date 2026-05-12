@@ -1450,7 +1450,7 @@ a {
 }
 
 /* ============================================
-   MOBILE IMPROVEMENTS — comprehensive overrides
+   MOBILE IMPROVEMENTS, comprehensive overrides
    ============================================ */
 
 /* Utility class for 2-col grids that need to stack on mobile */
@@ -1485,7 +1485,7 @@ a {
     max-width: 200px;
   }
 
-  /* === Sections — reduce massive vertical padding === */
+  /* === Sections: reduce massive vertical padding === */
   .section {
     padding: 60px 0;
   }
