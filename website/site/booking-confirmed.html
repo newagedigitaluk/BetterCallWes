@@ -24,52 +24,100 @@
   <link rel="canonical" href="https://bettercallwes.co.uk/booking-confirmed.html" />
 
   <style>
-    body { background: var(--color-bg); }
-    .confirm-header {
-      background: white;
-      border-bottom: 1px solid rgba(15,41,66,0.08);
-      padding: 0.75rem 0;
+    /* Confirmation page — uses the same floating-pill header + brand polish
+       as booking.html so the start and end of the flow feel like a pair. */
+    body {
+      background: var(--color-bg);
+      padding-top: 1rem;
     }
-    .confirm-header .container { display: flex; justify-content: center; }
-    .confirm-header img { height: 44px; width: auto; }
+
+    /* Floating pill header (matches booking.html + site .header) */
+    .confirm-header {
+      position: sticky; top: 0.75rem; z-index: 100;
+      padding: 0 1rem;
+      pointer-events: none;
+    }
+    .confirm-header .container {
+      pointer-events: auto;
+      width: 92%; max-width: 1100px; margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid rgba(15, 41, 66, 0.08);
+      border-radius: var(--radius-full);
+      box-shadow: 0 4px 16px rgba(15, 41, 66, 0.08);
+      padding: 0.6rem 1.25rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .confirm-header img { height: 40px; width: auto; display: block; }
+
     .confirm-page {
-      max-width: 680px; margin: 0 auto; padding: 2rem 1rem 4rem;
+      max-width: 680px; margin: 0 auto; padding: 2.5rem 1rem 4rem;
     }
     .tick-circle {
-      width: 72px; height: 72px; border-radius: 50%;
-      background: #25D366; color: white;
+      width: 88px; height: 88px; border-radius: 50%;
+      background: linear-gradient(135deg, #25D366 0%, #1ebe5d 100%);
+      color: white;
       display: flex; align-items: center; justify-content: center;
       margin: 0 auto 1.5rem;
+      box-shadow: 0 12px 28px rgba(37, 211, 102, 0.35);
     }
-    .tick-circle i { width: 40px; height: 40px; }
+    .tick-circle i { width: 44px; height: 44px; }
+
     .confirm-page h1 {
-      text-align: center; margin: 0 0 0.5rem; font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-family: 'Inter', sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      text-align: center;
+      margin: 0 0 0.65rem;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      color: var(--text-dark);
     }
     .confirm-page .lede {
-      text-align: center; color: var(--text-body); font-size: 1.1rem; margin: 0 0 2rem;
+      text-align: center; color: var(--text-body);
+      font-size: 1.1rem; line-height: 1.55;
+      margin: 0 0 2.5rem;
     }
+
     .card {
       background: white; border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-sm);
+      box-shadow: var(--shadow-md);
       padding: 1.5rem 1.25rem; margin-bottom: 1.25rem;
     }
     @media (min-width: 600px) { .card { padding: 2rem; } }
-    .card h2 { margin: 0 0 1rem; font-size: 1.2rem; color: var(--color-primary); }
-    .booking-row { display: flex; align-items: baseline; gap: 1rem; padding: 0.4rem 0; }
-    .booking-row dt { min-width: 100px; font-weight: 600; color: var(--color-primary); }
-    .booking-row dd { margin: 0; color: var(--text-body); }
+    .card h2 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 0 1rem; font-size: 1.25rem;
+      color: var(--color-primary);
+    }
 
-    .what-next ol { padding-left: 1.2rem; margin: 0; }
-    .what-next li { margin-bottom: 0.65rem; line-height: 1.5; color: var(--text-body); }
+    .booking-row { display: flex; align-items: baseline; gap: 1rem; padding: 0.45rem 0; }
+    .booking-row dt {
+      min-width: 100px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600; color: var(--color-primary);
+      font-size: 0.85rem; text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .booking-row dd { margin: 0; color: var(--text-dark); font-size: 1rem; }
+
+    .what-next ol { padding-left: 1.25rem; margin: 0; }
+    .what-next li {
+      margin-bottom: 0.75rem;
+      line-height: 1.55; color: var(--text-body);
+    }
     .what-next li strong { color: var(--color-primary); }
 
     .meet-wes {
-      display: flex; gap: 1rem; align-items: center;
+      display: flex; gap: 1.1rem; align-items: center;
     }
     .meet-wes img {
-      width: 80px; height: 80px; border-radius: 50%; object-fit: cover; flex-shrink: 0;
+      width: 84px; height: 84px;
+      border-radius: 50%; object-fit: cover; flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(15, 41, 66, 0.12);
     }
-    .meet-wes p { margin: 0; line-height: 1.5; color: var(--text-body); }
+    .meet-wes p { margin: 0; line-height: 1.55; color: var(--text-body); }
     .meet-wes p strong { color: var(--color-primary); }
 
     .save-contact {
@@ -77,19 +125,34 @@
     }
     @media (min-width: 600px) { .save-contact { flex-direction: row; } }
     .save-contact a {
-      flex: 1; padding: 0.85rem 1rem; text-align: center;
-      border-radius: var(--radius-md); font-weight: 700; text-decoration: none;
-      transition: transform 0.15s, background 0.15s;
+      flex: 1; padding: 0.95rem 1rem; text-align: center;
+      border-radius: var(--radius-full);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700; text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
     }
-    .save-contact a:hover { transform: translateY(-2px); }
-    .btn-whatsapp { background: #25D366; color: white; }
-    .btn-call { background: white; color: var(--color-primary); border: 2px solid var(--color-primary); }
+    .save-contact a:hover { transform: translateY(-2px) scale(1.01); }
+    .btn-whatsapp {
+      background: #25D366; color: white;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+    }
+    .btn-whatsapp:hover { box-shadow: 0 12px 24px rgba(37, 211, 102, 0.45); }
+    .btn-call {
+      background: white; color: var(--color-primary);
+      border: 2px solid var(--color-primary);
+    }
+    .btn-call:hover {
+      background: var(--color-primary); color: white;
+      box-shadow: 0 4px 12px rgba(15, 41, 66, 0.25);
+    }
 
     .home-link {
       display: block; text-align: center; margin-top: 2rem;
-      color: var(--text-body); font-size: 0.95rem;
+      color: var(--text-light); font-size: 0.95rem;
+      transition: color 0.2s;
     }
+    .home-link:hover { color: var(--color-accent); }
   </style>
 </head>
 <body>
