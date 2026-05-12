@@ -147,84 +147,103 @@
  </nav>
  </header>
 
- <section class="hero page-hero" style="background: var(--color-primary);">
- <div class="container text-center">
- <h1 style="color: white; margin-bottom: 1.5rem;">Contact Me</h1>
- <p style="color: rgba(255,255,255,0.8); font-size: 1.25rem; max-width: 800px; margin: 0 auto;">Book
- online instantly, send a WhatsApp for a free quote, or give me a call.</p>
- </div>
+ <!-- Photo-led hero with trust band -->
+ <section class="hero page-hero" style="position: relative; min-height: 50vh; padding-top: 150px; padding-bottom: 60px; overflow: hidden;">
+   <div style="position: absolute; inset: 0; z-index: 0;">
+     <img src="assets/images/wes-profile.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: center 25%;" fetchpriority="high" decoding="async">
+     <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15,41,66,0.92) 0%, rgba(15,41,66,0.75) 60%, rgba(15,41,66,0.3) 100%);"></div>
+   </div>
+   <div class="container" style="position: relative; z-index: 1;">
+     <div style="max-width: 600px;">
+       <h1 style="color: white; margin-bottom: 0.75rem;">Get in touch with Wes</h1>
+       <p style="color: rgba(255,255,255,0.92); font-size: 1.15rem; margin-bottom: 1.5rem;">
+         Gas Safe registered. Southampton-based. Usually back within the hour during the day.
+       </p>
+       <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.95rem; color: rgba(255,255,255,0.9);">
+         <span style="display: inline-flex; align-items: center; gap: 0.4rem;"><i data-lucide="shield-check" style="color: var(--color-accent); width: 18px; height: 18px;"></i> Gas Safe #558654</span>
+         <span style="display: inline-flex; align-items: center; gap: 0.4rem;"><i data-lucide="star" style="color: var(--color-accent); width: 18px; height: 18px;"></i> 4.9 from 200+ reviews</span>
+         <span style="display: inline-flex; align-items: center; gap: 0.4rem;"><i data-lucide="map-pin" style="color: var(--color-accent); width: 18px; height: 18px;"></i> SO14&ndash;SO53</span>
+       </div>
+     </div>
+   </div>
  </section>
 
+ <!-- Tiered CTAs: WhatsApp primary, Call secondary, others tertiary -->
  <section class="section">
- <div class="container">
- <div class="grid-2col">
- <div>
- <h2 style="margin-bottom: 1.5rem;">Get in Touch</h2>
- <p style="color: var(--text-body); margin-bottom: 2rem;">I aim to respond to all inquiries
- within an hour during business hours. If it's an emergency, please call directly.</p>
+   <div class="container" style="max-width: 720px;">
 
- <div style="display: flex; flex-direction: column; gap: 1.5rem;">
- <a href="https://wa.me/447700155655"
- style="display: flex; align-items: flex-start; gap: 1rem; text-decoration: none; color: inherit;">
- <div
- style="background: #25D366; color: white; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
- <i data-lucide="video"></i>
- </div>
- <div>
- <h4 style="margin-bottom: 0.25rem;">WhatsApp Video Quote (Fastest)</h4>
- <p style="color: var(--text-body);">Send a video of the problem for an accurate,
- free quote.</p>
- </div>
- </a>
+     <!-- PRIMARY: WhatsApp -->
+     <a href="https://wa.me/447700155655" target="_blank" rel="noopener noreferrer"
+        style="display: block; background: #25D366; color: white; padding: 1.5rem 2rem; border-radius: var(--radius-md); text-decoration: none; margin-bottom: 1rem; box-shadow: var(--shadow-sm); transition: transform 0.2s;"
+        onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+       <div style="display: flex; align-items: center; gap: 1rem;">
+         <i data-lucide="message-circle" style="width: 32px; height: 32px;"></i>
+         <div>
+           <div style="font-size: 1.2rem; font-weight: 700;">WhatsApp Wes</div>
+           <div style="font-size: 0.95rem; opacity: 0.9;">Quickest route. Send a video of the problem for a fair quote.</div>
+         </div>
+       </div>
+     </a>
 
- <a href="tel:07700155655"
- style="display: flex; align-items: flex-start; gap: 1rem; text-decoration: none; color: inherit;">
- <div
- style="background: var(--color-primary); color: white; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
- <i data-lucide="phone"></i>
- </div>
- <div>
- <h4 style="margin-bottom: 0.25rem;">Call Me</h4>
- <p style="color: var(--text-body);">07700 155 655 (Mon-Fri 9am - 5pm)</p>
- </div>
- </a>
+     <!-- SECONDARY: Call -->
+     <a href="tel:07700155655"
+        style="display: block; background: white; color: var(--color-primary); border: 2px solid var(--color-primary); padding: 1.5rem 2rem; border-radius: var(--radius-md); text-decoration: none; margin-bottom: 2rem; transition: transform 0.2s;"
+        onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+       <div style="display: flex; align-items: center; gap: 1rem;">
+         <i data-lucide="phone" style="width: 28px; height: 28px;"></i>
+         <div>
+           <div style="font-size: 1.15rem; font-weight: 700;">07700 155 655</div>
+           <div style="font-size: 0.9rem; color: var(--text-body);">Best for urgent jobs during the working day.</div>
+         </div>
+       </div>
+     </a>
 
- <a href="mailto:hello@bettercallwes.co.uk"
- style="display: flex; align-items: flex-start; gap: 1rem; text-decoration: none; color: inherit;">
- <div
- style="background: var(--bg-color); color: var(--color-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
- <i data-lucide="mail"></i>
- </div>
- <div>
- <h4 style="margin-bottom: 0.25rem;">Email</h4>
- <p style="color: var(--text-body);">hello@bettercallwes.co.uk</p>
- </div>
- </a>
- </div>
- </div>
-
- <div
- style="background: white; padding: 3rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
- <h3 style="margin-bottom: 1.5rem;">Or Book Directly in My Diary</h3>
- <p style="color: var(--text-body); margin-bottom: 2rem;">Skip the back-and-forth and secure your
- appointment slot instantly online.</p>
- <a href="booking.html" class="btn btn-primary"
- style="width: 100%; text-align: center; display: block; padding: 18px;"><i
- data-lucide="calendar"></i> Open Booking System</a>
- </div>
- </div>
- </div>
+     <!-- TERTIARY: Other ways (collapsed visual weight) -->
+     <details style="background: var(--color-bg); border-radius: var(--radius-md); padding: 1rem 1.5rem; margin-bottom: 1rem;">
+       <summary style="cursor: pointer; font-weight: 600; color: var(--color-primary); list-style: none;">
+         Other ways to reach me
+         <span style="float: right; color: var(--color-accent);">+</span>
+       </summary>
+       <div style="padding-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem;">
+         <a href="mailto:hello@bettercallwes.co.uk" style="color: var(--text-body); text-decoration: none;">
+           <i data-lucide="mail" style="width: 16px; height: 16px; vertical-align: middle;"></i>
+           hello@bettercallwes.co.uk
+         </a>
+         <a href="booking.html" style="color: var(--text-body); text-decoration: none;">
+           <i data-lucide="calendar" style="width: 16px; height: 16px; vertical-align: middle;"></i>
+           Book a slot directly in my diary
+         </a>
+       </div>
+     </details>
+   </div>
  </section>
 
+ <!-- Service Area: replaced generic Google Maps embed with postcode chips per DESIGN.md -->
  <section class="section section-gray">
- <div class="container text-center">
- <h2 style="margin-bottom: 2rem;">Service Area</h2>
- <p style="max-width: 600px; margin: 0 auto 2rem; color: var(--text-body);">I provide fully mobile
- plumbing and heating services across Southampton and all surrounding SO postcodes.</p>
- <iframe class="map-embed" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
- src="https://maps.google.com/maps?q=Southampton,+UK&t=&z=11&ie=UTF8&iwloc=&output=embed"
- style="border-radius: var(--radius-lg); box-shadow: var(--shadow-md); max-width: 1000px; margin: 0 auto; display: block;"></iframe>
- </div>
+   <div class="container">
+     <div class="section-header">
+       <div class="section-label">SERVICE AREA</div>
+       <h2>Postcodes covered</h2>
+     </div>
+     <div style="display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; max-width: 700px; margin: 0 auto 1.5rem;">
+       <span class="badge" style="background: white; border: 1px solid rgba(15,41,66,0.1);">SO14</span>
+       <span class="badge" style="background: white; border: 1px solid rgba(15,41,66,0.1);">SO15</span>
+       <span class="badge" style="background: white; border: 1px solid rgba(15,41,66,0.1);">SO16</span>
+       <span class="badge" style="background: white; border: 1px solid rgba(15,41,66,0.1);">SO17</span>
+       <span class="badge" style="background: white; border: 1px solid rgba(15,41,66,0.1);">SO18</span>
+       <span class="badge" style="background: white; border: 1px solid rgba(15,41,66,0.1);">SO19</span>
+       <span class="badge" style="background: white; border: 1px solid rgba(15,41,66,0.1);">SO30</span>
+       <span class="badge" style="background: white; border: 1px solid rgba(15,41,66,0.1);">SO31</span>
+       <span class="badge" style="background: white; border: 1px solid rgba(15,41,66,0.1);">SO40</span>
+       <span class="badge" style="background: white; border: 1px solid rgba(15,41,66,0.1);">SO45</span>
+       <span class="badge" style="background: white; border: 1px solid rgba(15,41,66,0.1);">SO50</span>
+       <span class="badge" style="background: white; border: 1px solid rgba(15,41,66,0.1);">SO51</span>
+       <span class="badge" style="background: white; border: 1px solid rgba(15,41,66,0.1);">SO53</span>
+     </div>
+     <p style="text-align: center; color: var(--text-body);">
+       <a href="locations.html" style="color: var(--color-accent); font-weight: 600;">See all areas covered &rarr;</a>
+     </p>
+   </div>
  </section>
 
  <!-- CTA Section -->

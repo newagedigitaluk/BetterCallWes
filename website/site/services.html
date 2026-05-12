@@ -24,6 +24,39 @@
  <link rel="icon" href="assets/favicon.ico" sizes="any">
  <link rel="apple-touch-icon" href="assets/favicon.png">
  <link rel="canonical" href="https://bettercallwes.co.uk/services.html" />
+
+ <!-- LocalBusiness + ItemList schema for the services hub -->
+ <script type="application/ld+json">
+ {
+   "@context": "https://schema.org",
+   "@type": "Plumber",
+   "name": "Better Call Wes",
+   "@id": "https://bettercallwes.co.uk/",
+   "url": "https://bettercallwes.co.uk/services.html",
+   "telephone": "07700155655",
+   "image": "https://bettercallwes.co.uk/assets/logo.webp",
+   "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "Southampton",
+     "addressRegion": "Hampshire",
+     "addressCountry": "UK"
+   },
+   "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": "4.9",
+     "reviewCount": "200",
+     "bestRating": "5",
+     "worstRating": "1"
+   },
+   "identifier": {
+     "@type": "PropertyValue",
+     "name": "Gas Safe Register Number",
+     "value": "558654"
+   },
+   "dateModified": "2026-05-12"
+ }
+ </script>
+
  <!-- Growify Pixel -->
  <script
  src="https://cdn.growify.ai/pixel.min.js"
@@ -101,12 +134,20 @@
  style="background: var(--color-primary); min-height: 40vh; padding-top: 150px; padding-bottom: 80px;">
  <div class="container text-center">
  <div class="section-label"
- style="justify-content: center; color: var(--color-accent); margin-bottom: 1rem;">OUR SERVICES</div>
- <h1 style="color: white; margin-bottom: 1.5rem;">Plumbing & Heating Solutions</h1>
- <p style="color: rgba(255,255,255,0.8); font-size: 1.25rem; max-width: 700px; margin: 0 auto;">Trusted, Gas
- Safe registered services tailored for Southampton homeowners. From emergency repairs to full system
- upgrades.</p>
+ style="justify-content: center; color: var(--color-accent); margin-bottom: 1rem;">MY SERVICES</div>
+ <h1 style="color: white; margin-bottom: 1.5rem;">Plumbing & heating across Southampton</h1>
+ <p style="color: rgba(255,255,255,0.8); font-size: 1.25rem; max-width: 700px; margin: 0 auto;">From boiler installs to a dripping tap. Gas Safe registered, fixed quotes, one tradesperson for every job.</p>
  </div>
+ </section>
+
+ <!-- Trust band right below hero -->
+ <section style="background: white; padding: 1.5rem 0; border-bottom: 1px solid rgba(15,41,66,0.08);">
+   <div class="container" style="display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; justify-content: center; align-items: center; color: var(--text-body); font-size: 0.95rem;">
+     <span style="display: inline-flex; align-items: center; gap: 0.5rem;"><i data-lucide="shield-check" style="width: 18px; height: 18px; color: var(--color-accent);"></i> Gas Safe <a href="https://www.gassaferegister.co.uk/find-an-engineer/" target="_blank" rel="noopener noreferrer" style="color: var(--color-primary); font-weight: 600;">#558654</a></span>
+     <span style="display: inline-flex; align-items: center; gap: 0.5rem;"><i data-lucide="star" style="width: 18px; height: 18px; color: var(--color-accent);"></i> 4.9 from 200+ Google reviews</span>
+     <span style="display: inline-flex; align-items: center; gap: 0.5rem;"><i data-lucide="award" style="width: 18px; height: 18px; color: var(--color-accent);"></i> 12-month workmanship guarantee</span>
+     <span style="display: inline-flex; align-items: center; gap: 0.5rem;"><i data-lucide="map-pin" style="width: 18px; height: 18px; color: var(--color-accent);"></i> SO14&ndash;SO53</span>
+   </div>
  </section>
 
  <!-- Services Overview -->
