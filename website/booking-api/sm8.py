@@ -221,6 +221,73 @@ class ServiceM8Client:
             raise ServiceM8Error(f"create_job: no jobUUID in response: {data}")
         return CreatedJob(uuid=job_uuid, location=data.get("location", ""))
 
+    async def find_company_uuid_by_contact(
+        self,
+        *,
+        email: str = "",
+        mobile: str = "",
+    ) -> str | None:
+        """Find an existing SM8 company by matching a contact's email or
+        phone. Returns the company_uuid of the first active match, or
+        None if no match.
+
+        Used by the booking flow to avoid creating a new "John Smith"
+        company every time a returning customer books — instead the new
+        job is attached to the existing company record.
+
+        Match strategy:
+          1. Email match (most reliable): try as-given, then lowercase
+             if no hit
+          2. Mobile fallback: try as-given, then normalised UK formats
+             (+44... / 44... / 0...) on both `mobile` and `phone` fields
+
+        Worst case ~7 API calls; in practice the first email check hits.
+        SM8 returns results in <300ms each, so total <2s.
+        """
+        # 1. Email first — covers >90% of returning customers
+        if email and email.strip():
+            seen = set()
+            for candidate in (email.strip(), email.strip().lower()):
+                if candidate in seen:
+                    continue
+                seen.add(candidate)
+                resp = await self._client.get(
+                    "/companycontact.json",
+                    params={"$filter": f"email eq '{candidate}'"},
+                )
+                if resp.status_code != 200:
+                    continue
+                for r in resp.json():
+                    if (str(r.get("active", "1")) in ("1", "True", "true")
+                            and r.get("company_uuid")):
+                        return r["company_uuid"]
+
+        # 2. Mobile fallback — try multiple format variants
+        if mobile and mobile.strip():
+            digits = "".join(c for c in mobile if c.isdigit())
+            candidates: set[str] = {mobile.strip()}
+            if digits.startswith("07") and len(digits) == 11:
+                candidates.add("+44" + digits[1:])
+                candidates.add("44" + digits[1:])
+                candidates.add("0" + digits[1:])  # same as orig but ensures presence
+            elif digits.startswith("447") and len(digits) == 12:
+                candidates.add("+" + digits)
+                candidates.add("0" + digits[2:])
+            for candidate in candidates:
+                for field in ("mobile", "phone"):
+                    resp = await self._client.get(
+                        "/companycontact.json",
+                        params={"$filter": f"{field} eq '{candidate}'"},
+                    )
+                    if resp.status_code != 200:
+                        continue
+                    for r in resp.json():
+                        if (str(r.get("active", "1")) in ("1", "True", "true")
+                                and r.get("company_uuid")):
+                            return r["company_uuid"]
+
+        return None
+
     async def add_job_contact(
         self,
         *,

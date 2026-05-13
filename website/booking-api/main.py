@@ -561,13 +561,41 @@ async def book(req: BookingRequest) -> BookingResponse:
     # Parse customer name into first/last for the SM8 contact record.
     first_name_create, last_name_create = parse_name(req.customer_name)
 
+    # ─ Look up existing customer by email / mobile to avoid duplicate
+    #   company records on repeat bookings. Falls back to creating a new
+    #   company if no match (first-time customer) or the lookup itself
+    #   errors (network blip — better to over-create than fail the
+    #   booking).
+    existing_company_uuid: str | None = None
     try:
-        created = await sm8.create_job_from_template(
-            template_uuid=template_uuid,
-            company_name=req.customer_name,
-            job_address=full_address,
-            job_description=description,
+        existing_company_uuid = await sm8.find_company_uuid_by_contact(
+            email=req.customer_email,
+            mobile=normalise_uk_mobile(req.customer_phone) or req.customer_phone,
         )
+    except Exception:  # noqa: BLE001
+        log.exception("customer-lookup failed (will create new company)")
+
+    if existing_company_uuid:
+        log.info(
+            "booking: matched existing customer company %s (reusing record)",
+            existing_company_uuid[:8],
+        )
+
+    try:
+        if existing_company_uuid:
+            created = await sm8.create_job_from_template(
+                template_uuid=template_uuid,
+                company_uuid=existing_company_uuid,
+                job_address=full_address,
+                job_description=description,
+            )
+        else:
+            created = await sm8.create_job_from_template(
+                template_uuid=template_uuid,
+                company_name=req.customer_name,
+                job_address=full_address,
+                job_description=description,
+            )
     except (httpx.HTTPStatusError, ServiceM8Error) as e:
         log.exception("create_job failed")
         raise HTTPException(502, f"ServiceM8 job creation failed: {e}") from e
