@@ -559,8 +559,6 @@ async def book(req: BookingRequest) -> BookingResponse:
     full_address = ", ".join(parts)
 
     # Parse customer name into first/last for the SM8 contact record.
-    # (Parsed early so we can pass it into the jobtemplate call below —
-    # SM8 wires the primary contact at job-creation time only.)
     first_name_create, last_name_create = parse_name(req.customer_name)
 
     try:
@@ -569,11 +567,6 @@ async def book(req: BookingRequest) -> BookingResponse:
             company_name=req.customer_name,
             job_address=full_address,
             job_description=description,
-            first_name=first_name_create,
-            last_name=last_name_create,
-            mobile=req.customer_phone,
-            phone=req.customer_phone,
-            email=req.customer_email,
         )
     except (httpx.HTTPStatusError, ServiceM8Error) as e:
         log.exception("create_job failed")
@@ -584,7 +577,28 @@ async def book(req: BookingRequest) -> BookingResponse:
 
     job_uuid = created.uuid
 
-    # ─ 2) Append each add-on material ─
+    # ─ 2) Attach the customer as a JOB contact (NOT a company contact). ─
+    # The /jobtemplate/{uuid}/job.json endpoint accepts only company +
+    # address + description (verified — passing customer fields returns
+    # 400 "Body does not match schema"). To populate the job's "Job
+    # Contact" field, POST to /jobcontact.json with the job_uuid.
+    # Note: /companycontact.json (which the earlier code tried, commit
+    # 087cf79) attaches to the company but NOT the job — that's why the
+    # job UI showed no contact for those bookings.
+    try:
+        await sm8.add_job_contact(
+            job_uuid=job_uuid,
+            first=first_name_create,
+            last=last_name_create,
+            mobile=req.customer_phone,
+            phone=req.customer_phone,
+            email=req.customer_email,
+            type_="JOB",
+        )
+    except Exception:  # noqa: BLE001
+        log.exception("add_job_contact failed (booking proceeds without job contact)")
+
+    # ─ 3) Append each add-on material ─
     estimated_total = 0.0
     base_mat = mat_idx.get(svc.get("base_material_item", ""))
     if base_mat:
@@ -608,13 +622,6 @@ async def book(req: BookingRequest) -> BookingResponse:
         except Exception:  # noqa: BLE001
             log.exception("add_job_material failed for %s", item_number)
             # Continue on partial failure — better a job with some lines than rolled-back
-
-    # (Customer contact is created atomically by create_job_from_template
-    # above — no separate companycontact call needed. SM8 wires the
-    # primary "Job Contact" field at creation time, so doing it after-
-    # the-fact via /companycontact.json doesn't actually attach to the
-    # job, only to the company — which is why the job page showed no
-    # contact in earlier bookings.)
 
     # ─ Lock the slot on Wes's diary ─
     staff_uuid = config["config"]["staff_uuid"]

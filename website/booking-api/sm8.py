@@ -187,11 +187,6 @@ class ServiceM8Client:
         company_uuid: str | None = None,
         job_address: str,
         job_description: str,
-        first_name: str | None = None,
-        last_name: str | None = None,
-        mobile: str | None = None,
-        phone: str | None = None,
-        email: str | None = None,
     ) -> CreatedJob:
         """POST /jobtemplate/{uuid}/job.json — the booking primitive.
 
@@ -199,12 +194,11 @@ class ServiceM8Client:
         existing) must be provided. The template's badges + materials are
         auto-cloned into the new job.
 
-        Customer contact details (first_name, last_name, mobile, email,
-        phone) are optional but STRONGLY recommended: when passed, SM8
-        creates the company AND a primary company contact AND wires that
-        contact to the job in one transaction. Skipping them leaves the
-        job's "Job Contact" field empty in the SM8 UI even if the company
-        record exists.
+        IMPORTANT: this endpoint accepts ONLY company_name/company_uuid,
+        job_address, and job_description. Passing first_name/last_name/
+        mobile/phone/email returns a 400 with "Body does not match schema".
+        Attach the customer separately via add_job_contact() after the
+        job is created.
         """
         if not (company_name or company_uuid):
             raise ValueError("Either company_name or company_uuid required")
@@ -216,18 +210,6 @@ class ServiceM8Client:
             body["company_uuid"] = company_uuid
         else:
             body["company_name"] = company_name  # type: ignore[assignment]
-        # Customer contact — passed to the template endpoint so SM8
-        # creates + wires the primary job contact atomically.
-        if first_name:
-            body["first_name"] = first_name
-        if last_name:
-            body["last_name"] = last_name
-        if mobile:
-            body["mobile"] = mobile
-        if phone:
-            body["phone"] = phone
-        if email:
-            body["email"] = email
         resp = await self._client.post(
             f"/jobtemplate/{template_uuid}/job.json",
             json=body,
@@ -238,6 +220,42 @@ class ServiceM8Client:
         if not job_uuid:
             raise ServiceM8Error(f"create_job: no jobUUID in response: {data}")
         return CreatedJob(uuid=job_uuid, location=data.get("location", ""))
+
+    async def add_job_contact(
+        self,
+        *,
+        job_uuid: str,
+        first: str,
+        last: str = "",
+        mobile: str = "",
+        phone: str = "",
+        email: str = "",
+        type_: str = "JOB",
+    ) -> str:
+        """Attach a contact to a SPECIFIC JOB via /jobcontact.json.
+
+        This wires the contact as the job's "Job Contact" (visible in
+        SM8's job view), NOT just to the company. The endpoint accepts
+        first, last, mobile, phone, email, type fields and returns an
+        x-record-uuid header for the new contact record.
+
+        Verified working against template
+        7fa5cb6d-e5b3-495b-9c5d-242e078d6efd (Power Flush): 200 OK,
+        contact shows up on the job + on the company.
+        """
+        body = {
+            "job_uuid": job_uuid,
+            "first": first,
+            "last": last,
+            "mobile": mobile,
+            "phone": phone,
+            "email": email,
+            "type": type_,
+            "active": "1",
+        }
+        resp = await self._client.post("/jobcontact.json", json=body)
+        resp.raise_for_status()
+        return resp.headers.get("x-record-uuid", "")
 
     async def get_job(self, job_uuid: str) -> dict[str, Any]:
         """Fetch a single job record by UUID."""
