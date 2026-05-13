@@ -260,6 +260,7 @@ class ServiceM8Client:
         job_uuid: str,
         *,
         reason: str = "",
+        reason_field: str = "customfield_reason_why_unsuccessful",
     ) -> None:
         """Mark the job as "Unsuccessful" with an optional cancellation reason.
 
@@ -267,12 +268,20 @@ class ServiceM8Client:
         Unsuccessful keeps the job visible in SM8's Unsuccessful tab —
         useful for spotting patterns in why customers cancel.
 
-        The reason text lands in SM8's `unsuccessful_reason` field
-        (visible in the "Reason for cancellation" UI section).
+        The reason text lands in a BCW custom field on the job record
+        (`customfield_reason_why_unsuccessful` by default). SM8 exposes
+        account-level custom fields as `customfield_<slug>` directly on
+        the job — no /jobfield endpoint needed. Override `reason_field`
+        if you rename the underlying SM8 field.
         """
-        body: dict[str, Any] = {"status": "Unsuccessful"}
+        from datetime import datetime
+        body: dict[str, Any] = {
+            "status": "Unsuccessful",
+            # Stamp the cancellation date so SM8's date filters work
+            "unsuccessful_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        }
         if reason:
-            body["unsuccessful_reason"] = reason
+            body[reason_field] = reason
         resp = await self._client.post(f"/job/{job_uuid}.json", json=body)
         resp.raise_for_status()
 
