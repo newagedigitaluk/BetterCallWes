@@ -856,11 +856,40 @@ def _slot_lead_ok(slot_start: datetime, *, now: datetime | None = None) -> bool:
     return slot_start >= n + timedelta(hours=RESCHEDULE_LEAD_HOURS)
 
 
-def _service_slug_from_template(template_uuid: str, config: dict) -> str | None:
-    """Reverse-lookup the service slug from the SM8 template uuid."""
-    for slug, svc in config.get("services", {}).items():
-        if svc.get("template_uuid") == template_uuid:
-            return slug
+def _service_slug_from_job(job: dict, config: dict) -> str | None:
+    """Reverse-lookup the service slug from a job record.
+
+    SM8 does NOT store the template_uuid on the job after creation —
+    verified by dumping all fields on a real booked job, no
+    `template_uuid` / `job_template_uuid` exists. So we use:
+
+      1. `category_uuid` — every service in services.json carries one
+         (except General Plumbing, which doesn't set a default), and
+         it survives on the job record
+      2. Parse the description's first line "BOOKED ONLINE: <name>"
+         — we write this at job creation, so it's reliable for any
+         job that came through this API
+
+    Returns the slug or None if neither signal resolves.
+    """
+    services = config.get("services", {})
+
+    # 1. category_uuid match
+    cat = (job.get("category_uuid") or "").strip()
+    if cat:
+        for slug, svc in services.items():
+            if svc.get("category_uuid") == cat:
+                return slug
+
+    # 2. Fallback — parse the description's first line
+    desc = job.get("job_description") or ""
+    first_line = desc.splitlines()[0] if desc else ""
+    if first_line.startswith("BOOKED ONLINE:"):
+        svc_name = first_line.split(":", 1)[1].strip()
+        for slug, svc in services.items():
+            if svc.get("name") == svc_name:
+                return slug
+
     return None
 
 
@@ -872,8 +901,7 @@ async def _gather_manage_state(tok: BookingToken) -> tuple[ManageBookingState, d
     _job_from_token(job, tok)
 
     config = load_services_config()
-    template_uuid = job.get("job_template_uuid", "") or job.get("template_uuid", "")
-    slug = _service_slug_from_template(template_uuid, config) or ""
+    slug = _service_slug_from_job(job, config) or ""
     svc = config["services"].get(slug, {})
     service_name = svc.get("name", "Booking")
 
