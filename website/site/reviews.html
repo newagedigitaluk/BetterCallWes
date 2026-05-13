@@ -75,6 +75,10 @@
  data-endpoint="api_v2"
  data-platform="web"
  ></script>
+  <!-- First-touch UTM attribution (session) -->
+  <script>
+    (function(){try{if(sessionStorage.getItem('bcw_utm'))return;var p=new URLSearchParams(location.search);var k=['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];var f={},a=false;k.forEach(function(x){var v=p.get(x);if(v){f[x]=v;a=true;}});if(a)sessionStorage.setItem('bcw_utm',JSON.stringify(f));}catch(e){}})();
+  </script>
 </head>
 
 <body>

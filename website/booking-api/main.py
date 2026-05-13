@@ -115,6 +115,14 @@ class BookingRequest(BaseModel):
     customer_address: str = Field(..., min_length=10, max_length=500)
     customer_postcode: str = Field(..., min_length=5, max_length=10)
     hear_about: str | None = None
+    # Optional UTM tracking params — captured from the URL by the
+    # booking form and passed through so we can attribute the lead
+    # in SM8's marketing custom fields.
+    utm_source: str = Field(default="", max_length=80)
+    utm_medium: str = Field(default="", max_length=80)
+    utm_campaign: str = Field(default="", max_length=120)
+    utm_content: str = Field(default="", max_length=120)
+    utm_term: str = Field(default="", max_length=120)
 
 
 class BookingResponse(BaseModel):
@@ -143,6 +151,57 @@ def load_services_config() -> dict[str, Any]:
         raise RuntimeError(f"services.json not found at {SERVICES_JSON_PATH}")
     with SERVICES_JSON_PATH.open() as f:
         return json.load(f)
+
+
+def map_utm_to_marketing_source(
+    *,
+    utm_source: str,
+    utm_medium: str,
+) -> str:
+    """Translate UTM params into one of Wes's existing
+    customfield_marketing_source values, so SM8 reporting stays clean.
+
+    Allowed values (from sampling 200 recent jobs):
+      Checkatrade, Google Organic, Referred, PPC, Google My Business,
+      Other, Existing, Facebook, Google Local Services,
+      Gas Safe Register, Google Local Ads, Bark
+    """
+    src = (utm_source or "").strip().lower()
+    med = (utm_medium or "").strip().lower()
+
+    # Medium-led overrides — these define the channel regardless of source
+    if med in {"local_services", "lsa"}:
+        return "Google Local Services"
+    if med in {"cpc", "ppc", "paid", "paidsearch", "paid_search"}:
+        # Treat Google paid search differently from Local Ads
+        if src in {"google", "google_ads", "googleads"}:
+            return "PPC"
+        if src in {"facebook", "fb", "meta", "instagram", "ig"}:
+            return "Facebook"
+        return "PPC"
+    if med in {"display", "remarketing"}:
+        return "PPC"
+
+    # Source-led
+    if src in {"google", "google_organic", "google-search"}:
+        return "Google Organic"
+    if src in {"google_business", "gmb", "google_my_business", "googlemybusiness"}:
+        return "Google My Business"
+    if src in {"google_local_ads", "google_local"}:
+        return "Google Local Ads"
+    if src in {"facebook", "fb", "meta", "instagram", "ig"}:
+        return "Facebook"
+    if src == "checkatrade":
+        return "Checkatrade"
+    if src == "bark":
+        return "Bark"
+    if src in {"referral", "referred", "word_of_mouth", "wom"}:
+        return "Referred"
+    if src in {"gas_safe", "gassafe", "gas_safe_register"}:
+        return "Gas Safe Register"
+    if src in {"existing", "existing_customer", "repeat"}:
+        return "Existing"
+    return ""  # caller falls back to default if empty
 
 
 def material_index(materials: list[dict]) -> dict[str, dict]:
@@ -570,7 +629,7 @@ async def book(req: BookingRequest) -> BookingResponse:
         log.exception("create_activity failed (job created but diary not locked)")
         # Don't fail the booking — Wes will see the job and can schedule manually
 
-    # ─ 5) Patch the job with explicit address + category fields ─
+    # ─ 5) Patch the job with explicit address + category + marketing fields ─
     # Belt-and-braces: even if SM8's geocoder didn't parse the address
     # string correctly, setting geo_postcode / geo_city / geo_country
     # directly guarantees the structured fields exist on the record.
@@ -578,13 +637,35 @@ async def book(req: BookingRequest) -> BookingResponse:
         "geo_postcode": pc_clean,
         "geo_city": "Southampton",
         "geo_country": "United Kingdom",
+        # Marketing attribution — every online booking gets these flags.
+        # Values picked to match Wes's existing taxonomy in SM8 reporting.
+        "customfield_contact_method": "Website",
+        "customfield_lead_quality": "Good",
     }
+    # Marketing source — derived from UTM params if available.
+    mkt_source = map_utm_to_marketing_source(
+        utm_source=req.utm_source, utm_medium=req.utm_medium,
+    )
+    if mkt_source:
+        patch_fields["customfield_marketing_source"] = mkt_source
+    else:
+        # No UTM params present — likely a direct visit or someone who
+        # already knew the URL. Tag as "Other" so reporting still works.
+        patch_fields["customfield_marketing_source"] = "Other"
+    # Campaign reference (e.g. utm_campaign=spring_boiler_service) helps
+    # tie a specific ad/post back to its bookings.
+    campaign_bits = [
+        b for b in (req.utm_campaign, req.utm_content, req.utm_term) if b
+    ]
+    if campaign_bits:
+        patch_fields["customfield_campaign_ref"] = " / ".join(campaign_bits)
+
     if category_uuid and category_uuid != svc.get("category_uuid"):
         patch_fields["category_uuid"] = category_uuid
     try:
         await sm8.update_job(job_uuid, patch_fields)
     except Exception:  # noqa: BLE001
-        log.exception("update_job (geo + category) failed")
+        log.exception("update_job (geo + category + marketing) failed")
 
     # ─ 6) Send confirmation email + SMS to the customer ─
     # SM8's auto-confirmation flow only fires for bookings via SM8's

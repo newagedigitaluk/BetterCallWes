@@ -32,6 +32,20 @@
   const fmtGBP = (n) =>
     new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0 }).format(n);
 
+  // ─── UTM attribution capture ─────────────────────────────────────────────
+  //
+  // The inline <script> in every page's <head> handles first-touch
+  // capture into sessionStorage. We just read it here.
+
+  function captureUTM() {
+    try {
+      const cached = sessionStorage.getItem('bcw_utm');
+      return cached ? JSON.parse(cached) : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
   // ─── State ───────────────────────────────────────────────────────────────
 
   const state = {
@@ -612,6 +626,7 @@
       slot_start: state.slot.start,
       slot_end: state.slot.end,
       ...state.customer,
+      ...captureUTM(),  // {} when no UTM was ever seen; passed through to SM8 marketing custom fields
     };
 
     try {
