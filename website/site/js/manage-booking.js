@@ -234,7 +234,39 @@
       return;
     }
 
-    // Group slots by date
+    // Whole-day mode: services with slot duration ≥ 6h (Power Flush).
+    // One slot per day, rendered as a vertical list of day labels —
+    // matches the original booking.html pattern.
+    const firstDuration = state.slots[0].duration_min || 0;
+    const isWholeDay = firstDuration >= 360;
+
+    if (isWholeDay) {
+      const wrap = document.createElement('div');
+      wrap.className = 'slot-list';
+      wrap.style.gridTemplateColumns = '1fr';  // single column for readability
+      state.slots.forEach((s) => {
+        const start = new Date(s.start);
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'slot';
+        btn.style.padding = '0.85rem 1rem';
+        btn.style.textAlign = 'left';
+        btn.textContent = start.toLocaleDateString('en-GB', {
+          weekday: 'long', day: 'numeric', month: 'long',
+        }) + ' — full day (09:00–17:00)';
+        btn.onclick = () => {
+          document.querySelectorAll('.slot').forEach((x) => x.classList.remove('selected'));
+          btn.classList.add('selected');
+          state.pickedSlot = s;
+          $('#btn-reschedule-confirm').disabled = false;
+        };
+        wrap.appendChild(btn);
+      });
+      container.appendChild(wrap);
+      return;
+    }
+
+    // Hourly mode: group by day, day-strip + slot grid
     const byDay = new Map();
     state.slots.forEach((s) => {
       const d = new Date(s.start);
