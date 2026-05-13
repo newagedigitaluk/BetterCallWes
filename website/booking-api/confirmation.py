@@ -25,6 +25,7 @@ class ConfirmationContext:
     job_address: str
     estimated_total: float | None
     job_uuid: str
+    manage_url: str = ""  # magic link; empty string disables the section
 
     @property
     def booking_date(self) -> str:
@@ -76,7 +77,7 @@ This email confirms your upcoming {service} appointment.
   Time:    {booking_time}
   Address: {job_address}
 
-Please make sure someone is available at the property during this time. If anything changes or you need to reschedule, just let me know at least 24 hours in advance.
+Please make sure someone is available at the property during this time.{manage_text_block}
 
 ------------------------------------------------------------
 
@@ -124,7 +125,9 @@ EMAIL_HTML_TEMPLATE = """\
   <tr><td style="font-weight: 600; padding-right: 16px;">Address:</td><td>{job_address}</td></tr>
 </table>
 
-<p>Please make sure someone is available at the property during this time. If anything changes or you need to reschedule, just let me know at least 24 hours in advance.</p>
+<p>Please make sure someone is available at the property during this time.</p>
+
+{manage_html_block}
 
 <hr style="border: none; border-top: 1px solid #E5E7EB; margin: 24px 0;">
 
@@ -149,13 +152,63 @@ Better Call Wes — Your Local Southampton Plumber &amp; Heating Engineer<br>
 </html>
 """
 
-# SMS — kept under 160 chars where possible (single segment) but UK SMS
-# can handle multi-segment so don't sweat overflows.
-SMS_TEMPLATE = (
+# SMS — keeps under 160 chars when no manage_url. With one it spans 2
+# segments, which is fine for UK delivery.
+SMS_TEMPLATE_WITH_MANAGE = (
+    "Hi {first_name}, it's Wes from Better Call Wes. "
+    "Your {service} is booked for {booking_date_long} between {booking_time} at {short_address}. "
+    "Need to reschedule or cancel? {manage_url}"
+)
+SMS_TEMPLATE_NO_MANAGE = (
     "Hi {first_name}, it's Wes from Better Call Wes Plumbing & Heating. "
     "Your {service} is booked for {booking_date_long} between {booking_time} at {short_address}. "
     "Questions or need to reschedule? Call or text me on {vendor_phone}."
 )
+
+
+# Inserted into the email when a magic-link URL is available. Keeps the
+# template free of conditionals so str.format never blows up on a
+# missing key.
+def _manage_blocks(manage_url: str) -> dict[str, str]:
+    if not manage_url:
+        # Fall back to the "ring/text me" line the old template used.
+        return {
+            "manage_text_block": (
+                " If anything changes or you need to reschedule, just let me "
+                "know at least 24 hours in advance."
+            ),
+            "manage_html_block": (
+                "<p>If anything changes or you need to reschedule, just let "
+                "me know at least 24 hours in advance.</p>"
+            ),
+        }
+    return {
+        "manage_text_block": (
+            "\n\n"
+            "NEED TO RESCHEDULE OR CANCEL?\n"
+            "Use this private link (it expires when your appointment starts):\n"
+            f"{manage_url}\n"
+            "Please give at least 12 hours' notice where you can."
+        ),
+        "manage_html_block": (
+            '<table cellpadding="14" cellspacing="0" border="0" '
+            'style="margin: 20px 0; background: linear-gradient(135deg, #FFF7ED 0%, #FFE7CC 100%); '
+            'border: 1px solid rgba(255,107,0,0.2); border-radius: 12px; width: 100%;">'
+            '<tr><td>'
+            '<div style="font-weight: 700; color: #0F2942; font-size: 15px; margin-bottom: 6px;">'
+            'Need to reschedule or cancel?</div>'
+            '<div style="font-size: 14px; color: #475569; margin-bottom: 12px;">'
+            'Manage this booking yourself with one click. The link expires when your appointment starts.'
+            '</div>'
+            f'<a href="{manage_url}" style="display: inline-block; background: linear-gradient(135deg, #FF6B00 0%, #EA580C 100%); '
+            'color: white; text-decoration: none; font-weight: 700; padding: 10px 20px; '
+            'border-radius: 9999px; font-size: 14px;">Manage my booking</a>'
+            '<div style="font-size: 12px; color: #64748B; margin-top: 10px;">'
+            "Please give at least 12 hours' notice."
+            '</div>'
+            '</td></tr></table>'
+        ),
+    }
 
 
 def render_email(ctx: ConfirmationContext) -> tuple[str, str, str]:
@@ -177,6 +230,7 @@ def render_email(ctx: ConfirmationContext) -> tuple[str, str, str]:
         "vendor_website": VENDOR["website"],
         "logo_url": VENDOR["logo_url"],
         "subject": subject,
+        **_manage_blocks(ctx.manage_url),
     }
     text = EMAIL_TEXT_TEMPLATE.format(**common)
     html = EMAIL_HTML_TEMPLATE.format(**common)
@@ -184,7 +238,16 @@ def render_email(ctx: ConfirmationContext) -> tuple[str, str, str]:
 
 
 def render_sms(ctx: ConfirmationContext) -> str:
-    return SMS_TEMPLATE.format(
+    if ctx.manage_url:
+        return SMS_TEMPLATE_WITH_MANAGE.format(
+            first_name=ctx.customer_first or "there",
+            service=ctx.service_name,
+            booking_date_long=ctx.booking_date_long,
+            booking_time=ctx.booking_time,
+            short_address=_short_address(ctx.job_address),
+            manage_url=ctx.manage_url,
+        )
+    return SMS_TEMPLATE_NO_MANAGE.format(
         first_name=ctx.customer_first or "there",
         service=ctx.service_name,
         booking_date_long=ctx.booking_date_long,

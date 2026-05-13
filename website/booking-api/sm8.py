@@ -152,6 +152,31 @@ class ServiceM8Client:
             raise ServiceM8Error("create_activity: missing x-record-uuid header")
         return new_uuid
 
+    async def list_activity_for_job(self, job_uuid: str) -> list[dict[str, Any]]:
+        """All jobactivity records for a single job, active and inactive.
+
+        Used for reschedule-count tracking — we soft-delete the old
+        activity (set active=0) on each reschedule, so counting inactive
+        scheduled records tells us how many reschedules the customer has
+        used.
+        """
+        resp = await self._client.get(
+            "/jobactivity.json",
+            params={"$filter": f"job_uuid eq {job_uuid}"},
+        )
+        resp.raise_for_status()
+        return resp.json()
+
+    async def deactivate_activity(self, activity_uuid: str) -> None:
+        """Soft-delete a jobactivity (sets active=0). Used on reschedule
+        so we keep an audit trail rather than physically removing the
+        old slot."""
+        resp = await self._client.post(
+            f"/jobactivity/{activity_uuid}.json",
+            json={"active": "0"},
+        )
+        resp.raise_for_status()
+
     # ─────────── Job creation (the primitive) ───────────
 
     async def create_job_from_template(

@@ -44,6 +44,14 @@ from confirmation import (
     render_sms,
 )
 from external_calendar import fetch_ics_busy_blocks
+from signing import (
+    BookingToken,
+    TokenExpired,
+    TokenInvalid,
+    email_hash,
+    make_token,
+    verify_token,
+)
 from sm8 import ServiceM8Client, ServiceM8Error
 
 load_dotenv()
@@ -74,6 +82,19 @@ ACTIVITY_CACHE_TTL = float(os.environ.get("ACTIVITY_CACHE_TTL", "60"))  # 60 s
 # cache (15 min) saves bandwidth without adding noticeable lag.
 ICS_CACHE_TTL = float(os.environ.get("ICS_CACHE_TTL", "900"))  # 15 min
 OUTLOOK_ICS_URL = os.environ.get("OUTLOOK_ICS_URL", "")
+
+# Magic-link tokens for self-serve booking management. Empty disables
+# the feature gracefully — confirmation emails revert to "call/text me"
+# wording, and the manage-booking endpoints return 503.
+MAGIC_LINK_SECRET = os.environ.get("MAGIC_LINK_SECRET", "")
+PUBLIC_SITE_BASE = os.environ.get(
+    "PUBLIC_SITE_BASE", "https://bettercallwes.co.uk"
+).rstrip("/")
+RESCHEDULE_LEAD_HOURS = int(os.environ.get("RESCHEDULE_LEAD_HOURS", "12"))
+RESCHEDULE_MAX_PER_BOOKING = int(os.environ.get("RESCHEDULE_MAX_PER_BOOKING", "2"))
+# Wes's contact for internal alerts when a customer reschedules/cancels
+WES_ALERT_EMAIL = os.environ.get("WES_ALERT_EMAIL", "wes@bettercallwes.co.uk")
+WES_ALERT_PHONE = os.environ.get("WES_ALERT_PHONE", "+447700155655")
 
 sm8: ServiceM8Client | None = None  # initialised in lifespan
 
@@ -595,6 +616,19 @@ async def book(req: BookingRequest) -> BookingResponse:
     # own widget. API-created jobs need us to send manually via the
     # Messaging API endpoints (X-Api-Key auth, despite the public docs
     # claiming OAuth — verified working).
+    manage_url = ""
+    if MAGIC_LINK_SECRET:
+        try:
+            tok = make_token(
+                secret=MAGIC_LINK_SECRET,
+                job_uuid=job_uuid,
+                slot_start=req.slot_start,
+                customer_email=req.customer_email,
+            )
+            manage_url = f"{PUBLIC_SITE_BASE}/manage-booking.html?t={tok}"
+        except Exception:  # noqa: BLE001
+            log.exception("magic-link token generation failed (booking still succeeds)")
+
     confirmation_ctx = ConfirmationContext(
         customer_first=first_name_create,
         customer_last=last_name_create,
@@ -606,6 +640,7 @@ async def book(req: BookingRequest) -> BookingResponse:
         job_address=full_address,
         estimated_total=estimated_total,
         job_uuid=job_uuid,
+        manage_url=manage_url,
     )
     try:
         subject, text_body, html_body = render_email(confirmation_ctx)
@@ -643,6 +678,474 @@ async def book(req: BookingRequest) -> BookingResponse:
         slot_end=req.slot_end,
         message="Booking confirmed. Wes will be in touch shortly to confirm details.",
     )
+
+
+# ─────────── Manage-booking (magic-link) endpoints ───────────
+
+
+class RescheduleRequest(BaseModel):
+    slot_start: datetime
+    slot_end: datetime
+
+
+class ManageBookingState(BaseModel):
+    """What the manage-booking page renders. Designed not to leak
+    sensitive customer info beyond what the email/SMS already revealed."""
+    job_uuid: str
+    service: str
+    service_name: str
+    slot_start: datetime
+    slot_end: datetime
+    job_address: str
+    customer_first: str
+    reschedules_used: int
+    reschedules_max: int
+    can_modify: bool          # false if within lead-time window
+    lead_hours: int
+    active: bool              # false = already cancelled
+
+
+def _resolve_token_or_503(token: str) -> BookingToken:
+    """Verify the magic-link token. Raises HTTPException on any problem."""
+    if not MAGIC_LINK_SECRET:
+        raise HTTPException(503, "Self-serve booking management isn't configured")
+    try:
+        return verify_token(token, secret=MAGIC_LINK_SECRET)
+    except TokenExpired:
+        raise HTTPException(
+            410,
+            "This link has expired — your appointment time has already passed. "
+            "Please contact Wes directly if you need help.",
+        ) from None
+    except TokenInvalid as e:
+        raise HTTPException(
+            400, f"Invalid management link: {e}. Please use the link from your confirmation email/SMS."
+        ) from None
+
+
+def _job_from_token(job_record: dict, tok: BookingToken) -> None:
+    """Sanity-check that the token + job match. Raises 404 if not."""
+    if not job_record:
+        raise HTTPException(404, "Booking not found")
+    # If the job has been soft-deleted, refuse modifications
+    if str(job_record.get("active", "1")) not in ("1", "True", "true"):
+        raise HTTPException(410, "This booking has already been cancelled")
+
+
+def _count_reschedules(activities: list[dict]) -> int:
+    """How many times the customer has rescheduled this booking.
+
+    We soft-delete (active=0) the prior jobactivity on each reschedule
+    rather than physically removing it, so inactive scheduled records
+    are the audit trail.
+    """
+    inactive_scheduled = [
+        a for a in activities
+        if str(a.get("active", "1")) in ("0", "False", "false")
+        and str(a.get("activity_was_scheduled", "1")) in ("1", "True", "true")
+    ]
+    return len(inactive_scheduled)
+
+
+def _slot_lead_ok(slot_start: datetime, *, now: datetime | None = None) -> bool:
+    """True if slot_start is at least RESCHEDULE_LEAD_HOURS in the future."""
+    n = now or datetime.now()
+    return slot_start >= n + timedelta(hours=RESCHEDULE_LEAD_HOURS)
+
+
+def _service_slug_from_template(template_uuid: str, config: dict) -> str | None:
+    """Reverse-lookup the service slug from the SM8 template uuid."""
+    for slug, svc in config.get("services", {}).items():
+        if svc.get("template_uuid") == template_uuid:
+            return slug
+    return None
+
+
+async def _gather_manage_state(tok: BookingToken) -> tuple[ManageBookingState, dict]:
+    """Common path: fetch the job + activities, derive manage state.
+    Returns (state, job_record) so callers can mutate the job afterwards."""
+    assert sm8 is not None
+    job = await sm8.get_job(tok.job_uuid)
+    _job_from_token(job, tok)
+
+    config = load_services_config()
+    template_uuid = job.get("job_template_uuid", "") or job.get("template_uuid", "")
+    slug = _service_slug_from_template(template_uuid, config) or ""
+    svc = config["services"].get(slug, {})
+    service_name = svc.get("name", "Booking")
+
+    # Activities (active + inactive) for reschedule count
+    activities = await sm8.list_activity_for_job(tok.job_uuid)
+    used = _count_reschedules(activities)
+
+    # The current active scheduled block — that's "the slot"
+    active_scheduled = [
+        a for a in activities
+        if str(a.get("active", "1")) in ("1", "True", "true")
+        and str(a.get("activity_was_scheduled", "1")) in ("1", "True", "true")
+    ]
+    active_scheduled.sort(key=lambda a: a.get("start_date", ""))
+    if not active_scheduled:
+        raise HTTPException(410, "This booking has no scheduled slot — please contact Wes")
+    current = active_scheduled[-1]  # the most-recent one
+    slot_start = datetime.strptime(current["start_date"], "%Y-%m-%d %H:%M:%S")
+    slot_end = datetime.strptime(current["end_date"], "%Y-%m-%d %H:%M:%S")
+
+    # Parse customer first name from job description (we wrote it in there)
+    customer_first = "there"
+    for line in (job.get("job_description") or "").splitlines():
+        if line.lower().startswith("customer:"):
+            full = line.split(":", 1)[1].strip()
+            customer_first = full.split()[0] if full else "there"
+            break
+
+    state = ManageBookingState(
+        job_uuid=tok.job_uuid,
+        service=slug,
+        service_name=service_name,
+        slot_start=slot_start,
+        slot_end=slot_end,
+        job_address=job.get("job_address", ""),
+        customer_first=customer_first,
+        reschedules_used=used,
+        reschedules_max=RESCHEDULE_MAX_PER_BOOKING,
+        can_modify=_slot_lead_ok(slot_start),
+        lead_hours=RESCHEDULE_LEAD_HOURS,
+        active=True,
+    )
+    return state, job
+
+
+@app.get("/api/booking/{token}", response_model=ManageBookingState)
+async def get_booking(token: str) -> ManageBookingState:
+    """Manage-page bootstrap: returns the current state for rendering."""
+    tok = _resolve_token_or_503(token)
+    state, _ = await _gather_manage_state(tok)
+    return state
+
+
+@app.get("/api/booking/{token}/availability", response_model=list[SlotResponse])
+async def get_booking_availability(
+    token: str,
+    days: int = Query(DEFAULT_DAYS_AHEAD, ge=1, le=60),
+) -> list[SlotResponse]:
+    """Free slots for THIS booking's service — same logic as /api/availability
+    but the service is locked to whatever the booking is for."""
+    tok = _resolve_token_or_503(token)
+    state, _ = await _gather_manage_state(tok)
+    if not state.service:
+        raise HTTPException(404, "Service for this booking could not be resolved")
+    # Defer to the standard availability endpoint
+    return await get_availability(service=state.service, days=days, duration_min=None)
+
+
+@app.post("/api/booking/{token}/reschedule", response_model=ManageBookingState)
+async def reschedule_booking(token: str, req: RescheduleRequest) -> ManageBookingState:
+    """Move the booking to a new slot.
+
+    Rules (server-enforced):
+      - Customer must have ≥ RESCHEDULE_LEAD_HOURS notice from the CURRENT slot
+      - Customer must have used < RESCHEDULE_MAX_PER_BOOKING reschedules
+      - The NEW slot must also be ≥ RESCHEDULE_LEAD_HOURS in the future
+    """
+    assert sm8 is not None
+    assert activity_cache is not None
+    tok = _resolve_token_or_503(token)
+    state, job = await _gather_manage_state(tok)
+    config = load_services_config()
+    staff_uuid = config["config"]["staff_uuid"]
+
+    if not state.can_modify:
+        raise HTTPException(
+            409,
+            f"This booking is within {state.lead_hours}h of starting — please contact Wes directly.",
+        )
+    if state.reschedules_used >= state.reschedules_max:
+        raise HTTPException(
+            409,
+            f"You've used all {state.reschedules_max} self-serve reschedules on this booking. "
+            "Please contact Wes for further changes.",
+        )
+    if not _slot_lead_ok(req.slot_start):
+        raise HTTPException(
+            400,
+            f"The new slot must be at least {state.lead_hours}h from now.",
+        )
+
+    # ─ Deactivate the existing scheduled activity (audit trail) ─
+    activities = await sm8.list_activity_for_job(tok.job_uuid)
+    for a in activities:
+        if str(a.get("active", "1")) in ("1", "True", "true") and \
+           str(a.get("activity_was_scheduled", "1")) in ("1", "True", "true"):
+            try:
+                await sm8.deactivate_activity(a["uuid"])
+            except Exception:  # noqa: BLE001
+                log.exception("deactivate_activity failed for %s", a.get("uuid"))
+
+    # ─ Create the new activity ─
+    try:
+        await sm8.create_activity(
+            job_uuid=tok.job_uuid,
+            staff_uuid=staff_uuid,
+            start_iso=req.slot_start.strftime("%Y-%m-%d %H:%M:%S"),
+            end_iso=req.slot_end.strftime("%Y-%m-%d %H:%M:%S"),
+        )
+    except Exception as e:  # noqa: BLE001
+        log.exception("reschedule: create_activity failed")
+        raise HTTPException(502, f"Could not save the new slot: {e}") from e
+
+    # ─ Update job description with a small audit line ─
+    try:
+        existing_desc = job.get("job_description", "")
+        old_slot = f"{state.slot_start.strftime('%Y-%m-%d %H:%M')}"
+        new_slot = f"{req.slot_start.strftime('%Y-%m-%d %H:%M')}"
+        audit = f"\n[Customer reschedule {datetime.now().strftime('%Y-%m-%d %H:%M')}] {old_slot} → {new_slot}"
+        await sm8.update_job(tok.job_uuid, {"job_description": existing_desc + audit})
+    except Exception:  # noqa: BLE001
+        log.exception("reschedule: audit line update failed (non-fatal)")
+
+    # ─ Notify Wes + customer ─
+    await _notify_reschedule(state, req, job)
+
+    # Invalidate availability cache so the freed/new slot reflects immediately
+    activity_cache.invalidate()
+
+    # Return refreshed state
+    refreshed, _ = await _gather_manage_state(tok)
+    return refreshed
+
+
+@app.post("/api/booking/{token}/cancel", response_model=dict)
+async def cancel_booking(token: str) -> dict[str, Any]:
+    """Cancel a booking. Soft-deletes the SM8 job (active=0) and the
+    scheduled activity, then notifies Wes + customer."""
+    assert sm8 is not None
+    assert activity_cache is not None
+    tok = _resolve_token_or_503(token)
+    state, job = await _gather_manage_state(tok)
+
+    if not state.can_modify:
+        raise HTTPException(
+            409,
+            f"This booking is within {state.lead_hours}h of starting — please contact Wes directly.",
+        )
+
+    # ─ Deactivate the scheduled activity ─
+    activities = await sm8.list_activity_for_job(tok.job_uuid)
+    for a in activities:
+        if str(a.get("active", "1")) in ("1", "True", "true"):
+            try:
+                await sm8.deactivate_activity(a["uuid"])
+            except Exception:  # noqa: BLE001
+                log.exception("cancel: deactivate_activity failed for %s", a.get("uuid"))
+
+    # ─ Soft-delete the job ─
+    try:
+        await sm8.delete_job(tok.job_uuid)
+    except Exception as e:  # noqa: BLE001
+        log.exception("cancel: delete_job failed")
+        raise HTTPException(502, f"Could not cancel the job: {e}") from e
+
+    await _notify_cancel(state, job)
+    activity_cache.invalidate()
+
+    return {"success": True, "message": "Your booking has been cancelled."}
+
+
+# ─────────── Internal helpers: notify Wes + the customer ───────────
+
+
+def _fmt_slot(dt_start: datetime, dt_end: datetime) -> str:
+    return f"{dt_start.strftime('%a %d %b, %H:%M')}–{dt_end.strftime('%H:%M')}"
+
+
+async def _notify_reschedule(
+    state: ManageBookingState,
+    req: RescheduleRequest,
+    job: dict,
+) -> None:
+    """Email + SMS Wes about the reschedule, and send the customer a new
+    confirmation."""
+    assert sm8 is not None
+    old = _fmt_slot(state.slot_start, state.slot_end)
+    new = _fmt_slot(req.slot_start, req.slot_end)
+
+    # ─ Wes: email ─
+    try:
+        await sm8.send_email(
+            to=WES_ALERT_EMAIL,
+            subject=f"BCW — booking rescheduled by customer ({state.customer_first})",
+            text_body=(
+                f"A customer has rescheduled their booking via the self-serve link.\n\n"
+                f"  Service:   {state.service_name}\n"
+                f"  Customer:  {state.customer_first}\n"
+                f"  Address:   {state.job_address}\n"
+                f"  Old slot:  {old}\n"
+                f"  New slot:  {new}\n"
+                f"  Job UUID:  {state.job_uuid}\n"
+                f"  Reschedules used: {state.reschedules_used + 1} / {state.reschedules_max}\n"
+            ),
+            regarding_job_uuid=state.job_uuid,
+        )
+    except Exception:  # noqa: BLE001
+        log.exception("Wes-alert email (reschedule) failed")
+
+    # ─ Wes: SMS ─
+    try:
+        await sm8.send_sms(
+            to=WES_ALERT_PHONE,
+            message=(
+                f"BCW: {state.customer_first} rescheduled their {state.service_name}. "
+                f"{old} → {new}."
+            ),
+            regarding_job_uuid=state.job_uuid,
+        )
+    except Exception:  # noqa: BLE001
+        log.exception("Wes-alert SMS (reschedule) failed")
+
+    # ─ Customer: re-send the confirmation email/SMS with the new slot ─
+    # Reuse the original ConfirmationContext shape; the existing template
+    # works fine for a "your booking has been updated" mail.
+    cust_email = ""
+    cust_phone = ""
+    # Pull from job_description (we wrote them in there at booking time)
+    for line in (job.get("job_description") or "").splitlines():
+        low = line.lower()
+        if low.startswith("phone:"):
+            cust_phone = line.split(":", 1)[1].strip()
+        elif low.startswith("email:"):
+            cust_email = line.split(":", 1)[1].strip()
+    if cust_email:
+        manage_url = ""
+        if MAGIC_LINK_SECRET:
+            try:
+                tok = make_token(
+                    secret=MAGIC_LINK_SECRET,
+                    job_uuid=state.job_uuid,
+                    slot_start=req.slot_start,
+                    customer_email=cust_email,
+                )
+                manage_url = f"{PUBLIC_SITE_BASE}/manage-booking.html?t={tok}"
+            except Exception:  # noqa: BLE001
+                pass
+        ctx = ConfirmationContext(
+            customer_first=state.customer_first,
+            customer_last="",
+            customer_email=cust_email,
+            customer_phone=cust_phone,
+            service_name=state.service_name,
+            slot_start=req.slot_start,
+            slot_end=req.slot_end,
+            job_address=state.job_address,
+            estimated_total=None,
+            job_uuid=state.job_uuid,
+            manage_url=manage_url,
+        )
+        try:
+            subject, text_body, html_body = render_email(ctx)
+            # Tweak subject so it reads as an update rather than first confirmation
+            subject = "Your Better Call Wes booking has been rescheduled — " + req.slot_start.strftime('%-d %B at %H:%M')
+            await sm8.send_email(
+                to=cust_email,
+                subject=subject,
+                text_body=text_body,
+                html_body=html_body,
+                reply_to="wes@bettercallwes.co.uk",
+                regarding_job_uuid=state.job_uuid,
+            )
+        except Exception:  # noqa: BLE001
+            log.exception("customer reschedule confirmation email failed")
+        if cust_phone:
+            try:
+                sms_body = render_sms(ctx)
+                # Prepend a small "updated" marker
+                sms_body = "Updated: " + sms_body
+                await sm8.send_sms(
+                    to=normalise_uk_mobile(cust_phone),
+                    message=sms_body,
+                    regarding_job_uuid=state.job_uuid,
+                )
+            except Exception:  # noqa: BLE001
+                log.exception("customer reschedule confirmation SMS failed")
+
+
+async def _notify_cancel(state: ManageBookingState, job: dict) -> None:
+    """Notify Wes + customer that the booking has been cancelled."""
+    assert sm8 is not None
+    slot = _fmt_slot(state.slot_start, state.slot_end)
+
+    # ─ Wes ─
+    try:
+        await sm8.send_email(
+            to=WES_ALERT_EMAIL,
+            subject=f"BCW — booking CANCELLED by customer ({state.customer_first})",
+            text_body=(
+                f"A customer has cancelled their booking via the self-serve link.\n\n"
+                f"  Service:   {state.service_name}\n"
+                f"  Customer:  {state.customer_first}\n"
+                f"  Address:   {state.job_address}\n"
+                f"  Slot:      {slot}\n"
+                f"  Job UUID:  {state.job_uuid}\n\n"
+                "The slot is now free in your diary."
+            ),
+            regarding_job_uuid=state.job_uuid,
+        )
+    except Exception:  # noqa: BLE001
+        log.exception("Wes-alert email (cancel) failed")
+
+    try:
+        await sm8.send_sms(
+            to=WES_ALERT_PHONE,
+            message=(
+                f"BCW: {state.customer_first} CANCELLED their {state.service_name} "
+                f"({slot}). Slot now free."
+            ),
+            regarding_job_uuid=state.job_uuid,
+        )
+    except Exception:  # noqa: BLE001
+        log.exception("Wes-alert SMS (cancel) failed")
+
+    # ─ Customer ─
+    cust_email = ""
+    cust_phone = ""
+    for line in (job.get("job_description") or "").splitlines():
+        low = line.lower()
+        if low.startswith("phone:"):
+            cust_phone = line.split(":", 1)[1].strip()
+        elif low.startswith("email:"):
+            cust_email = line.split(":", 1)[1].strip()
+
+    if cust_email:
+        try:
+            await sm8.send_email(
+                to=cust_email,
+                subject="Your Better Call Wes booking has been cancelled",
+                text_body=(
+                    f"Hi {state.customer_first},\n\n"
+                    f"This confirms your {state.service_name} on {slot} has been cancelled.\n\n"
+                    "If this wasn't you, or you'd like to rebook, just let me know:\n"
+                    f"  Phone:    07700 155 655\n"
+                    f"  WhatsApp: https://wa.me/447700155655\n"
+                    f"  Online:   {PUBLIC_SITE_BASE}/booking.html\n\n"
+                    "Warm regards,\nWes"
+                ),
+                reply_to="wes@bettercallwes.co.uk",
+                regarding_job_uuid=state.job_uuid,
+            )
+        except Exception:  # noqa: BLE001
+            log.exception("customer cancel email failed")
+    if cust_phone:
+        try:
+            await sm8.send_sms(
+                to=normalise_uk_mobile(cust_phone),
+                message=(
+                    f"Hi {state.customer_first}, your Better Call Wes booking ({slot}) "
+                    "has been cancelled. Need to rebook? bettercallwes.co.uk/booking.html"
+                ),
+                regarding_job_uuid=state.job_uuid,
+            )
+        except Exception:  # noqa: BLE001
+            log.exception("customer cancel SMS failed")
 
 
 if __name__ == "__main__":  # local dev: python main.py

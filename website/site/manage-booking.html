@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GD5D6TC4DS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-GD5D6TC4DS');
+  </script>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wq3h4z62v6");
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage your booking | Better Call Wes</title>
+  <meta name="description" content="Reschedule or cancel your Better Call Wes appointment.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/styles.css?v=1.8">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
+
+  <style>
+    /* Manage page — same chrome as booking.html so the flow feels
+       continuous. Inline because this page is loaded once and we
+       want zero round-trips for styling. */
+    body { background: var(--color-bg); padding-top: 1rem; }
+
+    .manage-header {
+      position: sticky; top: 0.75rem; z-index: 100;
+      padding: 0 1rem; pointer-events: none;
+    }
+    .manage-header .container {
+      pointer-events: auto;
+      width: 92%; max-width: 1100px; margin: 0 auto;
+      background: #ffffff;
+      border: 1px solid rgba(15, 41, 66, 0.08);
+      border-radius: var(--radius-full);
+      box-shadow: 0 4px 16px rgba(15, 41, 66, 0.08);
+      padding: 0.6rem 1.25rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .manage-header img { height: 40px; width: auto; display: block; }
+
+    .manage-page { max-width: 720px; margin: 0 auto; padding: 2.5rem 1rem 4rem; }
+    .manage-page h1 {
+      font-family: 'Inter', sans-serif; font-weight: 800;
+      letter-spacing: -0.02em; line-height: 1.1;
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      color: var(--text-dark);
+      margin: 0 0 0.5rem;
+    }
+    .manage-page .lede {
+      color: var(--text-body); font-size: 1.1rem;
+      margin: 0 0 2rem; line-height: 1.55;
+    }
+
+    .card {
+      background: white; border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: 1.5rem 1.25rem; margin-bottom: 1.25rem;
+    }
+    @media (min-width: 600px) { .card { padding: 2rem; } }
+    .card h2 {
+      font-family: 'Inter', sans-serif; font-weight: 700;
+      letter-spacing: -0.01em; color: var(--color-primary);
+      margin: 0 0 1rem; font-size: 1.25rem;
+    }
+
+    .booking-row { display: flex; align-items: baseline; gap: 1rem; padding: 0.4rem 0; }
+    .booking-row dt {
+      min-width: 100px;
+      font-family: 'Inter', sans-serif; font-weight: 600;
+      color: var(--color-primary);
+      font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .booking-row dd { margin: 0; color: var(--text-dark); }
+
+    .reschedule-meta {
+      display: flex; gap: 0.5rem 1.5rem; flex-wrap: wrap;
+      margin-top: 0.75rem;
+      font-size: 0.9rem; color: var(--text-light);
+    }
+    .reschedule-meta strong { color: var(--color-primary); font-weight: 700; }
+
+    .action-stack {
+      display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    @media (min-width: 600px) { .action-stack { flex-direction: row; } }
+    .action-btn {
+      flex: 1;
+      padding: 1.05rem 1.5rem;
+      border-radius: var(--radius-full);
+      font-family: 'Inter', sans-serif; font-weight: 700;
+      font-size: 1rem; text-align: center;
+      border: none; cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    }
+    .action-btn.primary {
+      background: linear-gradient(135deg, var(--color-accent) 0%, #EA580C 100%);
+      color: white; box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+    }
+    .action-btn.primary:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(217, 119, 6, 0.4); }
+    .action-btn.danger {
+      background: white; color: #DC2626; border: 2px solid #DC2626;
+    }
+    .action-btn.danger:hover {
+      background: #DC2626; color: white;
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+      transform: translateY(-2px);
+    }
+    .action-btn.outline {
+      background: white; color: var(--color-primary); border: 2px solid var(--color-primary);
+    }
+    .action-btn.outline:hover {
+      background: var(--color-primary); color: white;
+      transform: translateY(-2px);
+    }
+    .action-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; box-shadow: none !important; }
+
+    /* Slot picker (matches booking.html visuals) */
+    .day-strip {
+      display: flex; gap: 0.55rem; overflow-x: auto;
+      padding: 0.25rem 0 0.5rem; margin: 0 -0.25rem 1rem;
+      -webkit-overflow-scrolling: touch;
+    }
+    .day-pill {
+      flex-shrink: 0;
+      border: 2px solid rgba(15,41,66,0.1);
+      background: white; border-radius: var(--radius-md);
+      padding: 0.65rem 0.85rem;
+      cursor: pointer; text-align: center; min-width: 82px;
+      font-family: inherit;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .day-pill .dow {
+      display: block; font-size: 0.72rem; text-transform: uppercase;
+      color: var(--text-light); letter-spacing: 0.7px; font-weight: 600;
+    }
+    .day-pill .date {
+      display: block; font-family: 'Inter', sans-serif;
+      font-size: 1.2rem; font-weight: 700; color: var(--color-primary);
+    }
+    .day-pill .month { display: block; font-size: 0.7rem; color: var(--text-light); }
+    .day-pill:hover { border-color: var(--color-accent); transform: translateY(-2px); }
+    .day-pill.selected {
+      border-color: var(--color-accent); background: rgba(255,107,0,0.08);
+      box-shadow: var(--shadow-sm);
+    }
+    .slot-list {
+      display: grid; gap: 0.55rem;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    }
+    .slot {
+      border: 2px solid rgba(15,41,66,0.1);
+      background: white; border-radius: var(--radius-md);
+      padding: 0.65rem 0.5rem;
+      cursor: pointer; font-family: 'Inter', sans-serif;
+      font-size: 0.95rem; color: var(--color-primary); font-weight: 600;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .slot:hover { border-color: var(--color-accent); transform: translateY(-2px); }
+    .slot.selected {
+      background: linear-gradient(135deg, var(--color-accent) 0%, #EA580C 100%);
+      color: white; border-color: var(--color-accent);
+      box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+    }
+
+    .panel { display: none; margin-top: 0.5rem; }
+    .panel.show { display: block; }
+
+    .error, .info, .success {
+      padding: 1rem 1.25rem; border-radius: var(--radius-md);
+      margin: 0.75rem 0; font-size: 0.95rem; line-height: 1.5;
+    }
+    .error { background: #FEE2E2; color: #991B1B; border: 1px solid #FCA5A5; }
+    .info { background: #EFF6FF; color: #1E40AF; border: 1px solid #BFDBFE; }
+    .success { background: #DCFCE7; color: #166534; border: 1px solid #86EFAC; }
+
+    .loading {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      color: var(--text-body); font-size: 0.95rem;
+    }
+    .spinner {
+      width: 18px; height: 18px;
+      border: 2px solid rgba(15,41,66,0.2);
+      border-top-color: var(--color-accent);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .footer-help {
+      text-align: center; margin-top: 2rem; color: var(--text-light); font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .footer-help a {
+      color: var(--color-primary); text-decoration: none;
+      border-bottom: 1px solid rgba(15,41,66,0.15);
+    }
+    .footer-help a:hover { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+
+    .tick-circle {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, #25D366 0%, #1ebe5d 100%);
+      color: white; display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.25rem;
+      box-shadow: 0 10px 24px rgba(37, 211, 102, 0.35);
+    }
+    .tick-circle i { width: 36px; height: 36px; }
+  </style>
+</head>
+<body>
+
+<header class="manage-header">
+  <div class="container">
+    <a href="index.html" aria-label="Better Call Wes home">
+      <img src="assets/logo.webp?v=3" alt="Better Call Wes">
+    </a>
+  </div>
+</header>
+
+<main class="manage-page">
+
+  <!-- ─── Loading state ─────────────────────────────────────── -->
+  <div id="state-loading" class="card">
+    <div class="loading"><span class="spinner"></span> Loading your booking…</div>
+  </div>
+
+  <!-- ─── Error state ───────────────────────────────────────── -->
+  <div id="state-error" class="card" hidden>
+    <h2 id="error-title">Sorry — we couldn't load this booking.</h2>
+    <p id="error-body" class="error" style="margin-top: 0;"></p>
+    <div class="footer-help">
+      If you're stuck, message Wes on
+      <a href="https://wa.me/447700155655">WhatsApp</a>
+      or call <a href="tel:07700155655">07700 155 655</a>.
+    </div>
+  </div>
+
+  <!-- ─── Main / loaded state ───────────────────────────────── -->
+  <div id="state-loaded" hidden>
+    <h1 id="greeting">Manage your booking</h1>
+    <p class="lede">Reschedule to a slot that suits you better, or cancel if your plans have changed.</p>
+
+    <!-- Booking summary -->
+    <div class="card">
+      <h2>Your current booking</h2>
+      <dl id="summary"></dl>
+      <div class="reschedule-meta">
+        <span>Reschedules used: <strong id="meta-resched">0 / 2</strong></span>
+        <span>Notice required: <strong id="meta-lead">12 hours</strong></span>
+      </div>
+    </div>
+
+    <!-- Action picker -->
+    <div class="card">
+      <h2>What would you like to do?</h2>
+      <div class="action-stack" id="action-buttons">
+        <button type="button" class="action-btn primary" id="btn-reschedule">
+          <i data-lucide="calendar-clock" style="width:20px;height:20px;"></i> Reschedule
+        </button>
+        <button type="button" class="action-btn danger" id="btn-cancel">
+          <i data-lucide="x-circle" style="width:20px;height:20px;"></i> Cancel booking
+        </button>
+      </div>
+
+      <!-- Reschedule panel -->
+      <div id="panel-reschedule" class="panel">
+        <hr style="border: none; border-top: 1px solid rgba(15,41,66,0.08); margin: 1.5rem 0;">
+        <h2 style="font-size: 1.1rem;">Pick a new time</h2>
+        <div id="reschedule-slots">
+          <div class="loading"><span class="spinner"></span> Loading available slots…</div>
+        </div>
+        <div id="reschedule-error" class="error" hidden></div>
+        <div style="display: flex; gap: 0.75rem; margin-top: 1rem; flex-wrap: wrap;">
+          <button type="button" class="action-btn primary" id="btn-reschedule-confirm" disabled style="flex: 2;">
+            Confirm new time
+          </button>
+          <button type="button" class="action-btn outline" id="btn-reschedule-back" style="flex: 1;">
+            Back
+          </button>
+        </div>
+      </div>
+
+      <!-- Cancel confirm panel (two-tap) -->
+      <div id="panel-cancel" class="panel">
+        <hr style="border: none; border-top: 1px solid rgba(15,41,66,0.08); margin: 1.5rem 0;">
+        <div class="info" style="background: #FEF3C7; color: #92400E; border-color: #FCD34D;">
+          <strong>⚠ Are you sure you want to cancel?</strong><br>
+          This will free up Wes's diary and we'll send you a confirmation.
+          You can always book again later.
+        </div>
+        <div id="cancel-error" class="error" hidden></div>
+        <div style="display: flex; gap: 0.75rem; margin-top: 1rem; flex-wrap: wrap;">
+          <button type="button" class="action-btn danger" id="btn-cancel-confirm" style="flex: 2;">
+            Yes, cancel my booking
+          </button>
+          <button type="button" class="action-btn outline" id="btn-cancel-back" style="flex: 1;">
+            Keep it
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-help">
+      Something not right? Message Wes on
+      <a href="https://wa.me/447700155655">WhatsApp</a>
+      or call <a href="tel:07700155655">07700 155 655</a>.
+    </div>
+  </div>
+
+  <!-- ─── Success states ───────────────────────────────────── -->
+  <div id="state-rescheduled" class="card" hidden>
+    <div class="tick-circle"><i data-lucide="check"></i></div>
+    <h1 style="text-align: center;">Rescheduled.</h1>
+    <p class="lede" style="text-align: center;">Your new slot is locked in. We've sent you a fresh confirmation by email and SMS.</p>
+    <dl id="rescheduled-summary"></dl>
+  </div>
+
+  <div id="state-cancelled" class="card" hidden>
+    <div class="tick-circle" style="background: linear-gradient(135deg, #94A3B8 0%, #64748B 100%); box-shadow: 0 10px 24px rgba(100, 116, 139, 0.3);">
+      <i data-lucide="x"></i>
+    </div>
+    <h1 style="text-align: center;">Cancelled.</h1>
+    <p class="lede" style="text-align: center;">
+      Your booking has been cancelled and the slot is free again. You'll get a confirmation by email and SMS.
+    </p>
+    <div style="text-align: center; margin-top: 1.5rem;">
+      <a href="booking.html" class="action-btn primary" style="display: inline-flex; padding: 0.85rem 1.5rem;">
+        <i data-lucide="calendar-plus" style="width:20px;height:20px;"></i> Book a new appointment
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<script src="js/manage-booking.js?v=1.0"></script>
+<script>lucide.createIcons();</script>
+</body>
+</html>
