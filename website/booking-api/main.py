@@ -43,6 +43,7 @@ from confirmation import (
     render_email,
     render_sms,
 )
+from external_calendar import fetch_ics_busy_blocks
 from sm8 import ServiceM8Client, ServiceM8Error
 
 load_dotenv()
@@ -69,12 +70,17 @@ ALLOWED_ORIGINS = os.environ.get(
 DEFAULT_DAYS_AHEAD = int(os.environ.get("DEFAULT_DAYS_AHEAD", "14"))
 MATERIALS_CACHE_TTL = float(os.environ.get("MATERIALS_CACHE_TTL", "300"))  # 5 min
 ACTIVITY_CACHE_TTL = float(os.environ.get("ACTIVITY_CACHE_TTL", "60"))  # 60 s
+# Outlook's published ICS feed updates ~every 3 hours, so a longer
+# cache (15 min) saves bandwidth without adding noticeable lag.
+ICS_CACHE_TTL = float(os.environ.get("ICS_CACHE_TTL", "900"))  # 15 min
+OUTLOOK_ICS_URL = os.environ.get("OUTLOOK_ICS_URL", "")
 
 sm8: ServiceM8Client | None = None  # initialised in lifespan
 
 # Caches
 materials_cache: TTLCache[list[dict]] | None = None
 activity_cache: TTLCache[list[dict]] | None = None
+ics_cache: TTLCache[list[TimeBlock]] | None = None
 
 # Wes's staff UUID — used for the optional <platform-user-signature/> tag
 DEFAULT_STAFF_UUID = "5673d021-27b2-4356-a14b-1760cabfcd3b"
@@ -184,7 +190,7 @@ def enrich_services_with_prices(
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    global sm8, materials_cache, activity_cache
+    global sm8, materials_cache, activity_cache, ics_cache
     if not SM8_API_KEY:
         raise RuntimeError("SERVICEM8_API_KEY env var is required")
     sm8 = ServiceM8Client(api_key=SM8_API_KEY)
@@ -199,7 +205,25 @@ async def lifespan(app: FastAPI):
         return await sm8.list_activity(staff_uuid=staff_uuid, start_date=today_str)
 
     activity_cache = TTLCache(ACTIVITY_CACHE_TTL, fetch_activity)
-    log.info("booking-api ready (services.json=%s)", SERVICES_JSON_PATH)
+
+    # External calendar (Outlook ICS) cache — optional. If the env var
+    # isn't set we just skip and never call the fetcher.
+    async def fetch_ics() -> list[TimeBlock]:
+        if not OUTLOOK_ICS_URL:
+            return []
+        try:
+            return await fetch_ics_busy_blocks(OUTLOOK_ICS_URL)
+        except Exception as e:  # noqa: BLE001
+            # Don't break availability if the feed is temporarily down.
+            log.warning("ICS fetch failed (continuing without external calendar): %s", e)
+            return []
+
+    ics_cache = TTLCache(ICS_CACHE_TTL, fetch_ics)
+    log.info(
+        "booking-api ready (services.json=%s, external_ics=%s)",
+        SERVICES_JSON_PATH,
+        "enabled" if OUTLOOK_ICS_URL else "disabled",
+    )
     try:
         yield
     finally:
@@ -281,6 +305,13 @@ async def get_availability(
 
     activity = await activity_cache.get()
     busy = parse_busy_blocks(activity)
+
+    # Merge in Wes's published Outlook calendar (personal events) if
+    # configured. Failures fall through to an empty list — never let
+    # an ICS hiccup break the availability endpoint.
+    if ics_cache is not None:
+        external_busy = await ics_cache.get()
+        busy = busy + external_busy
 
     requested = duration_min or svc.get("base_duration_min", 60)
 
