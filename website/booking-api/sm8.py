@@ -162,12 +162,24 @@ class ServiceM8Client:
         company_uuid: str | None = None,
         job_address: str,
         job_description: str,
+        first_name: str | None = None,
+        last_name: str | None = None,
+        mobile: str | None = None,
+        phone: str | None = None,
+        email: str | None = None,
     ) -> CreatedJob:
         """POST /jobtemplate/{uuid}/job.json — the booking primitive.
 
         Either company_name (creates a new company) or company_uuid (uses
         existing) must be provided. The template's badges + materials are
         auto-cloned into the new job.
+
+        Customer contact details (first_name, last_name, mobile, email,
+        phone) are optional but STRONGLY recommended: when passed, SM8
+        creates the company AND a primary company contact AND wires that
+        contact to the job in one transaction. Skipping them leaves the
+        job's "Job Contact" field empty in the SM8 UI even if the company
+        record exists.
         """
         if not (company_name or company_uuid):
             raise ValueError("Either company_name or company_uuid required")
@@ -179,6 +191,18 @@ class ServiceM8Client:
             body["company_uuid"] = company_uuid
         else:
             body["company_name"] = company_name  # type: ignore[assignment]
+        # Customer contact — passed to the template endpoint so SM8
+        # creates + wires the primary job contact atomically.
+        if first_name:
+            body["first_name"] = first_name
+        if last_name:
+            body["last_name"] = last_name
+        if mobile:
+            body["mobile"] = mobile
+        if phone:
+            body["phone"] = phone
+        if email:
+            body["email"] = email
         resp = await self._client.post(
             f"/jobtemplate/{template_uuid}/job.json",
             json=body,

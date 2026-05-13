@@ -472,12 +472,22 @@ async def book(req: BookingRequest) -> BookingResponse:
     # need to clutter the displayed address with it).
     full_address = ", ".join(parts)
 
+    # Parse customer name into first/last for the SM8 contact record.
+    # (Parsed early so we can pass it into the jobtemplate call below —
+    # SM8 wires the primary contact at job-creation time only.)
+    first_name_create, last_name_create = parse_name(req.customer_name)
+
     try:
         created = await sm8.create_job_from_template(
             template_uuid=template_uuid,
             company_name=req.customer_name,
             job_address=full_address,
             job_description=description,
+            first_name=first_name_create,
+            last_name=last_name_create,
+            mobile=req.customer_phone,
+            phone=req.customer_phone,
+            email=req.customer_email,
         )
     except (httpx.HTTPStatusError, ServiceM8Error) as e:
         log.exception("create_job failed")
@@ -513,33 +523,14 @@ async def book(req: BookingRequest) -> BookingResponse:
             log.exception("add_job_material failed for %s", item_number)
             # Continue on partial failure — better a job with some lines than rolled-back
 
-    # ─ 3) Attach customer contact to the company so SM8 has someone to
-    #    send the badge-driven confirmation email/SMS to. The auto-
-    #    created company from create_job_from_template has no contact
-    #    records by default — only the company name + address — so
-    #    SM8's automation has no email/phone to fire against.
-    name_parts = req.customer_name.strip().split(maxsplit=1)
-    first_name = name_parts[0]
-    last_name = name_parts[1] if len(name_parts) > 1 else ""
-    try:
-        job_record = await sm8.get_job(job_uuid)
-        company_uuid = job_record.get("company_uuid", "")
-        if company_uuid:
-            await sm8.add_company_contact(
-                company_uuid=company_uuid,
-                first=first_name,
-                last=last_name,
-                mobile=req.customer_phone,
-                phone=req.customer_phone,
-                email=req.customer_email,
-                type_="JOB",
-            )
-        else:
-            log.warning("job %s has no company_uuid; skipping contact creation", job_uuid)
-    except Exception:  # noqa: BLE001
-        log.exception("add_company_contact failed (job exists but no contact attached)")
+    # (Customer contact is created atomically by create_job_from_template
+    # above — no separate companycontact call needed. SM8 wires the
+    # primary "Job Contact" field at creation time, so doing it after-
+    # the-fact via /companycontact.json doesn't actually attach to the
+    # job, only to the company — which is why the job page showed no
+    # contact in earlier bookings.)
 
-    # ─ 4) Lock the slot on Wes's diary ─
+    # ─ Lock the slot on Wes's diary ─
     staff_uuid = config["config"]["staff_uuid"]
     try:
         await sm8.create_activity(
@@ -573,10 +564,9 @@ async def book(req: BookingRequest) -> BookingResponse:
     # own widget. API-created jobs need us to send manually via the
     # Messaging API endpoints (X-Api-Key auth, despite the public docs
     # claiming OAuth — verified working).
-    first_name, last_name = parse_name(req.customer_name)
     confirmation_ctx = ConfirmationContext(
-        customer_first=first_name,
-        customer_last=last_name,
+        customer_first=first_name_create,
+        customer_last=last_name_create,
         customer_email=req.customer_email,
         customer_phone=req.customer_phone,
         service_name=svc.get("name", req.service),
