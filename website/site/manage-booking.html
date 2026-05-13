@@ -219,6 +219,30 @@
       box-shadow: 0 10px 24px rgba(37, 211, 102, 0.35);
     }
     .tick-circle i { width: 36px; height: 36px; }
+
+    /* Cancellation reason radio group */
+    .reason-options { display: flex; flex-direction: column; gap: 0.5rem; }
+    .reason-opt {
+      display: flex; align-items: center; gap: 0.65rem;
+      padding: 0.7rem 0.95rem;
+      border: 2px solid rgba(15,41,66,0.08);
+      border-radius: var(--radius-md);
+      cursor: pointer; background: white;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 0.95rem; color: var(--text-dark);
+    }
+    .reason-opt:hover { border-color: var(--color-accent); transform: translateY(-1px); }
+    .reason-opt input { accent-color: var(--color-accent); flex-shrink: 0; }
+    .reason-opt.selected {
+      border-color: var(--color-accent);
+      background: rgba(255, 107, 0, 0.05);
+      box-shadow: var(--shadow-sm);
+    }
+    #cancel-reason-text:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.12);
+    }
   </style>
 </head>
 <body>
@@ -294,7 +318,7 @@
         </div>
       </div>
 
-      <!-- Cancel confirm panel (two-tap) -->
+      <!-- Cancel confirm panel (two-tap with reason capture) -->
       <div id="panel-cancel" class="panel">
         <hr style="border: none; border-top: 1px solid rgba(15,41,66,0.08); margin: 1.5rem 0;">
         <div class="info" style="background: #FEF3C7; color: #92400E; border-color: #FCD34D;">
@@ -302,8 +326,27 @@
           This will free up Wes's diary and we'll send you a confirmation.
           You can always book again later.
         </div>
+
+        <div style="margin-top: 1.5rem;">
+          <label class="q-label" style="display: block; font-family: 'Inter', sans-serif; font-weight: 600; color: var(--color-primary); margin-bottom: 0.5rem; font-size: 0.98rem; letter-spacing: -0.01em;">
+            What's the reason? <span style="font-weight: 400; color: var(--text-light); font-size: 0.85rem;">(optional, helps me improve)</span>
+          </label>
+          <div class="reason-options" id="reason-options">
+            <!-- populated by JS so we have a single source of truth for the labels -->
+          </div>
+        </div>
+
+        <div style="margin-top: 1rem;">
+          <label for="cancel-reason-text" style="display: block; font-family: 'Inter', sans-serif; font-weight: 600; color: var(--color-primary); margin-bottom: 0.5rem; font-size: 0.95rem;">
+            Anything else? <span style="font-weight: 400; color: var(--text-light); font-size: 0.85rem;">(optional)</span>
+          </label>
+          <textarea id="cancel-reason-text" maxlength="500"
+            placeholder="Add any extra context — completely optional."
+            style="width: 100%; min-height: 80px; padding: 0.8rem 1rem; border: 2px solid rgba(15,41,66,0.1); border-radius: var(--radius-md); font-size: 1rem; font-family: inherit; background: white; color: var(--text-dark); resize: vertical; transition: border-color 0.2s, box-shadow 0.2s;"></textarea>
+        </div>
+
         <div id="cancel-error" class="error" hidden></div>
-        <div style="display: flex; gap: 0.75rem; margin-top: 1rem; flex-wrap: wrap;">
+        <div style="display: flex; gap: 0.75rem; margin-top: 1.25rem; flex-wrap: wrap;">
           <button type="button" class="action-btn danger" id="btn-cancel-confirm" style="flex: 2;">
             Yes, cancel my booking
           </button>

@@ -688,6 +688,14 @@ class RescheduleRequest(BaseModel):
     slot_end: datetime
 
 
+class CancelRequest(BaseModel):
+    # Pre-set category the customer picked (radio button on the page).
+    # Optional — empty string if they didn't pick one.
+    reason_category: str = Field(default="", max_length=80)
+    # Free-text "anything else?" note. Optional, capped to keep SM8 happy.
+    reason_text: str = Field(default="", max_length=500)
+
+
 class ManageBookingState(BaseModel):
     """What the manage-booking page renders. Designed not to leak
     sensitive customer info beyond what the email/SMS already revealed."""
@@ -724,11 +732,15 @@ def _resolve_token_or_503(token: str) -> BookingToken:
 
 
 def _job_from_token(job_record: dict, tok: BookingToken) -> None:
-    """Sanity-check that the token + job match. Raises 404 if not."""
+    """Sanity-check that the token + job match. Raises 404/410 if not."""
     if not job_record:
         raise HTTPException(404, "Booking not found")
-    # If the job has been soft-deleted, refuse modifications
+    # Hard-deleted (active=0)? Refuse.
     if str(job_record.get("active", "1")) not in ("1", "True", "true"):
+        raise HTTPException(410, "This booking has already been cancelled")
+    # Marked Unsuccessful via the cancel flow? Refuse modifications.
+    status = str(job_record.get("status", "")).strip().lower()
+    if status == "unsuccessful":
         raise HTTPException(410, "This booking has already been cancelled")
 
 
@@ -915,10 +927,26 @@ async def reschedule_booking(token: str, req: RescheduleRequest) -> ManageBookin
     return refreshed
 
 
+def _format_cancel_reason(req: CancelRequest) -> str:
+    """Build the string that goes into SM8's `unsuccessful_reason` field.
+
+    Combines the radio-button category with any free-text note so Wes
+    sees both the structured signal AND any nuance the customer added.
+    Returns an empty string if neither was given.
+    """
+    cat = (req.reason_category or "").strip()
+    note = (req.reason_text or "").strip()
+    if cat and note:
+        return f"{cat} — {note}"
+    return cat or note
+
+
 @app.post("/api/booking/{token}/cancel", response_model=dict)
-async def cancel_booking(token: str) -> dict[str, Any]:
-    """Cancel a booking. Soft-deletes the SM8 job (active=0) and the
-    scheduled activity, then notifies Wes + customer."""
+async def cancel_booking(token: str, req: CancelRequest) -> dict[str, Any]:
+    """Cancel a booking. Marks the SM8 job as Unsuccessful (keeps it
+    visible in SM8's Unsuccessful list, doesn't hard-delete) and
+    deactivates the scheduled activity to free the slot. Reason text
+    lands in SM8's "Reason for cancellation" field."""
     assert sm8 is not None
     assert activity_cache is not None
     tok = _resolve_token_or_503(token)
@@ -930,7 +958,14 @@ async def cancel_booking(token: str) -> dict[str, Any]:
             f"This booking is within {state.lead_hours}h of starting — please contact Wes directly.",
         )
 
-    # ─ Deactivate the scheduled activity ─
+    reason = _format_cancel_reason(req)
+    # Prefix with a marker so Wes always knows this came from self-serve
+    sm8_reason = (
+        f"Customer cancelled via self-serve link. {reason}" if reason
+        else "Customer cancelled via self-serve link (no reason given)."
+    )
+
+    # ─ Deactivate the scheduled activity (frees the diary slot) ─
     activities = await sm8.list_activity_for_job(tok.job_uuid)
     for a in activities:
         if str(a.get("active", "1")) in ("1", "True", "true"):
@@ -939,14 +974,14 @@ async def cancel_booking(token: str) -> dict[str, Any]:
             except Exception:  # noqa: BLE001
                 log.exception("cancel: deactivate_activity failed for %s", a.get("uuid"))
 
-    # ─ Soft-delete the job ─
+    # ─ Mark the job Unsuccessful with the reason ─
     try:
-        await sm8.delete_job(tok.job_uuid)
+        await sm8.mark_job_unsuccessful(tok.job_uuid, reason=sm8_reason)
     except Exception as e:  # noqa: BLE001
-        log.exception("cancel: delete_job failed")
+        log.exception("cancel: mark_job_unsuccessful failed")
         raise HTTPException(502, f"Could not cancel the job: {e}") from e
 
-    await _notify_cancel(state, job)
+    await _notify_cancel(state, job, reason=reason)
     activity_cache.invalidate()
 
     return {"success": True, "message": "Your booking has been cancelled."}
@@ -1069,10 +1104,17 @@ async def _notify_reschedule(
                 log.exception("customer reschedule confirmation SMS failed")
 
 
-async def _notify_cancel(state: ManageBookingState, job: dict) -> None:
+async def _notify_cancel(
+    state: ManageBookingState,
+    job: dict,
+    *,
+    reason: str = "",
+) -> None:
     """Notify Wes + customer that the booking has been cancelled."""
     assert sm8 is not None
     slot = _fmt_slot(state.slot_start, state.slot_end)
+    reason_line = f"\n  Reason:    {reason}" if reason else ""
+    reason_sms = f" Reason: {reason}." if reason else ""
 
     # ─ Wes ─
     try:
@@ -1084,9 +1126,9 @@ async def _notify_cancel(state: ManageBookingState, job: dict) -> None:
                 f"  Service:   {state.service_name}\n"
                 f"  Customer:  {state.customer_first}\n"
                 f"  Address:   {state.job_address}\n"
-                f"  Slot:      {slot}\n"
+                f"  Slot:      {slot}{reason_line}\n"
                 f"  Job UUID:  {state.job_uuid}\n\n"
-                "The slot is now free in your diary."
+                "The job has been marked Unsuccessful in ServiceM8 and the slot is now free in your diary."
             ),
             regarding_job_uuid=state.job_uuid,
         )
@@ -1098,7 +1140,7 @@ async def _notify_cancel(state: ManageBookingState, job: dict) -> None:
             to=WES_ALERT_PHONE,
             message=(
                 f"BCW: {state.customer_first} CANCELLED their {state.service_name} "
-                f"({slot}). Slot now free."
+                f"({slot}).{reason_sms} Slot now free."
             ),
             regarding_job_uuid=state.job_uuid,
         )

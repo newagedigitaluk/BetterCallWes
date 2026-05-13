@@ -25,7 +25,19 @@
     booking: null,    // ManageBookingState (from API)
     slots: [],        // available slots for the service
     pickedSlot: null, // selected slot for reschedule
+    cancelReason: '', // radio category selected on the cancel panel
   };
+
+  // Pre-set cancellation reasons. Single source of truth for the radio
+  // labels — these strings land in SM8's "Reason for cancellation" field
+  // as-is, so they need to read clearly there too.
+  const CANCEL_REASONS = [
+    'Found another tradesperson',
+    'Problem resolved itself',
+    'Change of plans',
+    'Postponed — will book again later',
+    'Other',
+  ];
 
   const fmt = {
     longDate(d) {
@@ -160,11 +172,37 @@
 
   function bindActions() {
     $('#btn-reschedule').onclick = openReschedule;
-    $('#btn-cancel').onclick = () => showPanel('panel-cancel');
+    $('#btn-cancel').onclick = openCancel;
     $('#btn-reschedule-back').onclick = () => showPanel(null);
     $('#btn-cancel-back').onclick = () => showPanel(null);
     $('#btn-reschedule-confirm').onclick = doReschedule;
     $('#btn-cancel-confirm').onclick = doCancel;
+  }
+
+  function openCancel() {
+    renderCancelReasons();
+    showPanel('panel-cancel');
+  }
+
+  function renderCancelReasons() {
+    const wrap = $('#reason-options');
+    wrap.innerHTML = '';
+    state.cancelReason = '';
+    CANCEL_REASONS.forEach((label, idx) => {
+      const id = `reason-${idx}`;
+      const opt = document.createElement('label');
+      opt.className = 'reason-opt';
+      opt.htmlFor = id;
+      opt.innerHTML =
+        `<input type="radio" name="cancel-reason" id="${id}" value="${label.replace(/"/g, '&quot;')}">` +
+        `<span>${label}</span>`;
+      opt.querySelector('input').onchange = (e) => {
+        document.querySelectorAll('.reason-opt').forEach((x) => x.classList.remove('selected'));
+        opt.classList.add('selected');
+        state.cancelReason = e.target.value;
+      };
+      wrap.appendChild(opt);
+    });
   }
 
   // ─── Reschedule flow ───────────────────────────────────────────────────
@@ -290,11 +328,22 @@
     btn.disabled = true;
     btn.innerHTML = '<span class="spinner"></span> Cancelling…';
     $('#cancel-error').hidden = true;
+    const reasonText = ($('#cancel-reason-text').value || '').trim();
     try {
-      await apiPost('/cancel', {});
+      await apiPost('/cancel', {
+        reason_category: state.cancelReason || '',
+        reason_text: reasonText,
+      });
       showState('state-cancelled');
 
-      try { gtag('event', 'booking_cancelled', { transaction_id: state.booking.job_uuid }); } catch (e) {}
+      // Fire conversion events — include the reason category as a custom
+      // dim so you can slice by it later.
+      try {
+        gtag('event', 'booking_cancelled', {
+          transaction_id: state.booking.job_uuid,
+          reason: state.cancelReason || 'Not given',
+        });
+      } catch (e) {}
       try { clarity('event', 'booking_cancelled'); } catch (e) {}
     } catch (e) {
       $('#cancel-error').textContent = e.message || 'Could not cancel. Please try again.';

@@ -255,6 +255,27 @@ class ServiceM8Client:
         resp = await self._client.delete(f"/job/{job_uuid}.json")
         resp.raise_for_status()
 
+    async def mark_job_unsuccessful(
+        self,
+        job_uuid: str,
+        *,
+        reason: str = "",
+    ) -> None:
+        """Mark the job as "Unsuccessful" with an optional cancellation reason.
+
+        Unlike delete_job (which sets active=0 and hides the job),
+        Unsuccessful keeps the job visible in SM8's Unsuccessful tab —
+        useful for spotting patterns in why customers cancel.
+
+        The reason text lands in SM8's `unsuccessful_reason` field
+        (visible in the "Reason for cancellation" UI section).
+        """
+        body: dict[str, Any] = {"status": "Unsuccessful"}
+        if reason:
+            body["unsuccessful_reason"] = reason
+        resp = await self._client.post(f"/job/{job_uuid}.json", json=body)
+        resp.raise_for_status()
+
     # ─────────── jobmaterial (line items) ───────────
 
     async def add_job_material(
