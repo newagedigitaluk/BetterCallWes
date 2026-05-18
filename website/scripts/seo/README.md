@@ -1,9 +1,13 @@
 # SEO automation — Better Call Wes
 
-DataForSEO + VebAPI scripts for continuous SEO/AIO monitoring. All scripts are
-pure Python stdlib. Credentials live in the project `.env`:
-- `DATAFORSEO_LOGIN`, `DATAFORSEO_PASSWORD` — DataForSEO (SERPs, volumes, onpage, competitor keywords).
-- `VEBAPI_KEY` — VebAPI (backlinks). Scout tier $9/mo, 10,000 credits.
+DataForSEO + VebAPI + Google Search Console scripts for continuous SEO/AIO
+monitoring. Credentials live in:
+- `.env` — `DATAFORSEO_LOGIN`, `DATAFORSEO_PASSWORD`, `VEBAPI_KEY`
+- `.credentials/` (gitignored) — Google Search Console OAuth client + token:
+  - `gsc-oauth-client.json` — OAuth 2.0 Desktop client (project `bcw-seo`)
+  - `gsc-token.json` — saved refresh token (auto-refreshes via the client)
+  - `gsc-service-account.json` — fallback service-account key (currently unused;
+    GSC's "Add user" UI rejects service accounts for personal Google accounts)
 
 ## Scripts
 
@@ -20,6 +24,10 @@ pure Python stdlib. Credentials live in the project `.env`:
 | `backlinks_dfs.py` | DataForSEO backlinks alternative — kept for forensic deep dives or if VebAPI is offline. Requires the $100/mo DataForSEO Backlinks commitment. | ~$0.04 per domain | as needed |
 | `backlinks_compare.py` | Side-by-side comparison of the two backlink providers. Run quarterly to sanity-check VebAPI coverage. | ~$0.20 + ~15 credits | quarterly |
 | `vebapi_client.py` | VebAPI REST wrapper. Run directly to smoke-test the key. | free | as needed |
+| `gsc_client.py` | Google Search Console wrapper (OAuth user credentials, auto-refresh). Run directly to list properties. | **free** | as needed |
+| `gsc_oauth_setup.py` | One-time interactive OAuth flow to seed `gsc-token.json`. Only needed if `.credentials/gsc-token.json` is missing/expired. | free | one-off |
+| `gsc_pull.py` | Pull pages + queries + queries×pages from GSC, snapshot to `~/obsidian-vault/Better-Call-Wes/SEO-Data/gsc/YYYY-MM-DD/`. | **free** | weekly |
+| `gsc_report.py` | Read the latest GSC snapshot, write a markdown analysis to `SEO-Reports/gsc-YYYY-MM-DD.md` (pages, queries, near-page-1 wins, snippet problems, cannibalisation). | **free** | weekly |
 | `seo_dashboard.py` | One-page executive summary combining all of the above. | free | weekly |
 
 ## Config
@@ -63,6 +71,8 @@ cd "$(dirname "$0")"
 python3 serp_tracker.py
 python3 paa_harvester.py
 python3 weekly_report.py
+python3 gsc_pull.py            # free — Google Search Console snapshot
+python3 gsc_report.py          # free — markdown analysis
 python3 seo_dashboard.py
 ```
 
@@ -85,13 +95,39 @@ python3 competitor_intel.py --limit 1000     # deeper crawl
 
 **Always available:**
 ```sh
-python3 dataforseo_client.py             # check account balance
+python3 dataforseo_client.py             # check DataForSEO account balance
+python3 vebapi_client.py                 # smoke-test VebAPI key
+python3 gsc_client.py                    # list GSC properties (free)
 python3 serp_tracker.py --dry-run        # preview query set + cost
 python3 keyword_volumes.py --dry-run
 python3 onpage_audit.py --preset all --dry-run
 python3 competitor_intel.py --dry-run
 python3 backlinks.py --dry-run
 ```
+
+**GSC ad-hoc queries (free, no rate-limit concern):**
+```sh
+# Pull a per-page query report for the boiler-repair page (last 90 days)
+python3 gsc_pull.py --page /services/boiler-repair.html
+
+# Shorter window
+python3 gsc_pull.py --days 28
+
+# Generate the markdown analysis from the latest snapshot
+python3 gsc_report.py
+```
+
+**GSC outputs:**
+- Data: `~/obsidian-vault/Better-Call-Wes/SEO-Data/gsc/YYYY-MM-DD/`
+  - `pages.json` — page-level metrics
+  - `queries.json` — query-level metrics
+  - `queries-by-page.json` — query × page pairs (used to detect cannibalisation)
+  - `queries-for-<slug>.json` — created when `--page` is passed
+- Reports: `~/obsidian-vault/Better-Call-Wes/SEO-Reports/gsc-YYYY-MM-DD.md`
+  - Top pages + queries
+  - Near-page-1 wins (positions 11–20)
+  - Snippet problems (top-10 ranking, sub-2% CTR)
+  - Cannibalisation (multiple pages competing for same query)
 
 ## Cost guardrails
 
@@ -105,6 +141,18 @@ Per-call rough costs (verified live):
 - `backlinks/referring_domains/live`: **~$0.02** per domain — requires subscription
 
 Always `--dry-run` before expanding query/URL sets. Run `python3 dataforseo_client.py` to see remaining balance.
+
+## Google Search Console — quick reference
+
+The OAuth token at `.credentials/gsc-token.json` auto-refreshes when expired (as long as the `refresh_token` is present in the file). If a session ever sees `RefreshError` or `invalid_grant`, the refresh token was revoked. Re-seed it:
+
+```sh
+python3 website/scripts/seo/gsc_oauth_setup.py
+```
+
+This prints an auth URL — open it on any device with the GSC-owning Google account, approve, paste the `http://localhost?code=...` URL back, done. The refresh token lasts ~6 months of regular use; daily use keeps it indefinite.
+
+The GSC property is configured in `gsc_client.py` as `DEFAULT_PROPERTY = "sc-domain:bettercallwes.co.uk"`. Override per-call with the `site_url` argument.
 
 ## Backlinks providers
 

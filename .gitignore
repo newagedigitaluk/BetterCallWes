@@ -48,3 +48,4 @@ docs/screenshots/
 
 # Legacy JS file kept for reference but not committed
 website/scripts/generate_placeholders.js
+.credentials/
