@@ -1,0 +1,389 @@
+<!--
+================================================================================
+  BLOG POST TEMPLATE — Better Call Wes
+  Last updated: 2026-05-23
+
+  USAGE
+  1. Copy this file to: website/site/blog/<slug>.html
+  2. Replace every {{PLACEHOLDER}} below. Required placeholders:
+
+       {{TITLE}}                 ~55 char <title>, ends "— Better Call Wes"
+       {{H1}}                    visible H1 (can match {{TITLE}} minus brand)
+       {{SLUG}}                  url filename without .html (matches the file)
+       {{META_DESCRIPTION}}      ~140-160 char meta description
+       {{DATE_PUBLISHED}}        ISO date — e.g. 2026-05-23
+       {{DATE_MODIFIED}}         ISO date — same as published until you update
+       {{READING_MINUTES}}       integer — see https://wordcounter.net (avg 200wpm)
+       {{HERO_IMAGE}}            relative path, e.g. ../assets/images/blog/<slug>.webp
+       {{HERO_IMAGE_ALT}}        descriptive alt text
+       {{ANSWER_CAPSULE}}        40-60 word direct answer to the post's question
+                                 (this is what AI Overviews cite)
+       {{ARTICLE_BODY_HTML}}     the post's main body — H2s/H3s/p/ul/img/details
+       {{FAQ_ITEMS_JSONLD}}      array of Question entities — see template below
+       {{FAQ_ITEMS_HTML}}        visible FAQ <details> blocks — must mirror JSON-LD
+       {{RELATED_INTERNAL_LINKS}} bullet list of 3-5 most relevant service/location
+                                  pages this post should cross-link to
+
+  KEY 2026 SEO RULES BAKED IN
+   - Article schema with named Person author (refs about.html#wes)
+   - FAQPage schema (only if you have ≥2 real FAQs)
+   - BreadcrumbList schema
+   - Direct-answer capsule near top (for AI Overviews citation)
+   - Visible byline with "Updated {date}" + Gas Safe credential
+   - Author bio at bottom (E-E-A-T signal)
+   - Internal links to service pages (no isolated content)
+   - Mobile-first design — matches site CSS
+   - Lazy-load all body images; eager-load only the hero
+================================================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <!-- Google tag (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-GD5D6TC4DS"></script>
+ <script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+ gtag('config', 'G-GD5D6TC4DS');
+ </script>
+ <!-- Microsoft Clarity -->
+ <script type="text/javascript">
+   (function(c,l,a,r,i,t,y){
+       c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+       t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+   })(window, document, "clarity", "script", "wq3h4z62v6");
+ </script>
+
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>{{TITLE}}</title>
+ <meta name="description" content="{{META_DESCRIPTION}}">
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link rel="stylesheet" href="../css/styles.css?v=1.8">
+ <script defer src="../assets/js/lucide.min.js"></script>
+ <link rel="icon" href="../assets/favicon.ico" sizes="any">
+ <link rel="apple-touch-icon" href="../assets/favicon.png">
+ <link rel="canonical" href="https://bettercallwes.co.uk/blog/{{SLUG}}.html" />
+
+ <!-- Open Graph -->
+ <meta property="og:type" content="article">
+ <meta property="og:title" content="{{TITLE}}">
+ <meta property="og:description" content="{{META_DESCRIPTION}}">
+ <meta property="og:url" content="https://bettercallwes.co.uk/blog/{{SLUG}}.html">
+ <meta property="og:image" content="https://bettercallwes.co.uk/{{HERO_IMAGE}}">
+ <meta property="article:published_time" content="{{DATE_PUBLISHED}}">
+ <meta property="article:modified_time" content="{{DATE_MODIFIED}}">
+ <meta property="article:author" content="Wes — Better Call Wes Plumbing &amp; Heating">
+
+ <!-- Article schema -->
+ <script type="application/ld+json">
+ {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://bettercallwes.co.uk/blog/{{SLUG}}.html#article",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://bettercallwes.co.uk/blog/{{SLUG}}.html" },
+  "headline": "{{TITLE}}",
+  "description": "{{META_DESCRIPTION}}",
+  "image": "https://bettercallwes.co.uk/{{HERO_IMAGE}}",
+  "datePublished": "{{DATE_PUBLISHED}}",
+  "dateModified": "{{DATE_MODIFIED}}",
+  "author": { "@id": "https://bettercallwes.co.uk/about.html#wes" },
+  "publisher": {
+    "@type": "Plumber",
+    "@id": "https://bettercallwes.co.uk/#business",
+    "name": "Better Call Wes Plumbing & Heating",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://bettercallwes.co.uk/assets/logo.webp"
+    }
+  },
+  "isPartOf": { "@id": "https://bettercallwes.co.uk/blog/#blog" },
+  "inLanguage": "en-GB"
+ }
+ </script>
+
+ <!-- Breadcrumb -->
+ <script type="application/ld+json">
+ {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home",  "item": "https://bettercallwes.co.uk/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog",  "item": "https://bettercallwes.co.uk/blog/" },
+    { "@type": "ListItem", "position": 3, "name": "{{H1}}", "item": "https://bettercallwes.co.uk/blog/{{SLUG}}.html" }
+  ]
+ }
+ </script>
+
+ <!-- FAQ schema — DELETE this whole block if the post has no FAQs.
+      Otherwise replace {{FAQ_ITEMS_JSONLD}} with entries like:
+        { "@type": "Question",
+          "name": "How long does a boiler service take?",
+          "acceptedAnswer": { "@type": "Answer", "text": "About 45-60 minutes for a standard combi..." } }
+      Each Question MUST also appear in the visible FAQ HTML below
+      with matching question text (Google ignores invisible FAQs).
+ -->
+ <script type="application/ld+json">
+ {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {{FAQ_ITEMS_JSONLD}}
+  ]
+ }
+ </script>
+
+ <!-- Growify Pixel -->
+ <script defer
+ src="https://cdn.growify.ai/pixel.min.js"
+ data-website-id="b1da141995f354578b374c1c1ce45287:f1a6af4ef5e14a02766e2e7a3d1eb1f18b3747e02f785abec67091bc988276db9726d52ebb3f4a61f998aff8c550d978"
+ data-endpoint="api_v2"
+ data-platform="web"
+ ></script>
+ <!-- First-touch UTM attribution (session) -->
+ <script>
+   (function(){try{if(sessionStorage.getItem('bcw_utm'))return;var p=new URLSearchParams(location.search);var k=['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];var f={},a=false;k.forEach(function(x){var v=p.get(x);if(v){f[x]=v;a=true;}});if(a)sessionStorage.setItem('bcw_utm',JSON.stringify(f));}catch(e){}})();
+ </script>
+</head>
+<body>
+
+ <!-- Header -->
+ <header class="header">
+ <div class="container">
+ <nav class="nav-container">
+ <a href="../index.html" class="logo">
+ <img src="../assets/logo.webp?v=3" alt="Better Call Wes">
+ </a>
+ <div class="main-nav">
+ <a href="../index.html" class="nav-link">Home</a>
+ <div class="dropdown">
+ <a href="../services.html" class="nav-link">Services <i data-lucide="chevron-down" style="width: 16px; height: 16px;"></i></a>
+ <div class="dropdown-menu">
+ <div style="padding: 0 1rem 0.5rem; font-size: 0.75rem; letter-spacing: 1px; color: var(--color-accent); font-weight: 700; text-transform: uppercase;">Boiler Services</div>
+ <a href="../services/boiler-installation.html" class="dropdown-item">Boiler Installation</a>
+ <a href="../services/boiler-repair.html" class="dropdown-item">Boiler Repair</a>
+ <a href="../services/boiler-servicing.html" class="dropdown-item">Boiler Servicing</a>
+ <div class="dropdown-divider"></div>
+ <div style="padding: 0.5rem 1rem 0.5rem; font-size: 0.75rem; letter-spacing: 1px; color: var(--color-accent); font-weight: 700; text-transform: uppercase;">Heating &amp; Plumbing</div>
+ <a href="../services/central-heating.html" class="dropdown-item">Central Heating</a>
+ <a href="../services/plumbing-repairs.html" class="dropdown-item">Plumbing Repairs</a>
+ <a href="../services/power-flushing.html" class="dropdown-item">Power Flushing</a>
+ <a href="../services/toilet-repairs.html" class="dropdown-item">Toilet Repairs</a>
+ <div class="dropdown-divider"></div>
+ <a href="../services.html" class="dropdown-item" style="text-align: center; color: var(--text-white); font-weight: 600;">View All Services →</a>
+ </div>
+ </div>
+ <a href="../about.html" class="nav-link">About Me</a>
+ <a href="../pricing.html" class="nav-link">Pricing</a>
+ <a href="../reviews.html" class="nav-link">Reviews</a>
+ <a href="../contact.html" class="nav-link">Contact</a>
+ <a href="tel:07700155655" class="nav-phone"><i data-lucide="phone" style="width:14px;height:14px;"></i> 07700 155 655</a>
+ <a href="../booking.html" class="btn btn-primary">
+ <i data-lucide="calendar-check" size="16"></i> Book Online
+ </a>
+ </div>
+ <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+ <i data-lucide="menu" size="24"></i>
+ </button>
+ </nav>
+ </div>
+ <!-- Mobile Nav -->
+ <nav class="mobile-nav" id="mobileNav">
+ <a href="../index.html">Home</a>
+ <a href="../services.html">Services</a>
+ <a href="../about.html">About Me</a>
+ <a href="../pricing.html">Pricing</a>
+ <a href="../reviews.html">Reviews</a>
+ <a href="../contact.html">Contact</a>
+ <a href="../booking.html">Book Online</a>
+ <a href="tel:07700155655">📞 07700 155 655</a>
+ </nav>
+ </header>
+
+ <!-- Article hero -->
+ <section class="hero" style="background: var(--color-primary); padding-top: 130px; padding-bottom: 40px;">
+   <div class="container" style="max-width: 820px;">
+     <!-- Breadcrumb -->
+     <nav aria-label="Breadcrumb" style="margin-bottom: 1.25rem;">
+       <ol style="display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; padding: 0; margin: 0; font-size: 0.9rem; color: rgba(255,255,255,0.75);">
+         <li><a href="../index.html" style="color: rgba(255,255,255,0.75);">Home</a></li>
+         <li>›</li>
+         <li><a href="../blog/" style="color: rgba(255,255,255,0.75);">Blog</a></li>
+         <li>›</li>
+         <li aria-current="page" style="color: white;">{{H1}}</li>
+       </ol>
+     </nav>
+     <h1 style="color: white; margin-bottom: 1rem;">{{H1}}</h1>
+     <!-- Byline -->
+     <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; color: rgba(255,255,255,0.85); font-size: 0.95rem;">
+       <span style="display: inline-flex; align-items: center; gap: 0.5rem;">
+         <img src="../assets/images/wes-profile.webp" alt="Wes" width="36" height="36" style="border-radius: 999px; border: 2px solid var(--color-accent);">
+         By <a href="../about.html" style="color: white; font-weight: 600;">Wes</a> — Gas Safe Plumber &amp; Heating Engineer
+       </span>
+       <span style="display: inline-flex; align-items: center; gap: 0.4rem;"><i data-lucide="calendar" style="width: 16px; height: 16px; color: var(--color-accent);"></i> Updated <time datetime="{{DATE_MODIFIED}}">{{DATE_MODIFIED}}</time></span>
+       <span style="display: inline-flex; align-items: center; gap: 0.4rem;"><i data-lucide="clock" style="width: 16px; height: 16px; color: var(--color-accent);"></i> {{READING_MINUTES}} min read</span>
+     </div>
+   </div>
+ </section>
+
+ <!-- Trust strip -->
+ <section style="background: var(--color-primary); padding: 1rem 0; border-top: 3px solid var(--color-accent);">
+   <div class="container" style="display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: center; align-items: center; color: white; font-size: 0.9rem;">
+     <span style="display: inline-flex; align-items: center; gap: 0.4rem;"><i data-lucide="shield-check" style="width: 18px; height: 18px; color: var(--color-accent);"></i> Gas Safe Registered</span>
+     <span style="display: inline-flex; align-items: center; gap: 0.4rem;"><i data-lucide="star" style="width: 18px; height: 18px; color: var(--color-accent);"></i> 4.9&#9733; on Google (200+ reviews)</span>
+     <span style="display: inline-flex; align-items: center; gap: 0.4rem;"><i data-lucide="award" style="width: 18px; height: 18px; color: var(--color-accent);"></i> 12-month workmanship guarantee</span>
+     <span style="display: inline-flex; align-items: center; gap: 0.4rem;"><i data-lucide="map-pin" style="width: 18px; height: 18px; color: var(--color-accent);"></i> SO14&ndash;SO53</span>
+   </div>
+ </section>
+
+ <!-- Article body -->
+ <article class="section" style="padding-top: 2.5rem;">
+   <div class="container" style="max-width: 760px;">
+
+     <!-- Hero image (eager-load) -->
+     <figure style="margin: 0 0 2rem;">
+       <img src="{{HERO_IMAGE}}" alt="{{HERO_IMAGE_ALT}}" width="760" height="427"
+            fetchpriority="high" style="width: 100%; height: auto; border-radius: var(--radius-md, 8px);">
+     </figure>
+
+     <!-- ANSWER CAPSULE — 40-60 word direct answer for AI Overviews / featured snippets -->
+     <div style="background: #F1F7FF; border-left: 4px solid var(--color-accent); padding: 1.25rem 1.5rem; border-radius: 6px; margin: 0 0 2rem;">
+       <p style="margin: 0; font-size: 1.05rem; color: var(--color-primary); font-weight: 500;">
+         <strong>The short answer:</strong> {{ANSWER_CAPSULE}}
+       </p>
+     </div>
+
+     <!-- MAIN ARTICLE BODY — H2s, H3s, p, ul, img, details, etc. -->
+     <div class="article-body" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-body);">
+       {{ARTICLE_BODY_HTML}}
+     </div>
+
+   </div>
+ </article>
+
+ <!-- Mid-page CTA -->
+ <section style="background: #25D366; padding: 2.5rem 0; text-align: center;">
+   <div class="container" style="max-width: 720px;">
+     <h3 style="color: white; margin: 0 0 0.5rem; font-size: 1.5rem;">Got a question about your own setup?</h3>
+     <p style="color: white; margin: 0 0 1.5rem; font-size: 1.05rem;">Send me a photo on WhatsApp &mdash; I&rsquo;ll give you an honest answer, no obligation.</p>
+     <a href="https://wa.me/447700155655" style="display: inline-flex; align-items: center; gap: 0.5rem; background: white; color: #1a4d2e; padding: 0.85rem 1.75rem; border-radius: 999px; font-weight: 700; text-decoration: none; font-size: 1.05rem;"><i data-lucide="message-circle" style="width: 20px; height: 20px;"></i> WhatsApp 07700 155 655</a>
+   </div>
+ </section>
+
+ <!-- FAQs — DELETE this section if the post has no FAQs (and delete the FAQPage JSON-LD too). -->
+ <section class="section" style="padding-top: 2.5rem;">
+   <div class="container" style="max-width: 760px;">
+     <div class="section-header" style="margin-bottom: 1.5rem;">
+       <div class="section-label">FAQS</div>
+       <h2>People also ask</h2>
+     </div>
+     <div style="display: grid; gap: 0.75rem;">
+       {{FAQ_ITEMS_HTML}}
+       <!-- Each FAQ entry MUST be:
+            <details style="background: white; border: 1px solid var(--color-border, #e5e7eb); border-radius: var(--radius-md, 8px); padding: 1rem 1.25rem;">
+              <summary style="cursor: pointer; font-weight: 600; color: var(--color-primary);">Question text exactly matching the JSON-LD?</summary>
+              <p style="margin: 0.75rem 0 0; color: var(--text-body);">Answer text exactly matching the JSON-LD.</p>
+            </details>
+       -->
+     </div>
+   </div>
+ </section>
+
+ <!-- Related internal links -->
+ <section class="section" style="padding-top: 0;">
+   <div class="container" style="max-width: 760px;">
+     <div class="section-header" style="margin-bottom: 1.5rem;">
+       <div class="section-label">KEEP READING</div>
+       <h2>Related services &amp; areas</h2>
+     </div>
+     <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem;">
+       {{RELATED_INTERNAL_LINKS}}
+       <!-- Each line should be:
+            <li><a href="../services/boiler-repair.html" style="color: var(--color-primary); font-weight: 600;">→ Boiler repair in Southampton</a></li>
+            Aim for 3-5 deep links to relevant service or location pages. -->
+     </ul>
+   </div>
+ </section>
+
+ <!-- Author bio (E-E-A-T) -->
+ <section class="section" style="padding-top: 0; padding-bottom: 4rem;">
+   <div class="container" style="max-width: 760px;">
+     <div style="background: white; border: 1px solid var(--color-border, #e5e7eb); border-radius: var(--radius-md, 8px); padding: 1.75rem; display: flex; gap: 1.25rem; align-items: flex-start; flex-wrap: wrap;">
+       <img src="../assets/images/wes-profile.webp" alt="Wes — Gas Safe Plumber" width="96" height="96" style="border-radius: 999px; border: 3px solid var(--color-accent); flex-shrink: 0;">
+       <div style="flex: 1; min-width: 240px;">
+         <div style="font-size: 0.8rem; letter-spacing: 1px; color: var(--color-accent); font-weight: 700; text-transform: uppercase; margin-bottom: 0.25rem;">About the author</div>
+         <h3 style="margin: 0 0 0.5rem; color: var(--color-primary);">Wes &mdash; Gas Safe Engineer, Southampton</h3>
+         <p style="margin: 0 0 0.75rem; color: var(--text-body); font-size: 0.95rem;">
+           I&rsquo;m a sole-trader plumber and Gas Safe registered heating engineer covering Southampton and the surrounding postcodes (SO14&ndash;SO53). Every job &mdash; from a dripping tap to a full system swap &mdash; is handled by me personally. No subcontractors, no call-centre, no surprise fees.
+         </p>
+         <p style="margin: 0; font-size: 0.9rem;">
+           <a href="../about.html" style="color: var(--color-primary); font-weight: 600;">Read my full story →</a>
+           &nbsp;·&nbsp;
+           <a href="https://www.gassaferegister.co.uk/find-an-engineer-or-check-the-register/check-the-register/engineer-details/?registrationNumber=558654" rel="noopener" style="color: var(--color-primary); font-weight: 600;">Check my Gas Safe registration →</a>
+         </p>
+       </div>
+     </div>
+   </div>
+ </section>
+
+ <!-- Footer -->
+ <footer class="footer">
+ <div class="container">
+ <div class="footer-grid">
+ <div class="footer-brand">
+ <a href="../index.html" class="logo">
+ <img src="../assets/logo.webp?v=3" alt="Better Call Wes">
+ </a>
+ <p>Southampton's trusted local plumber and heating engineer. Gas Safe registered (#558654), fully insured, and committed to quality workmanship.</p>
+ </div>
+ <div>
+ <h3>Quick Links</h3>
+ <ul class="footer-links">
+ <li><a href="../index.html">Home</a></li>
+ <li><a href="../services.html">Services</a></li>
+ <li><a href="../about.html">About Me</a></li>
+ <li><a href="../pricing.html">Pricing</a></li>
+ <li><a href="../reviews.html">Reviews</a></li>
+ <li><a href="../blog/">Blog</a></li>
+ <li><a href="../contact.html">Contact</a></li>
+ </ul>
+ </div>
+ <div>
+ <h3>Services</h3>
+ <ul class="footer-links">
+ <li><a href="../services/boiler-installation.html">Boiler Installation</a></li>
+ <li><a href="../services/boiler-servicing.html">Boiler Servicing</a></li>
+ <li><a href="../services/boiler-repair.html">Boiler Repair</a></li>
+ <li><a href="../services/plumbing-repairs.html">Plumbing Repairs</a></li>
+ <li><a href="../services/power-flushing.html">Power Flushing</a></li>
+ <li><a href="../services/toilet-repairs.html">Toilet Repairs</a></li>
+ </ul>
+ </div>
+ <div>
+ <h3>Contact</h3>
+ <ul class="footer-links">
+ <li><i data-lucide="phone" style="width:14px;height:14px;"></i> 07700 155 655</li>
+ <li><i data-lucide="mail" style="width:14px;height:14px;"></i> hello@bettercallwes.co.uk</li>
+ <li><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Southampton, SO14&ndash;SO53</li>
+ </ul>
+ </div>
+ </div>
+ <div class="footer-bottom">
+ <p>&copy; 2026 Better Call Wes Plumbing &amp; Heating. Gas Safe Register #558654.</p>
+ </div>
+ </div>
+ </footer>
+
+ <script>
+   function toggleMobileMenu(){document.getElementById('mobileNav').classList.toggle('active');}
+   window.addEventListener('scroll',()=>{const h=document.querySelector('.header');if(window.scrollY>50){h.classList.add('scrolled');}else{h.classList.remove('scrolled');}});
+   if (window.lucide) lucide.createIcons();
+   else document.addEventListener('DOMContentLoaded', () => { if (window.lucide) lucide.createIcons(); });
+ </script>
+ <a href="https://wa.me/447700155655" class="floating-cta"><i data-lucide="message-circle"></i> WhatsApp</a>
+</body>
+</html>

@@ -29,6 +29,8 @@ monitoring. Credentials live in:
 | `gsc_pull.py` | Pull pages + queries + queries×pages from GSC, snapshot to `~/obsidian-vault/Better-Call-Wes/SEO-Data/gsc/YYYY-MM-DD/`. | **free** | weekly |
 | `gsc_report.py` | Read the latest GSC snapshot, write a markdown analysis to `SEO-Reports/gsc-YYYY-MM-DD.md` (pages, queries, near-page-1 wins, snippet problems, cannibalisation). | **free** | weekly |
 | `seo_dashboard.py` | One-page executive summary combining all of the above. | free | weekly |
+| `blog_opportunities.py` | Mines GSC near-page-1 queries + PAA + competitor gaps → ranked blog topic ideas. | free | monthly |
+| `blog_post_template.html` | Reusable starter for new blog posts at `/site/blog/<slug>.html`. Includes Article + FAQPage + Breadcrumb JSON-LD, author byline + bio, answer capsule, mid-page CTA, related-links section. Replace every `{{PLACEHOLDER}}`. | n/a | per post |
 
 ## Config
 
