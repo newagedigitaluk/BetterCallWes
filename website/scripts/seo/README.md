@@ -25,7 +25,9 @@ monitoring. Credentials live in:
 | `backlinks_compare.py` | Side-by-side comparison of the two backlink providers. Run quarterly to sanity-check VebAPI coverage. | ~$0.20 + ~15 credits | quarterly |
 | `vebapi_client.py` | VebAPI REST wrapper. Run directly to smoke-test the key. | free | as needed |
 | `gsc_client.py` | Google Search Console wrapper (OAuth user credentials, auto-refresh). Run directly to list properties. | **free** | as needed |
-| `gsc_oauth_setup.py` | One-time interactive OAuth flow to seed `gsc-token.json`. Only needed if `.credentials/gsc-token.json` is missing/expired. | free | one-off |
+| `gsc_oauth_setup.py` | One-time interactive OAuth flow to seed `gsc-token.json` (GSC scope only). Superseded by `gbp_reauth.py` for re-seeding all 3 scopes. | free | one-off |
+| `gbp_reauth.py` | Two-step re-auth (`--start` prints URL, `--finish "<redirect>"` exchanges) that re-seeds `gsc-token.json` with **all 3 scopes** (GSC + GA4 + GBP). Run with `OAUTHLIB_INSECURE_TRANSPORT=1` on the `--finish` step (localhost redirect). Use whenever the token shows `invalid_grant`. | free | as needed |
+| `gbp_probe.py` | Tests whether the Google Business Profile API quota is approved (calls Account Management `accounts.list`). `quota_limit_value: 0` + HTTP 429 = still throttled. | free | as needed |
 | `gsc_pull.py` | Pull pages + queries + queries×pages from GSC, snapshot to `~/obsidian-vault/Better-Call-Wes/SEO-Data/gsc/YYYY-MM-DD/`. | **free** | weekly |
 | `gsc_report.py` | Read the latest GSC snapshot, write a markdown analysis to `SEO-Reports/gsc-YYYY-MM-DD.md` (pages, queries, near-page-1 wins, snippet problems, cannibalisation). | **free** | weekly |
 | `seo_dashboard.py` | One-page executive summary combining all of the above. | free | weekly |
