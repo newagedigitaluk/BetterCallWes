@@ -1,10 +1,15 @@
 {
   "$schema": "https://bettercallwes.co.uk/data/services.schema.json",
   "$comment": "Source of truth for the booking form's service/question/material wiring. Prices are NOT stored here — they're fetched live from ServiceM8's material API by item_number at form load (see /api/materials). UUIDs are stable references into ServiceM8 (job templates + categories). The form maps user answers to materials by item_number; the backend resolves item_number → uuid + live price when creating jobmaterial rows.",
-
   "config": {
     "working_hours": {
-      "days": ["Mon", "Tue", "Wed", "Thu", "Fri"],
+      "days": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
       "morning_start": "09:00",
       "morning_end": "12:00",
       "afternoon_start": "13:00",
@@ -20,8 +25,19 @@
     },
     "service_area": {
       "postcodes": [
-        "SO14", "SO15", "SO16", "SO17", "SO18", "SO19",
-        "SO30", "SO31", "SO40", "SO45", "SO50", "SO51", "SO53"
+        "SO14",
+        "SO15",
+        "SO16",
+        "SO17",
+        "SO18",
+        "SO19",
+        "SO30",
+        "SO31",
+        "SO40",
+        "SO45",
+        "SO50",
+        "SO51",
+        "SO53"
       ],
       "rejection_message": "I cover Southampton postcodes SO14 to SO53. Your postcode is outside my regular area, but message me on WhatsApp and I'll let you know if I can help."
     },
@@ -31,7 +47,6 @@
     },
     "staff_uuid": "5673d021-27b2-4356-a14b-1760cabfcd3b"
   },
-
   "services": {
     "boiler-service": {
       "name": "Boiler Service",
@@ -59,68 +74,6 @@
               "duration_min": 120,
               "material_swap": "LAB-BOIL-FULL-SERV"
             }
-          ]
-        },
-        {
-          "id": "system-type",
-          "label": "What type of heating system do you have?",
-          "type": "radio",
-          "required": true,
-          "options": [
-            {"value": "combi", "label": "Combi boiler"},
-            {"value": "system", "label": "System boiler with hot water cylinder"},
-            {"value": "regular", "label": "Regular / conventional boiler with cold tank in loft"},
-            {"value": "unsure", "label": "Not sure"}
-          ]
-        },
-        {
-          "id": "boiler-brand",
-          "label": "Boiler brand",
-          "type": "select",
-          "required": true,
-          "options": [
-            {"value": "worcester-bosch", "label": "Worcester Bosch"},
-            {"value": "vaillant", "label": "Vaillant"},
-            {"value": "baxi", "label": "Baxi"},
-            {"value": "ideal", "label": "Ideal"},
-            {"value": "glow-worm", "label": "Glow-worm"},
-            {"value": "potterton", "label": "Potterton"},
-            {"value": "viessmann", "label": "Viessmann"},
-            {"value": "alpha", "label": "Alpha"},
-            {"value": "main", "label": "Main"},
-            {"value": "ariston", "label": "Ariston"},
-            {"value": "other", "label": "Other (please specify)"}
-          ]
-        },
-        {
-          "id": "boiler-brand-other",
-          "label": "Specify boiler brand",
-          "type": "text",
-          "show_if": {"question": "boiler-brand", "equals": "other"}
-        },
-        {
-          "id": "boiler-age",
-          "label": "Roughly how old is the boiler?",
-          "type": "radio",
-          "required": true,
-          "options": [
-            {"value": "under-5", "label": "Under 5 years"},
-            {"value": "5-10", "label": "5 to 10 years"},
-            {"value": "10-15", "label": "10 to 15 years"},
-            {"value": "over-15", "label": "Over 15 years"},
-            {"value": "unsure", "label": "Not sure"}
-          ]
-        },
-        {
-          "id": "service-history",
-          "label": "When was the boiler last serviced?",
-          "type": "radio",
-          "options": [
-            {"value": "this-year", "label": "Within the last year"},
-            {"value": "1-2-years", "label": "1 to 2 years ago"},
-            {"value": "over-2", "label": "Over 2 years ago"},
-            {"value": "never", "label": "Never"},
-            {"value": "unsure", "label": "Not sure"}
           ]
         },
         {
@@ -154,16 +107,9 @@
           "material_add": "LAB-US-GSC",
           "category_swap_when_checked": "04362e23-b01b-4b3b-883c-1bdde302fceb",
           "duration_add_min": 30
-        },
-        {
-          "id": "notes",
-          "label": "Anything else I should know?",
-          "type": "textarea",
-          "placeholder": "Optional. Access notes, parking instructions, recent issues, etc."
         }
       ]
     },
-
     "gas-safety-check": {
       "name": "Gas Safety Check (CP12)",
       "short_description": "Annual landlord or homeowner safety check. Certificate issued same day.",
@@ -180,10 +126,22 @@
           "type": "checkbox-multi",
           "required": true,
           "options": [
-            {"value": "boiler", "label": "Boiler"},
-            {"value": "hob", "label": "Gas hob / cooker"},
-            {"value": "fire", "label": "Gas fire (charged per fire)"},
-            {"value": "other", "label": "Other gas appliance"}
+            {
+              "value": "boiler",
+              "label": "Boiler"
+            },
+            {
+              "value": "hob",
+              "label": "Gas hob / cooker"
+            },
+            {
+              "value": "fire",
+              "label": "Gas fire (charged per fire)"
+            },
+            {
+              "value": "other",
+              "label": "Other gas appliance"
+            }
           ]
         },
         {
@@ -193,7 +151,10 @@
           "min": 1,
           "max": 10,
           "default": 1,
-          "show_if": {"question": "appliances", "includes": "fire"},
+          "show_if": {
+            "question": "appliances",
+            "includes": "fire"
+          },
           "material_add": "LAB-GSC-GF",
           "material_quantity_from": "value",
           "duration_add_min_per_unit": 20
@@ -209,50 +170,31 @@
           "reveals_question_group": "boiler-details"
         },
         {
-          "id": "system-type",
-          "label": "Heating system type",
-          "type": "radio",
-          "show_if": {"question": "add-boiler-service", "equals": true},
-          "options": [
-            {"value": "combi", "label": "Combi boiler"},
-            {"value": "system", "label": "System boiler with hot water cylinder"},
-            {"value": "regular", "label": "Regular / conventional"},
-            {"value": "unsure", "label": "Not sure"}
-          ]
-        },
-        {
-          "id": "boiler-brand",
-          "label": "Boiler brand",
-          "type": "select",
-          "show_if": {"question": "add-boiler-service", "equals": true},
-          "options": [
-            {"value": "worcester-bosch", "label": "Worcester Bosch"},
-            {"value": "vaillant", "label": "Vaillant"},
-            {"value": "baxi", "label": "Baxi"},
-            {"value": "ideal", "label": "Ideal"},
-            {"value": "other", "label": "Other"}
-          ]
-        },
-        {
           "id": "property-type",
           "label": "What's this check for?",
           "type": "radio",
           "options": [
-            {"value": "landlord", "label": "Rental property (landlord certificate)"},
-            {"value": "homeowner", "label": "My own home"},
-            {"value": "sale", "label": "Property sale / mortgage"},
-            {"value": "other", "label": "Other"}
-          ]
-        },
-        {
-          "id": "notes",
-          "label": "Anything else I should know?",
-          "type": "textarea",
-          "placeholder": "Optional. Access notes, parking instructions, deadlines, etc."
+            {
+              "value": "landlord",
+              "label": "Rental property (landlord certificate)"
+            },
+            {
+              "value": "homeowner",
+              "label": "My own home"
+            },
+            {
+              "value": "sale",
+              "label": "Property sale / mortgage"
+            },
+            {
+              "value": "other",
+              "label": "Other"
+            }
+          ],
+          "optional": true
         }
       ]
     },
-
     "boiler-repair": {
       "name": "Boiler Repair / Diagnostic",
       "short_description": "£100 first-hour diagnostic. Larger repairs quoted on site, with the diagnostic fee deducted.",
@@ -268,64 +210,72 @@
           "type": "checkbox-multi",
           "required": true,
           "options": [
-            {"value": "no-heat", "label": "No heating"},
-            {"value": "no-hot-water", "label": "No hot water"},
-            {"value": "low-pressure", "label": "Boiler keeps losing pressure"},
-            {"value": "noisy", "label": "Banging, kettling, or whistling noises"},
-            {"value": "leaking", "label": "Visible leak from the boiler"},
-            {"value": "error-code", "label": "Showing an error code"},
-            {"value": "pilot-out", "label": "Pilot light keeps going out"},
-            {"value": "wont-fire", "label": "Won't fire up / no response"},
-            {"value": "other", "label": "Other"}
+            {
+              "value": "no-heat",
+              "label": "No heating"
+            },
+            {
+              "value": "no-hot-water",
+              "label": "No hot water"
+            },
+            {
+              "value": "low-pressure",
+              "label": "Boiler keeps losing pressure"
+            },
+            {
+              "value": "noisy",
+              "label": "Banging, kettling, or whistling noises"
+            },
+            {
+              "value": "leaking",
+              "label": "Visible leak from the boiler"
+            },
+            {
+              "value": "error-code",
+              "label": "Showing an error code"
+            },
+            {
+              "value": "pilot-out",
+              "label": "Pilot light keeps going out"
+            },
+            {
+              "value": "wont-fire",
+              "label": "Won't fire up / no response"
+            },
+            {
+              "value": "other",
+              "label": "Other"
+            }
           ]
         },
         {
           "id": "error-code",
           "label": "What error code is showing?",
           "type": "text",
-          "show_if": {"question": "main-issue", "includes": "error-code"},
-          "placeholder": "e.g. F22, EA, F75"
-        },
-        {
-          "id": "boiler-brand",
-          "label": "Boiler brand",
-          "type": "select",
-          "required": true,
-          "options": [
-            {"value": "worcester-bosch", "label": "Worcester Bosch"},
-            {"value": "vaillant", "label": "Vaillant"},
-            {"value": "baxi", "label": "Baxi"},
-            {"value": "ideal", "label": "Ideal"},
-            {"value": "glow-worm", "label": "Glow-worm"},
-            {"value": "potterton", "label": "Potterton"},
-            {"value": "viessmann", "label": "Viessmann"},
-            {"value": "main", "label": "Main"},
-            {"value": "ariston", "label": "Ariston"},
-            {"value": "alpha", "label": "Alpha"},
-            {"value": "other", "label": "Other"},
-            {"value": "unsure", "label": "Not sure"}
-          ]
-        },
-        {
-          "id": "boiler-age",
-          "label": "Roughly how old is the boiler?",
-          "type": "radio",
-          "options": [
-            {"value": "under-5", "label": "Under 5 years"},
-            {"value": "5-10", "label": "5 to 10 years"},
-            {"value": "10-15", "label": "10 to 15 years"},
-            {"value": "over-15", "label": "Over 15 years"},
-            {"value": "unsure", "label": "Not sure"}
-          ]
+          "show_if": {
+            "question": "main-issue",
+            "includes": "error-code"
+          },
+          "placeholder": "e.g. F22, EA, F75",
+          "optional": true
         },
         {
           "id": "urgency",
           "label": "How urgent is this?",
           "type": "radio",
           "options": [
-            {"value": "today", "label": "Today if possible (no heat / hot water)"},
-            {"value": "this-week", "label": "This week"},
-            {"value": "next-week", "label": "Next week is fine"}
+            {
+              "value": "today",
+              "label": "Today if possible (no heat / hot water)"
+            },
+            {
+              "value": "this-week",
+              "label": "This week"
+            },
+            {
+              "value": "next-week",
+              "label": "Next week is fine"
+            }
           ]
         },
         {
@@ -333,17 +283,11 @@
           "label": "Photo of the boiler / error code (optional)",
           "type": "file",
           "accept": "image/*",
-          "multiple": true
-        },
-        {
-          "id": "notes",
-          "label": "Anything else that might help?",
-          "type": "textarea",
-          "placeholder": "Optional. When the problem started, what you've tried, recent service history, etc."
+          "multiple": true,
+          "optional": true
         }
       ]
     },
-
     "power-flush": {
       "name": "Power Flush",
       "short_description": "Deep clean of your heating system to remove sludge. Base price covers up to 8 radiators.",
@@ -352,7 +296,10 @@
       "base_material_item": "LAB-FLSH-PF",
       "base_duration_min": 480,
       "base_covers": "Up to 8 radiators",
-      "always_add_materials": ["HTADMC5", "HTADMC1"],
+      "always_add_materials": [
+        "HTADMC5",
+        "HTADMC1"
+      ],
       "questions": [
         {
           "id": "system-type",
@@ -360,9 +307,19 @@
           "type": "radio",
           "required": true,
           "options": [
-            {"value": "sealed", "label": "Sealed / pressurised system"},
-            {"value": "open-vent", "label": "Open vent with header tank in loft", "material_add": "LAB-FLSH-PF-OV"},
-            {"value": "unsure", "label": "Not sure"}
+            {
+              "value": "sealed",
+              "label": "Sealed / pressurised system"
+            },
+            {
+              "value": "open-vent",
+              "label": "Open vent with header tank in loft",
+              "material_add": "LAB-FLSH-PF-OV"
+            },
+            {
+              "value": "unsure",
+              "label": "Not sure"
+            }
           ]
         },
         {
@@ -385,41 +342,9 @@
           "subtext": "Recommended for every system; manufacturer warranty often requires one.",
           "type": "checkbox",
           "material_add": "LAB-SUPP-FILT-PRO2"
-        },
-        {
-          "id": "boiler-age",
-          "label": "Roughly how old is the boiler?",
-          "type": "radio",
-          "options": [
-            {"value": "under-5", "label": "Under 5 years"},
-            {"value": "5-10", "label": "5 to 10 years"},
-            {"value": "10-15", "label": "10 to 15 years"},
-            {"value": "over-15", "label": "Over 15 years"},
-            {"value": "unsure", "label": "Not sure"}
-          ]
-        },
-        {
-          "id": "symptoms",
-          "label": "Symptoms (tick any that apply)",
-          "type": "checkbox-multi",
-          "options": [
-            {"value": "cold-bottoms", "label": "Radiators cold at the bottom"},
-            {"value": "noisy", "label": "Banging or kettling from the boiler"},
-            {"value": "uneven-heat", "label": "Some radiators heat slower than others"},
-            {"value": "frequent-bleeding", "label": "Need to bleed radiators often"},
-            {"value": "high-bills", "label": "Heating bills creeping up"},
-            {"value": "new-boiler", "label": "Required as part of a new boiler install"}
-          ]
-        },
-        {
-          "id": "notes",
-          "label": "Anything else I should know?",
-          "type": "textarea",
-          "placeholder": "Optional. Access, parking, particular concerns."
         }
       ]
     },
-
     "plumbing": {
       "name": "General Plumbing",
       "short_description": "Hourly call-out for plumbing fixes and installs. From £100 first hour, parts quoted on the day.",
@@ -434,15 +359,60 @@
           "type": "select",
           "required": true,
           "options": [
-            {"value": "tap-fit", "label": "Fit a new kitchen or bathroom tap", "duration_min": 60, "category_uuid": "6dcbecdc-0123-4acf-a500-1bd94ed20dfb"},
-            {"value": "tap-repair", "label": "Repair a dripping or leaking tap", "duration_min": 60, "category_uuid": "6dcbecdc-0123-4acf-a500-1bd94ed20dfb"},
-            {"value": "dishwasher-fit", "label": "Fit a dishwasher", "duration_min": 60, "category_uuid": "2b175c3a-f2fb-4e6b-b58f-1bddec32e30b"},
-            {"value": "washing-machine-fit", "label": "Fit a washing machine", "duration_min": 60, "category_uuid": "2b175c3a-f2fb-4e6b-b58f-1bddec32e30b"},
-            {"value": "toilet-repair", "label": "Fix a running or leaking toilet", "duration_min": 60, "category_uuid": "ba6a9481-1ba8-4656-80db-1bd94d4f7a3b"},
-            {"value": "toilet-replace", "label": "Replace a toilet", "duration_min": 90, "category_uuid": "ba6a9481-1ba8-4656-80db-1bd94d4f7a3b"},
-            {"value": "toilet-blockage", "label": "Unblock a toilet or drain", "duration_min": 60, "category_uuid": "ba6a9481-1ba8-4656-80db-1bd94d4f7a3b"},
-            {"value": "leak-repair", "label": "Find and fix a hidden leak", "duration_min": 90, "category_uuid": "6dcbecdc-0123-4acf-a500-1bd94ed20dfb"},
-            {"value": "other", "label": "Other plumbing job", "duration_min": 60, "category_uuid": "6dcbecdc-0123-4acf-a500-1bd94ed20dfb"}
+            {
+              "value": "tap-fit",
+              "label": "Fit a new kitchen or bathroom tap",
+              "duration_min": 60,
+              "category_uuid": "6dcbecdc-0123-4acf-a500-1bd94ed20dfb"
+            },
+            {
+              "value": "tap-repair",
+              "label": "Repair a dripping or leaking tap",
+              "duration_min": 60,
+              "category_uuid": "6dcbecdc-0123-4acf-a500-1bd94ed20dfb"
+            },
+            {
+              "value": "dishwasher-fit",
+              "label": "Fit a dishwasher",
+              "duration_min": 60,
+              "category_uuid": "2b175c3a-f2fb-4e6b-b58f-1bddec32e30b"
+            },
+            {
+              "value": "washing-machine-fit",
+              "label": "Fit a washing machine",
+              "duration_min": 60,
+              "category_uuid": "2b175c3a-f2fb-4e6b-b58f-1bddec32e30b"
+            },
+            {
+              "value": "toilet-repair",
+              "label": "Fix a running or leaking toilet",
+              "duration_min": 60,
+              "category_uuid": "ba6a9481-1ba8-4656-80db-1bd94d4f7a3b"
+            },
+            {
+              "value": "toilet-replace",
+              "label": "Replace a toilet",
+              "duration_min": 90,
+              "category_uuid": "ba6a9481-1ba8-4656-80db-1bd94d4f7a3b"
+            },
+            {
+              "value": "toilet-blockage",
+              "label": "Unblock a toilet or drain",
+              "duration_min": 60,
+              "category_uuid": "ba6a9481-1ba8-4656-80db-1bd94d4f7a3b"
+            },
+            {
+              "value": "leak-repair",
+              "label": "Find and fix a hidden leak",
+              "duration_min": 90,
+              "category_uuid": "6dcbecdc-0123-4acf-a500-1bd94ed20dfb"
+            },
+            {
+              "value": "other",
+              "label": "Other plumbing job",
+              "duration_min": 60,
+              "category_uuid": "6dcbecdc-0123-4acf-a500-1bd94ed20dfb"
+            }
           ]
         },
         {
@@ -450,9 +420,18 @@
           "label": "Who's supplying the parts?",
           "type": "radio",
           "options": [
-            {"value": "i-have", "label": "I've already got them"},
-            {"value": "wes-supply", "label": "Please supply them (quoted on the day)"},
-            {"value": "not-sure", "label": "Not sure yet"}
+            {
+              "value": "i-have",
+              "label": "I've already got them"
+            },
+            {
+              "value": "wes-supply",
+              "label": "Please supply them (quoted on the day)"
+            },
+            {
+              "value": "not-sure",
+              "label": "Not sure yet"
+            }
           ]
         },
         {
@@ -460,32 +439,82 @@
           "label": "Photo of the problem (optional but helpful)",
           "type": "file",
           "accept": "image/*",
-          "multiple": true
+          "multiple": true,
+          "optional": true
         },
         {
           "id": "notes",
           "label": "Describe the job",
           "type": "textarea",
-          "placeholder": "What needs doing? Any access notes?"
+          "placeholder": "What needs doing? Any access notes?",
+          "optional": true
         }
       ]
     }
   },
-
   "customer_fields": [
-    {"id": "name", "label": "Your name", "type": "text", "required": true},
-    {"id": "phone", "label": "Phone (mobile preferred)", "type": "tel", "required": true},
-    {"id": "email", "label": "Email", "type": "email", "required": true},
-    {"id": "address", "label": "Full address (including postcode)", "type": "textarea", "required": true},
-    {"id": "hear-about", "label": "How did you hear about me?", "type": "select", "options": [
-      {"value": "google", "label": "Google search"},
-      {"value": "google-maps", "label": "Google Maps"},
-      {"value": "facebook", "label": "Facebook"},
-      {"value": "instagram", "label": "Instagram"},
-      {"value": "recommendation", "label": "Recommendation from a friend"},
-      {"value": "van", "label": "Saw the van"},
-      {"value": "leaflet", "label": "Leaflet through the door"},
-      {"value": "other", "label": "Other"}
-    ]}
+    {
+      "id": "name",
+      "label": "Your name",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "phone",
+      "label": "Phone (mobile preferred)",
+      "type": "tel",
+      "required": true
+    },
+    {
+      "id": "email",
+      "label": "Email",
+      "type": "email",
+      "required": true
+    },
+    {
+      "id": "address",
+      "label": "Full address (including postcode)",
+      "type": "textarea",
+      "required": true
+    },
+    {
+      "id": "hear-about",
+      "label": "How did you hear about me?",
+      "type": "select",
+      "options": [
+        {
+          "value": "google",
+          "label": "Google search"
+        },
+        {
+          "value": "google-maps",
+          "label": "Google Maps"
+        },
+        {
+          "value": "facebook",
+          "label": "Facebook"
+        },
+        {
+          "value": "instagram",
+          "label": "Instagram"
+        },
+        {
+          "value": "recommendation",
+          "label": "Recommendation from a friend"
+        },
+        {
+          "value": "van",
+          "label": "Saw the van"
+        },
+        {
+          "value": "leaflet",
+          "label": "Leaflet through the door"
+        },
+        {
+          "value": "other",
+          "label": "Other"
+        }
+      ]
+    }
   ]
 }

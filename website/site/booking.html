@@ -189,6 +189,10 @@
       margin-bottom: 0.45rem; font-size: 0.98rem;
       letter-spacing: -0.01em;
     }
+    .q-optional {
+      font-weight: 400; color: var(--text-light);
+      font-size: 0.88rem; letter-spacing: 0;
+    }
     .question .q-sub {
       display: block; font-size: 0.85rem; color: var(--text-body);
       margin-bottom: 0.55rem; line-height: 1.45;
@@ -380,6 +384,34 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+    /* Reassurance block — sits directly above the submit button.
+       Five-bullet list of trust signals + an honest "what happens next"
+       line. Aim: reduce cognitive friction at the moment of commit. */
+    .submit-reassurance {
+      background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
+      border: 1px solid rgba(15, 41, 66, 0.08);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.25rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.92rem;
+      color: var(--text-body);
+      line-height: 1.55;
+    }
+    .submit-reassurance ul {
+      list-style: none; margin: 0; padding: 0;
+      display: grid; gap: 0.45rem;
+    }
+    .submit-reassurance li {
+      display: flex; align-items: flex-start; gap: 0.55rem;
+    }
+    .submit-reassurance li::before {
+      content: '✓';
+      color: var(--color-accent);
+      font-weight: 700; font-size: 1.05rem;
+      flex-shrink: 0; line-height: 1.4;
+    }
+    .submit-reassurance li strong { color: var(--color-primary); font-weight: 700; }
+
     /* Submit button — matches .btn-primary on the rest of the site */
     #submit-btn {
       width: 100%; padding: 1.05rem 1.5rem;
@@ -536,11 +568,11 @@
       <div class="question">
         <label class="q-label" for="customer_postcode">Postcode</label>
         <span class="q-sub">Must be SO14 to SO53.</span>
-        <input type="text" id="customer_postcode" name="customer_postcode" required autocomplete="postal-code" placeholder="SO15 1AA" style="text-transform:uppercase;">
+        <input type="text" id="customer_postcode" name="customer_postcode" required autocomplete="postal-code" inputmode="text" placeholder="SO15 1AA" style="text-transform:uppercase;">
       </div>
       <div class="question">
-        <label class="q-label" for="customer_address">Full address</label>
-        <textarea id="customer_address" name="customer_address" required autocomplete="street-address" placeholder="House number, street, area"></textarea>
+        <label class="q-label" for="customer_address">House number &amp; street</label>
+        <input type="text" id="customer_address" name="customer_address" required autocomplete="street-address" placeholder="e.g. 12 Smith Road">
       </div>
     </form>
   </section>
@@ -549,10 +581,22 @@
   <section class="step locked" id="step-submit" aria-labelledby="step-submit-title" hidden>
     <h2 id="step-submit-title"><span class="num">5</span> Review &amp; book</h2>
     <dl class="summary" id="summary"></dl>
+
+    <!-- Reassurance block — trust signals at the moment of commit -->
+    <div class="submit-reassurance" aria-label="Booking reassurance">
+      <ul>
+        <li><strong>Gas Safe registered</strong> (#558654) &middot; fully insured &middot; 12-month workmanship guarantee</li>
+        <li>You'll get a <strong>confirmation by email and SMS</strong> straight from my diary — usually within a minute</li>
+        <li>The price you see is the price you pay &mdash; <strong>no call-out fees, no hidden extras</strong></li>
+        <li>Need to reschedule or cancel? <strong>Self-serve link</strong> in your confirmation &mdash; no phone call needed</li>
+        <li>Your details are used only to fulfil this booking. <a href="privacy-policy.html" style="color: var(--color-primary); text-decoration: underline;">Privacy</a>.</li>
+      </ul>
+    </div>
+
     <div id="submit-error" class="error" hidden></div>
     <button type="button" id="submit-btn">
       <i data-lucide="calendar-check" style="width:20px;height:20px;vertical-align:middle;margin-right:0.4rem;"></i>
-      Confirm booking
+      Book my slot
     </button>
   </section>
 </main>
@@ -573,7 +617,7 @@
   <p>&copy; 2026 Better Call Wes. All rights reserved.</p>
 </footer>
 
-<script src="js/booking.js?v=1.0"></script>
+<script src="js/booking.js?v=1.1"></script>
 <script>lucide.createIcons();</script>
 </body>
 </html>

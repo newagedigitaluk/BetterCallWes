@@ -135,7 +135,13 @@
         className: 'question',
         dataset: { qid: q.id },
       });
-      wrap.appendChild(el('label', { className: 'q-label', for: `q-${q.id}` }, q.label));
+      // Question label — append "(optional)" hint when the JSON config flags
+      // it as optional. Cuts perceived friction: users see they can skip.
+      const labelNode = el('label', { className: 'q-label', for: `q-${q.id}` }, q.label);
+      if (q.optional) {
+        labelNode.appendChild(el('span', { className: 'q-optional' }, ' (optional)'));
+      }
+      wrap.appendChild(labelNode);
       if (q.subtext) {
         wrap.appendChild(el('span', { className: 'q-sub' }, q.subtext));
       }
@@ -618,7 +624,7 @@
     }
     state.submitting = true;
     $('#submit-btn').disabled = true;
-    $('#submit-btn').textContent = 'Booking...';
+    $('#submit-btn').textContent = 'Booking your slot…';
 
     const payload = {
       service: state.serviceSlug,
@@ -654,7 +660,7 @@
       state.submitting = false;
       $('#submit-btn').disabled = false;
       $('#submit-btn').innerHTML =
-        '<i data-lucide="calendar-check" style="width:20px;height:20px;vertical-align:middle;margin-right:0.4rem;"></i> Confirm booking';
+        '<i data-lucide="calendar-check" style="width:20px;height:20px;vertical-align:middle;margin-right:0.4rem;"></i> Book my slot';
       if (window.lucide) window.lucide.createIcons();
     }
   }
