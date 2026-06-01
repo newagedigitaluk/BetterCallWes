@@ -46,6 +46,32 @@
     }
   }
 
+  // ─── Funnel instrumentation ─────────────────────────────────────────────
+  //
+  // Fires a GA4 `booking_step` event the first time each of the 5 steps
+  // is reached. Replaces GA4's noisy auto `form_start` (which fires twice
+  // on this page because there are two <form> elements). Dedup by step
+  // number so the natural unlock points — some of which run on every
+  // input keystroke — only count once per user session.
+  //
+  // The real conversion (`generate_lead`) still fires on
+  // booking-confirmed.html and is intentionally untouched here.
+
+  const _trackedSteps = new Set();
+  function trackStep(n, name) {
+    if (_trackedSteps.has(n)) return;
+    _trackedSteps.add(n);
+    try {
+      if (typeof gtag === 'function') {
+        gtag('event', 'booking_step', {
+          step_number: n,
+          step_name: name,
+          service: state.serviceSlug || '(none)',
+        });
+      }
+    } catch (e) { /* never block the booking on analytics */ }
+  }
+
   // ─── State ───────────────────────────────────────────────────────────────
 
   const state = {
@@ -106,6 +132,7 @@
       );
       grid.appendChild(card);
     }
+    trackStep(1, 'service');
   }
 
   function selectService(slug) {
@@ -122,6 +149,7 @@
     lockStep('step-submit');
     updateTotal();
     scrollIntoView('#step-questions');
+    trackStep(2, 'questions');
   }
 
   // ─── Step 2: questions ───────────────────────────────────────────────────
@@ -407,6 +435,7 @@
     if ($('#step-slot').hasAttribute('hidden') || $('#step-slot').classList.contains('locked')) {
       unlockStep('step-slot');
       loadSlots();
+      trackStep(3, 'slot');
     }
   }
 
@@ -529,6 +558,7 @@
     unlockStep('step-details');
     updateSummary();
     scrollIntoView('#step-details');
+    trackStep(4, 'details');
   }
 
   function formatDayLabel(d) {
@@ -544,6 +574,7 @@
       if (customerIsValid()) {
         unlockStep('step-submit');
         updateSummary();
+        trackStep(5, 'review');
       } else {
         lockStep('step-submit');
       }
