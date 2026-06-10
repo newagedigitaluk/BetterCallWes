@@ -310,6 +310,7 @@
  <a href="../booking.html?service=boiler-repair" class="btn btn-primary"><i data-lucide="calendar"></i> Book Online</a>
  <a href="https://wa.me/447700155655" class="btn btn-outline" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); color: white;"><i data-lucide="video"></i> WhatsApp Quote</a>
  </div>
+ <p style="margin: 1.75rem auto 0; color: rgba(255,255,255,0.92); font-size: 1.05rem; font-weight: 600;"><strong style="color: var(--color-accent);">&pound;100 diagnostic</strong>, deducted from the repair if you go ahead &middot; fixed quote before any work starts</p>
  </div>
  </div>
  </section>
@@ -362,28 +363,29 @@
  <div class="section-label">WARNING SIGNS</div>
  <h2>When to Call a Professional</h2>
  </div>
- <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
- 
- <div class="glass-card-luxury" style="padding: 2rem; border-radius: 24px; box-shadow: var(--shadow-sm);">
- <h3 style="margin-bottom: 1rem; color: var(--color-primary);">No Heating or Hot Water</h3>
- <p style="color: var(--text-body);">The most obvious sign of a total boiler breakdown or diverter valve failure.</p>
- </div>
- 
- <div class="glass-card-luxury" style="padding: 2rem; border-radius: 24px; box-shadow: var(--shadow-sm);">
- <h3 style="margin-bottom: 1rem; color: var(--color-primary);">Strange Noises</h3>
- <p style="color: var(--text-body);">Banging, kettling, or whistling sounds indicate scale build-up or pump failure.</p>
- </div>
- 
- <div class="glass-card-luxury" style="padding: 2rem; border-radius: 24px; box-shadow: var(--shadow-sm);">
- <h3 style="margin-bottom: 1rem; color: var(--color-primary);">Boiler Losing Pressure</h3>
- <p style="color: var(--text-body);">A Worcester or Vaillant boiler that keeps losing pressure usually points to a small system leak or a failed expansion vessel, both common in Southampton's hard-water area and fixable in one visit.</p>
- </div>
- 
- <div class="glass-card-luxury" style="padding: 2rem; border-radius: 24px; box-shadow: var(--shadow-sm);">
- <h3 style="margin-bottom: 1rem; color: var(--color-primary);">Pilot Light Goes Out</h3>
- <p style="color: var(--text-body);">A common issue caused by a broken thermocouple or draught.</p>
- </div>
- 
+ <div class="grid-2col">
+   <figure style="margin: 0;">
+     <img src="../assets/images/boiler-heatex-clean-vs-dirty.webp" alt="A scaled-up heat exchanger next to a clean new one, from a real Southampton repair" loading="lazy" decoding="async" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+     <figcaption style="margin-top: 0.7rem; font-size: 0.9rem; color: var(--text-light); font-weight: 600;">From a real job: scale build-up vs the new part. This is what &ldquo;kettling&rdquo; looks like inside.</figcaption>
+   </figure>
+   <div>
+     <div style="border-top: 2px solid var(--color-primary); padding: 1.1rem 0;">
+       <h3 style="margin-bottom: 0.35rem;">No heating or hot water</h3>
+       <p style="color: var(--text-body); font-size: 0.99rem;">The most obvious sign of a full breakdown or a failed diverter valve. Often a same-visit fix.</p>
+     </div>
+     <div style="border-top: 1px solid var(--line); padding: 1.1rem 0;">
+       <h3 style="margin-bottom: 0.35rem;">Banging, kettling or whistling</h3>
+       <p style="color: var(--text-body); font-size: 0.99rem;">Scale build-up or a tired pump. The photo on the left shows exactly what causes it.</p>
+     </div>
+     <div style="border-top: 1px solid var(--line); padding: 1.1rem 0;">
+       <h3 style="margin-bottom: 0.35rem;">Boiler keeps losing pressure</h3>
+       <p style="color: var(--text-body); font-size: 0.99rem;">Usually a small system leak or a failed expansion vessel, both common in Southampton's hard-water area and fixable in one visit.</p>
+     </div>
+     <div style="border-top: 1px solid var(--line); border-bottom: 2px solid var(--color-primary); padding: 1.1rem 0;">
+       <h3 style="margin-bottom: 0.35rem;">Pilot light keeps going out</h3>
+       <p style="color: var(--text-body); font-size: 0.99rem;">On older boilers this is usually a broken thermocouple or a draught problem. Quick to diagnose.</p>
+     </div>
+   </div>
  </div>
  </div>
  </section>
@@ -396,32 +398,37 @@
  <h2>Specific Service Options</h2>
  </div>
  <div class="service-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
- 
+
  <div class="service-card">
- <div class="service-icon"><i data-lucide="check-circle"></i></div>
  <h3>Diverter Valve Replacement</h3>
+ <p>Heating works but no hot water, or the other way round? Nine times out of ten it's this.</p>
+ <span class="svc-price">Typical total <em>&pound;180&ndash;&pound;250</em></span>
  <a href="../booking.html?service=boiler-repair" class="learn-more">Book Now <i data-lucide="arrow-right" size="16"></i></a>
  </div>
- 
+
  <div class="service-card">
- <div class="service-icon"><i data-lucide="check-circle"></i></div>
  <h3>Expansion Vessel Recharge</h3>
+ <p>The classic fix when your pressure gauge keeps creeping down and you're forever topping up.</p>
+ <span class="svc-price">Typical total <em>&pound;100&ndash;&pound;160</em></span>
  <a href="../booking.html?service=boiler-repair" class="learn-more">Book Now <i data-lucide="arrow-right" size="16"></i></a>
  </div>
- 
+
  <div class="service-card">
- <div class="service-icon"><i data-lucide="check-circle"></i></div>
- <h3>Pump & Fan Replacement</h3>
+ <h3>Pump &amp; Fan Replacement</h3>
+ <p>Humming with no circulation, or a fan that won't spin up. Common parts carried on the van.</p>
+ <span class="svc-price">Typical total <em>&pound;120&ndash;&pound;280</em></span>
  <a href="../booking.html?service=boiler-repair" class="learn-more">Book Now <i data-lucide="arrow-right" size="16"></i></a>
  </div>
- 
+
  <div class="service-card">
- <div class="service-icon"><i data-lucide="check-circle"></i></div>
- <h3>PCB Diagnostics & Fitting</h3>
+ <h3>PCB Diagnostics &amp; Fitting</h3>
+ <p>The boiler's brain. Properly diagnosed before any part gets ordered, so you don't pay twice.</p>
+ <span class="svc-price">Typical total <em>&pound;250&ndash;&pound;350</em></span>
  <a href="../booking.html?service=boiler-repair" class="learn-more">Book Now <i data-lucide="arrow-right" size="16"></i></a>
  </div>
- 
+
  </div>
+ <p style="text-align: center; margin-top: 1.75rem; font-size: 0.95rem; color: var(--text-light);">Prices include the part and the labour. Full list on the <a href="../pricing.html" class="inline-link">Master Price Guide</a>.</p>
  </div>
  </section>
  
@@ -467,19 +474,60 @@
 </section>
 <!-- END MID CTA -->
 
-<!-- BEGIN REVIEWS WIDGET -->
+<!-- BEGIN REVIEWS (static, real Google reviews — instant render, no third-party dependency) -->
 <section class="section section-gray">
-  <div class="container" style="max-width: 900px;">
+  <div class="container">
     <div class="section-header">
       <div class="section-label">REVIEWS</div>
       <h2>What Southampton homeowners say</h2>
+      <p>Real Google reviews from repair jobs. 4.9 from 200+ at the last count.</p>
     </div>
-    <script defer type='text/javascript' src='https://i.bettercallwes.co.uk/reputation/assets/review-widget.js'></script>
-    <iframe class='lc_reviews_widget' src='https://i.bettercallwes.co.uk/reputation/widgets/review_widget/7sUSfobemejSgrc2sd3v' frameborder='0' scrolling='no' style='min-width: 100%; width: 100%;'></iframe>
-    <p style="text-align: center; margin-top: 1rem;"><a href="../reviews.html">See all reviews &rarr;</a></p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+      <div class="review-card">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <p class="review-quote">&ldquo;Wes diagnosed and then replaced a faulty valve on my heating system that was leaking. Excellent, reliable and prompt. Finding a local, knowledgeable and dependable heating engineer is something worth knowing about.&rdquo;</p>
+        <div class="review-name">Robert Lamburne</div>
+        <div class="review-meta">Google review &middot; heating valve repair</div>
+      </div>
+      <div class="review-card">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <p class="review-quote">&ldquo;Turned up on time and quickly diagnosed and repaired our boiler, and even fixed a separate issue with our water tank, for a very reasonable charge too. Highly recommended.&rdquo;</p>
+        <div class="review-name">Richard Harrison</div>
+        <div class="review-meta">Google review &middot; boiler repair</div>
+      </div>
+      <div class="review-card">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <p class="review-quote">&ldquo;We have used Wes on more than one occasion and he has always provided a prompt, efficient service. When Wes says he has fixed a problem, it stays fixed.&rdquo;</p>
+        <div class="review-name">John Hutchings</div>
+        <div class="review-meta">Google review &middot; repeat customer</div>
+      </div>
+    </div>
+    <p style="text-align: center; margin-top: 2rem;"><a href="../reviews.html" class="learn-more">See all reviews <i data-lucide="arrow-right" size="16"></i></a></p>
   </div>
 </section>
-<!-- END REVIEWS WIDGET -->
+<!-- END REVIEWS -->
+
+<!-- BEGIN WHO TURNS UP -->
+<section class="section">
+  <div class="container">
+    <div class="grid-2col">
+      <div style="max-width: 460px;">
+        <img src="../assets/images/hero-wes-van.webp" alt="Wes beside his black Transit van, the engineer who actually turns up" loading="lazy" decoding="async" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+      </div>
+      <div>
+        <div class="section-label">WHO TURNS UP</div>
+        <h2>It's me who answers, quotes and fixes</h2>
+        <p style="margin: 1.1rem 0;">No call centre, no subcontractors. The person reading your WhatsApp is the person who diagnoses your boiler and the person who signs off the guarantee. Look for the black Transit.</p>
+        <div class="cred-row">
+          <span><i data-lucide="badge-check"></i> Gas Safe #558654</span>
+          <span><i data-lucide="shield"></i> Fully insured</span>
+        </div>
+        <a href="../booking.html?service=boiler-repair" class="btn btn-primary"><i data-lucide="calendar-check"></i> Book a Repair Visit</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END WHO TURNS UP -->
 
 <section class="section section-gray">
   <div class="container" style="max-width: 800px;">
