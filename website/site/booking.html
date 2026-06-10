@@ -25,7 +25,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=1.8">
+  <link rel="stylesheet" href="css/styles.css?v=2.0">
   <script defer src="assets/js/lucide.min.js"></script>
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="assets/favicon.png">
@@ -62,7 +62,7 @@
     .booking-header .phone {
       display: inline-flex; align-items: center; gap: 0.45rem;
       color: var(--color-primary); font-weight: 700; text-decoration: none;
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font);
       font-size: 0.95rem;
       padding: 0.4rem 0.85rem;
       border-radius: var(--radius-full);
@@ -94,7 +94,7 @@
     /* Page-level wrap */
     .booking-page { max-width: 760px; margin: 0 auto; padding: 2rem 1rem 6rem; }
     .booking-page h1 {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font);
       font-weight: 800;
       font-size: clamp(2rem, 5vw, 2.75rem);
       letter-spacing: -0.02em;
@@ -119,7 +119,7 @@
       .step { padding: 2rem; }
     }
     .step h2 {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font);
       font-weight: 700;
       margin: 0 0 1rem; font-size: 1.3rem;
       color: var(--color-primary);
@@ -130,7 +130,7 @@
       background: linear-gradient(135deg, var(--color-accent) 0%, #EA580C 100%);
       color: white;
       width: 32px; height: 32px; border-radius: 50%;
-      font-family: 'Inter', sans-serif; font-weight: 700;
+      font-family: var(--font); font-weight: 700;
       font-size: 0.95rem;
       display: inline-flex; align-items: center; justify-content: center;
       flex-shrink: 0;
@@ -166,7 +166,7 @@
       box-shadow: var(--shadow-md);
     }
     .service-card .name {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font);
       font-weight: 700; color: var(--color-primary);
       font-size: 1.02rem;
       margin-bottom: 0.3rem;
@@ -174,7 +174,7 @@
     }
     .service-card .desc { font-size: 0.88rem; color: var(--text-body); line-height: 1.45; }
     .service-card .from {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font);
       font-size: 0.88rem; font-weight: 700; color: var(--color-accent);
       margin-top: 0.6rem;
     }
@@ -184,7 +184,7 @@
     .question:last-child { margin-bottom: 0; }
     .question label.q-label {
       display: block;
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font);
       font-weight: 600; color: var(--color-primary);
       margin-bottom: 0.45rem; font-size: 0.98rem;
       letter-spacing: -0.01em;
@@ -214,7 +214,7 @@
     .question .opt input { margin-top: 0.2rem; flex-shrink: 0; accent-color: var(--color-accent); }
     .question .opt .opt-label { flex: 1; font-size: 0.95rem; }
     .question .opt .price-delta {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font);
       font-size: 0.88rem; font-weight: 700; color: var(--color-accent);
       white-space: nowrap;
     }
@@ -261,7 +261,7 @@
     }
     .day-pill .date {
       display: block;
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font);
       font-size: 1.2rem; font-weight: 700; color: var(--color-primary);
     }
     .day-pill .month { display: block; font-size: 0.7rem; color: var(--text-light); }
@@ -281,7 +281,7 @@
       border: 2px solid rgba(15,41,66,0.1);
       background: white; border-radius: var(--radius-md);
       padding: 0.65rem 0.5rem;
-      cursor: pointer; font-family: 'Inter', sans-serif;
+      cursor: pointer; font-family: var(--font);
       font-size: 0.95rem; color: var(--color-primary); font-weight: 600;
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -324,7 +324,7 @@
       display: block; font-weight: 600;
     }
     .running-total .amount {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font);
       font-size: 1.5rem; font-weight: 800; color: var(--color-primary);
       letter-spacing: -0.02em;
     }
@@ -339,7 +339,7 @@
       font-size: 0.95rem;
     }
     .summary dt {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font);
       font-weight: 600; color: var(--color-primary);
       font-size: 0.82rem; text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -356,7 +356,7 @@
       border-top: 1px solid rgba(15,41,66,0.1);
     }
     .summary .total-row .amount {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font);
       font-size: 1.55rem; font-weight: 800; color: var(--color-accent);
       letter-spacing: -0.02em;
     }
@@ -383,7 +383,7 @@
     /* Submit button — matches .btn-primary on the rest of the site */
     #submit-btn {
       width: 100%; padding: 1.05rem 1.5rem;
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font);
       font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em;
       background: linear-gradient(135deg, var(--color-accent) 0%, #EA580C 100%);
       color: white;
@@ -442,7 +442,7 @@
     .escape-hatch i { color: #25D366; flex-shrink: 0; }
     .escape-hatch a {
       color: #1a7a40;
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font);
       font-weight: 700; text-decoration: none;
       margin-left: auto; flex-shrink: 0;
       padding: 0.4rem 0.85rem;

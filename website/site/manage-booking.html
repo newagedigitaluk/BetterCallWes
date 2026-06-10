@@ -25,7 +25,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=1.8">
+  <link rel="stylesheet" href="css/styles.css?v=2.0">
   <script defer src="assets/js/lucide.min.js"></script>
   <link rel="icon" href="assets/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="assets/favicon.png">
@@ -54,7 +54,7 @@
 
     .manage-page { max-width: 720px; margin: 0 auto; padding: 2.5rem 1rem 4rem; }
     .manage-page h1 {
-      font-family: 'Inter', sans-serif; font-weight: 800;
+      font-family: var(--font); font-weight: 800;
       letter-spacing: -0.02em; line-height: 1.1;
       font-size: clamp(2rem, 5vw, 2.75rem);
       color: var(--text-dark);
@@ -72,7 +72,7 @@
     }
     @media (min-width: 600px) { .card { padding: 2rem; } }
     .card h2 {
-      font-family: 'Inter', sans-serif; font-weight: 700;
+      font-family: var(--font); font-weight: 700;
       letter-spacing: -0.01em; color: var(--color-primary);
       margin: 0 0 1rem; font-size: 1.25rem;
     }
@@ -80,7 +80,7 @@
     .booking-row { display: flex; align-items: baseline; gap: 1rem; padding: 0.4rem 0; }
     .booking-row dt {
       min-width: 100px;
-      font-family: 'Inter', sans-serif; font-weight: 600;
+      font-family: var(--font); font-weight: 600;
       color: var(--color-primary);
       font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px;
     }
@@ -101,7 +101,7 @@
       flex: 1;
       padding: 1.05rem 1.5rem;
       border-radius: var(--radius-full);
-      font-family: 'Inter', sans-serif; font-weight: 700;
+      font-family: var(--font); font-weight: 700;
       font-size: 1rem; text-align: center;
       border: none; cursor: pointer;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -149,7 +149,7 @@
       color: var(--text-light); letter-spacing: 0.7px; font-weight: 600;
     }
     .day-pill .date {
-      display: block; font-family: 'Inter', sans-serif;
+      display: block; font-family: var(--font);
       font-size: 1.2rem; font-weight: 700; color: var(--color-primary);
     }
     .day-pill .month { display: block; font-size: 0.7rem; color: var(--text-light); }
@@ -166,7 +166,7 @@
       border: 2px solid rgba(15,41,66,0.1);
       background: white; border-radius: var(--radius-md);
       padding: 0.65rem 0.5rem;
-      cursor: pointer; font-family: 'Inter', sans-serif;
+      cursor: pointer; font-family: var(--font);
       font-size: 0.95rem; color: var(--color-primary); font-weight: 600;
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -332,7 +332,7 @@
         </div>
 
         <div style="margin-top: 1.5rem;">
-          <label class="q-label" style="display: block; font-family: 'Inter', sans-serif; font-weight: 600; color: var(--color-primary); margin-bottom: 0.5rem; font-size: 0.98rem; letter-spacing: -0.01em;">
+          <label class="q-label" style="display: block; font-family: var(--font); font-weight: 600; color: var(--color-primary); margin-bottom: 0.5rem; font-size: 0.98rem; letter-spacing: -0.01em;">
             What's the reason? <span style="font-weight: 400; color: var(--text-light); font-size: 0.85rem;">(optional, helps me improve)</span>
           </label>
           <div class="reason-options" id="reason-options">
@@ -341,7 +341,7 @@
         </div>
 
         <div style="margin-top: 1rem;">
-          <label for="cancel-reason-text" style="display: block; font-family: 'Inter', sans-serif; font-weight: 600; color: var(--color-primary); margin-bottom: 0.5rem; font-size: 0.95rem;">
+          <label for="cancel-reason-text" style="display: block; font-family: var(--font); font-weight: 600; color: var(--color-primary); margin-bottom: 0.5rem; font-size: 0.95rem;">
             Anything else? <span style="font-weight: 400; color: var(--text-light); font-size: 0.85rem;">(optional)</span>
           </label>
           <textarea id="cancel-reason-text" maxlength="500"
