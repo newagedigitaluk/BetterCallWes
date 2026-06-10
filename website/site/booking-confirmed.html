@@ -297,7 +297,7 @@
     }
   })();
 
-  lucide.createIcons();
+  window.addEventListener('DOMContentLoaded', function () { if (window.lucide) lucide.createIcons(); });
 </script>
 
 <!-- Growify pixel -->

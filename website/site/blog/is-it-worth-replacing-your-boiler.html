@@ -176,7 +176,7 @@
  <a href="../services/power-flushing.html" class="dropdown-item">Power Flushing</a>
  <a href="../services/toilet-repairs.html" class="dropdown-item">Toilet Repairs</a>
  <div class="dropdown-divider"></div>
- <a href="../services.html" class="dropdown-item" style="text-align: center; color: var(--text-white); font-weight: 600;">View All Services →</a>
+ <a href="../services.html" class="dropdown-item" style="text-align: center; color: var(--color-primary); font-weight: 700;">View All Services →</a>
  </div>
  </div>
  <a href="../about.html" class="nav-link">About Me</a>
@@ -496,8 +496,8 @@
  <script>
    function toggleMobileMenu(){document.getElementById('mobileNav').classList.toggle('active');}
    window.addEventListener('scroll',()=>{const h=document.querySelector('.header');if(window.scrollY>50){h.classList.add('scrolled');}else{h.classList.remove('scrolled');}});
-   if (window.lucide) lucide.createIcons();
-   else document.addEventListener('DOMContentLoaded', () => { if (window.lucide) lucide.createIcons(); });
+   if (window.lucide) window.addEventListener('DOMContentLoaded', function () { if (window.lucide) lucide.createIcons(); });
+   else document.addEventListener('DOMContentLoaded', () => { if (window.lucide) window.addEventListener('DOMContentLoaded', function () { if (window.lucide) lucide.createIcons(); }); });
  </script>
  <a href="https://wa.me/447700155655" class="floating-cta"><i data-lucide="message-circle"></i> WhatsApp</a>
 </body>

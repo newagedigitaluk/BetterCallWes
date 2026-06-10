@@ -130,7 +130,7 @@
 
  <div class="dropdown-divider"></div>
  <a href="../services.html" class="dropdown-item"
- style="text-align: center; color: var(--text-white); font-weight: 600;">View All
+ style="text-align: center; color: var(--color-primary); font-weight: 700;">View All
  Services →</a>
  </div>
  </div>
@@ -513,7 +513,7 @@
  </footer>
 
  <script>
- lucide.createIcons();
+ window.addEventListener('DOMContentLoaded', function () { if (window.lucide) lucide.createIcons(); });
  function toggleMobileMenu() { document.getElementById('mobileNav').classList.toggle('active'); }
  function toggleFaq(btn) { btn.parentElement.classList.toggle('active'); }
  window.addEventListener('scroll', () => { document.querySelector('.header').classList.toggle('scrolled', window.scrollY > 50); });

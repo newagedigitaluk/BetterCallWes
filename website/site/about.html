@@ -145,7 +145,7 @@
 
  <div class="dropdown-divider"></div>
  <a href="services.html" class="dropdown-item"
- style="text-align: center; color: var(--text-white); font-weight: 600;">View All
+ style="text-align: center; color: var(--color-primary); font-weight: 700;">View All
  Services →</a>
  </div>
  </div>
@@ -178,7 +178,7 @@
  <!-- Photo-led hero (Wes profile background, gradient overlay) -->
  <section class="hero page-hero" style="position: relative; min-height: 60vh;  padding-bottom: 80px; overflow: hidden;">
    <div style="position: absolute; inset: 0; z-index: 0;">
-     <img src="assets/images/wes-profile.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: center 20%;" fetchpriority="high" decoding="async">
+     <img src="assets/images/hero-wes-van-wide.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; object-position: center 20%;" fetchpriority="high" decoding="async">
      <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15,41,66,0.9) 0%, rgba(15,41,66,0.7) 50%, rgba(15,41,66,0.1) 100%);"></div>
    </div>
    <div class="container" style="position: relative; z-index: 1;">
@@ -312,7 +312,7 @@
  </footer>
 
  <script>
- lucide.createIcons();
+ window.addEventListener('DOMContentLoaded', function () { if (window.lucide) lucide.createIcons(); });
 
  // Mobile menu toggle
  function toggleMobileMenu() {

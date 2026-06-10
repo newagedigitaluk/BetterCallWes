@@ -179,7 +179,7 @@
  </footer>
 
  <script>
- lucide.createIcons();
+ window.addEventListener('DOMContentLoaded', function () { if (window.lucide) lucide.createIcons(); });
 
  // Mobile menu toggle
  function toggleMobileMenu() {
