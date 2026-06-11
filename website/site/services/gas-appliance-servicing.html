@@ -260,8 +260,11 @@
  </nav>
  </header>
 
- <section class="hero" style="background: var(--color-primary); padding-bottom: 80px;">
- <div class="container">
+ <section class="hero page-hero" style="position: relative; overflow: hidden;">
+ <div class="hero-bg">
+   <img src="../assets/images/wes-servicing.webp" alt="Wes on the job: Gas Cooker & Hob Installation in Southampton" fetchpriority="high" decoding="async">
+ </div>
+ <div class="container" style="position: relative; z-index: 1;">
  <div class="hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
  <h1 style="color: white; margin-bottom: 1.5rem;">Gas Cooker & Hob Installation in Southampton</h1>
  <p style="color: rgba(255,255,255,0.8); font-size: 1.25rem; margin-bottom: 2rem;">Service, repair, and installation of gas boilers, hobs, cookers, and fires. All Gas Safe registered work.</p>
@@ -269,6 +272,7 @@
  <a href="../booking.html" class="btn btn-primary"><i data-lucide="calendar"></i> Book Online</a>
  <a href="https://wa.me/447700155655" class="btn btn-outline" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); color: white;"><i data-lucide="video"></i> WhatsApp Quote</a>
  </div>
+ <p style="margin: 1.75rem auto 0; color: rgba(255,255,255,0.92); font-size: 1.05rem; font-weight: 600;"><strong style="color: var(--color-accent);">Fixed prices</strong> &middot; no call-out fee on weekdays</p>
  </div>
  </div>
  </section>
@@ -337,19 +341,61 @@
 </section>
 <!-- END MID CTA -->
 
-<!-- BEGIN REVIEWS WIDGET -->
+<!-- BEGIN REVIEWS (static, real Google reviews) -->
 <section class="section section-gray">
-  <div class="container" style="max-width: 900px;">
+  <div class="container">
     <div class="section-header">
       <div class="section-label">REVIEWS</div>
       <h2>What Southampton homeowners say</h2>
+      <p>Real Google reviews. 4.9 from 200+ at the last count.</p>
     </div>
-    <script defer type='text/javascript' src='https://i.bettercallwes.co.uk/reputation/assets/review-widget.js'></script>
-    <iframe class='lc_reviews_widget' src='https://i.bettercallwes.co.uk/reputation/widgets/review_widget/7sUSfobemejSgrc2sd3v' frameborder='0' scrolling='no' style='min-width: 100%; width: 100%;'></iframe>
-    <p style="text-align: center; margin-top: 1rem;"><a href="../reviews.html">See all reviews &rarr;</a></p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+      <div class="review-card">
+        <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p class="review-quote">&ldquo;Wes was very prompt and incredibly efficient in servicing our boiler. Also very reasonably priced. Will be using him again for our boiler and plumbing needs.&rdquo;</p>
+        <div class="review-name">Loz</div>
+        <div class="review-meta">Google review &middot; boiler service</div>
+      </div>
+      <div class="review-card">
+        <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p class="review-quote">&ldquo;Wes serviced my boiler today and I was highly satisfied by his professionalism and tidy work. Great communication, would highly recommend.&rdquo;</p>
+        <div class="review-name">Dawn King</div>
+        <div class="review-meta">Google review &middot; boiler service</div>
+      </div>
+      <div class="review-card">
+        <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p class="review-quote">&ldquo;We were able to book Wes promptly after moving in to a new house to service the two boilers. He was efficient, professional and tidied up after he had finished. Reasonable charge too.&rdquo;</p>
+        <div class="review-name">Jenny Coward</div>
+        <div class="review-meta">Google review &middot; boiler servicing</div>
+      </div>
+    </div>
+    <p style="text-align: center; margin-top: 2rem;"><a href="../reviews.html" class="learn-more">See all reviews <i data-lucide="arrow-right" size="16"></i></a></p>
   </div>
 </section>
-<!-- END REVIEWS WIDGET -->
+<!-- END REVIEWS -->
+
+
+<!-- BEGIN WHO TURNS UP -->
+<section class="section">
+  <div class="container">
+    <div class="grid-2col">
+      <div style="max-width: 460px;">
+        <img src="../assets/images/hero-wes-van.webp" alt="Wes beside his black Transit van" loading="lazy" decoding="async" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+      </div>
+      <div>
+        <div class="section-label">WHO TURNS UP</div>
+        <h2>It's me who answers, quotes and fixes</h2>
+        <p style="margin: 1.1rem 0;">No call centre, no subcontractors. The person reading your WhatsApp is the person who turns up and the person who signs off the guarantee. Look for the black Transit.</p>
+        <div class="cred-row">
+          <span><i data-lucide="badge-check"></i> Gas Safe #558654</span>
+          <span><i data-lucide="shield"></i> Fully insured</span>
+        </div>
+        <a href="../booking.html" class="btn btn-primary"><i data-lucide="calendar-check"></i> Book Online</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END WHO TURNS UP -->
 
 <section class="section section-gray">
   <div class="container" style="max-width: 800px;">

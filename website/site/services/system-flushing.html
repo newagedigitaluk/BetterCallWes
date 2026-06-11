@@ -116,11 +116,12 @@
  </div>
  </header>
 
- <section class="hero">
- <div class="container">
- <div class="hero-grid">
- <div class="hero-content">
- <span class="badge"><i data-lucide="waves" size="16"></i> Deep Clean</span>
+ <section class="hero page-hero" style="position: relative; overflow: hidden;">
+ <div class="hero-bg">
+   <img src="../assets/images/wes-powerflush.webp" alt="Wes on the job: System Flushing" fetchpriority="high" decoding="async">
+ </div>
+ <div class="container" style="position: relative; z-index: 1;">
+ <div class="hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
  <h1>System <span>Flushing</span></h1>
  <p>Remove sludge and debris from your heating system. Improve radiator performance and extend your
  boiler's life.</p>
@@ -129,11 +130,7 @@
  <a href="tel:07700155655" class="btn btn-dark"><i data-lucide="phone" size="18"></i> 07700 155
  655</a>
  </div>
- </div>
- <div class="hero-image-wrapper">
- <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
- alt="System Flushing" class="hero-image" loading="lazy" decoding="async">
- </div>
+ <p style="margin: 1.75rem auto 0; color: rgba(255,255,255,0.92); font-size: 1.05rem; font-weight: 600;"><strong style="color: var(--color-accent);">From &pound;440 (up to 7 radiators)</strong></p>
  </div>
  </div>
  </section>
@@ -253,19 +250,61 @@
 </section>
 <!-- END MID CTA -->
 
-<!-- BEGIN REVIEWS WIDGET -->
+<!-- BEGIN REVIEWS (static, real Google reviews) -->
 <section class="section section-gray">
-  <div class="container" style="max-width: 900px;">
+  <div class="container">
     <div class="section-header">
       <div class="section-label">REVIEWS</div>
       <h2>What Southampton homeowners say</h2>
+      <p>Real Google reviews. 4.9 from 200+ at the last count.</p>
     </div>
-    <script defer type='text/javascript' src='https://i.bettercallwes.co.uk/reputation/assets/review-widget.js'></script>
-    <iframe class='lc_reviews_widget' src='https://i.bettercallwes.co.uk/reputation/widgets/review_widget/7sUSfobemejSgrc2sd3v' frameborder='0' scrolling='no' style='min-width: 100%; width: 100%;'></iframe>
-    <p style="text-align: center; margin-top: 1rem;"><a href="../reviews.html">See all reviews &rarr;</a></p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+      <div class="review-card">
+        <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p class="review-quote">&ldquo;CH system needed a power flush. It couldn't have gone any better: good communication, quick response and quick appointment. Turned up on time, job done, no fuss. Highly recommended, and that doesn't come easily from me.&rdquo;</p>
+        <div class="review-name">Peter Bartholomew</div>
+        <div class="review-meta">Google review &middot; power flush</div>
+      </div>
+      <div class="review-card">
+        <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p class="review-quote">&ldquo;Really quick to come out after the initial phone call. Radiators and valves were fitted perfectly and the place was left tidy before he left. Friendly, professional and fairly priced.&rdquo;</p>
+        <div class="review-name">Jack Lewis</div>
+        <div class="review-meta">Google review &middot; radiators & valves</div>
+      </div>
+      <div class="review-card">
+        <span class="stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <p class="review-quote">&ldquo;Made time for me during a busy season, not leaving me and my family in the cold. Able to get the parts and fit them the same morning. Would recommend.&rdquo;</p>
+        <div class="review-name">Conroy Williams</div>
+        <div class="review-meta">Google review &middot; heating repair</div>
+      </div>
+    </div>
+    <p style="text-align: center; margin-top: 2rem;"><a href="../reviews.html" class="learn-more">See all reviews <i data-lucide="arrow-right" size="16"></i></a></p>
   </div>
 </section>
-<!-- END REVIEWS WIDGET -->
+<!-- END REVIEWS -->
+
+
+<!-- BEGIN WHO TURNS UP -->
+<section class="section">
+  <div class="container">
+    <div class="grid-2col">
+      <div style="max-width: 460px;">
+        <img src="../assets/images/hero-wes-van.webp" alt="Wes beside his black Transit van" loading="lazy" decoding="async" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+      </div>
+      <div>
+        <div class="section-label">WHO TURNS UP</div>
+        <h2>It's me who answers, quotes and fixes</h2>
+        <p style="margin: 1.1rem 0;">No call centre, no subcontractors. The person reading your WhatsApp is the person who turns up and the person who signs off the guarantee. Look for the black Transit.</p>
+        <div class="cred-row">
+          <span><i data-lucide="badge-check"></i> Gas Safe #558654</span>
+          <span><i data-lucide="shield"></i> Fully insured</span>
+        </div>
+        <a href="../booking.html" class="btn btn-primary"><i data-lucide="calendar-check"></i> Book Online</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END WHO TURNS UP -->
 
 <section class="section section-gray">
   <div class="container" style="max-width: 800px;">
