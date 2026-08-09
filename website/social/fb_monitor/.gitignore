@@ -1,0 +1,4 @@
+# Never commit session credentials or seen-post state
+storage_state.json
+state/seen_posts.json
+*.log

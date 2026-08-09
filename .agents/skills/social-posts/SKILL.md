@@ -66,9 +66,7 @@ Every post **must include** a link to the relevant service page. Match the link 
 **Available service page URLs:**
 - https://bettercallwes.co.uk/services/boiler-repair.html
 - https://bettercallwes.co.uk/services/boiler-servicing.html
-- https://bettercallwes.co.uk/services/boiler-installation.html
-- https://bettercallwes.co.uk/services/new-boiler.html
-- https://bettercallwes.co.uk/services/combi-boiler-installations.html
+- https://bettercallwes.co.uk/services/boiler-installation.html (covers new boilers, combi swaps, system and regular installs)
 - https://bettercallwes.co.uk/services/power-flushing.html
 - https://bettercallwes.co.uk/services/central-heating.html
 - https://bettercallwes.co.uk/services/gas-safety-check.html

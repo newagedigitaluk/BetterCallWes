@@ -1,0 +1,795 @@
+{
+  "version": "2026-05-13",
+  "_notes": "Hand-built catalogue. Every image in website/site/assets/images was visually inspected and tagged.  Key insight: ~70% of 'asset' files actually show Wes in action — these are now tagged person:wes and routed to brand/work hints rather than generic asset hints, so anonymous-equipment posts get anonymous-equipment images.",
+  "asset_dir": "website/site/assets/images",
+  "images": {
+    "boiler-repair.webp": {
+      "shows": "Modern Ideal combi boiler wall-mounted in a kitchen. Digital display reads 48°C HEATING. Clean copper pipework with magnetic filter. White subway tile backsplash. Sink and worktop in foreground.",
+      "person": null,
+      "primary": "boiler",
+      "tags": [
+        "combi",
+        "ideal",
+        "kitchen",
+        "stock",
+        "modern"
+      ],
+      "good_for": [
+        "asset:boiler",
+        "asset:boiler_generic",
+        "asset:boiler_controls"
+      ]
+    },
+    "boiler-fitting.webp": {
+      "shows": "Wes (navy polo, no logo visible) holding a new Worcester Bosch combi boiler being lifted into position on a wall. Bare wall behind, packaging on floor.",
+      "person": "wes",
+      "primary": "boiler-install",
+      "tags": [
+        "worcester",
+        "install",
+        "mid-work"
+      ],
+      "good_for": [
+        "work:install",
+        "brand:wes_with_tools",
+        "brand:wes_with_boiler"
+      ]
+    },
+    "boiler-heatex-clean-vs-dirty.webp": {
+      "shows": "Two Baxi heat exchangers side by side on a Baxi service mat. Left one clean (silver fins), right one filthy with carbon/debris build-up. Pure before/after pair.",
+      "person": null,
+      "primary": "heatex",
+      "tags": [
+        "before-after",
+        "service",
+        "baxi",
+        "asmr-reveal"
+      ],
+      "good_for": [
+        "asset:heatex",
+        "before_after:service",
+        "tips:service-matters"
+      ]
+    },
+    "boiler-systems.webp": {
+      "shows": "Wes standing in a utility room next to a Worcester combi + unvented cylinder + UFH manifold. Branded polo. Full system showcase.",
+      "person": "wes",
+      "primary": "system-boiler",
+      "tags": [
+        "worcester",
+        "system-boiler",
+        "cylinder",
+        "manifold"
+      ],
+      "good_for": [
+        "work:install",
+        "brand:wes_with_van",
+        "brand:wes_with_tools"
+      ]
+    },
+    "combi-boiler-installations.webp": {
+      "shows": "Wes kneeling next to an installed Worcester combi, holding a copper pipe section, tools on dust sheet. Mid-job.",
+      "person": "wes",
+      "primary": "boiler-install",
+      "tags": [
+        "worcester",
+        "install",
+        "tools",
+        "mid-work"
+      ],
+      "good_for": [
+        "work:install",
+        "work:boiler_repair",
+        "brand:wes_with_tools"
+      ]
+    },
+    "stripped-old-boiler.webp": {
+      "shows": "Old white-cased boiler with cover removed, exposed dirty interior with electronics, against wall with a clock. Looks knackered — perfect 'before' shot.",
+      "person": null,
+      "primary": "old-boiler",
+      "tags": [
+        "before",
+        "old",
+        "broken",
+        "anonymous"
+      ],
+      "good_for": [
+        "asset:old-boiler",
+        "before_after:install",
+        "cost_reveal:repair-vs-replace"
+      ]
+    },
+    "system-boiler-cylinder.webp": {
+      "shows": "Worcester unvented hot water cylinder beside wall-mounted Worcester combi with copper pipework and isolation valves. No person.",
+      "person": null,
+      "primary": "system-boiler",
+      "tags": [
+        "worcester",
+        "system-boiler",
+        "cylinder",
+        "anonymous"
+      ],
+      "good_for": [
+        "asset:boiler",
+        "asset:system-boiler",
+        "asset:cylinder"
+      ]
+    },
+    "worcester-loft-install.webp": {
+      "shows": "Worcester combi installed against bare concrete-block wall in a loft, copper pipework, Magnaclean filter, manifolds. No person.",
+      "person": null,
+      "primary": "boiler-install",
+      "tags": [
+        "worcester",
+        "loft",
+        "tidy-install",
+        "anonymous"
+      ],
+      "good_for": [
+        "asset:boiler",
+        "before_after:install",
+        "asset:install_showcase"
+      ]
+    },
+    "heating-radiator.webp": {
+      "shows": "Clean white panel radiator on a wall in a cosy living room. Sofa with knitted throw, plant, framed botanical art. Stock-style.",
+      "person": null,
+      "primary": "radiator",
+      "tags": [
+        "radiator",
+        "living-room",
+        "stock",
+        "cosy"
+      ],
+      "good_for": [
+        "asset:radiator",
+        "asset:radiator_gradient"
+      ]
+    },
+    "radiators.webp": {
+      "shows": "Wes (logo'd navy polo) using a screwdriver on a panel radiator in a hallway. Working hands-on, kneeling.",
+      "person": "wes",
+      "primary": "radiator-work",
+      "tags": [
+        "radiator",
+        "repair",
+        "tools",
+        "wes-action"
+      ],
+      "good_for": [
+        "work:radiator_swap",
+        "brand:wes_with_tools"
+      ]
+    },
+    "central-heating.webp": {
+      "shows": "Wes kneeling in a utility cupboard, holding a Fluke multimeter against opened Worcester boiler control panel. Tools on floor. Washing machine visible.",
+      "person": "wes",
+      "primary": "diagnostic",
+      "tags": [
+        "diagnostic",
+        "worcester",
+        "multimeter",
+        "wes-action",
+        "tools"
+      ],
+      "good_for": [
+        "work:boiler_repair",
+        "brand:wes_with_tools"
+      ]
+    },
+    "power-flushing.webp": {
+      "shows": "Wes kneeling next to a black Kamco power flush rig, holding orange flush hose connecting to boiler. ADEY MagnaClean visible. Mid-flush.",
+      "person": "wes",
+      "primary": "power-flush",
+      "tags": [
+        "power-flush",
+        "kamco",
+        "wes-action",
+        "mid-work"
+      ],
+      "good_for": [
+        "work:powerflush",
+        "brand:wes_with_tools"
+      ]
+    },
+    "powerflush-kit.webp": {
+      "shows": "Outdoor shot of the Kamco power flush rig + accessories on pallets in a yard. Equipment only, no person.",
+      "person": null,
+      "primary": "power-flush-kit",
+      "tags": [
+        "power-flush",
+        "kamco",
+        "equipment",
+        "anonymous"
+      ],
+      "good_for": [
+        "asset:powerflush_kit",
+        "asset:tools"
+      ]
+    },
+    "system-flushing.webp": {
+      "shows": "Wes (blue gloves, branded polo) pouring jet-black sludge water from an ADEY MagnaClean filter into a clear bucket. Dramatic sludge-reveal shot.",
+      "person": "wes",
+      "primary": "power-flush",
+      "tags": [
+        "sludge",
+        "magnaclean",
+        "wes-action",
+        "asmr-reveal",
+        "dirty"
+      ],
+      "good_for": [
+        "work:powerflush",
+        "before_after:flush",
+        "list:things-i-find"
+      ]
+    },
+    "neat-copper-manifold.webp": {
+      "shows": "Tidy run of parallel copper pipes against a wall with a black magnetic filter mounted. Floor lifted. Tradesman porn — clean install.",
+      "person": null,
+      "primary": "pipework",
+      "tags": [
+        "copper",
+        "manifold",
+        "tidy-install",
+        "anonymous",
+        "showcase"
+      ],
+      "good_for": [
+        "asset:pipe",
+        "asset:manifold",
+        "work:manifold",
+        "asset:install_showcase"
+      ]
+    },
+    "copper-pipework.webp": {
+      "shows": "Close-up of copper pipework with multiple junction fittings and a brass compression fitting. Against neutral wall. Detail shot.",
+      "person": null,
+      "primary": "pipework",
+      "tags": [
+        "copper",
+        "fittings",
+        "detail",
+        "anonymous"
+      ],
+      "good_for": [
+        "asset:pipe",
+        "asset:pipework_detail",
+        "asset:plumbing"
+      ]
+    },
+    "gas-safety.webp": {
+      "shows": "Domestic gas meter installation: yellow gas pipes, Elster BK-G4 meter, brass valves and isolation taps. Clean equipment shot.",
+      "person": null,
+      "primary": "gas-meter",
+      "tags": [
+        "gas-meter",
+        "anonymous",
+        "stock"
+      ],
+      "good_for": [
+        "asset:gas",
+        "asset:gas-meter",
+        "tips:gas-safety"
+      ]
+    },
+    "gas-services.webp": {
+      "shows": "Wes outdoors at an external gas meter cabinet, holding clipboard, inspecting. Low-res small image.",
+      "person": "wes",
+      "primary": "gas-inspection",
+      "tags": [
+        "gas",
+        "inspection",
+        "outdoor",
+        "wes-action",
+        "cp12"
+      ],
+      "good_for": [
+        "work:gas_inspection",
+        "brand:wes_with_tools"
+      ]
+    },
+    "gas-appliance-servicing.webp": {
+      "shows": "Wes in a kitchen lifting a gas hob unit out of the worktop, tools visible (wrench, tape measure, flexi-hose). Mid-removal.",
+      "person": "wes",
+      "primary": "gas-appliance",
+      "tags": [
+        "gas-hob",
+        "wes-action",
+        "kitchen",
+        "mid-work"
+      ],
+      "good_for": [
+        "work:gas_appliance",
+        "work:gas_inspection",
+        "brand:wes_with_tools"
+      ]
+    },
+    "gas-pipe-installation.webp": {
+      "shows": "Wes kneeling on dust sheet, soldering copper pipe under wall-mounted boiler. Brass fittings laid out. Persil bottle visible.",
+      "person": "wes",
+      "primary": "pipework",
+      "tags": [
+        "copper",
+        "soldering",
+        "wes-action",
+        "mid-work"
+      ],
+      "good_for": [
+        "work:install",
+        "work:pipe_repair",
+        "brand:wes_with_tools"
+      ]
+    },
+    "gas-leak-detection.webp": {
+      "shows": "Wes kneeling next to a gas hob in kitchen, using an electronic gas leak detector with LED probe. Looking focused at the appliance.",
+      "person": "wes",
+      "primary": "gas-leak",
+      "tags": [
+        "gas-leak",
+        "detection",
+        "wes-action",
+        "kitchen"
+      ],
+      "good_for": [
+        "work:gas_inspection",
+        "brand:wes_with_tools",
+        "tips:gas-safety"
+      ]
+    },
+    "heating-controls.webp": {
+      "shows": "Wes in a hallway using a screwdriver on a Nest-style round thermostat dial on the wall. Mid-install.",
+      "person": "wes",
+      "primary": "thermostat",
+      "tags": [
+        "thermostat",
+        "nest",
+        "wes-action",
+        "install"
+      ],
+      "good_for": [
+        "work:smart_install",
+        "brand:wes_with_tools"
+      ]
+    },
+    "smart-controls.webp": {
+      "shows": "Wes installing a Nest smart thermostat on the wall, while another hand (customer) holds a phone showing the Nest app set to 18°C. Two-hand composition.",
+      "person": "wes",
+      "primary": "thermostat",
+      "tags": [
+        "thermostat",
+        "nest",
+        "smart",
+        "app",
+        "wes-action",
+        "install"
+      ],
+      "good_for": [
+        "asset:smart",
+        "work:smart_install",
+        "brand:wes_with_phone"
+      ]
+    },
+    "plumbing-repairs.webp": {
+      "shows": "Chrome mixer tap in a kitchen with running water into a white sink, garden visible through window. Stock-feel.",
+      "person": null,
+      "primary": "tap",
+      "tags": [
+        "tap",
+        "kitchen",
+        "stock",
+        "anonymous"
+      ],
+      "good_for": [
+        "asset:tap",
+        "asset:plumbing",
+        "asset:kitchen"
+      ]
+    },
+    "bathroom-shower.webp": {
+      "shows": "Modern walk-in shower with rain head running water, glass screen, white subway tile, white sink unit. Clean stock-style.",
+      "person": null,
+      "primary": "shower",
+      "tags": [
+        "shower",
+        "bathroom",
+        "stock",
+        "modern"
+      ],
+      "good_for": [
+        "asset:shower",
+        "asset:bathroom"
+      ]
+    },
+    "shower-repair.webp": {
+      "shows": "Wes in beige-tiled bathroom holding a thermostatic shower cartridge, examining recessed shower valve. Mid-repair.",
+      "person": "wes",
+      "primary": "shower-repair",
+      "tags": [
+        "shower",
+        "cartridge",
+        "wes-action",
+        "repair"
+      ],
+      "good_for": [
+        "work:shower",
+        "brand:wes_with_tools"
+      ]
+    },
+    "showers.webp": {
+      "shows": "Wes in white-tiled bathroom using a yellow spirit level to align a shower riser rail. Mid-install.",
+      "person": "wes",
+      "primary": "shower-install",
+      "tags": [
+        "shower",
+        "install",
+        "wes-action",
+        "spirit-level"
+      ],
+      "good_for": [
+        "work:shower",
+        "brand:wes_with_tools"
+      ]
+    },
+    "tap-before-corroded.webp": {
+      "shows": "Heavily limescaled chrome tap, thick black build-up around base, on wooden worktop. Disgusting close-up.",
+      "person": null,
+      "primary": "tap-before",
+      "tags": [
+        "tap",
+        "before",
+        "corroded",
+        "limescale",
+        "asmr-reveal"
+      ],
+      "good_for": [
+        "before_after:tap",
+        "list:cowboy-moves"
+      ]
+    },
+    "tap-after-chrome.webp": {
+      "shows": "Clean chrome mixer tap on wooden worktop, white sink, blinds in background. Paired 'after' shot.",
+      "person": null,
+      "primary": "tap-after",
+      "tags": [
+        "tap",
+        "after",
+        "clean",
+        "chrome"
+      ],
+      "good_for": [
+        "before_after:tap",
+        "asset:tap"
+      ]
+    },
+    "tap-repair.webp": {
+      "shows": "Wes in a kitchen holding a blue tap cartridge, new replacement cartridge in packaging on worktop. Mid-repair.",
+      "person": "wes",
+      "primary": "tap-repair",
+      "tags": [
+        "tap",
+        "cartridge",
+        "wes-action",
+        "repair"
+      ],
+      "good_for": [
+        "work:tap_install",
+        "brand:wes_with_tools"
+      ]
+    },
+    "taps.webp": {
+      "shows": "Wes under a sink, looking up while fitting a chrome tap from below with both hands. Tight space.",
+      "person": "wes",
+      "primary": "tap-install",
+      "tags": [
+        "tap",
+        "install",
+        "wes-action",
+        "under-sink"
+      ],
+      "good_for": [
+        "work:tap_install",
+        "brand:wes_with_tools"
+      ]
+    },
+    "outdoor-taps.webp": {
+      "shows": "Wes kneeling outdoors against a wall, installing an outdoor garden tap with a yellow drill nearby. Small low-res image.",
+      "person": "wes",
+      "primary": "outdoor-tap",
+      "tags": [
+        "tap",
+        "outdoor",
+        "wes-action",
+        "install"
+      ],
+      "good_for": [
+        "work:tap_install",
+        "brand:wes_with_tools"
+      ]
+    },
+    "toilet-repair.webp": {
+      "shows": "Wes in a bathroom lifting the lid off a toilet cistern, tool bag on floor. Mid-repair.",
+      "person": "wes",
+      "primary": "toilet-repair",
+      "tags": [
+        "toilet",
+        "cistern",
+        "wes-action",
+        "repair"
+      ],
+      "good_for": [
+        "work:toilet_repair",
+        "brand:wes_with_tools"
+      ]
+    },
+    "toilet-repairs.webp": {
+      "shows": "Wes holding a brass flush mechanism removed from a toilet cistern, replacement parts laid on cistern lid.",
+      "person": "wes",
+      "primary": "toilet-repair",
+      "tags": [
+        "toilet",
+        "flush",
+        "mechanism",
+        "wes-action",
+        "repair"
+      ],
+      "good_for": [
+        "work:toilet_repair",
+        "brand:wes_with_tools"
+      ]
+    },
+    "pipe-leak-repair.webp": {
+      "shows": "Wes under a kitchen sink with a torch, holding a wrench, looking up at the waste pipe. Mid-inspection.",
+      "person": "wes",
+      "primary": "pipe-leak",
+      "tags": [
+        "pipe",
+        "leak",
+        "under-sink",
+        "wes-action",
+        "inspection"
+      ],
+      "good_for": [
+        "work:pipe_repair",
+        "brand:wes_with_tools"
+      ]
+    },
+    "small-plumbing-jobs.webp": {
+      "shows": "Wes kneeling under a kitchen sink, using a wrench on plastic waste pipework. Towel laid for spill. Mid-job.",
+      "person": "wes",
+      "primary": "plumbing",
+      "tags": [
+        "plumbing",
+        "under-sink",
+        "wes-action",
+        "small-job"
+      ],
+      "good_for": [
+        "work:pipe_repair",
+        "asset:plumbing",
+        "brand:wes_with_tools"
+      ]
+    },
+    "water-tank-services.webp": {
+      "shows": "Wes beside a Tribune unvented hot water cylinder in a cupboard, holding a pressure gauge connected to the cylinder.",
+      "person": "wes",
+      "primary": "water-tank",
+      "tags": [
+        "water-tank",
+        "cylinder",
+        "unvented",
+        "wes-action",
+        "gauge"
+      ],
+      "good_for": [
+        "work:tank_service",
+        "brand:wes_with_tools"
+      ]
+    },
+    "plumber-tools.webp": {
+      "shows": "Plumber's tools laid flat on wooden surface: Fluke multimeter, adjustable wrench, Ridgid pipe cutter, copper elbow fittings, pipe bender, PTFE tape. Clean overhead flat-lay.",
+      "person": null,
+      "primary": "tools",
+      "tags": [
+        "tools",
+        "flat-lay",
+        "anonymous"
+      ],
+      "good_for": [
+        "asset:tools",
+        "asset:plumbing",
+        "personal:whats-in-the-van"
+      ]
+    },
+    "van-work.webp": {
+      "shows": "Black Ford Transit Custom SWB panel van parked on the driveway of a modern UK home with side door open. Wide shot, no person.",
+      "person": null,
+      "primary": "van",
+      "tags": [
+        "van",
+        "ford-transit",
+        "anonymous"
+      ],
+      "good_for": [
+        "asset:van_southampton",
+        "local:any",
+        "personal:whats-in-the-van"
+      ]
+    },
+    "southampton-cityscape.webp": {
+      "shows": "Aerial sunset shot of Southampton skyline showing the bridge over the Itchen, marina, river, and city buildings. Iconic local hero shot.",
+      "person": null,
+      "primary": "southampton",
+      "tags": [
+        "southampton",
+        "cityscape",
+        "aerial",
+        "iconic",
+        "anonymous"
+      ],
+      "good_for": [
+        "local:any",
+        "asset:van_southampton"
+      ]
+    },
+    "hero-wes.webp": {
+      "shows": "AI-GENERATED Wes-like figure smiling next to a boiler with garbled text overlay reading 'Professional fien spequal plumbing with steals experience'. NOT a real photo. The text is gibberish.",
+      "person": "ai-generated",
+      "primary": "BROKEN",
+      "tags": [
+        "ai-generated",
+        "broken-text",
+        "do-not-use"
+      ],
+      "good_for": [],
+      "notes": "DO NOT USE. Failed AI generation with garbled text. Replace with wes-profile.webp on the homepage too — currently the live homepage hero."
+    },
+    "wes-profile.webp": {
+      "shows": "Real photo of Wes standing in front of purple wisteria flowers, smiling, navy polo with BCW logo. Clean outdoor portrait.",
+      "person": "wes",
+      "primary": "portrait",
+      "tags": [
+        "portrait",
+        "wes",
+        "real-photo",
+        "outdoor",
+        "smiling",
+        "warm"
+      ],
+      "good_for": [
+        "brand:wes_portrait",
+        "personal:intro"
+      ]
+    },
+    "../logo.png": {
+      "shows": "The Better Call Wes logo: cartoon mascot of Wes (Black African man, navy polo, holding an adjustable wrench and a phone) on an orange circle, with BETTER CALL WES PLUMBING & HEATING wordmark.",
+      "person": "mascot",
+      "primary": "logo",
+      "tags": [
+        "logo",
+        "mascot",
+        "brand"
+      ],
+      "good_for": [
+        "asset:logo_mascot"
+      ]
+    }
+  },
+  "_hint_coverage": {
+    "_comment": "Which post image_hint values have GOOD library matches today. Hints not listed have NO matches and need either new photos or AI fallback.",
+    "asset:boiler": [
+      "boiler-repair.webp",
+      "system-boiler-cylinder.webp",
+      "worcester-loft-install.webp"
+    ],
+    "asset:radiator": [
+      "heating-radiator.webp"
+    ],
+    "asset:tap": [
+      "plumbing-repairs.webp",
+      "tap-after-chrome.webp"
+    ],
+    "asset:pipe": [
+      "copper-pipework.webp",
+      "neat-copper-manifold.webp"
+    ],
+    "asset:gas": [
+      "gas-safety.webp"
+    ],
+    "asset:shower": [
+      "bathroom-shower.webp"
+    ],
+    "asset:smart": [
+      "smart-controls.webp"
+    ],
+    "asset:plumbing": [
+      "plumbing-repairs.webp",
+      "copper-pipework.webp",
+      "neat-copper-manifold.webp"
+    ],
+    "asset:van_southampton": [
+      "van-work.webp",
+      "southampton-cityscape.webp"
+    ],
+    "asset:heatex": [
+      "boiler-heatex-clean-vs-dirty.webp"
+    ],
+    "asset:tools": [
+      "plumber-tools.webp",
+      "powerflush-kit.webp"
+    ],
+    "work:install": [
+      "boiler-fitting.webp",
+      "boiler-systems.webp",
+      "combi-boiler-installations.webp",
+      "gas-pipe-installation.webp"
+    ],
+    "work:powerflush": [
+      "power-flushing.webp",
+      "system-flushing.webp"
+    ],
+    "work:tap_install": [
+      "tap-repair.webp",
+      "taps.webp",
+      "outdoor-taps.webp"
+    ],
+    "work:radiator_swap": [
+      "radiators.webp"
+    ],
+    "work:pipe_repair": [
+      "pipe-leak-repair.webp",
+      "small-plumbing-jobs.webp",
+      "gas-pipe-installation.webp"
+    ],
+    "work:boiler_repair": [
+      "central-heating.webp",
+      "combi-boiler-installations.webp"
+    ],
+    "work:shower": [
+      "shower-repair.webp",
+      "showers.webp"
+    ],
+    "work:toilet_repair": [
+      "toilet-repair.webp",
+      "toilet-repairs.webp"
+    ],
+    "work:tank_service": [
+      "water-tank-services.webp"
+    ],
+    "work:gas_inspection": [
+      "gas-services.webp",
+      "gas-leak-detection.webp",
+      "gas-appliance-servicing.webp"
+    ],
+    "work:smart_install": [
+      "heating-controls.webp",
+      "smart-controls.webp"
+    ],
+    "work:manifold": [
+      "neat-copper-manifold.webp"
+    ],
+    "brand:wes_portrait": [
+      "wes-profile.webp"
+    ],
+    "brand:wes_with_tools": [
+      "radiators.webp",
+      "central-heating.webp",
+      "power-flushing.webp",
+      "tap-repair.webp",
+      "shower-repair.webp"
+    ],
+    "brand:wes_with_phone": [
+      "smart-controls.webp"
+    ],
+    "_no_good_match_yet": {
+      "brand:wes_with_van": "No photo of Wes WITH the van. Closest: van-work.webp (van only).",
+      "work:install_showcase": "No finished-install hero shot. worcester-loft-install.webp is closest."
+    },
+    "asset:van": [
+      "van-work.webp"
+    ],
+    "asset:logo_mascot": [
+      "../logo.png"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "_comment": "Facebook group monitoring config — used by fb_monitor.py. Lead matches are pushed to Telegram.",
+  "groups": [
+    { "url": "https://www.facebook.com/groups/880153462667948",  "label": "" },
+    { "url": "https://www.facebook.com/groups/465323237747416",  "label": "" },
+    { "url": "https://www.facebook.com/groups/443720566768341",  "label": "" },
+    { "url": "https://www.facebook.com/groups/128168103676701",  "label": "" },
+    { "url": "https://www.facebook.com/groups/816555855142708",  "label": "" },
+    { "url": "https://www.facebook.com/groups/1037246376807929", "label": "" },
+    { "url": "https://www.facebook.com/groups/198607530579005",  "label": "" },
+    { "url": "https://www.facebook.com/groups/2525323134203223", "label": "" },
+    { "url": "https://www.facebook.com/groups/274058486585426",  "label": "" },
+    { "url": "https://www.facebook.com/groups/1005647172815019", "label": "" }
+  ],
+  "_filter_note": "Two-tier: STRONG terms alert on their own; WEAK/ambiguous terms need an INTENT phrase; EXCLUDE phrases hard-reject. Groups are all Southampton-local so no geo filter.",
+  "keywords": {
+    "strong": ["boiler", "central heating", "radiator", "plumber", "plumbing", "burst pipe", "no hot water", "no heat", "no heating", "cold radiator", "cold rads", "power flush", "powerflush", "magnaclean", "immersion", "stopcock", "pilot light", "kettling", "gas leak", "gas safe", "gas safety", "boiler service", "combi", "cp12", "landlord certificate", "landlord cert", "cylinder", "trv", "underfloor heating", "water tank", "dripping tap", "leaking tap", "leaking pipe", "blocked drain", "blocked toilet", "leaking radiator"],
+    "weak": ["gas", "tap", "shower", "toilet", "leak", "leaking", "drain", "pressure", "heating", "thermostat", "pipe", "flush", "valve"],
+    "intent": ["recommend", "any recommend", "anyone know", "does anyone", "can anyone", "looking for", "need a", "need someone", "need an", "who does", "who can", "quote", "come out", "fix", "repair", "replace", "install", "fit ", "not working", "stopped working", "broken", "help with", "issue with", "issues with", "problem with", "sort out", "sort it", "urgent", "engineer", "tradesman", "plumb", "leaking", "burst", "no hot", "no heat", "emergency"],
+    "exclude": ["baby shower", "bridal shower", "gas bill", "gas prices", "gas price", "gas & electric", "gas and electric", "energy bill", "british gas", "sse", "octopus energy", "blood pressure", "under pressure", "no pressure", "peer pressure", "tap the link", "tap here", "tap to ", "on tap", "for sale", "for sell", "selling", "free to collect", "giveaway", "wanted:", "raffle", "hairdresser", "cleaner wanted", "gardener", "childcare", "estate agent", "gas station", "petrol", "heating oil for sale", "sponsored", "gas mark"]
+  },
+  "urgent":  ["urgent", "emergency", "asap", "tonight", "today", "no heating", "no hot water", "kids", "baby", "elderly", "winter", "help", "flooding", "burst"],
+  "polling": {
+    "interval_minutes": 15,
+    "startup_jitter_seconds": 180,
+    "max_posts_per_group": 20,
+    "lookback_hours": 4
+  },
+  "filters": {
+    "require_trade_match": true,
+    "min_post_length_chars": 25
+  }
+}
