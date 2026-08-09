@@ -24,6 +24,44 @@ PLATFORM_MAP = {
 }
 
 
+def ensure_instagram_safe(image_bytes: bytes, filename: str) -> tuple:
+    """Convert WebP → JPEG so Instagram accepts the image.
+
+    Instagram's API rejects WebP (returns a 400). Most of the BCW asset
+    library is .webp, so any time a WebP reached the upload step — via the
+    generation fallback, or a WebP base photo — Instagram silently failed
+    while Facebook and Google Business posted fine.
+
+    PNG is left alone (it posts successfully). Only WebP is converted.
+
+    Returns: (image_bytes, filename, content_type)
+    """
+    ext = os.path.splitext(filename)[1].lower()
+    if ext == ".webp":
+        try:
+            from PIL import Image
+            img = Image.open(io.BytesIO(image_bytes))
+            # JPEG has no alpha channel — flatten onto white if needed
+            if img.mode in ("RGBA", "LA", "P"):
+                img = img.convert("RGBA")
+                bg = Image.new("RGB", img.size, (255, 255, 255))
+                bg.paste(img, mask=img.split()[-1])
+                img = bg
+            else:
+                img = img.convert("RGB")
+            buf = io.BytesIO()
+            img.save(buf, format="JPEG", quality=92)
+            new_name = os.path.splitext(filename)[0] + ".jpg"
+            print(f"  [image] Converted WebP → JPEG for Instagram compatibility ({new_name})")
+            return buf.getvalue(), new_name, "image/jpeg"
+        except Exception as e:
+            print(f"  [image] ⚠️  WebP→JPEG conversion failed ({e}); uploading as-is")
+            return image_bytes, filename, "image/webp"
+    if ext == ".png":
+        return image_bytes, filename, "image/png"
+    return image_bytes, filename, "image/jpeg"
+
+
 class ZernioClient:
     def __init__(self, api_key: str = None):
         self.api_key = api_key or ZERNIO_API_KEY
@@ -80,13 +118,11 @@ class ZernioClient:
             raise FileNotFoundError(f"Image file not found: {local_path}")
 
         filename = os.path.basename(local_path)
-        ext = os.path.splitext(filename)[1].lower()
-        content_type = "image/png" if ext == ".png" else (
-            "image/webp" if ext == ".webp" else "image/jpeg"
-        )
 
         with open(local_path, "rb") as f:
             image_bytes = f.read()
+
+        image_bytes, filename, content_type = ensure_instagram_safe(image_bytes, filename)
 
         # Try litterbox.catbox.moe (anonymous, 72h expiry — long enough for posting)
         try:
@@ -140,11 +176,11 @@ class ZernioClient:
         dl_resp.raise_for_status()
         image_bytes = dl_resp.content
 
-        # Detect content type from response or URL
+        # Detect content type from response or URL, then make Instagram-safe
         content_type = dl_resp.headers.get("Content-Type", "image/jpeg").split(";")[0].strip()
         ext_map = {"image/jpeg": ".jpg", "image/png": ".png", "image/webp": ".webp"}
-        ext = ext_map.get(content_type, ".jpg")
-        filename = f"kie_generated{ext}"
+        filename = f"generated{ext_map.get(content_type, '.jpg')}"
+        image_bytes, filename, content_type = ensure_instagram_safe(image_bytes, filename)
 
         # Try litterbox first, then catbox as fallback
         try:

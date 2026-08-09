@@ -118,7 +118,7 @@ def apply_luxury_template(service_file, template_path, output_dir):
 
 def main():
     # Paths
-    base_dir = Path("/home/wes/Coding/Projects/Better Call Wes/Website/services")
+    base_dir = Path("/home/wes/Coding/Projects/Better Call Wes/website/site/services")
     template_file = base_dir / "boiler-repair.html"
 
     # Priority services to upgrade first

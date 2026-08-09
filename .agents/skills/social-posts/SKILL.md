@@ -14,7 +14,7 @@ You are a social media content expert creating automated post batches for **Bett
 **Read these files first:**
 1. `SITE.md` — business context, contact details (phone, WhatsApp, Gas Safe reg, hours)
 2. `SEO Site Design/location_data.json` — Southampton area locations and landmarks
-3. Skim `Website/services/` — service page filenames and content (signs, FAQs, pricing)
+3. Skim `website/site/services/` — service page filenames and content (signs, FAQs, pricing)
 
 ---
 
@@ -157,8 +157,41 @@ Each post needs an image. Choose the right type for the content:
 | `work` | Emergency, before/after, real jobs | Takes a real job photo and adds text caption overlay |
 | `asset` | Tips, education, local | Takes a service graphic (boiler, radiator, van, etc.) and adds text caption overlay |
 | `ai` | Pricing, conceptual, abstract | Generates a new image from scratch |
+| `review_card` | Testimonials | Uses a pre-rendered Pillow review card (NOT AI — verbatim quote). See below. |
 
-`caption`: The text that appears overlaid on the image. Keep it short — max 8 words, punchy, matches the post hook.
+### ⚠️ REQUIRED: every post must include an `image_hint`
+
+This is the field that selects the *actual* photo. **Omitting it is a real bug** — the original batch left it out, and every personal/Wes/testimonial post wrongly pulled a generic boiler image. `image_hint` is `category:subject`. Valid values (must match `website/social/image_catalogue.json` `_hint_coverage` keys):
+
+| Pillar | Use these hints |
+|--------|-----------------|
+| Personal — intro/values/"I'm Wes" | `brand:wes_portrait` |
+| Personal — day on job / favourite / hardest | `brand:wes_with_tools` |
+| Personal — van / "what I carry" | `asset:van` |
+| Personal/Emergency — WhatsApp video / progress photos | `brand:wes_with_phone` |
+| Trust — testimonial / review | `review_card` |
+| Trust — guarantee / after-hours | `brand:wes_portrait` |
+| Trust/Cost — pricing / invoice / "no mystery bill" | `ai` |
+| Local — area coverage | `asset:van_southampton` |
+| Local — CP12 / landlord | `asset:gas` |
+| Emergency — burst pipe | `asset:pipe` |
+| Boiler topics | `asset:boiler` (generic) / `work:install` (fitting) / `work:boiler_repair` (repair) |
+| Radiator / heating | `asset:radiator` |
+| Power flush / sludge | `work:powerflush` |
+| Gas safety / CP12 | `asset:gas` |
+| Tap / shower / toilet / pipe | `asset:tap` / `asset:shower` / `work:toilet_repair` / `asset:pipe` |
+
+The picker has a pillar-aware fallback (`infer_image_hint`) so it self-corrects if you forget, but **always set it explicitly** — the fallback is a safety net, not the plan.
+
+### ⚠️ Before/after captions must be deliverable by ONE image
+
+A caption that promises a transformation (`→`, `before vs after`, `out, X in`, `clogged → flowing`) only works if the image is a genuine before/after. We have very few real pair images (`tap-before/after`, `boiler-heatex-clean-vs-dirty`). **If no real pair exists, reword the caption so a single image satisfies it.** e.g. NOT "Dirty burner → clean burner" over one closed boiler. Instead: "Why your boiler needs an annual service 🔥". The single image must *be* what the caption describes.
+
+### Testimonials → `review_card` (never AI)
+
+Set `image_type: "review_card"` + `image_hint: "review_card"` + `prerendered_image: "review_cards/<file>.png"`. Cards are rendered by `website/social/review_card.py` from `reviews.json` (**real reviews only — never fabricate**). `post_daily.py` uploads the card directly and skips Kie AI (so the verbatim quote never gets garbled). This was the single best-performing organic format.
+
+`caption`: The text that appears overlaid on the image. Keep it short — max 8 words, punchy, matches the post hook. (Ignored for `review_card` — the card carries its own text.)
 
 `image_prompt`: Structured prompts engineered for **GPT Image 2** (OpenAI's image model exposed via Kie.ai). GPT Image 2 is best-in-class on text rendering but the Kie.ai wrapper doesn't expose a mask parameter — every image-to-image call is a full re-render guided by the source. Preservation is entirely prompt-driven, so prompts MUST be structured and explicit.
 
@@ -218,9 +251,10 @@ Each object must have ALL of these fields:
   "instagram": "Full Instagram caption with hook, body, 🔗 Link in bio, blank line, then hashtags",
   "twitter": "Tweet text ≤260 chars including https:// service URL and 1-2 hashtags",
   "googlebusiness": "Google Business post — 100-150 words, professional, includes https:// service URL, no hashtags",
-  "image_type": "brand|work|asset|ai",
+  "image_type": "brand|work|asset|ai|review_card",
+  "image_hint": "REQUIRED — e.g. asset:boiler, work:powerflush, brand:wes_portrait, asset:van, review_card (see Image Strategy table)",
   "caption": "Short overlay text ≤8 words",
-  "image_prompt": "Detailed prompt for Kie AI image generation or overlay"
+  "image_prompt": "Detailed prompt for Kie AI image generation or overlay (omit/ignored for review_card)"
 }
 ```
 
@@ -235,6 +269,10 @@ Start at `post_001` and increment: `post_001`, `post_002`, ... `post_030`.
 - [ ] Instagram posts do NOT contain the service URL in the body
 - [ ] Facebook posts do NOT contain hashtags
 - [ ] All `image_prompt` fields are filled (even for brand/work/asset — they describe the overlay)
+- [ ] **Every post has an `image_hint`** matching a key in `image_catalogue.json` `_hint_coverage`
+- [ ] Personal/testimonial/Wes posts use `brand:*` / `review_card` hints — NEVER a generic `asset:boiler`
+- [ ] No before/after caption (`→`, `before vs after`) unless a genuine pair image exists for it
+- [ ] The `image_hint` subject agrees with the `image_prompt` SOURCE description (don't say "Wes beside van" with a boiler hint)
 - [ ] Roughly 15 boiler-focused + 15 other-service posts
 - [ ] **ZERO mentions of "No VAT", "VAT", or Gas Safe registration number** in any post text
 - [ ] Posts are customer-centric — focused on the customer's problem and outcome, not credentials

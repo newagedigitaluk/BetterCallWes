@@ -52,7 +52,7 @@ After reading, summarise what you understand about the current state of the proj
 - **Language**: British English throughout — "colour" not "color", "optimise" not "optimize", "plumber" not "plumber" (obvs), etc.
 - **Code style**: Keep Python scripts simple and self-contained. No unnecessary abstractions or dependencies.
 - **HTML/CSS**: Semantic HTML5, mobile-first CSS. Match the established design system (Navy `#0A2540`, Orange `#FF6B00`).
-- **SEO**: Every page must have a unique `<title>`, `<meta description>`, canonical URL, and JSON-LD schema where appropriate.
+- **SEO**: The user-level `seo` skill governs all SEO work (site registry, house conventions, audit/keyword/report workflows). Site-specific: local SEO for SO14–SO51 — LocalBusiness schema, service and location pages. This is the only site with an `llms.txt` (`website/site/llms.txt`). The sitemap is hand-maintained, so add new pages to it manually. `website/scripts/seo/` holds the PAA harvester, Google Business Profile and Clarity pulls — the MCP tools have no equivalent, so these stay; use MCP for everything else.
 - **Links**: Always validate internal links after any structural changes (`website/scripts/validate_links.py`).
 - **No frameworks**: Do not introduce JS frameworks (React, Vue, etc.) unless explicitly asked. The site is intentionally plain HTML/CSS.
 - **Deployment**: Docker + Coolify. Do not commit secrets. Environment variables go in Coolify, not in code.

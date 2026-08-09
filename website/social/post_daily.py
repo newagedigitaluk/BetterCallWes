@@ -18,6 +18,7 @@ Cron example (8am daily):
 import sys
 import json
 import os
+import time
 from pathlib import Path
 from datetime import datetime, timezone
 
@@ -47,6 +48,34 @@ def log(message: str):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     line = f"[{timestamp}] {message}"
     print(line)
+
+
+def notify_telegram(text: str) -> bool:
+    """Send an ops alert to Wes's Telegram (BCW channel). Best-effort —
+    never raises; posting must not fail because an alert couldn't send.
+
+    Added after Kie credits silently ran out on 2026-05-30 and Instagram
+    went dark for 12 days with nobody noticing."""
+    try:
+        import requests
+        env_path = Path.home() / ".claude" / "channels" / "telegram-bcw" / ".env"
+        access_path = Path.home() / ".claude" / "channels" / "telegram-bcw" / "access.json"
+        token = None
+        for ln in env_path.read_text().splitlines():
+            if ln.startswith("TELEGRAM_BOT_TOKEN="):
+                token = ln.split("=", 1)[1].strip()
+        chat_id = json.loads(access_path.read_text())["allowFrom"][0]
+        if not token or not chat_id:
+            return False
+        r = requests.post(
+            f"https://api.telegram.org/bot{token}/sendMessage",
+            json={"chat_id": chat_id, "text": text},
+            timeout=10,
+        )
+        return r.status_code == 200
+    except Exception as e:
+        log(f"  (telegram alert failed: {e})")
+        return False
 
 
 def get_next_post(bank: dict) -> dict | None:
@@ -162,18 +191,42 @@ def post_to_platforms(
         if not content.strip():
             log(f"  ℹ️  Skipping {platform} — no content")
             continue
-        try:
-            result = client.create_post(
-                content=content,
-                platform=platform,
-                account_id=account_id,
-                media_url=media_url,
+        # Retry transient failures (5xx / timeouts). Zernio intermittently
+        # returns 503, which used to silently drop a whole platform for that
+        # post. 4xx are NOT retried — those are our payload's fault and
+        # retrying just repeats the same rejection.
+        last_err = None
+        for attempt in range(1, 4):
+            try:
+                result = client.create_post(
+                    content=content,
+                    platform=platform,
+                    account_id=account_id,
+                    media_url=media_url,
+                )
+                results[platform] = result.get("id", "posted")
+                log(f"  ✅ {platform.capitalize()}: posted successfully"
+                    + (f" (attempt {attempt})" if attempt > 1 else ""))
+                last_err = None
+                break
+            except Exception as e:
+                last_err = e
+                status = getattr(getattr(e, "response", None), "status_code", None)
+                transient = status is None or status >= 500 or status == 429
+                if transient and attempt < 3:
+                    wait = attempt * 5
+                    log(f"  ⏳ {platform.capitalize()} attempt {attempt} failed "
+                        f"({status or type(e).__name__}) — retrying in {wait}s")
+                    time.sleep(wait)
+                    continue
+                break
+        if last_err is not None:
+            log(f"  ❌ {platform.capitalize()} failed: {last_err}")
+            results[platform] = f"ERROR: {last_err}"
+            notify_telegram(
+                f"⚠️ BCW social: {platform} post FAILED for {post.get('id','?')} "
+                f"({str(last_err)[:120]}). Other platforms may have gone out."
             )
-            results[platform] = result.get("id", "posted")
-            log(f"  ✅ {platform.capitalize()}: posted successfully")
-        except Exception as e:
-            log(f"  ❌ {platform.capitalize()} failed: {e}")
-            results[platform] = f"ERROR: {e}"
 
     return results
 
@@ -192,10 +245,25 @@ def main():
     if pending == 0:
         log("❌ Content bank is empty! No pending posts.")
         log("   Generate more: python social/generate_posts.py <posts.json>")
+        # ALERT: empty bank = posting has STOPPED. This early-exit used to
+        # happen silently — the bank ran dry on 2026-06-12 and nothing posted
+        # for 2 days before anyone noticed. Throttle to one ping/day (morning).
+        if not dry_run and datetime.now().hour < 12:
+            notify_telegram(
+                "🚨 BCW social: content bank is EMPTY — posting has STOPPED. "
+                "No posts will go out until a new batch is generated. "
+                "Ask Claude to draft + load a new batch ASAP."
+            )
         sys.exit(1)
 
     if pending <= 15:
         log(f"⚠️  Only {pending} posts remaining — generate more soon!")
+        # Early warning while there's still runway (once/day, morning).
+        if not dry_run and pending <= 10 and datetime.now().hour < 12:
+            notify_telegram(
+                f"📭 BCW social: only {pending} posts left in the bank "
+                f"(~{pending // 3} days). Ask Claude to draft a new batch soon."
+            )
 
     # Get next post
     post = get_next_post(bank)
@@ -215,73 +283,124 @@ def main():
     used_log = get_used_log(bank, image_type)
     topic = post.get("topic", "")
 
+    # --- Pre-rendered image bypass -------------------------------------------
+    # Some posts ship a ready-made image (e.g. Pillow-rendered review cards) and
+    # must NOT go through Kie AI (which would garble verbatim review text).
+    # If `prerendered_image` points to a local file, upload it directly and post.
+    prerendered = post.get("prerendered_image")
+    if prerendered:
+        prerendered_path = prerendered
+        if not os.path.isabs(prerendered_path):
+            prerendered_path = os.path.join(os.path.dirname(__file__), prerendered_path)
+        if os.path.exists(prerendered_path):
+            log(f"🖼  Using pre-rendered image (no AI): {os.path.basename(prerendered_path)}")
+            if dry_run:
+                dry_run_display(post, prerendered_path)
+                log("\n✅ Dry run complete. No posts published.")
+                return
+            from zernio_client import ZernioClient
+            zernio = ZernioClient()
+            media_url = None
+            # Retry the upload — a single flaky catbox response stripped the
+            # image off the 2026-07-28 review-card post. 3 attempts, backoff.
+            for attempt in range(1, 4):
+                try:
+                    media_url = zernio.upload_image_for_kie(prerendered_path)
+                    log(f"🖼  Permanent image URL: {media_url}")
+                    break
+                except Exception as e:
+                    if attempt < 3:
+                        log(f"  ⏳ Upload attempt {attempt} failed ({e}) — retrying in {attempt * 5}s")
+                        time.sleep(attempt * 5)
+                    else:
+                        log(f"  ⚠️  Pre-rendered upload failed after 3 attempts: {e}. Posting without image.")
+                        notify_telegram(
+                            f"⚠️ BCW social: image upload failed for {post.get('id','?')} "
+                            f"— posted WITHOUT its image. Attach manually: {prerendered}"
+                        )
+            log("🚀 Publishing to social platforms...")
+            post_to_platforms(post, accounts, media_url, dry_run=False)
+            post["status"] = "sent"
+            post["sent_at"] = datetime.now(timezone.utc).isoformat()
+            post["image_url_used"] = media_url
+            save_content_bank(bank)
+            log(f"\n✅ Posted (pre-rendered): '{post['topic']}'")
+            log(f"   Pending posts remaining: {count_pending(bank)}")
+            return
+        else:
+            log(f"  ⚠️  prerendered_image not found at {prerendered_path}; falling back to normal flow.")
+
     log(f"🖼  Image type: {image_type}")
-    real_image_path = pick_image(image_type, used_log, topic)
+    # Derive the catalogue-style image_hint. infer_image_hint() trusts an
+    # explicit post['image_hint'] if present, else routes by pillar + topic
+    # (personal→Wes, local→van, testimonial→review card, etc.).
+    from image_picker import infer_image_hint
+    image_hint = infer_image_hint(post)
+    log(f"🎯 Image hint: {image_hint}")
+
+    real_image_path = pick_image(image_type, used_log, topic, image_hint=image_hint)
 
     if dry_run:
         dry_run_display(post, real_image_path)
         # Still show credit balance
         try:
-            from kie_client import KieClient
-            credits = KieClient().check_credits()
-            log(f"💳 Kie AI credits: {credits}")
+            from higgsfield_client import HiggsfieldClient
+            credits = HiggsfieldClient().check_credits()
+            log(f"💳 Higgsfield credits: {credits}")
         except Exception:
             pass
         log("\n✅ Dry run complete. No posts published.")
         return
 
-    # Step 2: Get public URL for real photo (needed as Kie AI image_input)
+    # Step 2: SAFEGUARD — brand/work posts (show Wes / real jobs) must have a
+    # real photo base. Never let the model invent a person from scratch.
     from zernio_client import ZernioClient
     zernio = ZernioClient()
-    base_image_url = None
-    upload_failed = False
-    if real_image_path:
-        log(f"📤 Uploading base photo for Kie AI: {os.path.basename(real_image_path)}")
-        try:
-            base_image_url = zernio.upload_image_for_kie(real_image_path)
-        except Exception as e:
-            log(f"  ⚠️  Failed to upload base photo: {e}.")
-            upload_failed = True
-            base_image_url = None
-
-    # SAFEGUARD: If image type is 'brand' or 'work' (shows a person / Wes) and
-    # the photo upload failed, do NOT let Kie AI generate a person from scratch —
-    # that produces generic white people which is completely wrong and off-brand.
-    # Instead, skip Kie AI and post without an image for this run.
-    if upload_failed and image_type in ("brand", "work"):
-        log("  🛑 Skipping Kie AI generation — brand/work post requires a real photo base.")
-        log("     Post will be published without an image rather than risk wrong AI output.")
-        kie_image_url = None
-        media_url = None
-        # Skip straight to posting
-        log("🚀 Publishing to social platforms (no image)...")
-        post_to_platforms(post, accounts, media_url, dry_run=False)
+    if real_image_path is None and image_type in ("brand", "work"):
+        log("  🛑 No real photo available for a brand/work post — publishing text-only.")
+        post_to_platforms(post, accounts, None, dry_run=False)
         post["status"] = "sent"
         post["sent_at"] = datetime.now(timezone.utc).isoformat()
         post["image_url_used"] = None
-        if real_image_path:
-            update_used_log(bank, image_type, real_image_path)
         save_content_bank(bank)
-        remaining = count_pending(bank)
-        log(f"\n✅ Posted: '{post['topic']}' (text only — image upload failed)")
-        log(f"   Pending posts remaining: {remaining}")
+        log(f"\n✅ Posted: '{post['topic']}' (text only — no base photo)")
+        log(f"   Pending posts remaining: {count_pending(bank)}")
         return
 
-    # Step 3: Generate image via Kie AI
-    log(f"🎨 Generating image via Kie AI (base={'yes' if base_image_url else 'no'})...")
-    from kie_client import KieClient
-    kie = KieClient()
+    # Step 3: Generate image via Higgsfield (GPT Image 2, annual plan).
+    # The CLI takes the LOCAL photo path directly — no pre-upload needed.
+    log(f"🎨 Generating image via Higgsfield (base={'yes' if real_image_path else 'no'})...")
+    from higgsfield_client import HiggsfieldClient
+    higgs = HiggsfieldClient()
     try:
-        kie_image_url = kie.generate_image(
+        gen_image_url = higgs.generate_image(
             prompt=post["image_prompt"],
-            image_input_url=base_image_url,
+            image_input_path=real_image_path,
             aspect_ratio="1:1",
         )
-        log(f"  ✅ Image generated: {kie_image_url[:60]}...")
+        log(f"  ✅ Image generated: {gen_image_url[:60]}...")
     except Exception as e:
-        log(f"  ❌ Kie AI image generation failed: {e}")
-        log("  Proceeding without image...")
-        kie_image_url = None
+        log(f"  ❌ Higgsfield image generation failed: {e}")
+        gen_image_url = None
+        # FALLBACK: post the real base photo as-is (no caption overlay).
+        # A real photo beats no image — and Instagram HARD-FAILS without an
+        # image, so 'proceeding without image' silently blacked out IG for
+        # 12 days when Kie credits ran out (May 30 – Jun 11 2026). Never again.
+        if real_image_path:
+            log("  🔄 FALLBACK: posting the real base photo without overlay.")
+            try:
+                gen_image_url = zernio.upload_image_for_kie(real_image_path)
+            except Exception as e2:
+                log(f"  ⚠️  Fallback upload also failed: {e2}")
+        else:
+            log("  Proceeding without image (no base photo available)...")
+        notify_telegram(
+            f"⚠️ BCW social: Higgsfield image generation FAILED for "
+            f"{post.get('id','?')} ({str(e)[:120]}). "
+            + ("Posted real photo without overlay." if gen_image_url
+               else "Posted TEXT-ONLY — Instagram will fail.")
+        )
+    kie_image_url = gen_image_url  # downstream variable name kept
 
     # Step 4: Rehost Kie AI image to catbox.moe for a permanent URL.
     # Kie AI URLs (tempfile.aiquickdraw.com) expire quickly — posting to
@@ -316,19 +435,31 @@ def main():
     remaining = count_pending(bank)
     credits_remaining = "?"
     try:
-        credits_remaining = kie.check_credits()
+        credits_remaining = higgs.check_credits()
     except Exception:
         pass
 
     log(f"\n✅ Posted: '{post['topic']}'")
     log(f"   Image: {os.path.basename(real_image_path) if real_image_path else 'AI generated'}")
     log(f"   Pending posts remaining: {remaining}")
-    log(f"   Kie AI credits remaining: {credits_remaining}")
+    log(f"   Higgsfield credits remaining: {credits_remaining}")
 
+    # Ops alerts — once per condition per day (08:07 run only) to avoid spam
+    is_morning_run = datetime.now().hour < 12
+    if isinstance(credits_remaining, (int, float)) and credits_remaining < 50 and is_morning_run:
+        notify_telegram(
+            f"💳 BCW social: Kie AI credits LOW ({credits_remaining}). "
+            f"Top up at higgsfield.ai or images stop generating (Instagram fails without an image)."
+        )
     if remaining <= 5:
         log(f"\n⚠️  LOW CONTENT BANK: only {remaining} posts left!")
         log("   Generate more: use the social-posts Claude skill")
         log("   Then run: python social/generate_posts.py <output.json>")
+        if is_morning_run:
+            notify_telegram(
+                f"📭 BCW social: content bank low — {remaining} posts left. "
+                f"Ask Claude to generate a new batch."
+            )
 
 
 if __name__ == "__main__":

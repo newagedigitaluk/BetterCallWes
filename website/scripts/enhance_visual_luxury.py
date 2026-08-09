@@ -161,7 +161,7 @@ def enhance_page_visually(file_path, add_manufacturer_badges=False):
     print(f"✅ Enhanced {file_path.name} (content preserved, visuals upgraded)")
 
 def main():
-    base_dir = Path("/home/wes/Coding/Projects/Better Call Wes/Website/services")
+    base_dir = Path("/home/wes/Coding/Projects/Better Call Wes/website/site/services")
 
     # Boiler pages get manufacturer badges
     boiler_pages = [
