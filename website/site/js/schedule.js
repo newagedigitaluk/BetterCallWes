@@ -11,7 +11,19 @@
   'use strict';
 
   const API_BASE = 'https://api.bettercallwes.co.uk';
-  const TOKEN = new URLSearchParams(window.location.search).get('t') || '';
+
+  // The token comes from the PATH, not a query string. nginx rewrites
+  // /s/<token> to schedule.html?t=<token> internally, which means nginx
+  // sees the query string but the browser never does — the address bar
+  // still reads /s/<token>. Reading location.search here returned empty
+  // and every link showed "that link looks incomplete".
+  // The ?t= fallback is for hitting schedule.html directly, which is
+  // handy for testing and costs nothing.
+  const TOKEN = (function () {
+    const m = /^\/s\/([A-Za-z0-9_-]+)\/?$/.exec(window.location.pathname);
+    if (m) return m[1];
+    return new URLSearchParams(window.location.search).get('t') || '';
+  }());
 
   const $ = (id) => document.getElementById(id);
   const show = (id) => { $(id).hidden = false; };
