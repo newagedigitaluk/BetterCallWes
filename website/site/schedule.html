@@ -11,8 +11,12 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=2.0">
-  <script defer src="assets/js/lucide.min.js"></script>
+  <!-- Every asset path here MUST be root-absolute. This page is served at
+       /s/<token> via an nginx rewrite, so a relative "css/styles.css" resolves
+       to /s/css/styles.css and 404s. That leaves the page unstyled with the
+       script never running, stuck on "Loading your appointment...". -->
+  <link rel="stylesheet" href="/css/styles.css?v=2.0">
+  <script defer src="/assets/js/lucide.min.js"></script>
   <style>
 
     /* Manage page — same chrome as booking.html so the flow feels
@@ -228,15 +232,15 @@
       box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.12);
     }
   </style>
-  <link rel="icon" href="assets/favicon.ico" sizes="any">
-  <link rel="apple-touch-icon" href="assets/favicon.png">
+  <link rel="icon" href="/assets/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/assets/favicon.png">
 </head>
 <body>
 
 <header class="manage-header">
   <div class="container">
-    <a href="index.html" aria-label="Better Call Wes home">
-      <img src="assets/logo.webp?v=3" alt="Better Call Wes">
+    <a href="/" aria-label="Better Call Wes home">
+      <img src="/assets/logo.webp?v=3" alt="Better Call Wes">
     </a>
   </div>
 </header>
@@ -315,6 +319,6 @@
 
 </main>
 
-<script src="js/schedule.js?v=1.0"></script>
+<script src="/js/schedule.js?v=1.1"></script>
 </body>
 </html>
