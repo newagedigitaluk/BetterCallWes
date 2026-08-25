@@ -14,6 +14,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+from html.parser import HTMLParser
 import re
 import subprocess
 import sys
@@ -27,9 +28,54 @@ SKIP = ("data:", "mailto:", "tel:", "javascript:", "#")
 # preconnect/dns-prefetch point at an origin, not a file. Fetching them
 # returns 404 from most CDNs and means nothing.
 HINT_RE = re.compile(r'<link[^>]*rel="(?:preconnect|dns-prefetch)"[^>]*>', re.I)
-# Text inside hidden="" is not on screen. Matching it made a page that had
-# already moved to its error state look like it was still loading.
-HIDDEN_RE = re.compile(r'<(\w+)[^>]*\shidden(?:="")?[^>]*>.*?</\1>', re.S | re.I)
+
+
+
+class _VisibleText(HTMLParser):
+    """Text a person would actually see.
+
+    Drops any subtree under hidden="", plus script and style. A regex
+    can't do this: the non-greedy match stops at the first </div>, not the
+    matching one, so a hidden block containing nested elements leaks its
+    text and the check reports a page as stuck when it has already moved on.
+    """
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.out: list[str] = []
+        self.stack: list[str] = []
+        self.skip_depth = 0
+
+    def handle_starttag(self, tag, attrs):
+        if tag in ("br", "img", "input", "meta", "link", "hr"):
+            return
+        self.stack.append(tag)
+        hidden = any(k == "hidden" for k, _ in attrs)
+        if self.skip_depth or hidden or tag in ("script", "style"):
+            self.skip_depth += 1
+
+    def handle_endtag(self, tag):
+        if tag not in self.stack:
+            return
+        while self.stack:
+            popped = self.stack.pop()
+            if self.skip_depth:
+                self.skip_depth -= 1
+            if popped == tag:
+                break
+
+    def handle_data(self, data):
+        if not self.skip_depth:
+            self.out.append(data)
+
+    def text(self) -> str:
+        return " ".join(" ".join(self.out).split())
+
+
+def visible_text(html: str) -> str:
+    p = _VisibleText()
+    p.feed(html)
+    return p.text()
 
 
 def render(url: str, budget_ms: int = 15000) -> str:
@@ -69,7 +115,7 @@ def main() -> int:
     args = ap.parse_args()
 
     html = render(args.url)
-    visible = HIDDEN_RE.sub(" ", html)
+    visible = visible_text(html)
     if not html.strip():
         print("FAIL: chrome returned nothing")
         return 1
