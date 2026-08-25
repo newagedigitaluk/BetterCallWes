@@ -400,6 +400,36 @@ def send_whatsapp(job: dict, link: str) -> tuple[int, str]:
     )
 
 
+def notify_telegram(text: str) -> bool:
+    """Best-effort ops alert to Wes. Never raises.
+
+    This runs unattended from cron, so a send with nobody watching is the
+    same as no send at all. Uses the same bot as the social pipeline, via
+    urllib rather than requests so this script keeps no dependencies.
+    """
+    try:
+        base = Path.home() / ".claude" / "channels" / "telegram-bcw"
+        token = next(
+            (ln.split("=", 1)[1].strip()
+             for ln in (base / ".env").read_text().splitlines()
+             if ln.startswith("TELEGRAM_BOT_TOKEN=")),
+            None,
+        )
+        chat_id = json.loads((base / "access.json").read_text())["allowFrom"][0]
+        if not token or not chat_id:
+            return False
+        req = urllib.request.Request(
+            f"https://api.telegram.org/bot{token}/sendMessage",
+            data=json.dumps({"chat_id": chat_id, "text": text}).encode(),
+            headers={"Content-Type": "application/json"},
+        )
+        with urllib.request.urlopen(req, timeout=15) as r:
+            return r.status == 200
+    except Exception as e:  # noqa: BLE001
+        print(f"  (telegram alert failed: {e})")
+        return False
+
+
 # ─────────────────────────── Chase planner ───────────────────────────
 
 def plan_followups(jobs: list[dict], state: dict) -> tuple[list[dict], list[tuple[dict, str]]]:
@@ -469,6 +499,8 @@ def main() -> None:
     ap.add_argument("--dry-run", action="store_true", help="render messages, send nothing")
     ap.add_argument("--send", action="store_true", help="actually send")
     ap.add_argument("--channel", choices=["sms", "whatsapp"], default="sms")
+    ap.add_argument("--notify", action="store_true",
+                    help="Telegram summary when the run finishes (for cron)")
     ap.add_argument("--followup", action="store_true",
                     help="chase the unbooked: SMS at +%d working days, landlord at +%d"
                          % (FOLLOWUP_WORKING_DAYS, ESCALATE_WORKING_DAYS))
@@ -520,6 +552,7 @@ def main() -> None:
                   f"{SEND_HOUR_TO}:00 Mon-Fri. Re-run in hours, or set SEND_HOUR_* to override.")
             return
 
+    results: list[tuple[dict, bool, int, str]] = []
     for j in sendable:
         link = schedule_link(j["job_uuid"])
         if args.dry_run or not args.send:
@@ -541,6 +574,7 @@ def main() -> None:
             status, detail = send_sms(j, link)
         ok = 200 <= status < 300
         print(f"#{j['job_ref']} {j['first']:<14} {args.channel} HTTP {status} {'' if ok else detail}")
+        results.append((j, ok, status, detail))
         if ok:
             rec = state["sent"].setdefault(j["job_uuid"], {"touches": []})
             rec.setdefault("touches", []).append({
@@ -549,6 +583,27 @@ def main() -> None:
             })
             save_state(state)
         time.sleep(0.3)
+
+    if args.notify and results:
+        sent = [r for r in results if r[1]]
+        failed = [r for r in results if not r[1]]
+        lines = [
+            f"Booking outreach: {len(sent)} sent, {len(failed)} failed"
+            + (" (follow-up)" if args.followup else ""),
+        ]
+        lines += [f"  {j['first']} #{j['job_ref']} {j['service']}" for j, *_ in sent]
+        if failed:
+            lines.append("FAILED:")
+            lines += [f"  {j['first']} #{j['job_ref']} HTTP {st} {d[:60]}"
+                      for j, _, st, d in failed]
+        if needs_human:
+            lines.append(f"{len(needs_human)} need a call from you:")
+            lines += [f"  {j['first']} #{j['job_ref']} {why}" for j, why in needs_human]
+        if no_mobile:
+            lines.append(f"{len(no_mobile)} have no mobile:")
+            lines += [f"  {j['first']} #{j['job_ref']} {j['email'] or 'no email'}"
+                      for j in no_mobile]
+        notify_telegram("\n".join(lines))
 
 
 if __name__ == "__main__":
