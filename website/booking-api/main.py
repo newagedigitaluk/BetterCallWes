@@ -45,10 +45,15 @@ from confirmation import (
 )
 from signing import (
     BookingToken,
+    ScheduleToken,
     TokenExpired,
     TokenInvalid,
     email_hash,
+    make_schedule_token,
+    make_short_schedule_token,
     make_token,
+    verify_schedule_token,
+    verify_short_schedule_token,
     verify_token,
 )
 from sm8 import ServiceM8Client, ServiceM8Error
@@ -139,6 +144,9 @@ class SlotResponse(BaseModel):
     start: datetime
     end: datetime
     duration_min: int
+    # Set only on the self-scheduling flow, which offers half-day
+    # allocations ("Morning"/"Afternoon") rather than exact start times.
+    period: str | None = None
 
 
 # ─────────── Helpers ───────────
@@ -343,9 +351,21 @@ async def get_availability(
     service: str = Query(..., description="Service slug"),
     days: int = Query(DEFAULT_DAYS_AHEAD, ge=1, le=60),
     duration_min: int | None = Query(None, description="Override slot duration"),
+    from_date: date | None = Query(None, description="Start the window on this date instead of today"),
 ) -> list[SlotResponse]:
-    """Free slots for the next `days` working days."""
+    """Free slots for `days` working days, starting today (or `from_date`).
+
+    `from_date` exists for contract work booked well ahead of its due date:
+    a CP12 done four months early throws away four months of certificate,
+    so we steer the customer to a window just before expiry rather than
+    offering them tomorrow.
+    """
     assert activity_cache is not None
+    # This endpoint is also called directly (not via HTTP) by the
+    # self-scheduling routes. In that path FastAPI's Query() default
+    # object arrives verbatim instead of None, so coerce it.
+    if not isinstance(from_date, date):
+        from_date = None
     config = load_services_config()
     svc = config["services"].get(service)
     if not svc:
@@ -391,6 +411,7 @@ async def get_availability(
                 busy=busy,
                 hours=hours,
                 whole_day_min_lead_days=whole_day_lead_days,
+                **({"today": from_date} if from_date else {}),
             )
         )
     else:
@@ -403,6 +424,7 @@ async def get_availability(
                 min_lead_time_hours=min_lead_hours,
                 same_day_cutoff_hour=same_day_cutoff,
                 latest_start_time=latest_start,
+                **({"today": from_date} if from_date else {}),
             )
         )
 
@@ -1307,6 +1329,288 @@ async def _notify_cancel(
             )
         except Exception:  # noqa: BLE001
             log.exception("customer cancel SMS failed")
+
+
+
+# ═════════════════════════════════════════════════════════════════════════
+# Self-scheduling for jobs that ALREADY exist in SM8
+#
+# Used for contract work (YourRepair / Hometree) and overdue annual
+# services: the job is already in SM8 but has no diary slot. The customer
+# gets a signed link, picks a slot, and we attach a jobactivity to THAT
+# job.
+#
+# Deliberately NOT the /api/book flow: that creates a new job against the
+# person booking, which on contract work would bill the occupier instead
+# of the provider, and leave a duplicate job behind.
+# ═════════════════════════════════════════════════════════════════════════
+
+SCHEDULE_LINK_TTL_DAYS = int(os.environ.get("SCHEDULE_LINK_TTL_DAYS", "60"))
+
+# Booking window for work with a due date well in the future.
+#
+# A gas safety certificate done four months early throws away four months
+# of cover: the new certificate runs from the day of the check, not from
+# the old expiry. So when a job isn't due for a while, we don't offer
+# "tomorrow" — we offer a two-week window that ends on the due date.
+# Under the trigger threshold, normal availability from today applies.
+SCHEDULE_WINDOW_TRIGGER_DAYS = int(os.environ.get("SCHEDULE_WINDOW_TRIGGER_DAYS", "21"))
+SCHEDULE_WINDOW_LEAD_DAYS = int(os.environ.get("SCHEDULE_WINDOW_LEAD_DAYS", "14"))
+
+_DUE_MONTHS = {m: i for i, m in enumerate(
+    ["january", "february", "march", "april", "may", "june", "july",
+     "august", "september", "october", "november", "december"], start=1)}
+
+
+def parse_due_date(desc: str) -> date | None:
+    """Pull the due date out of a job description.
+
+    Set when the job is created from the provider's portal, e.g.
+    "Due 15/12/2026." or "Due September 2026.". A corrected date written
+    by Wes after speaking to the customer beats the portal's, which has
+    been wrong more than once. None means "no date known" — treated as
+    due now rather than silently deferring real work.
+    """
+    import re as _re
+    m = _re.search(r"Due\s+(\d{1,2})/(\d{1,2})/(\d{4})", desc or "", _re.I)
+    if m:
+        d, mo, y = (int(x) for x in m.groups())
+        try:
+            return date(y, mo, d)
+        except ValueError:
+            return None
+    m = _re.search(r"Due\s+([A-Za-z]+)\s+(\d{4})", desc or "", _re.I)
+    if m and m.group(1).lower() in _DUE_MONTHS:
+        return date(int(m.group(2)), _DUE_MONTHS[m.group(1).lower()], 1)
+    return None
+
+
+class ScheduleState(BaseModel):
+    """What the 'pick your slot' page renders."""
+    job_uuid: str
+    job_ref: str                  # SM8 generated_job_id, for the customer to quote
+    service: str                  # slug, resolved from the job's SM8 category
+    service_name: str
+    job_address: str
+    customer_first: str
+    already_scheduled: bool
+    slot_start: datetime | None = None
+    slot_end: datetime | None = None
+    due_date: date | None = None       # from the job description, if known
+    window_start: date | None = None   # slots offered from here, if deferred
+    window_end: date | None = None
+
+
+def _resolve_schedule_token_or_503(token: str) -> ScheduleToken:
+    """Verify a scheduling token, compact or long form.
+
+    SMS links use the 35-char compact token; anything issued by email or a
+    WhatsApp button may use either. Try compact first (it's what we mint
+    now), fall back to the JSON form so older links keep working.
+    """
+    if not MAGIC_LINK_SECRET:
+        raise HTTPException(503, "Self-scheduling is not configured on this server.")
+
+    expired: TokenExpired | None = None
+    for verify in (verify_short_schedule_token, verify_schedule_token):
+        try:
+            return verify(token, secret=MAGIC_LINK_SECRET)
+        except TokenExpired as e:
+            expired = e  # genuine token, just old — don't try the other format
+            break
+        except TokenInvalid:
+            continue
+
+    if expired is not None:
+        raise HTTPException(410, str(expired))
+    raise HTTPException(400, "Invalid or expired booking link.")
+
+
+def _service_slug_for_category(category_uuid: str) -> tuple[str, dict] | tuple[None, None]:
+    """Map an SM8 category_uuid back to a service slug in services.json."""
+    config = load_services_config()
+    for slug, svc in config["services"].items():
+        if svc.get("category_uuid") and svc["category_uuid"] == category_uuid:
+            return slug, svc
+    return None, None
+
+
+async def _gather_schedule_state(tok: ScheduleToken) -> tuple[ScheduleState, dict]:
+    """Load the job and work out whether it still needs a slot."""
+    assert sm8 is not None
+    try:
+        job = await sm8.get_job(tok.job_uuid)
+    except ServiceM8Error as e:
+        log.exception("schedule: get_job failed")
+        raise HTTPException(502, "Could not load this job right now.") from e
+    if not job:
+        raise HTTPException(404, "This job no longer exists.")
+
+    # A cancelled/deleted job must not be bookable.
+    if str(job.get("active", "1")) not in ("1", "True", "true"):
+        raise HTTPException(410, "This job is no longer active.")
+    if (job.get("status") or "") in ("Completed", "Unsuccessful"):
+        raise HTTPException(409, "This job has already been completed.")
+
+    slug, svc = _service_slug_for_category(job.get("category_uuid") or "")
+    if not slug:
+        # Don't guess a duration for an unknown service.
+        raise HTTPException(409, "This job type can't be booked online. Please call Wes.")
+
+    # Already got a slot? Surface it rather than double-booking.
+    slot_start = slot_end = None
+    already = False
+    for a in await sm8.list_activity_for_job(tok.job_uuid):
+        if str(a.get("active", "1")) in ("1", "True", "true") and \
+           str(a.get("activity_was_scheduled", "1")) in ("1", "True", "true"):
+            already = True
+            try:
+                slot_start = datetime.strptime(a["start_date"], "%Y-%m-%d %H:%M:%S")
+                slot_end = datetime.strptime(a["end_date"], "%Y-%m-%d %H:%M:%S")
+            except (KeyError, ValueError):
+                pass
+            break
+
+    first = ""
+    try:
+        for c in await sm8.list_job_contacts(tok.job_uuid):
+            if (c.get("type") or "") == "JOB":
+                first = (c.get("first") or "").strip()
+                break
+    except Exception:  # noqa: BLE001
+        log.exception("schedule: contact lookup failed (non-fatal)")
+
+    # If the job isn't due for a while, steer to a window before the due
+    # date instead of offering the next free morning.
+    due = parse_due_date(job.get("job_description") or "")
+    win_start = win_end = None
+    if due and (due - date.today()).days > SCHEDULE_WINDOW_TRIGGER_DAYS:
+        win_start = due - timedelta(days=SCHEDULE_WINDOW_LEAD_DAYS)
+        win_end = due
+
+    state = ScheduleState(
+        job_uuid=tok.job_uuid,
+        job_ref=str(job.get("generated_job_id") or ""),
+        service=slug,
+        service_name=svc.get("name", slug),
+        job_address=(job.get("job_address") or "").replace("\n", ", "),
+        customer_first=first,
+        already_scheduled=already,
+        slot_start=slot_start,
+        slot_end=slot_end,
+        due_date=due,
+        window_start=win_start,
+        window_end=win_end,
+    )
+    return state, job
+
+
+@app.get("/api/schedule/{token}", response_model=ScheduleState)
+async def get_schedule_state(token: str) -> ScheduleState:
+    """Bootstrap for the 'pick your slot' page."""
+    tok = _resolve_schedule_token_or_503(token)
+    state, _ = await _gather_schedule_state(tok)
+    return state
+
+
+@app.get("/api/schedule/{token}/availability", response_model=list[SlotResponse])
+async def get_schedule_availability(
+    token: str,
+    days: int = Query(DEFAULT_DAYS_AHEAD, ge=1, le=60),
+) -> list[SlotResponse]:
+    """Free slots for this job's service. Same engine as /api/availability."""
+    tok = _resolve_schedule_token_or_503(token)
+    state, _ = await _gather_schedule_state(tok)
+    if state.window_start:
+        # Two-week run-up to the due date rather than the next free morning.
+        slots = await get_availability(
+            service=state.service,
+            days=min(SCHEDULE_WINDOW_LEAD_DAYS, 60),
+            duration_min=None,
+            from_date=state.window_start,
+        )
+    else:
+        slots = await get_availability(service=state.service, days=days, duration_min=None)
+    return _as_half_days(slots)
+
+
+def _as_half_days(slots: list[SlotResponse]) -> list[SlotResponse]:
+    """Collapse exact start times into one Morning / one Afternoon offer per day.
+
+    Customers on contract work get allocated a half-day, not a 9.30 start —
+    that's how the trade actually runs, and it stops Wes being held to a
+    precise minute when a job before it overruns. We keep the FIRST free
+    slot in each half-day, so what lands in the SM8 diary is still a real
+    time block he can shuffle within the window.
+    """
+    config = load_services_config()
+    hours = config["config"]["working_hours"]
+    noon = datetime.strptime(hours["afternoon_start"], "%H:%M").time()
+
+    seen: dict[tuple, SlotResponse] = {}
+    for s in slots:
+        period = "Morning" if s.start.time() < noon else "Afternoon"
+        key = (s.start.date(), period)
+        if key not in seen:            # slots arrive in time order
+            seen[key] = SlotResponse(
+                start=s.start, end=s.end, duration_min=s.duration_min, period=period
+            )
+    return list(seen.values())
+
+
+@app.post("/api/schedule/{token}/confirm", response_model=ScheduleState)
+async def confirm_schedule(token: str, req: RescheduleRequest) -> ScheduleState:
+    """Attach the chosen slot to the EXISTING job.
+
+    Re-checks server-side (never trust the client):
+      - token valid and not expired
+      - job still active, not completed, still unscheduled
+      - slot respects the same lead-time rule as the main booking flow
+    """
+    assert sm8 is not None
+    assert activity_cache is not None
+    tok = _resolve_schedule_token_or_503(token)
+    state, job = await _gather_schedule_state(tok)
+
+    if state.already_scheduled:
+        # Idempotent-ish: someone tapping twice shouldn't create two slots.
+        raise HTTPException(
+            409,
+            "This job is already booked in. Check your confirmation, or call Wes to change it.",
+        )
+    if not _slot_lead_ok(req.slot_start):
+        raise HTTPException(400, "Please choose a slot a little further ahead.")
+
+    config = load_services_config()
+    staff_uuid = config["config"]["staff_uuid"]
+
+    try:
+        await sm8.create_activity(
+            job_uuid=tok.job_uuid,
+            staff_uuid=staff_uuid,
+            start_iso=req.slot_start.strftime("%Y-%m-%d %H:%M:%S"),
+            end_iso=req.slot_end.strftime("%Y-%m-%d %H:%M:%S"),
+        )
+    except Exception as e:  # noqa: BLE001
+        log.exception("schedule: create_activity failed")
+        raise HTTPException(502, f"Could not save that slot: {e}") from e
+
+    # Audit line on the job so it's obvious this came from the customer.
+    try:
+        existing_desc = job.get("job_description", "")
+        stamp = datetime.now().strftime("%Y-%m-%d %H:%M")
+        booked = req.slot_start.strftime("%Y-%m-%d %H:%M")
+        await sm8.update_job(
+            tok.job_uuid,
+            {"job_description": f"{existing_desc}\n[Customer self-booked {stamp}] slot: {booked}"},
+        )
+    except Exception:  # noqa: BLE001
+        log.exception("schedule: audit line failed (non-fatal)")
+
+    activity_cache.invalidate()
+
+    refreshed, _ = await _gather_schedule_state(tok)
+    return refreshed
 
 
 if __name__ == "__main__":  # local dev: python main.py

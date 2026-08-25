@@ -167,6 +167,21 @@ class ServiceM8Client:
         resp.raise_for_status()
         return resp.json()
 
+    async def list_job_contacts(self, job_uuid: str) -> list[dict[str, Any]]:
+        """All jobcontact records for a job (JOB, BILLING, Property Manager).
+
+        Used by the self-scheduling flow to greet the customer by name.
+        Note SM8's type values are 'JOB', 'BILLING' and 'Property Manager'
+        — the last one is title case with a space, not an enum-style
+        constant, which is easy to get wrong.
+        """
+        resp = await self._client.get(
+            "/jobcontact.json",
+            params={"$filter": f"job_uuid eq {job_uuid}"},
+        )
+        resp.raise_for_status()
+        return resp.json()
+
     async def deactivate_activity(self, activity_uuid: str) -> None:
         """Soft-delete a jobactivity (sets active=0). Used on reschedule
         so we keep an audit trail rather than physically removing the

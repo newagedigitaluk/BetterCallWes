@@ -49,3 +49,6 @@ docs/screenshots/
 # Legacy JS file kept for reference but not committed
 website/scripts/generate_placeholders.js
 .credentials/
+
+# Outreach send log — holds customer mobile numbers and send timestamps
+website/booking-api/outreach-state.json
