@@ -370,14 +370,40 @@ def sms_text(job: dict, link: str) -> str:
 
 # ─────────────────────────── Senders ───────────────────────────
 
+SMS_ENDPOINT = "https://api.servicem8.com/platform_service_sms"
+
+
 def send_sms(job: dict, link: str) -> tuple[int, str]:
+    """Send via platform_service_sms, NOT /api_1.0/sms.json.
+
+    sms.json is read-only: GET lists the message history, POST returns
+    "sms is not an authorised object type" and sends nothing. That error
+    reads like a permissions problem and it isn't; the same API key works
+    fine here. Sending lives on a separate platform service endpoint,
+    which is what ServiceM8's own n8n node calls.
+
+    Body shape and the X-API-Key header both match that node.
+    """
     target = (job.get("_touch") or {}).get("mobile") or job["mobile"]
-    status, resp = sm8("POST", "/sms.json", {
+    body = {
         "to": target,
         "message": sms_text(job, link),
         "regardingJobUUID": job["job_uuid"],
-    })
-    return status, str(resp)[:120]
+    }
+    req = urllib.request.Request(
+        SMS_ENDPOINT,
+        method="POST",
+        data=json.dumps(body).encode(),
+        headers={"X-API-Key": API_KEY, "Content-Type": "application/json",
+                 "Accept": "application/json"},
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            return r.status, r.read()[:200].decode()
+    except urllib.error.HTTPError as e:
+        return e.code, e.read()[:200].decode()
+    except Exception as e:  # noqa: BLE001
+        return 0, str(e)[:120]
 
 
 def send_whatsapp(job: dict, link: str) -> tuple[int, str]:
