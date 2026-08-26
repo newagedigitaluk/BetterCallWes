@@ -438,13 +438,20 @@ def whatsapp_preview(job: dict) -> str:
 
     Without this the job shows "[template: service_due_book_slot]", which
     tells whoever opens the job nothing. Mirrors the approved template body.
+
+    The provider is named once, not twice. An earlier draft opened with
+    "I carry out work on behalf of X" and then repeated X as the source of
+    the details, which reads better but uses {{2}} twice. WhatsApp Manager
+    refuses to submit a template that reuses a variable, silently, by
+    greying out the button. The API allows it; the form does not.
     """
     return (
         f"Hi {job['first'] or 'there'}, this is Wes from Better Call Wes. I'm a "
-        f"Gas Safe registered engineer and I carry out work on behalf of "
-        f"{job['provider']}.\n\n{job['provider']} have passed your details over so "
-        f"I can complete your {job['service']} at {job['address_short']}.\n\n"
-        "Tap below to pick a day and time that suits you."
+        f"Gas Safe registered engineer.\n\n"
+        f"{job['provider']} have passed your details over so I can complete your "
+        f"{job['service']} at {job['address_short']}.\n\n"
+        "Tap below to pick a day and time that suits you. It takes about a "
+        "minute and there's no need to ring anyone."
     )
 
 
