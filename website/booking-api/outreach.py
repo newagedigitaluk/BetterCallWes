@@ -329,6 +329,19 @@ def eligible_jobs(badge_names: dict[str, str]) -> list[dict]:
 
 # ─────────────────────────── Message building ───────────────────────────
 
+def schedule_token(job_uuid: str) -> str:
+    """Just the signed token. The WhatsApp button is defined as
+    https://bettercallwes.co.uk/s/{{1}}, so the parameter is the variable
+    part only; passing the whole URL would produce .../s/https://..."""
+    if not MAGIC_LINK_SECRET:
+        raise SystemExit("MAGIC_LINK_SECRET is not set.")
+    return make_short_schedule_token(
+        secret=MAGIC_LINK_SECRET,
+        job_uuid=job_uuid,
+        expires_at=datetime.now() + timedelta(days=LINK_TTL_DAYS),
+    )
+
+
 def schedule_link(job_uuid: str) -> str:
     if not MAGIC_LINK_SECRET:
         raise SystemExit(
@@ -372,6 +385,20 @@ def sms_text(job: dict, link: str) -> str:
 
 SMS_ENDPOINT = "https://api.servicem8.com/platform_service_sms"
 
+# ── ServiceHQ WhatsApp add-on ───────────────────────────────────────
+SERVICEHQ_SEND_URL = os.environ.get(
+    "SERVICEHQ_SEND_URL", "https://wa.servicehq.co.uk/api/service/send-template")
+SERVICEHQ_KEY = os.environ.get("SERVICEHQ_KEY", "")
+WHATSAPP_LANG = os.environ.get("WHATSAPP_TEMPLATE_LANG", "en_GB")
+
+# The add-on allows 5 sends a minute per tenant and counts FAILURES against
+# the same budget. Pacing below that ceiling is cheaper than discovering it:
+# a burst spends its allowance on 429s, and those 429s are themselves
+# counted, so the batch digs its own hole. 13s leaves headroom for a retry.
+WHATSAPP_MIN_INTERVAL_SECONDS = float(os.environ.get("WHATSAPP_MIN_INTERVAL", "13"))
+WHATSAPP_MAX_ATTEMPTS = int(os.environ.get("WHATSAPP_MAX_ATTEMPTS", "3"))
+WHATSAPP_RETRY_BASE_SECONDS = int(os.environ.get("WHATSAPP_RETRY_BASE", "20"))
+
 
 def send_sms(job: dict, link: str) -> tuple[int, str]:
     """Send via platform_service_sms, NOT /api_1.0/sms.json.
@@ -406,54 +433,84 @@ def send_sms(job: dict, link: str) -> tuple[int, str]:
         return 0, str(e)[:120]
 
 
-def send_whatsapp(job: dict, link: str) -> tuple[int, str]:
-    """NOT WIRED YET — two things are outstanding, both outside this script.
+def whatsapp_preview(job: dict) -> str:
+    """What the customer actually reads, for the ServiceM8 thread.
 
-    1. The template `service_due_book_slot` must be approved by Meta.
-    2. The ServiceHQ add-on authorises `conversation/send-template` with a
-       conversation token HMAC-signed by the ServiceM8 App Secret, minted
-       when SM8 opens the modal. That is deliberate ("possession of a valid
-       token is the authorization"), so a cron job has no legitimate way in.
-
-       The clean fix is a service-to-service endpoint on the add-on with its
-       own API key, rather than this script borrowing the app secret and
-       forging a session token. That is also a feature the add-on itself
-       would want — bulk re-engagement is a sellable capability.
+    Without this the job shows "[template: service_due_book_slot]", which
+    tells whoever opens the job nothing. Mirrors the approved template body.
     """
-    raise NotImplementedError(
-        "WhatsApp send not wired: template pending approval, and the add-on "
-        "needs a service-auth endpoint. Use --channel sms meanwhile."
+    return (
+        f"Hi {job['first'] or 'there'}, this is Wes from Better Call Wes. I'm a "
+        f"Gas Safe registered engineer and I carry out work on behalf of "
+        f"{job['provider']}.\n\n{job['provider']} have passed your details over so "
+        f"I can complete your {job['service']} at {job['address_short']}.\n\n"
+        "Tap below to pick a day and time that suits you."
     )
 
 
-def notify_telegram(text: str) -> bool:
-    """Best-effort ops alert to Wes. Never raises.
+def send_whatsapp(job: dict, link: str) -> tuple[int, str]:
+    """Send the approved template through the ServiceHQ add-on.
 
-    This runs unattended from cron, so a send with nobody watching is the
-    same as no send at all. Uses the same bot as the social pipeline, via
-    urllib rather than requests so this script keeps no dependencies.
+    Retry policy is dictated by the add-on's rate limiter: failed attempts
+    count against the same budget as successful ones, so a tight retry loop
+    turns one 502 into a run of 429s and takes the rest of the batch down
+    with it. Retries are therefore few, spaced, and only for the statuses
+    the add-on documents as retryable.
+
+      429  rate limited     -> wait Retry-After, retry
+      503  Meta unreachable -> back off, retry (approval could not be checked)
+      502  Meta refused it  -> one spaced retry, then give up
+      400/401/409           -> never retry, the call or the state is wrong
     """
-    try:
-        base = Path.home() / ".claude" / "channels" / "telegram-bcw"
-        token = next(
-            (ln.split("=", 1)[1].strip()
-             for ln in (base / ".env").read_text().splitlines()
-             if ln.startswith("TELEGRAM_BOT_TOKEN=")),
-            None,
-        )
-        chat_id = json.loads((base / "access.json").read_text())["allowFrom"][0]
-        if not token or not chat_id:
-            return False
+    if not SERVICEHQ_KEY:
+        return 0, ("SERVICEHQ_KEY not set — issue one with "
+                   "POST /api/admin/service-key and put it in .env")
+
+    target = (job.get("_touch") or {}).get("mobile") or job["mobile"]
+    payload = {
+        "to": target,
+        "template": WHATSAPP_TEMPLATE,
+        "language": WHATSAPP_LANG,
+        "bodyParams": whatsapp_params(job),
+        "urlButtonParam": schedule_token(job["job_uuid"]),
+        "jobUuid": job["job_uuid"],
+        "preview": whatsapp_preview(job),
+    }
+
+    attempt = 0
+    while True:
+        attempt += 1
         req = urllib.request.Request(
-            f"https://api.telegram.org/bot{token}/sendMessage",
-            data=json.dumps({"chat_id": chat_id, "text": text}).encode(),
-            headers={"Content-Type": "application/json"},
+            SERVICEHQ_SEND_URL,
+            method="POST",
+            data=json.dumps(payload).encode(),
+            headers={"Authorization": f"Bearer {SERVICEHQ_KEY}",
+                     "Content-Type": "application/json"},
         )
-        with urllib.request.urlopen(req, timeout=15) as r:
-            return r.status == 200
-    except Exception as e:  # noqa: BLE001
-        print(f"  (telegram alert failed: {e})")
-        return False
+        try:
+            with urllib.request.urlopen(req, timeout=45) as r:
+                return r.status, r.read()[:200].decode()
+        except urllib.error.HTTPError as e:
+            detail = e.read()[:200].decode()
+            if attempt > WHATSAPP_MAX_ATTEMPTS:
+                return e.code, detail
+            if e.code == 429:
+                # Trust their number rather than guessing; it is counted
+                # from the same audit table the limiter reads.
+                wait = int(e.headers.get("Retry-After") or 60)
+                print(f"    rate limited, waiting {wait}s")
+                time.sleep(min(wait, 3600))
+                continue
+            if e.code in (502, 503):
+                wait = WHATSAPP_RETRY_BASE_SECONDS * attempt
+                print(f"    HTTP {e.code}, retrying in {wait}s")
+                time.sleep(wait)
+                continue
+            return e.code, detail           # 400/401/409: no retry
+        except Exception as e:  # noqa: BLE001
+            if attempt > WHATSAPP_MAX_ATTEMPTS:
+                return 0, str(e)[:120]
+            time.sleep(WHATSAPP_RETRY_BASE_SECONDS * attempt)
 
 
 # ─────────────────────────── Chase planner ───────────────────────────
@@ -608,7 +665,9 @@ def main() -> None:
                 "to": (j.get("_touch") or {}).get("to", "occupier"),
             })
             save_state(state)
-        time.sleep(0.3)
+        # SMS goes straight to ServiceM8 and has no per-minute ceiling;
+        # WhatsApp goes through the add-on's limiter and does.
+        time.sleep(WHATSAPP_MIN_INTERVAL_SECONDS if args.channel == "whatsapp" else 0.3)
 
     if args.notify and results:
         sent = [r for r in results if r[1]]
