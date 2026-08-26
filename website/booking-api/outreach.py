@@ -588,7 +588,8 @@ def main() -> None:
     ap.add_argument("--list", action="store_true", help="show eligible jobs only")
     ap.add_argument("--dry-run", action="store_true", help="render messages, send nothing")
     ap.add_argument("--send", action="store_true", help="actually send")
-    ap.add_argument("--channel", choices=["sms", "whatsapp"], default="sms")
+    ap.add_argument("--channel", choices=["sms", "whatsapp", "auto"], default="sms",
+                    help="auto: WhatsApp if the template is approved, else SMS")
     ap.add_argument("--notify", action="store_true",
                     help="Telegram summary when the run finishes (for cron)")
     ap.add_argument("--followup", action="store_true",
@@ -643,6 +644,16 @@ def main() -> None:
             return
 
     results: list[tuple[dict, bool, int, str]] = []
+
+    # "auto" exists because the template can be sitting in Meta's review
+    # queue when this fires, and a morning where nobody is contacted is
+    # worse than a morning contacted by SMS. The decision is made once,
+    # from the first send, so the batch does not go out half on each
+    # channel and leave a confusing trail on the jobs.
+    channel = args.channel
+    if channel == "auto":
+        channel = "whatsapp"
+
     for j in sendable:
         link = schedule_link(j["job_uuid"])
         if args.dry_run or not args.send:
@@ -650,7 +661,7 @@ def main() -> None:
             who = f" touch {t['n']} -> {t['to']}" if t else ""
             print(f"\n--- #{j['job_ref']} {j['first']} "
                   f"({t.get('mobile') or j['mobile']}){who} ---")
-            if args.channel == "whatsapp":
+            if channel == "whatsapp":
                 print(f"  template: {WHATSAPP_TEMPLATE}")
                 print(f"  params  : {whatsapp_params(j)}")
                 print(f"  button  : {link}")
@@ -658,29 +669,33 @@ def main() -> None:
                 print("  " + sms_text(j, link))
             continue
 
-        if args.channel == "whatsapp":
+        if channel == "whatsapp":
             status, detail = send_whatsapp(j, link)
+            if args.channel == "auto" and status == 409 and "template_not_approved" in detail:
+                print("  template still not approved — whole batch falls back to SMS")
+                channel = "sms"
+                status, detail = send_sms(j, link)
         else:
             status, detail = send_sms(j, link)
         ok = 200 <= status < 300
-        print(f"#{j['job_ref']} {j['first']:<14} {args.channel} HTTP {status} {'' if ok else detail}")
+        print(f"#{j['job_ref']} {j['first']:<14} {channel} HTTP {status} {'' if ok else detail}")
         results.append((j, ok, status, detail))
         if ok:
             rec = state["sent"].setdefault(j["job_uuid"], {"touches": []})
             rec.setdefault("touches", []).append({
-                "at": time.time(), "channel": args.channel,
+                "at": time.time(), "channel": channel,
                 "to": (j.get("_touch") or {}).get("to", "occupier"),
             })
             save_state(state)
         # SMS goes straight to ServiceM8 and has no per-minute ceiling;
         # WhatsApp goes through the add-on's limiter and does.
-        time.sleep(WHATSAPP_MIN_INTERVAL_SECONDS if args.channel == "whatsapp" else 0.3)
+        time.sleep(WHATSAPP_MIN_INTERVAL_SECONDS if channel == "whatsapp" else 0.3)
 
     if args.notify and results:
         sent = [r for r in results if r[1]]
         failed = [r for r in results if not r[1]]
         lines = [
-            f"Booking outreach: {len(sent)} sent, {len(failed)} failed"
+            f"Booking outreach via {channel}: {len(sent)} sent, {len(failed)} failed"
             + (" (follow-up)" if args.followup else ""),
         ]
         lines += [f"  {j['first']} #{j['job_ref']} {j['service']}" for j, *_ in sent]

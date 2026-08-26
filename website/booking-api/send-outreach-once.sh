@@ -33,5 +33,8 @@ done
 ( crontab -l 2>/dev/null | grep -v "$MARKER" || true ) | crontab -
 echo "cron entry removed; this run is the only one"
 
+# auto: WhatsApp if Meta has approved the template by now, SMS if not.
+# Both are tested end to end; the only thing in doubt at scheduling time
+# was Meta's review queue.
 exec python3 "$PROJECT/website/booking-api/outreach.py" \
-  --send --channel sms --notify
+  --send --channel auto --notify
