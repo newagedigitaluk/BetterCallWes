@@ -520,6 +520,36 @@ def send_whatsapp(job: dict, link: str) -> tuple[int, str]:
             time.sleep(WHATSAPP_RETRY_BASE_SECONDS * attempt)
 
 
+def notify_telegram(text: str) -> bool:
+    """Best-effort ops alert to Wes. Never raises.
+
+    This runs unattended from cron, so a send with nobody watching is the
+    same as no send at all. Uses the same bot as the social pipeline, via
+    urllib rather than requests so this script keeps no dependencies.
+    """
+    try:
+        base = Path.home() / ".claude" / "channels" / "telegram-bcw"
+        token = next(
+            (ln.split("=", 1)[1].strip()
+             for ln in (base / ".env").read_text().splitlines()
+             if ln.startswith("TELEGRAM_BOT_TOKEN=")),
+            None,
+        )
+        chat_id = json.loads((base / "access.json").read_text())["allowFrom"][0]
+        if not token or not chat_id:
+            return False
+        req = urllib.request.Request(
+            f"https://api.telegram.org/bot{token}/sendMessage",
+            data=json.dumps({"chat_id": chat_id, "text": text}).encode(),
+            headers={"Content-Type": "application/json"},
+        )
+        with urllib.request.urlopen(req, timeout=15) as r:
+            return r.status == 200
+    except Exception as e:  # noqa: BLE001
+        print(f"  (telegram alert failed: {e})")
+        return False
+
+
 # ─────────────────────────── Chase planner ───────────────────────────
 
 def plan_followups(jobs: list[dict], state: dict) -> tuple[list[dict], list[tuple[dict, str]]]:
