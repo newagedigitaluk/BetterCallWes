@@ -55,7 +55,15 @@ class WorkingHours:
 
 
 def _parse_sm8_datetime(s: str) -> datetime:
-    """SM8 returns 'YYYY-MM-DD HH:MM:SS' (no timezone — treat as local)."""
+    """SM8 returns 'YYYY-MM-DD HH:MM:SS' (no timezone — treat as local).
+
+    Raises ValueError on anything unparseable, including None. SM8 leaves
+    timestamp fields as null or '0000-00-00 00:00:00' when unset, and both
+    callers already treat ValueError as "skip this record", so normalising
+    to ValueError here keeps a null date from taking out the whole diary.
+    """
+    if not isinstance(s, str):
+        raise ValueError(f"expected a datetime string, got {type(s).__name__}")
     return datetime.strptime(s.strip(), "%Y-%m-%d %H:%M:%S")
 
 
@@ -77,6 +85,54 @@ def parse_busy_blocks(activities: list[dict]) -> list[TimeBlock]:
             start = _parse_sm8_datetime(a["start_date"])
             end = _parse_sm8_datetime(a["end_date"])
         except (KeyError, ValueError):
+            continue
+        if end <= start:
+            continue
+        blocks.append(TimeBlock(start=start, end=end))
+    return blocks
+
+
+# Types seen on /availability.json, all of which mean "cannot work".
+# Kept as documentation rather than an allowlist: see parse_availability_blocks.
+KNOWN_UNAVAILABLE_TYPES = frozenset(
+    {"staff-busy-time", "staff-annual-leave", "business-closed"}
+)
+
+
+def parse_availability_blocks(
+    records: list[dict],
+    staff_uuid: str,
+) -> list[TimeBlock]:
+    """Turn SM8 /availability.json records into busy TimeBlocks.
+
+    These are the blocks behind the Calendar Import add-on ("Import
+    Free/Busy Time from Calendar URL" on the staff profile), Staff Leave,
+    and business-closed periods. They are stored separately from
+    jobactivity, so a diary built only from jobactivity looks free during
+    a personal commitment.
+
+    Scoping:
+      * `regarding_object == "staff"` rows only count for OUR staff member.
+      * vendor-scoped rows (business-closed) apply to everyone, so they
+        are kept regardless of uuid.
+
+    Unknown `availability_type` values are treated as BUSY rather than
+    skipped. Every value this endpoint has ever returned denotes
+    unavailability, and the cost of the two mistakes is asymmetric: wrongly
+    blocking a slot loses one booking, wrongly offering one sends a
+    customer to a house nobody turns up at.
+    """
+    blocks: list[TimeBlock] = []
+    for r in records:
+        if r.get("active") not in ("1", 1, True):
+            continue
+        obj = (r.get("regarding_object") or "").strip().lower()
+        if obj == "staff" and r.get("regarding_object_uuid") != staff_uuid:
+            continue
+        try:
+            start = _parse_sm8_datetime(r["start_timestamp"])
+            end = _parse_sm8_datetime(r["end_timestamp"])
+        except (KeyError, TypeError, ValueError):
             continue
         if end <= start:
             continue

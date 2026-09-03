@@ -32,6 +32,7 @@ from availability import (
     TimeBlock,
     WorkingHours,
     free_slots,
+    parse_availability_blocks,
     parse_busy_blocks,
     whole_day_slots,
 )
@@ -82,6 +83,11 @@ ALLOWED_ORIGINS = os.environ.get(
 DEFAULT_DAYS_AHEAD = int(os.environ.get("DEFAULT_DAYS_AHEAD", "14"))
 MATERIALS_CACHE_TTL = float(os.environ.get("MATERIALS_CACHE_TTL", "300"))  # 5 min
 ACTIVITY_CACHE_TTL = float(os.environ.get("ACTIVITY_CACHE_TTL", "60"))  # 60 s
+# SM8 re-syncs imported external calendars every ~15 min, so a short TTL here
+# buys nothing. 5 min keeps the payload (~110 KB) off the hot path.
+UNAVAILABILITY_CACHE_TTL = float(
+    os.environ.get("UNAVAILABILITY_CACHE_TTL", "300")
+)  # 5 min
 
 # Magic-link tokens for self-serve booking management. Empty disables
 # the feature gracefully — confirmation emails revert to "call/text me"
@@ -101,6 +107,7 @@ sm8: ServiceM8Client | None = None  # initialised in lifespan
 # Caches
 materials_cache: TTLCache[list[dict]] | None = None
 activity_cache: TTLCache[list[dict]] | None = None
+unavailability_cache: TTLCache[list[dict]] | None = None
 
 # Wes's staff UUID — used for the optional <platform-user-signature/> tag
 DEFAULT_STAFF_UUID = "5673d021-27b2-4356-a14b-1760cabfcd3b"
@@ -272,7 +279,7 @@ def enrich_services_with_prices(
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    global sm8, materials_cache, activity_cache
+    global sm8, materials_cache, activity_cache, unavailability_cache
     if not SM8_API_KEY:
         raise RuntimeError("SERVICEM8_API_KEY env var is required")
     sm8 = ServiceM8Client(api_key=SM8_API_KEY)
@@ -287,6 +294,17 @@ async def lifespan(app: FastAPI):
         return await sm8.list_activity(staff_uuid=staff_uuid, start_date=today_str)
 
     activity_cache = TTLCache(ACTIVITY_CACHE_TTL, fetch_activity)
+
+    # Personal/blocked time from SM8's availability store — the Calendar
+    # Import add-on writes here, not to jobactivity. Also keyed by today,
+    # so it self-rotates daily like the activity cache.
+    async def fetch_unavailability() -> list[dict]:
+        today_str = date.today().strftime("%Y-%m-%d")
+        return await sm8.list_availability(from_date=today_str)
+
+    unavailability_cache = TTLCache(
+        UNAVAILABILITY_CACHE_TTL, fetch_unavailability
+    )
 
     log.info("booking-api ready (services.json=%s)", SERVICES_JSON_PATH)
     try:
@@ -380,13 +398,31 @@ async def get_availability(
         afternoon_end=datetime.strptime(hours_cfg["afternoon_end"], "%H:%M").time(),
     )
 
+    assert unavailability_cache is not None
+    staff_uuid = config["config"]["staff_uuid"]
+
     activity = await activity_cache.get()
     busy = parse_busy_blocks(activity)
 
-    # Note: SM8 is the single source of truth for the diary. If Wes
-    # wants a personal day blocked, he adds it as a manual jobactivity
-    # in SM8 (which then shows up in Outlook via his SM8→Outlook
-    # calendar subscription). No external feed merge needed.
+    # Two separate SM8 stores have to agree before a slot is safe to offer:
+    #   jobactivity   — booked jobs on the diary
+    #   availability  — personal/blocked time, including anything synced in
+    #                   from Wes's external calendar via the Calendar Import
+    #                   add-on ("Import Free/Busy Time from Calendar URL" on
+    #                   the staff profile), plus Staff Leave and closures.
+    # Reading only jobactivity is what let the form offer slots during
+    # personal commitments.
+    try:
+        unavailable = await unavailability_cache.get()
+        busy = busy + parse_availability_blocks(unavailable, staff_uuid)
+    except Exception:
+        # Never hand out slots we cannot vouch for. If the unavailability
+        # store is unreachable we would silently fall back to the old,
+        # broken behaviour, so fail the request instead.
+        log.exception("availability: could not load SM8 unavailability blocks")
+        raise HTTPException(
+            503, "Cannot check the diary right now. Please try again shortly."
+        )
 
     requested = duration_min or svc.get("base_duration_min", 60)
 

@@ -129,6 +129,34 @@ class ServiceM8Client:
         resp.raise_for_status()
         return resp.json()
 
+    async def list_availability(self, from_date: str) -> list[dict[str, Any]]:
+        """Staff unavailability blocks from /availability.json.
+
+        This is a DIFFERENT store to jobactivity. It holds the records
+        behind SM8's "Import Free/Busy Time from Calendar URL" staff
+        setting (the Calendar Import add-on), plus Staff Leave and
+        business-closed periods. Personal commitments synced from an
+        external calendar land here and never appear as jobactivity, so
+        the diary looks free to anything that only reads jobactivity.
+
+        Observed `availability_type` values: staff-busy-time,
+        staff-annual-leave, business-closed. Records carry
+        `source: "calendar-sync"` when they came from the external feed
+        and null when entered in SM8 directly; both block equally.
+
+        Filtering note: SM8 honours `active` and `end_timestamp` in
+        $filter here but silently IGNORES `regarding_object_uuid` (it
+        returns every staff member's rows regardless). Narrow by date
+        server-side and match the staff member in Python.
+        """
+        filter_q = f"active eq 1 and end_timestamp gt '{from_date} 00:00:00'"
+        resp = await self._client.get(
+            "/availability.json",
+            params={"$filter": filter_q, "$orderby": "start_timestamp"},
+        )
+        resp.raise_for_status()
+        return resp.json()
+
     async def create_activity(
         self,
         job_uuid: str,
