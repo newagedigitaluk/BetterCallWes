@@ -196,9 +196,15 @@ def has_replied(job_uuid: str, since: datetime) -> bool:
         for r in (rows or []):
             if r.get("direction") == "inbound" and str(r.get("timestamp") or "") > stamp:
                 return True
+    # "WhatsApp from <name>" is inbound; "WhatsApp sent" is us. Matching the
+    # bare word "whatsapp" counted our own message as the customer's reply,
+    # because the add-on mirrors outbound sends into the same diary. Every
+    # person messaged looked like they had answered within the minute, which
+    # suppressed the entire follow-up ladder without erroring once.
     _, notes = sm8("GET", f"/note.json?%24filter=related_object_uuid%20eq%20{job_uuid}")
     for n in (notes or []):
-        if str(n.get("create_date") or "") > stamp and "whatsapp" in (n.get("note") or "").lower():
+        text = (n.get("note") or "").lower()
+        if str(n.get("create_date") or "") > stamp and "whatsapp from" in text:
             return True
     return False
 
@@ -301,15 +307,21 @@ def eligible_jobs(badge_names: dict[str, str]) -> list[dict]:
         # a booking. Her gas safety was overdue the whole time.
         #
         # A few days' grace after a slot, because paperwork lags the van.
+        #
+        # An older slot with nothing ahead is reported rather than messaged.
+        # Two things produce that state and they need opposite responses: the
+        # visit happened and the job simply has not been written up, or the
+        # appointment fell through. Only Wes knows which, and texting "pick a
+        # time" to somebody he stood in the kitchen of last week is worse
+        # than saying nothing at all.
         _, acts = sm8("GET", f"/jobactivity.json?%24filter=job_uuid%20eq%20{j['uuid']}")
         cutoff = (datetime.now() - timedelta(days=SLOT_GRACE_DAYS)).strftime("%Y-%m-%d")
-        if isinstance(acts, list) and any(
-            str(a.get("active", "1")) in ("1", "True", "true")
-            and str(a.get("activity_was_scheduled", "1")) in ("1", "True", "true")
-            and str(a.get("start_date", ""))[:10] >= cutoff
-            for a in acts
-        ):
+        booked = [a for a in (acts if isinstance(acts, list) else [])
+                  if str(a.get("active", "1")) in ("1", "True", "true")
+                  and str(a.get("activity_was_scheduled", "1")) in ("1", "True", "true")]
+        if any(str(a.get("start_date", ""))[:10] >= cutoff for a in booked):
             continue
+        stale = max((str(a.get("start_date", ""))[:10] for a in booked), default="")
 
         # Occupier first, landlord (Property Manager) as fallback — several
         # of these properties are tenanted and the landlord authorises access.
@@ -338,6 +350,7 @@ def eligible_jobs(badge_names: dict[str, str]) -> list[dict]:
             "email": (target.get("email") or "").strip(),
             "landlord_mobile": fallback_mobile,
             "_desc": j.get("job_description") or "",
+            "_stale_slot": stale,
         })
     return out
 
@@ -652,8 +665,16 @@ def main() -> None:
     state = load_state()
 
     needs_human: list[tuple[dict, str]] = []
+
+    # Visited-but-not-written-up never goes into a send. See eligible_jobs.
+    stale = [x for x in jobs if x.get("_stale_slot")]
+    jobs = [x for x in jobs if not x.get("_stale_slot")]
+    needs_human += [(x, f"appointment on {x['_stale_slot']} passed, job still open "
+                        f"- complete it, or rebook") for x in stale]
+
     if args.followup:
-        jobs, needs_human = plan_followups(jobs, state)
+        jobs, extra = plan_followups(jobs, state)
+        needs_human += extra
     elif not args.list:
         jobs = [j for j in jobs if j["job_uuid"] not in state["sent"]]
 
