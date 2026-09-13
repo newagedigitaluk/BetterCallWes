@@ -112,6 +112,10 @@ NO_CHASE_BADGE = "No Auto-Chase"
 # and at least twice the portal's date has been wrong where the customer
 # knew better — so a corrected date in the description wins.
 DUE_WITHIN_DAYS = int(os.environ.get("DUE_WITHIN_DAYS", "30"))
+# How long a past appointment still counts as "booked" before the job is
+# treated as needing attention again. Long enough that a job done yesterday
+# isn't chased before it's been written up.
+SLOT_GRACE_DAYS = int(os.environ.get("SLOT_GRACE_DAYS", "3"))
 
 _MONTHS = {m: i for i, m in enumerate(
     ["january", "february", "march", "april", "may", "june", "july",
@@ -287,11 +291,22 @@ def eligible_jobs(badge_names: dict[str, str]) -> list[dict]:
         if due and due > datetime.now() + timedelta(days=DUE_WITHIN_DAYS):
             continue
 
-        # Already in the diary? Then there's nothing to chase.
+        # Booked AHEAD? Then there's nothing to chase.
+        #
+        # "Has a diary entry" is not the same as "is booked". A slot that has
+        # already passed on a job still sitting open means the opposite: the
+        # appointment came and went and the work is not done. Leonie #4627
+        # booked herself in for 4 September, the date passed, and the job
+        # stayed invisible to this script because the old entry looked like
+        # a booking. Her gas safety was overdue the whole time.
+        #
+        # A few days' grace after a slot, because paperwork lags the van.
         _, acts = sm8("GET", f"/jobactivity.json?%24filter=job_uuid%20eq%20{j['uuid']}")
+        cutoff = (datetime.now() - timedelta(days=SLOT_GRACE_DAYS)).strftime("%Y-%m-%d")
         if isinstance(acts, list) and any(
             str(a.get("active", "1")) in ("1", "True", "true")
             and str(a.get("activity_was_scheduled", "1")) in ("1", "True", "true")
+            and str(a.get("start_date", ""))[:10] >= cutoff
             for a in acts
         ):
             continue
