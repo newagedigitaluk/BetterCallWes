@@ -52,3 +52,6 @@ website/scripts/generate_placeholders.js
 
 # Outreach send log — holds customer mobile numbers and send timestamps
 website/booking-api/outreach-state.json
+
+# Google Local Services lead log - customer numbers and messages
+website/scripts/google/lsa-state.json
