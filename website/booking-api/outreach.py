@@ -510,6 +510,13 @@ def send_whatsapp(job: dict, link: str) -> tuple[int, str]:
         "urlButtonParam": schedule_token(job["job_uuid"]),
         "jobUuid": job["job_uuid"],
         "preview": whatsapp_preview(job),
+        # Let the Chat Assistant answer the reply. This template asks "shall we
+        # book you in", so an automatic answer that offers times and puts the
+        # job on the board is the whole point of sending it. The add-on
+        # defaults to staying out of anything sent through this route, because
+        # the other thing that goes out of it is Google Local Services leads,
+        # which cost money per lead and want a human reply.
+        "assistant": True,
     }
 
     attempt = 0
