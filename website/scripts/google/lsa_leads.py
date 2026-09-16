@@ -218,6 +218,19 @@ def alert_text(lead: dict, wa: str) -> str:
 
 # ─────────────────────────── Main ───────────────────────────
 
+# After this long, stop retrying a lead's WhatsApp. An enquiry answered two
+# days late is worse than not answered: it tells them how long you take.
+RETRY_HOURS = int(os.environ.get("LSA_RETRY_HOURS", "12"))
+
+
+def stale(lead: dict) -> bool:
+    try:
+        made = datetime.strptime(lead["created"][:16], "%Y-%m-%d %H:%M")
+    except ValueError:
+        return True
+    return (datetime.now() - made).total_seconds() > RETRY_HOURS * 3600
+
+
 def load_state() -> dict:
     if STATE.exists():
         return json.loads(STATE.read_text())
@@ -242,7 +255,7 @@ def main() -> None:
                   f"{l['phone'] or '(none)':<15} {l['label']:<28} {l['message'][:50]}")
         return
 
-    fresh = [l for l in leads if l["id"] not in state["done"]]
+    fresh = [l for l in leads if not (state["done"].get(l["id"]) or {}).get("done")]
     print(f"{len(fresh)} new of {len(leads)} leads")
 
     for l in fresh:
@@ -256,14 +269,32 @@ def main() -> None:
                   and l["phone"] else f"  ({wa})")
             continue
 
-        if l["type"] == "MESSAGE" and l["phone"]:
+        rec = state["done"].get(l["id"]) or {}
+        wants_wa = l["type"] == "MESSAGE" and bool(l["phone"])
+
+        if wants_wa and not rec.get("wa_sent"):
             status, detail = send_whatsapp(l)
             ok = 200 <= status < 300
-            wa = "WhatsApp sent" if ok else f"WhatsApp FAILED {status} {detail[:120]}"
+            wa = "WhatsApp sent" if ok else f"WhatsApp failed {status} {detail[:120]}"
             print(f"  {l['id']} {wa}")
+            rec["wa_sent"] = ok
+            rec["wa_note"] = wa
             time.sleep(13)          # add-on allows 5/min and counts failures
-        notify(alert_text(l, wa))
-        state["done"][l["id"]] = {"at": time.time(), "type": l["type"], "wa": wa}
+
+        # Alert once. The WhatsApp may still be retried afterwards, so the
+        # alert is not what closes the lead off.
+        if not rec.get("alerted"):
+            notify(alert_text(l, rec.get("wa_note", wa)))
+            rec["alerted"] = True
+
+        rec.setdefault("at", time.time())
+        rec["type"] = l["type"]
+        # A lead is only finished once anything it was owed has gone. Marking
+        # it done on the alert alone meant a template still in review, or a
+        # rate limit, silently cost the lead its message: the next run would
+        # skip it as already handled and nobody would ever know.
+        rec["done"] = (not wants_wa) or bool(rec.get("wa_sent")) or stale(l)
+        state["done"][l["id"]] = rec
         STATE.write_text(json.dumps(state, indent=2))
 
 
