@@ -284,8 +284,13 @@ def main() -> None:
         # Alert once. The WhatsApp may still be retried afterwards, so the
         # alert is not what closes the lead off.
         if not rec.get("alerted"):
-            notify(alert_text(l, rec.get("wa_note", wa)))
-            rec["alerted"] = True
+            sent = notify(alert_text(l, rec.get("wa_note", wa)))
+            # Say so in the log. A phone lead produced a run log reading only
+            # "1 new of 25 leads", and when Wes asked what had happened to it
+            # there was nothing to point at.
+            print(f"  {l['id']} {l['type']} {l['phone'] or '(no number)'} "
+                  f"telegram {'sent' if sent else 'FAILED'}")
+            rec["alerted"] = sent
 
         rec.setdefault("at", time.time())
         rec["type"] = l["type"]
