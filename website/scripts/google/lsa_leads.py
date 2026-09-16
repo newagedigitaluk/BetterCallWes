@@ -42,6 +42,8 @@ CUSTOMER_ID = os.environ.get("LSA_CUSTOMER_ID", "3558748555")
 API = "https://googleads.googleapis.com/v23"
 STATE = Path(__file__).with_name("lsa-state.json")
 
+SM8_KEY = os.environ.get("SERVICEM8_API_KEY", "")
+
 SERVICEHQ_SEND_URL = os.environ.get(
     "SERVICEHQ_SEND_URL", "https://wa.servicehq.co.uk/api/service/send-template")
 SERVICEHQ_KEY = os.environ.get("SERVICEHQ_KEY", "")
@@ -182,6 +184,65 @@ def preview(lead: dict) -> str:
             f"get it done?")
 
 
+def create_inbox(lead: dict) -> tuple[bool, str]:
+    """Put the lead in the ServiceM8 Inbox.
+
+    Not a job: ServiceM8 bills per job and most enquiries never become one.
+    The Inbox costs nothing, sits where Wes already looks, and carries a
+    convert-to-job button for the ones that turn real, which is the moment
+    the charge is worth paying.
+
+    jobData is filled in so that conversion arrives with the customer's name,
+    number and own words already on it rather than as an empty job.
+    """
+    if not SM8_KEY:
+        return False, "SERVICEM8_API_KEY not set"
+    name = lead.get("name") or lead["phone"] or "Google lead"
+    first, _, last = str(name).partition(" ")
+    body = [
+        lead["message"] or "(no message - they rang)",
+        "",
+        f"Google Local Services {lead['type'].replace('_', ' ').lower()}",
+        f"About: {lead['label']}",
+        f"Phone: {lead['phone'] or 'not given'}",
+    ]
+    if lead.get("email"):
+        body.append(f"Email: {lead['email']}")
+    if lead.get("charged"):
+        body.append("Google charged for this lead.")
+    body.append(f"Lead {lead['id']}")
+
+    payload = {
+        "subject": f"Google lead - {lead['label']}"
+                   + (f" - {lead['name']}" if lead.get("name") else ""),
+        "message_text": "\n".join(body),
+        "from_name": name,
+        "jobData": {
+            "contact_first": first or None,
+            "contact_last": last or None,
+            "mobile": lead["phone"] or None,
+            "job_description": lead["message"] or f"Google lead - {lead['label']}",
+        },
+    }
+    if lead.get("email"):
+        payload["from_email"] = lead["email"]
+    req = urllib.request.Request(
+        "https://api.servicem8.com/api_1.0/inboxmessage.json", method="POST",
+        data=json.dumps(payload).encode(),
+        headers={"X-Api-Key": SM8_KEY, "Content-Type": "application/json",
+                 "Accept": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            # Inbox creates answer 201 and put the uuid in the body, not in
+            # the x-record-uuid header most ServiceM8 creates use.
+            raw = json.loads(r.read() or b"{}")
+            return True, raw.get("uuid") or raw.get("id") or "created"
+    except urllib.error.HTTPError as e:
+        return False, f"{e.code} {e.read()[:150].decode()}"
+    except Exception as e:  # noqa: BLE001
+        return False, str(e)[:120]
+
+
 def notify(text: str) -> bool:
     """Telegram, best effort. Kept local rather than imported from the booking
     API so a lead alert can never be taken out by an unrelated import."""
@@ -281,6 +342,15 @@ def main() -> None:
             rec["wa_note"] = wa
             time.sleep(13)          # add-on allows 5/min and counts failures
 
+        # Message leads only. A phone lead already appears in the ServiceM8
+        # Inbox as a "Call" entry, put there by the AI phone agent that
+        # answered it, so adding our own would be the same lead twice in the
+        # place Wes triages from.
+        if l["type"] == "MESSAGE" and not rec.get("inbox"):
+            ok, detail = create_inbox(l)
+            print(f"  {l['id']} inbox {'created' if ok else 'FAILED ' + detail}")
+            rec["inbox"] = ok
+
         # Alert once. The WhatsApp may still be retried afterwards, so the
         # alert is not what closes the lead off.
         if not rec.get("alerted"):
@@ -298,7 +368,9 @@ def main() -> None:
         # it done on the alert alone meant a template still in review, or a
         # rate limit, silently cost the lead its message: the next run would
         # skip it as already handled and nobody would ever know.
-        rec["done"] = (not wants_wa) or bool(rec.get("wa_sent")) or stale(l)
+        needs_inbox = l["type"] == "MESSAGE"
+        rec["done"] = ((not needs_inbox) or bool(rec.get("inbox")) or stale(l)) and (
+            (not wants_wa) or bool(rec.get("wa_sent")) or stale(l))
         state["done"][l["id"]] = rec
         STATE.write_text(json.dumps(state, indent=2))
 
