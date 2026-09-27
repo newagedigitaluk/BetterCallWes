@@ -244,7 +244,52 @@ def create_inbox(lead: dict) -> tuple[bool, str]:
             # Inbox creates answer 201 and put the uuid in the body, not in
             # the x-record-uuid header most ServiceM8 creates use.
             raw = json.loads(r.read() or b"{}")
-            return True, raw.get("uuid") or raw.get("id") or "created"
+            uuid = raw.get("uuid") or raw.get("id") or r.headers.get("x-record-uuid")
+    except urllib.error.HTTPError as e:
+        return False, f"{e.code} {e.read()[:150].decode()}"
+    except Exception as e:  # noqa: BLE001
+        return False, str(e)[:120]
+    if uuid:
+        return True, uuid
+    # No id in the response: find the entry we just made, or the @mention
+    # has nothing to hang on and the lead lands silently again.
+    try:
+        req = urllib.request.Request("https://api.servicem8.com/api_1.0/inboxmessage.json",
+                                     headers={"X-Api-Key": SM8_KEY, "Accept": "application/json"})
+        msgs = json.load(urllib.request.urlopen(req, timeout=30)).get("messages", [])
+        mine = [m for m in msgs if m.get("active") == 1
+                and m.get("subject") == payload["subject"]
+                and f"Lead {lead['id']}" in str(m.get("message_text", ""))]
+        if mine:
+            return True, max(mine, key=lambda m: m.get("timestamp", ""))["uuid"]
+    except Exception:  # noqa: BLE001
+        pass
+    return True, ""
+
+
+# ServiceM8 sends no notification for a new Inbox message; its alerts fire
+# only for scheduling and staff instant messages. What it does notify on is an
+# @mention in a note, which is how the WhatsApp add-on gets Wes told about its
+# Inbox entries. Without this note our leads landed in the Inbox silently.
+MENTION = os.environ.get("LSA_MENTION", "@Wesley")
+
+
+def mention_on_inbox(inbox_uuid: str, lead: dict) -> tuple[bool, str]:
+    if not (SM8_KEY and inbox_uuid and MENTION):
+        return False, "nothing to mention on"
+    what = "rang" if lead["type"] == "PHONE_CALL" else "sent a message"
+    note = (f"New Google lead: someone {what} about {lead['label']}. "
+            f"{lead['phone'] or 'No number given'}"
+            + (" - WhatsApp opener sent." if lead.get("_wa_ok") else ".")
+            + f" {MENTION}")
+    req = urllib.request.Request(
+        f"https://api.servicem8.com/api_1.0/inboxmessage/{inbox_uuid}/notes.json",
+        method="POST", data=json.dumps({"note": note}).encode(),
+        headers={"X-Api-Key": SM8_KEY, "Content-Type": "application/json",
+                 "Accept": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            return True, str(r.status)
     except urllib.error.HTTPError as e:
         return False, f"{e.code} {e.read()[:150].decode()}"
     except Exception as e:  # noqa: BLE001
@@ -355,9 +400,14 @@ def main() -> None:
         # answered it, so adding our own would be the same lead twice in the
         # place Wes triages from.
         if l["type"] == "MESSAGE" and not rec.get("inbox"):
+            l["_wa_ok"] = bool(rec.get("wa_sent"))
             ok, detail = create_inbox(l)
             print(f"  {l['id']} inbox {'created' if ok else 'FAILED ' + detail}")
             rec["inbox"] = ok
+            if ok:
+                mok, mdetail = mention_on_inbox(detail, l)
+                print(f"  {l['id']} mention {'added' if mok else 'FAILED ' + mdetail}")
+                rec["mentioned"] = mok
 
         # Alert once. The WhatsApp may still be retried afterwards, so the
         # alert is not what closes the lead off.
