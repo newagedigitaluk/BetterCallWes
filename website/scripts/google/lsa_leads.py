@@ -50,6 +50,13 @@ SERVICEHQ_KEY = os.environ.get("SERVICEHQ_KEY", "")
 TEMPLATE = os.environ.get("LSA_TEMPLATE", "lsa_lead_first_reply")
 TEMPLATE_LANG = os.environ.get("LSA_TEMPLATE_LANG", "en_GB")
 
+# Let the add-on's Chat Assistant answer replies to our opener. The add-on
+# stands the assistant down on anything sent through the service API unless
+# the caller asks otherwise. Wes turned it off on 2026-09-16 to answer these
+# himself, then asked for it back on 2026-09-27 because he wasn't getting to
+# them quickly enough. LSA_ASSISTANT=0 turns it off again.
+ASSISTANT = os.environ.get("LSA_ASSISTANT", "1") == "1"
+
 # Google's own service ids, as they come back on the lead. Anything not
 # listed falls back to the category, then to "a plumbing job".
 SERVICE_LABEL = {
@@ -163,6 +170,7 @@ def send_whatsapp(lead: dict) -> tuple[int, str]:
         "language": TEMPLATE_LANG,
         "bodyParams": [lead["label"], lead["price"]],
         "preview": preview(lead),
+        "assistant": ASSISTANT,
     }
     req = urllib.request.Request(
         SERVICEHQ_SEND_URL, method="POST", data=json.dumps(payload).encode(),
