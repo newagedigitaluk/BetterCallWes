@@ -474,6 +474,10 @@ async def get_availability(
 async def book(req: BookingRequest) -> BookingResponse:
     """Create the booking end-to-end.
 
+    Retired 19 Oct 2026: bookings come through ServiceHQ Booking at
+    book.bettercallwes.co.uk. This refuses so a cached copy of the old form
+    cannot book. The manage and schedule flows below stay for links already out.
+
     Flow:
       1. Validate service + postcode + slot
       2. Resolve materials based on answers
@@ -483,6 +487,10 @@ async def book(req: BookingRequest) -> BookingResponse:
       5. POST /jobactivity.json to lock the slot on Wes's diary
       6. If category_uuid differs from template default, POST /job/{uuid}.json
     """
+    raise HTTPException(
+        410, "Online booking has moved to https://book.bettercallwes.co.uk"
+    )
+
     assert sm8 is not None
     assert materials_cache is not None
     assert activity_cache is not None

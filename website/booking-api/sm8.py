@@ -14,6 +14,7 @@ from dataclasses import dataclass
 from typing import Any
 
 import httpx
+from datetime import date as _date, timedelta as _timedelta
 
 logger = logging.getLogger(__name__)
 
@@ -119,8 +120,13 @@ class ServiceM8Client:
         Note: SM8's OData implementation uses simple `eq` / `gt` / `lt` / `and`
         and date strings should be quoted.
         """
+        # ServiceM8 reads a bare-date "gt" as "after that whole day", so a
+        # read made on the booking day lost that day's own jobs and the form
+        # double-booked (19 Oct 2026, job 4763 over two existing jobs). Asking
+        # from the day before keeps today in whatever ServiceM8 means by "gt".
+        from_day = (_date.fromisoformat(start_date) - _timedelta(days=1)).isoformat()
         filter_q = (
-            f"staff_uuid eq {staff_uuid} and start_date gt '{start_date}'"
+            f"staff_uuid eq {staff_uuid} and start_date gt '{from_day}'"
         )
         resp = await self._client.get(
             "/jobactivity.json",
