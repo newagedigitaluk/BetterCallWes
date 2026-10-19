@@ -120,10 +120,12 @@ class ServiceM8Client:
         Note: SM8's OData implementation uses simple `eq` / `gt` / `lt` / `and`
         and date strings should be quoted.
         """
-        # ServiceM8 reads a bare-date "gt" as "after that whole day", so a
-        # read made on the booking day lost that day's own jobs and the form
-        # double-booked (19 Oct 2026, job 4763 over two existing jobs). Asking
-        # from the day before keeps today in whatever ServiceM8 means by "gt".
+        # Asked from the day before, so a block that began yesterday and runs
+        # into today, or one starting exactly at midnight, is still counted.
+        # (A bare-date "gt" does include the day itself: checked against the
+        # live account on 19 Oct 2026, so that was not what double-booked
+        # job 4763. The form had no travel time between jobs and took
+        # same-day work on two hours' notice; booking now lives elsewhere.)
         from_day = (_date.fromisoformat(start_date) - _timedelta(days=1)).isoformat()
         filter_q = (
             f"staff_uuid eq {staff_uuid} and start_date gt '{from_day}'"
