@@ -13,8 +13,8 @@
 - **Email**: wes@bettercallwes.co.uk
 - **Website**: https://bettercallwes.co.uk/
 - **Gas Safe Register**: registered, verifiable at https://www.gassaferegister.co.uk/
-- **Hours**: Monday to Friday, 09:00–17:00 (WhatsApp messages outside hours typically replied to within the hour during the working day)
-- **Reviews**: 4.9 average from 200+ five-star reviews
+- **Hours**: Repair and service visits Monday to Friday, 09:00-17:00. Booking is open 24/7 online and on WhatsApp, where a booking assistant replies straight away
+- **Reviews**: 5.0 on Google (120+ reviews), 200+ reviews in total across Google, Checkatrade, Trustpilot and other platforms
 - **Insurance**: fully insured
 
 ## Services and pricing
@@ -40,6 +40,7 @@
 ### Service hubs
 - [Boiler Installation](https://bettercallwes.co.uk/services/boiler-installation.html)
 - [Boiler Repair](https://bettercallwes.co.uk/services/boiler-repair.html): emergency call-outs, parts in van, all major brands
+- [Emergency Boiler Repair](https://bettercallwes.co.uk/services/emergency-boiler-repair.html): book 24/7 online or on WhatsApp, repair visits Mon to Fri 9am to 5pm, same day or next day, no emergency surcharge
 - [Boiler Servicing](https://bettercallwes.co.uk/services/boiler-servicing.html): annual service, CP12 landlord certificates
 - [Central Heating](https://bettercallwes.co.uk/services/central-heating.html): power flushing, radiators, smart controls
 - [Plumbing Repairs](https://bettercallwes.co.uk/services/plumbing-repairs.html): leaks, taps, toilets, showers
@@ -75,7 +76,7 @@
 - [Pricing](https://bettercallwes.co.uk/pricing.html)
 - [Reviews](https://bettercallwes.co.uk/reviews.html)
 - [Contact](https://bettercallwes.co.uk/contact.html)
-- [Book Online](https://bettercallwes.co.uk/booking.html)
+- [Book Online](https://book.bettercallwes.co.uk/): online booking, open 24/7
 
 ## Optional
 
