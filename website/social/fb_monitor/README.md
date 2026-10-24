@@ -74,10 +74,22 @@ That polls every 25 minutes. The script itself adds random per-group jitter (3-8
 
 Edit `config.json`:
 
-- **`keywords.trade`** — add/remove plumbing keywords
-- **`keywords.geo`** — restrict to specific areas
-- **`filters.require_geo_match`** — set to `true` to only alert on posts that mention a Southampton location. Currently `false` so you also see e.g. someone in the Eastleigh group posting a generic plumber question.
+- **`keywords.strong`** — specific trade terms (boiler, plumber, gas hob…). Pass on their own.
+- **`keywords.weak`** — ambiguous words (gas, tap, shower, leak…). Pass only when an `intent` phrase sits within `filters.weak_intent_max_words` of the weak term, or when two different weak terms and an intent phrase all appear.
+- **`keywords.intent`** — service-request phrases. Whole-word; a trailing `*` allows a prefix (`repair*`).
+- **`keywords.exclude`** — hard rejects (for sale, gas bill, cat sitter, taxi…).
+- **`gate`** — every keyword match is then put to a one-word model check ("is this quotable plumbing/heating/gas/drainage work?") before an alert. `model`, `api_key_file` (read in-process, never copied) and `on_error` (`alert` sends anyway tagged unchecked; `drop` stays quiet) live here.
 - **`polling.interval_minutes`** — match your cron schedule
+
+Before changing any of it, replay the recent alerts:
+
+```bash
+python3 fb_monitor.py --replay 30            # keyword filter + gate over the last 30 logged alerts, sends nothing
+python3 fb_monitor.py --replay 30 --no-gate  # keyword filter only, no model calls
+python3 fb_monitor.py --gate-test "post text" # one post through both
+```
+
+Alert lines in the log carry the whole post plus the matched terms and the gate verdict; gate rejections are logged as `🚫 Gate said no` so a missed lead can be traced. Changes are recorded in `CHANGES.md`.
 
 ## Reply quality
 
@@ -97,4 +109,4 @@ If you want it smarter (more context-aware, less templated), we can swap the `dr
 - **"No storage_state.json"** → run `--login` on your Mac and upload the file
 - **"Telegram creds not available"** → check `~/.claude/channels/telegram-bcw/.env` exists
 - **Polls return 0 posts when there should be some** → Facebook may have changed the mobile DOM. Check the `extract_posts_from_group` selectors in `fb_monitor.py`. Or your session may have expired — re-do `--login`.
-- **You get the same alerts twice** → the dedup hash is based on normalised text + group URL. If a post is heavily edited it could re-trigger; that's by design (rare).
+- **You get the same alerts twice** → the dedup key is a hash of the first 90 letters of the post's durable text, kept in `state/seen_posts.json` as key → first-seen, oldest trimmed at 50,000. A post edited within its first sentence or two could re-trigger; that's by design (rare). See `CHANGES.md` 2026-10-24 for the duplicate-alert fix.

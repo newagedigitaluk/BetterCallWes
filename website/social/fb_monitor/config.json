@@ -1,5 +1,5 @@
 {
-  "_comment": "Facebook group monitoring config — used by fb_monitor.py. Lead matches are pushed to Telegram.",
+  "_comment": "Facebook group monitoring config — used by fb_monitor.py. Lead matches are routed through mail-notify (class lead) and pushed to Wes's phone by the HQ loop.",
   "groups": [
     { "url": "https://www.facebook.com/groups/880153462667948",  "label": "" },
     { "url": "https://www.facebook.com/groups/465323237747416",  "label": "" },
@@ -12,12 +12,13 @@
     { "url": "https://www.facebook.com/groups/274058486585426",  "label": "" },
     { "url": "https://www.facebook.com/groups/1005647172815019", "label": "" }
   ],
-  "_filter_note": "Two-tier: STRONG terms alert on their own; WEAK/ambiguous terms need an INTENT phrase; EXCLUDE phrases hard-reject. Groups are all Southampton-local so no geo filter.",
+  "_filter_note": "Two-tier: STRONG terms pass on their own; a WEAK term passes only with an INTENT phrase within filters.weak_intent_max_words of it, or when two different weak terms plus any intent phrase appear; EXCLUDE phrases hard-reject. Intent phrases are whole-word; a trailing * allows a prefix (repair* = repairs, repaired). Every pass is then put to the LLM gate below. Groups are all Southampton-local so no geo filter.",
   "keywords": {
-    "strong": ["boiler", "central heating", "radiator", "plumber", "plumbing", "burst pipe", "no hot water", "no heat", "no heating", "cold radiator", "cold rads", "power flush", "powerflush", "magnaclean", "immersion", "stopcock", "pilot light", "kettling", "gas leak", "gas safe", "gas safety", "boiler service", "combi", "cp12", "landlord certificate", "landlord cert", "cylinder", "trv", "underfloor heating", "water tank", "dripping tap", "leaking tap", "leaking pipe", "blocked drain", "blocked toilet", "leaking radiator"],
-    "weak": ["gas", "tap", "shower", "toilet", "leak", "leaking", "drain", "pressure", "heating", "thermostat", "pipe", "flush", "valve"],
-    "intent": ["recommend", "any recommend", "anyone know", "does anyone", "can anyone", "looking for", "need a", "need someone", "need an", "who does", "who can", "quote", "come out", "fix", "repair", "replace", "install", "fit ", "not working", "stopped working", "broken", "help with", "issue with", "issues with", "problem with", "sort out", "sort it", "urgent", "engineer", "tradesman", "plumb", "leaking", "burst", "no hot", "no heat", "emergency"],
-    "exclude": ["baby shower", "bridal shower", "gas bill", "gas prices", "gas price", "gas & electric", "gas and electric", "energy bill", "british gas", "sse", "octopus energy", "blood pressure", "under pressure", "no pressure", "peer pressure", "tap the link", "tap here", "tap to ", "on tap", "for sale", "for sell", "selling", "free to collect", "giveaway", "wanted:", "raffle", "hairdresser", "cleaner wanted", "gardener", "childcare", "estate agent", "gas station", "petrol", "heating oil for sale", "sponsored", "gas mark"]
+    "strong": ["boiler", "central heating", "radiator", "plumber", "plumbing", "burst pipe", "no hot water", "no heat", "no heating", "cold radiator", "cold rads", "power flush", "powerflush", "magnaclean", "immersion", "stopcock", "pilot light", "kettling", "gas leak", "gas safe", "gas safety", "boiler service", "combi", "cp12", "landlord certificate", "landlord cert", "cylinder", "trv", "underfloor heating", "water tank", "dripping tap", "leaking tap", "leaking pipe", "blocked drain", "blocked toilet", "leaking radiator", "gas hob", "gas cooker", "gas fire", "gas engineer", "heating engineer"],
+    "weak": ["gas", "tap", "taps", "shower", "toilet", "leak", "leaking", "drain", "drains", "pressure", "heating", "thermostat", "pipe", "pipes", "flush", "valve", "hob", "bathroom", "sink", "cistern"],
+    "intent": ["recommend*", "anyone know", "does anyone", "can anyone", "looking for", "need a", "need an", "need someone", "who does", "who can", "quote*", "come out", "fix*", "repair*", "replac*", "install*", "fit", "fitted", "not working", "stopped working", "broken", "help with", "issue with", "issues with", "problem with", "problems with", "sort out", "sort it", "urgent*", "engineer", "tradesman", "plumb*", "leaking", "burst", "no hot", "no heat", "emergency"],
+    "exclude": ["baby shower", "bridal shower", "gas bill", "gas prices", "gas price", "gas & electric", "gas and electric", "energy bill", "british gas", "sse", "octopus energy", "blood pressure", "under pressure", "no pressure", "peer pressure", "tap the link", "tap here", "tap to ", "on tap", "for sale", "for sell", "selling", "free to collect", "giveaway", "wanted:", "raffle", "hairdresser", "cleaner wanted", "gardener", "childcare", "estate agent", "gas station", "petrol", "heating oil for sale", "sponsored", "gas mark",
+                "cat sitter", "pet sitter", "dog sitter", "dog walker", "taxi", "travel agent", "face paint", "kids party", "kids' party", "children's party", "birthday party", "entertainer", "parcel", "courier", "evri", "royal mail", "gutter", "guttering", "window leak", "tiler", "tiling", "barber", "cake", "waste removal", "rubbish removal", "level 2", "level 3", "apprentice", "work experience", "looking for work", "we are hiring", "we're hiring", "join our team", "join the team", "slots are filling", "slots available", "10% off", "discount"]
   },
   "urgent":  ["urgent", "emergency", "asap", "tonight", "today", "no heating", "no hot water", "kids", "baby", "elderly", "winter", "help", "flooding", "burst"],
   "polling": {
@@ -28,6 +29,15 @@
   },
   "filters": {
     "require_trade_match": true,
-    "min_post_length_chars": 25
+    "min_post_length_chars": 25,
+    "weak_intent_max_words": 6,
+    "min_weak_terms_without_proximity": 2
+  },
+  "gate": {
+    "_comment": "Yes/no model check on every keyword match before an alert. api_key_file is read in-process for ANTHROPIC_API_KEY only (see ~/.config/secrets/REGISTRY.md); the env var wins if set. on_error: alert = send anyway, tagged unchecked; drop = stay quiet.",
+    "enabled": true,
+    "model": "claude-haiku-5-5",
+    "api_key_file": "~/Coding/Projects/Flint/.env.local",
+    "on_error": "alert"
   }
 }
