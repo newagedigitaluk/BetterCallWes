@@ -222,6 +222,55 @@ def legacy_dedup_keys(post_text: str) -> list[str]:
     return [_fp_key(fp)] if len(fp) >= 25 else []
 
 
+# ----- post age --------------------------------------------------------------
+
+# Mobile FB prepends the post's relative age to the scraped body text.
+# "22m Some post text…" or "3h Another post text…"
+_POST_AGE_PREFIX = re.compile(
+    r"^(\d+)\s*(m|min|h|hr|d|day|w)\b", re.I
+)
+
+
+def parse_post_age(text: str) -> str | None:
+    """Return the relative age string from the post's FB timestamp prefix.
+
+    E.g. '22m' from '22m Looking for a plumber…', '3h' from '3h Anyone know…'.
+    Returns None if the text doesn't start with a recognisable age token.
+    """
+    m = _POST_AGE_PREFIX.match((text or "").strip())
+    if not m:
+        return None
+    num = m.group(1)
+    unit = m.group(2).lower()
+    if unit in ("m", "min"):
+        return f"{num}m"
+    if unit in ("h", "hr"):
+        return f"{num}h"
+    if unit in ("d", "day"):
+        return f"{num}d"
+    if unit == "w":
+        return f"{num}w"
+    return None
+
+
+def post_age_hours(text: str) -> float | None:
+    """Return the post age as a float number of hours, or None if not parseable."""
+    m = _POST_AGE_PREFIX.match((text or "").strip())
+    if not m:
+        return None
+    num = int(m.group(1))
+    unit = m.group(2).lower()
+    if unit in ("m", "min"):
+        return num / 60
+    if unit in ("h", "hr"):
+        return float(num)
+    if unit in ("d", "day"):
+        return num * 24.0
+    if unit == "w":
+        return num * 168.0
+    return None
+
+
 # ----- filter ---------------------------------------------------------------
 
 def _kw_present(text: str, kw: str) -> bool:
@@ -499,8 +548,12 @@ def _esc(s: str) -> str:
 
 
 def format_alert(post: dict, drafted: dict) -> str:
-    """HTML-formatted Telegram alert, built for a 15-second reply:
-    lead → tap-to-copy reply → link. Reply is the hero, at the top."""
+    """HTML-formatted alert, built for a 15-second reply:
+    lead → tap-to-copy reply → link. Reply is the hero, at the top.
+
+    Includes the post age so Wes can judge whether it is still worth responding:
+    under 30 min → likely first in; over 90 min → probably already has replies.
+    """
     urgent_tag = "🚨 <b>URGENT LEAD</b>\n" if drafted["urgent"] else "🔧 <b>New lead</b>\n"
     if post.get("gate") == "error":
         urgent_tag = urgent_tag.rstrip("\n") + " (unchecked: lead gate unavailable)\n"
@@ -508,9 +561,22 @@ def format_alert(post: dict, drafted: dict) -> str:
     post_excerpt = _esc((post.get("text") or "")[:400])
     permalink = post.get("permalink", "")
 
+    age_str = parse_post_age(post.get("text", ""))
+    age_hours = post_age_hours(post.get("text", ""))
+    if age_str:
+        if age_hours is not None and age_hours < 0.5:
+            age_note = f"🟢 Posted {age_str} ago — likely still first in\n"
+        elif age_hours is not None and age_hours < 1.5:
+            age_note = f"🟡 Posted {age_str} ago — respond quickly\n"
+        else:
+            age_note = f"🔴 Posted {age_str} ago — probably has replies already\n"
+    else:
+        age_note = ""
+
     return (
         f"{urgent_tag}"
         f"📍 {group_label}\n"
+        f"{age_note}"
         f"💬 <i>{post_excerpt}</i>\n\n"
         f"👇 <b>Tap to copy your reply</b>\n"
         f"<pre>{_esc(drafted['reply'])}</pre>\n"
@@ -736,9 +802,14 @@ async def run_monitor(dry_run: bool = False, reseed: bool = False):
         )
         page = await context.new_page()
 
-        # Jitter the group order — looks less robotic
-        groups = list(config["groups"])
-        random.shuffle(groups)
+        # Priority groups visit first (config.groups[*].priority = true).
+        # This lets the busiest groups get a fresh look at the start of every
+        # cycle rather than waiting for a random position in the shuffle.
+        # Non-priority groups are shuffled as before so FB sees a varied order.
+        priority_groups = [g for g in config["groups"] if g.get("priority")]
+        other_groups = [g for g in config["groups"] if not g.get("priority")]
+        random.shuffle(other_groups)
+        groups = priority_groups + other_groups
 
         for g in groups:
             group_url = g["url"]
@@ -776,6 +847,19 @@ async def run_monitor(dry_run: bool = False, reseed: bool = False):
                         mark_seen(seen, keys)
                         skipped_seen += 1
                         continue
+
+                    # Skip posts that are already too old to be worth alerting.
+                    # polling.alert_max_age_hours (default: no limit) sets the
+                    # ceiling. A post showing "14h" when Wes is asleep is still
+                    # marked seen so it doesn't alert again once he wakes up.
+                    max_age = config.get("polling", {}).get("alert_max_age_hours")
+                    if max_age:
+                        age_h = post_age_hours(text)
+                        if age_h is not None and age_h > max_age:
+                            log(f"  ⏩ Skipped (too old: {age_h:.0f}h > {max_age}h) :: {one_line(text)}")
+                            mark_seen(seen, keys)
+                            skipped_filter += 1
+                            continue
 
                     ok, trade = matches_filters(text, config)
                     if not ok:
