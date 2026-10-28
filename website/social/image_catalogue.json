@@ -265,13 +265,11 @@
       "tags": [
         "gas-meter",
         "anonymous",
-        "stock"
+        "stock",
+        "do-not-use"
       ],
-      "good_for": [
-        "asset:gas",
-        "asset:gas-meter",
-        "tips:gas-safety"
-      ]
+      "good_for": [],
+      "retired_reason": "US-style yellow flexible gas pipe; not how UK meters are piped (Wes, 2026-09-24)"
     },
     "gas-services.webp": {
       "shows": "Wes outdoors at an external gas meter cabinet, holding clipboard, inspecting. Low-res small image.",
@@ -693,9 +691,7 @@
       "copper-pipework.webp",
       "neat-copper-manifold.webp"
     ],
-    "asset:gas": [
-      "gas-safety.webp"
-    ],
+    "asset:gas": [],
     "asset:shower": [
       "bathroom-shower.webp"
     ],

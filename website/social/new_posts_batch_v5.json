@@ -1,0 +1,975 @@
+[
+  {
+    "id": "post_362",
+    "batch": "v5",
+    "format": "season",
+    "pillar": "tips",
+    "topic": "Heating on for the first time?",
+    "service_slug": "boiler-service",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%27d%20like%20to%20book%20a%20boiler%20service.",
+    "short_link_slug": "wa-heating-on",
+    "instagram": "Putting the heating on for the first time since spring? Give it a proper test before you actually need it.\n\nTurn the thermostat up a few degrees above the room temperature and leave it 20 minutes. Then walk round and feel every radiator.\n\nWarm all over is what you want. Cold at the top means air, and you can bleed that yourself. Cold along the bottom usually means sludge. If nothing comes on at all, look at the pressure gauge on the boiler before anything else.\n\nIf it's been more than a year since the last service, book it now. The first cold week is when everyone rings round at once.\n\nWhatsApp 07700 155 655 to book a service.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerService #CentralHeating #GasSafe",
+    "facebook": "Putting the heating on for the first time since spring? Give it a proper test before you actually need it.\n\nTurn the thermostat up a few degrees above the room temperature and leave it 20 minutes. Then walk round and feel every radiator.\n\nWarm all over is what you want. Cold at the top means air, and you can bleed that yourself. Cold along the bottom usually means sludge. If nothing comes on at all, look at the pressure gauge on the boiler before anything else.\n\nIf it's been more than a year since the last service, book it now. The first cold week is when everyone rings round at once.\n\nWhatsApp 07700 155 655 to book a service.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-heating-on",
+    "googlebusiness": "Putting the heating on for the first time since spring? Give it a proper test before you actually need it.\n\nTurn the thermostat up a few degrees above the room temperature and leave it 20 minutes. Then walk round and feel every radiator.\n\nWarm all over is what you want. Cold at the top means air, and you can bleed that yourself. Cold along the bottom usually means sludge. If nothing comes on at all, look at the pressure gauge on the boiler before anything else.\n\nIf it's been more than a year since the last service, book it now. The first cold week is when everyone rings round at once.\n\nWhatsApp 07700 155 655 to book a service.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-heating-on"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-heating-on"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Heating on for the first time?",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/01-heating-on.jpg",
+    "image_source": "gen:thermostat",
+    "status": "pending"
+  },
+  {
+    "id": "post_363",
+    "batch": "v5",
+    "format": "checks",
+    "pillar": "tips",
+    "topic": "Check these before you book",
+    "service_slug": "boiler-repair",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20boiler%20has%20stopped%20working.",
+    "short_link_slug": "wa-check-first",
+    "instagram": "Boiler stopped? Four things to check before you book anyone. Worth saving for later.\n\n1. Pressure. Look at the gauge on the front. With the heating off it should sit around 1 to 1.5 bar. Below 1, a lot of boilers switch themselves off.\n\n2. Gas. Does the hob light? If you're on a prepayment meter, check the credit.\n\n3. Thermostat. Is it actually asking for heat? Flat batteries in a wireless stat catch people out every winter.\n\n4. Reset. Press it once. If the fault comes straight back, leave it.\n\nIf all four check out and it still won't go, that's when you need an engineer.\n\nWhatsApp 07700 155 655 and get booked in.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerRepair #BoilerPressure #GasSafe",
+    "facebook": "Boiler stopped? Four things to check before you book anyone. Worth saving for later.\n\n1. Pressure. Look at the gauge on the front. With the heating off it should sit around 1 to 1.5 bar. Below 1, a lot of boilers switch themselves off.\n\n2. Gas. Does the hob light? If you're on a prepayment meter, check the credit.\n\n3. Thermostat. Is it actually asking for heat? Flat batteries in a wireless stat catch people out every winter.\n\n4. Reset. Press it once. If the fault comes straight back, leave it.\n\nIf all four check out and it still won't go, that's when you need an engineer.\n\nWhatsApp 07700 155 655 and get booked in.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-check-first",
+    "googlebusiness": "Boiler stopped? Four things to check before you book anyone. Worth saving for later.\n\n1. Pressure. Look at the gauge on the front. With the heating off it should sit around 1 to 1.5 bar. Below 1, a lot of boilers switch themselves off.\n\n2. Gas. Does the hob light? If you're on a prepayment meter, check the credit.\n\n3. Thermostat. Is it actually asking for heat? Flat batteries in a wireless stat catch people out every winter.\n\n4. Reset. Press it once. If the fault comes straight back, leave it.\n\nIf all four check out and it still won't go, that's when you need an engineer.\n\nWhatsApp 07700 155 655 and get booked in.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-check-first"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-check-first"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Check these before you book",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/02-check-first.jpg",
+    "image_source": "work:IMG_1896.JPG",
+    "status": "pending"
+  },
+  {
+    "id": "post_364",
+    "batch": "v5",
+    "format": "fault_code",
+    "pillar": "tips",
+    "topic": "Vaillant showing F.28?",
+    "service_slug": "boiler-repair",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20Vaillant%20is%20showing%20F.28.",
+    "short_link_slug": "wa-vaillant-f28",
+    "instagram": "F.28 on a Vaillant means it tried to light and couldn't. Vaillant's own manual calls it \"ignition unsuccessful\".\n\nBefore you ring anyone, check the gas is on by trying the hob. On a prepayment meter, check there's credit. On a frosty morning, a frozen condensate pipe outside can cause it too.\n\nThen press reset once. If F.28 comes back, stop resetting, because doing it over and over won't fix it. The usual culprits are the ignition electrode, its lead, or the gas valve, and that needs someone to look at it.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.\nOr tap WhatsApp in our bio.\n\n#Southampton #Vaillant #BoilerRepair #GasSafe",
+    "facebook": "F.28 on a Vaillant means it tried to light and couldn't. Vaillant's own manual calls it \"ignition unsuccessful\".\n\nBefore you ring anyone, check the gas is on by trying the hob. On a prepayment meter, check there's credit. On a frosty morning, a frozen condensate pipe outside can cause it too.\n\nThen press reset once. If F.28 comes back, stop resetting, because doing it over and over won't fix it. The usual culprits are the ignition electrode, its lead, or the gas valve, and that needs someone to look at it.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-vaillant-f28",
+    "googlebusiness": "F.28 on a Vaillant means it tried to light and couldn't. Vaillant's own manual calls it \"ignition unsuccessful\".\n\nBefore you ring anyone, check the gas is on by trying the hob. On a prepayment meter, check there's credit. On a frosty morning, a frozen condensate pipe outside can cause it too.\n\nThen press reset once. If F.28 comes back, stop resetting, because doing it over and over won't fix it. The usual culprits are the ignition electrode, its lead, or the gas valve, and that needs someone to look at it.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-vaillant-f28"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-vaillant-f28"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Vaillant showing F.28?",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/03-vaillant-f28.jpg",
+    "image_source": "gen:vaillant_reset",
+    "status": "pending"
+  },
+  {
+    "id": "post_365",
+    "batch": "v5",
+    "format": "real_job",
+    "pillar": "work",
+    "topic": "Why it wouldn't light",
+    "service_slug": "boiler-repair",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20boiler%20keeps%20failing%20to%20light.",
+    "short_link_slug": "wa-electrodes",
+    "instagram": "These came out of a boiler that kept failing to light.\n\nThe ignition electrodes, the metal pins that make the spark, had worn. The burner door seal had gone hard too. Both got replaced and it fired first time.\n\nIf your boiler clicks away trying to light and then locks out, this is one of the first places to look.\n\nWhatsApp 07700 155 655 to get yours looked at.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerRepair #RealJob #GasSafe",
+    "facebook": "These came out of a boiler that kept failing to light.\n\nThe ignition electrodes, the metal pins that make the spark, had worn. The burner door seal had gone hard too. Both got replaced and it fired first time.\n\nIf your boiler clicks away trying to light and then locks out, this is one of the first places to look.\n\nWhatsApp 07700 155 655 to get yours looked at.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-electrodes",
+    "googlebusiness": "These came out of a boiler that kept failing to light.\n\nThe ignition electrodes, the metal pins that make the spark, had worn. The burner door seal had gone hard too. Both got replaced and it fired first time.\n\nIf your boiler clicks away trying to light and then locks out, this is one of the first places to look.\n\nWhatsApp 07700 155 655 to get yours looked at.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-electrodes"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-electrodes"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Why it wouldn't light",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/04-electrodes.jpg",
+    "image_source": "work:IMG_1753.jpg",
+    "status": "pending",
+    "check": "Is this right: worn ignition electrodes and a hardened burner door seal, both replaced? Which make was it?"
+  },
+  {
+    "id": "post_366",
+    "batch": "v5",
+    "format": "service_price",
+    "pillar": "cost_reveal",
+    "topic": "What a £100 service covers",
+    "service_slug": "boiler-service",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%27d%20like%20to%20book%20a%20boiler%20service.",
+    "short_link_slug": "wa-service-100",
+    "instagram": "A standard boiler service with me is £100 and takes 45 minutes to an hour. This is what you're paying for.\n\nThe case comes off. I check the burner, the heat exchanger and the seals, and clean what needs it. I clear the condensate trap. I test the flue gases with an analyser, which tells me whether it's burning cleanly and safely. Gas pressure gets checked, and so do the safety devices.\n\nYou get a written report at the end.\n\nIf it's been neglected and the burner and heat exchanger need properly stripping and cleaning, that's the full strip-down service at £160. If yours needs it, I'll tell you before I do it.\n\nWhatsApp 07700 155 655 to book.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerService #GasSafe #HeatingEngineer",
+    "facebook": "A standard boiler service with me is £100 and takes 45 minutes to an hour. This is what you're paying for.\n\nThe case comes off. I check the burner, the heat exchanger and the seals, and clean what needs it. I clear the condensate trap. I test the flue gases with an analyser, which tells me whether it's burning cleanly and safely. Gas pressure gets checked, and so do the safety devices.\n\nYou get a written report at the end.\n\nIf it's been neglected and the burner and heat exchanger need properly stripping and cleaning, that's the full strip-down service at £160. If yours needs it, I'll tell you before I do it.\n\nWhatsApp 07700 155 655 to book.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-service-100",
+    "googlebusiness": "A standard boiler service with me is £100 and takes 45 minutes to an hour. This is what you're paying for.\n\nThe case comes off. I check the burner, the heat exchanger and the seals, and clean what needs it. I clear the condensate trap. I test the flue gases with an analyser, which tells me whether it's burning cleanly and safely. Gas pressure gets checked, and so do the safety devices.\n\nYou get a written report at the end.\n\nIf it's been neglected and the burner and heat exchanger need properly stripping and cleaning, that's the full strip-down service at £160. If yours needs it, I'll tell you before I do it.\n\nWhatsApp 07700 155 655 to book.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-service-100"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-service-100"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "What a £100 service covers",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/05-service-100.jpg",
+    "image_source": "gen:service_torch",
+    "status": "pending",
+    "check": "Does this list match what you actually do on a standard service?"
+  },
+  {
+    "id": "post_367",
+    "batch": "v5",
+    "format": "group_question",
+    "pillar": "local",
+    "topic": "Smell gas? Don't borrow a detector",
+    "service_slug": "gas-leak",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20the%20gas%20emergency%20service%20has%20made%20my%20gas%20safe%20and%20I%20need%20a%20repair.",
+    "short_link_slug": "wa-gas-detector",
+    "instagram": "Someone in a local Facebook group asked if anyone had a gas detector they could borrow.\n\nIf you can smell gas, please don't go looking for one. Do this instead.\n\nTurn the gas off at the meter. The lever by the meter goes across the pipe to shut it.\nOpen doors and windows.\nDon't touch light switches or anything electrical, and no naked flames.\nRing the National Gas Emergency Service on 0800 111 999. It's free, 24 hours a day.\n\nThey'll come out and make it safe. Once they have, I can find the fault and fix it.\n\nFor the repair afterwards, WhatsApp 07700 155 655.\nOr tap WhatsApp in our bio.\n\n#Southampton #GasSafety #GasSafe #Hampshire",
+    "facebook": "Someone in a local Facebook group asked if anyone had a gas detector they could borrow.\n\nIf you can smell gas, please don't go looking for one. Do this instead.\n\nTurn the gas off at the meter. The lever by the meter goes across the pipe to shut it.\nOpen doors and windows.\nDon't touch light switches or anything electrical, and no naked flames.\nRing the National Gas Emergency Service on 0800 111 999. It's free, 24 hours a day.\n\nThey'll come out and make it safe. Once they have, I can find the fault and fix it.\n\nFor the repair afterwards, WhatsApp 07700 155 655.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-gas-detector",
+    "googlebusiness": "Someone in a local Facebook group asked if anyone had a gas detector they could borrow.\n\nIf you can smell gas, please don't go looking for one. Do this instead.\n\nTurn the gas off at the meter. The lever by the meter goes across the pipe to shut it.\nOpen doors and windows.\nDon't touch light switches or anything electrical, and no naked flames.\nRing the National Gas Emergency Service on 0800 111 999. It's free, 24 hours a day.\n\nThey'll come out and make it safe. Once they have, I can find the fault and fix it.\n\nFor the repair afterwards, WhatsApp 07700 155 655.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-gas-detector"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-gas-detector"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Smell gas? Don't borrow a detector",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/06-gas-detector.jpg",
+    "image_source": "gen:meter_sunburst",
+    "status": "pending"
+  },
+  {
+    "id": "post_368",
+    "batch": "v5",
+    "format": "personal",
+    "pillar": "personal",
+    "topic": "WhatsApp me. Here's what happens.",
+    "service_slug": "boiler-repair",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%27d%20like%20to%20book%20a%20job.",
+    "short_link_slug": "wa-whatsapp",
+    "instagram": "The quickest way to get me booked is a WhatsApp.\n\nSend a message to 07700 155 655 saying what's wrong. If there's a code on the boiler, add a photo of the display.\n\nMy booking assistant replies, asks the questions I'd ask, and offers you times from my actual diary. Pick one and you're booked. No voicemail, no waiting for a call back.\n\nYour photos go straight onto the job, so I turn up knowing what I'm looking at.\n\nWhatsApp 07700 155 655.\nOr tap WhatsApp in our bio.\n\n#Southampton #Plumber #BoilerRepair #GasSafe",
+    "facebook": "The quickest way to get me booked is a WhatsApp.\n\nSend a message to 07700 155 655 saying what's wrong. If there's a code on the boiler, add a photo of the display.\n\nMy booking assistant replies, asks the questions I'd ask, and offers you times from my actual diary. Pick one and you're booked. No voicemail, no waiting for a call back.\n\nYour photos go straight onto the job, so I turn up knowing what I'm looking at.\n\nWhatsApp 07700 155 655.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-whatsapp",
+    "googlebusiness": "The quickest way to get me booked is a WhatsApp.\n\nSend a message to 07700 155 655 saying what's wrong. If there's a code on the boiler, add a photo of the display.\n\nMy booking assistant replies, asks the questions I'd ask, and offers you times from my actual diary. Pick one and you're booked. No voicemail, no waiting for a call back.\n\nYour photos go straight onto the job, so I turn up knowing what I'm looking at.\n\nWhatsApp 07700 155 655.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-whatsapp"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-whatsapp"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "WhatsApp me. Here's what happens.",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/07-whatsapp.jpg",
+    "image_source": "brand:IMG_1250.JPG",
+    "status": "pending"
+  },
+  {
+    "id": "post_369",
+    "batch": "v5",
+    "format": "season",
+    "pillar": "tips",
+    "topic": "Pressure dropped over summer?",
+    "service_slug": "boiler-repair",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20boiler%20keeps%20losing%20pressure.",
+    "short_link_slug": "wa-pressure-dropped",
+    "instagram": "Heating back on and the boiler's showing low pressure? Summer is when slow leaks show up, because nobody's looking at the gauge.\n\nWith the heating off, the needle should sit around 1 to 1.5 bar. If it's under 1, you can usually top it up yourself with the filling loop under the boiler. Open it slowly, watch the gauge, and close it firmly at about 1.5. Your boiler manual shows where it is on your model.\n\nTopping up once after bleeding radiators is normal. Doing it every few weeks isn't. The water is going somewhere, often out through the pressure relief valve, or a slow weep at a valve somewhere. That's a repair worth doing before winter.\n\nWhatsApp 07700 155 655 to get it found and fixed.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerPressure #BoilerRepair #GasSafe",
+    "facebook": "Heating back on and the boiler's showing low pressure? Summer is when slow leaks show up, because nobody's looking at the gauge.\n\nWith the heating off, the needle should sit around 1 to 1.5 bar. If it's under 1, you can usually top it up yourself with the filling loop under the boiler. Open it slowly, watch the gauge, and close it firmly at about 1.5. Your boiler manual shows where it is on your model.\n\nTopping up once after bleeding radiators is normal. Doing it every few weeks isn't. The water is going somewhere, often out through the pressure relief valve, or a slow weep at a valve somewhere. That's a repair worth doing before winter.\n\nWhatsApp 07700 155 655 to get it found and fixed.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-pressure-dropped",
+    "googlebusiness": "Heating back on and the boiler's showing low pressure? Summer is when slow leaks show up, because nobody's looking at the gauge.\n\nWith the heating off, the needle should sit around 1 to 1.5 bar. If it's under 1, you can usually top it up yourself with the filling loop under the boiler. Open it slowly, watch the gauge, and close it firmly at about 1.5. Your boiler manual shows where it is on your model.\n\nTopping up once after bleeding radiators is normal. Doing it every few weeks isn't. The water is going somewhere, often out through the pressure relief valve, or a slow weep at a valve somewhere. That's a repair worth doing before winter.\n\nWhatsApp 07700 155 655 to get it found and fixed.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-pressure-dropped"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-pressure-dropped"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Pressure dropped over summer?",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/08-pressure-dropped.jpg",
+    "image_source": "gen:wes_boiler",
+    "status": "pending"
+  },
+  {
+    "id": "post_370",
+    "batch": "v5",
+    "format": "fault_code",
+    "pillar": "tips",
+    "topic": "Ideal showing L2?",
+    "service_slug": "boiler-repair",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20Ideal%20boiler%20is%20showing%20L2.",
+    "short_link_slug": "wa-ideal-l2",
+    "instagram": "L2 on an Ideal Logic is an ignition lockout. The boiler tried to light, didn't see a flame, and gave up.\n\nThe checks are the same as any ignition fault. Make sure the gas is on and the hob lights. On a prepayment meter, check the credit. In cold weather, look at the plastic condensate pipe outside, because a frozen one can cause this on a lot of boilers.\n\nPress reset once. If L2 comes back, don't keep resetting. It needs someone to look at the ignition side.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.\nOr tap WhatsApp in our bio.\n\n#Southampton #IdealBoiler #BoilerRepair #GasSafe",
+    "facebook": "L2 on an Ideal Logic is an ignition lockout. The boiler tried to light, didn't see a flame, and gave up.\n\nThe checks are the same as any ignition fault. Make sure the gas is on and the hob lights. On a prepayment meter, check the credit. In cold weather, look at the plastic condensate pipe outside, because a frozen one can cause this on a lot of boilers.\n\nPress reset once. If L2 comes back, don't keep resetting. It needs someone to look at the ignition side.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-ideal-l2",
+    "googlebusiness": "L2 on an Ideal Logic is an ignition lockout. The boiler tried to light, didn't see a flame, and gave up.\n\nThe checks are the same as any ignition fault. Make sure the gas is on and the hob lights. On a prepayment meter, check the credit. In cold weather, look at the plastic condensate pipe outside, because a frozen one can cause this on a lot of boilers.\n\nPress reset once. If L2 comes back, don't keep resetting. It needs someone to look at the ignition side.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-ideal-l2"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-ideal-l2"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Ideal showing L2?",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/09-ideal-l2.jpg",
+    "image_source": "gen:ideal_logic",
+    "status": "pending"
+  },
+  {
+    "id": "post_371",
+    "batch": "v5",
+    "format": "real_job",
+    "pillar": "work",
+    "topic": "Heat exchanger swap",
+    "service_slug": "boiler-repair",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%27d%20like%20my%20boiler%20looked%20at.",
+    "short_link_slug": "wa-heat-exchanger",
+    "instagram": "Heat exchanger swap. The new one is at the top. The one that came out is underneath.\n\nThe heat exchanger is where the burner's heat passes into your heating water. Look at the corrosion and deposits on the old one. That builds up over years, and the boiler burns less efficiently the whole time it's happening.\n\nServicing won't make a heat exchanger last forever, but catching build-up early is a lot cheaper than replacing one.\n\nWhatsApp 07700 155 655 to book a service or a repair.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerRepair #RealJob #GasSafe",
+    "facebook": "Heat exchanger swap. The new one is at the top. The one that came out is underneath.\n\nThe heat exchanger is where the burner's heat passes into your heating water. Look at the corrosion and deposits on the old one. That builds up over years, and the boiler burns less efficiently the whole time it's happening.\n\nServicing won't make a heat exchanger last forever, but catching build-up early is a lot cheaper than replacing one.\n\nWhatsApp 07700 155 655 to book a service or a repair.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-heat-exchanger",
+    "googlebusiness": "Heat exchanger swap. The new one is at the top. The one that came out is underneath.\n\nThe heat exchanger is where the burner's heat passes into your heating water. Look at the corrosion and deposits on the old one. That builds up over years, and the boiler burns less efficiently the whole time it's happening.\n\nServicing won't make a heat exchanger last forever, but catching build-up early is a lot cheaper than replacing one.\n\nWhatsApp 07700 155 655 to book a service or a repair.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-heat-exchanger"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-heat-exchanger"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Heat exchanger swap",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/10-heat-exchanger.jpg",
+    "image_source": "card:hx",
+    "status": "pending",
+    "check": "Right that this was a heat exchanger replacement (new one left, the one that came out right)? Anything about the job worth adding?"
+  },
+  {
+    "id": "post_372",
+    "batch": "v5",
+    "format": "season",
+    "pillar": "tips",
+    "topic": "Cold at the top? Bleed it.",
+    "service_slug": "radiators",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20radiators%20aren%27t%20heating%20properly.",
+    "short_link_slug": "wa-bleed-rads",
+    "instagram": "Radiator warm at the bottom and cold at the top? That's trapped air, and you can sort it yourself in five minutes.\n\nTurn the heating off and let the radiators cool. Put the bleed key in the valve at the top corner and hold a cloth under it. Turn it a quarter turn anticlockwise. You'll hear air hiss out. When water starts to come out, close it.\n\nThen check the boiler pressure. Bleeding lets water out, so it often needs topping back up to about 1 to 1.5 bar.\n\nCold along the bottom and warm at the top is a different problem. That's usually sludge, and bleeding won't touch it.\n\nIf it's more than air, WhatsApp 07700 155 655.\nOr tap WhatsApp in our bio.\n\n#Southampton #Radiators #CentralHeating #GasSafe",
+    "facebook": "Radiator warm at the bottom and cold at the top? That's trapped air, and you can sort it yourself in five minutes.\n\nTurn the heating off and let the radiators cool. Put the bleed key in the valve at the top corner and hold a cloth under it. Turn it a quarter turn anticlockwise. You'll hear air hiss out. When water starts to come out, close it.\n\nThen check the boiler pressure. Bleeding lets water out, so it often needs topping back up to about 1 to 1.5 bar.\n\nCold along the bottom and warm at the top is a different problem. That's usually sludge, and bleeding won't touch it.\n\nIf it's more than air, WhatsApp 07700 155 655.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-bleed-rads",
+    "googlebusiness": "Radiator warm at the bottom and cold at the top? That's trapped air, and you can sort it yourself in five minutes.\n\nTurn the heating off and let the radiators cool. Put the bleed key in the valve at the top corner and hold a cloth under it. Turn it a quarter turn anticlockwise. You'll hear air hiss out. When water starts to come out, close it.\n\nThen check the boiler pressure. Bleeding lets water out, so it often needs topping back up to about 1 to 1.5 bar.\n\nCold along the bottom and warm at the top is a different problem. That's usually sludge, and bleeding won't touch it.\n\nIf it's more than air, WhatsApp 07700 155 655.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-bleed-rads"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-bleed-rads"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Cold at the top? Bleed it.",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/11-bleed-rads.jpg",
+    "image_source": "gen:bleed_rad",
+    "status": "pending"
+  },
+  {
+    "id": "post_373",
+    "batch": "v5",
+    "format": "group_question",
+    "pillar": "local",
+    "topic": "Older boiler? Still worth a service",
+    "service_slug": "boiler-service",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%27d%20like%20to%20book%20a%20service%20on%20an%20older%20boiler.",
+    "short_link_slug": "wa-older-boiler",
+    "instagram": "Someone in a local group asked who'd service their Potterton Promax.\n\nThere's an idea that older boilers are past the point of servicing. It's the other way round. The older it is, the more a yearly check matters. Seals age and burners get dirty, and left alone a small fault turns into a breakdown.\n\nAn older boiler that's looked after can keep running safely for years. A standard service is £100 whatever the age. A back boiler is £120.\n\nWhatsApp 07700 155 655 to book.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerService #GasSafe #Hampshire",
+    "facebook": "Someone in a local group asked who'd service their Potterton Promax.\n\nThere's an idea that older boilers are past the point of servicing. It's the other way round. The older it is, the more a yearly check matters. Seals age and burners get dirty, and left alone a small fault turns into a breakdown.\n\nAn older boiler that's looked after can keep running safely for years. A standard service is £100 whatever the age. A back boiler is £120.\n\nWhatsApp 07700 155 655 to book.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-older-boiler",
+    "googlebusiness": "Someone in a local group asked who'd service their Potterton Promax.\n\nThere's an idea that older boilers are past the point of servicing. It's the other way round. The older it is, the more a yearly check matters. Seals age and burners get dirty, and left alone a small fault turns into a breakdown.\n\nAn older boiler that's looked after can keep running safely for years. A standard service is £100 whatever the age. A back boiler is £120.\n\nWhatsApp 07700 155 655 to book.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-older-boiler"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-older-boiler"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Older boiler? Still worth a service",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/12-older-boiler.jpg",
+    "image_source": "work:IMG_4990.jpg",
+    "status": "pending",
+    "check": "Photo is an older boiler with the case off, not a Potterton Promax. Fine as a general image?"
+  },
+  {
+    "id": "post_374",
+    "batch": "v5",
+    "format": "checks",
+    "pillar": "tips",
+    "topic": "Heating works but no hot water?",
+    "service_slug": "boiler-repair",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20heating%20works%20but%20I%27ve%20got%20no%20hot%20water.",
+    "short_link_slug": "wa-no-hot-water",
+    "instagram": "Radiators hot, but the taps run cold? On a combi, the usual suspect is the diverter valve. It's the part that switches the boiler between heating and hot water. This is one I took out.\n\nTwo things to check first. Is the pressure above 1 bar? Is the hot tap fully open? Some combis won't fire for hot water on a trickle.\n\nIf both are fine, it's likely the diverter. On my price list a diverter valve replacement is £180 to £250, parts and labour.\n\nWhatsApp 07700 155 655 to get it booked in.\nOr tap WhatsApp in our bio.\n\n#Southampton #CombiBoiler #BoilerRepair #GasSafe",
+    "facebook": "Radiators hot, but the taps run cold? On a combi, the usual suspect is the diverter valve. It's the part that switches the boiler between heating and hot water. This is one I took out.\n\nTwo things to check first. Is the pressure above 1 bar? Is the hot tap fully open? Some combis won't fire for hot water on a trickle.\n\nIf both are fine, it's likely the diverter. On my price list a diverter valve replacement is £180 to £250, parts and labour.\n\nWhatsApp 07700 155 655 to get it booked in.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-no-hot-water",
+    "googlebusiness": "Radiators hot, but the taps run cold? On a combi, the usual suspect is the diverter valve. It's the part that switches the boiler between heating and hot water. This is one I took out.\n\nTwo things to check first. Is the pressure above 1 bar? Is the hot tap fully open? Some combis won't fire for hot water on a trickle.\n\nIf both are fine, it's likely the diverter. On my price list a diverter valve replacement is £180 to £250, parts and labour.\n\nWhatsApp 07700 155 655 to get it booked in.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-no-hot-water"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-no-hot-water"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Heating works but no hot water?",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/13-no-hot-water.jpg",
+    "image_source": "work:IMG_1771.JPG",
+    "status": "pending",
+    "check": "Is IMG_1771 a diverter valve assembly?"
+  },
+  {
+    "id": "post_375",
+    "batch": "v5",
+    "format": "season",
+    "pillar": "tips",
+    "topic": "Book it before the cold week",
+    "service_slug": "boiler-service",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%27d%20like%20to%20book%20a%20boiler%20service.",
+    "short_link_slug": "wa-before-the-cold",
+    "instagram": "Every year it goes the same way. The first properly cold week, boilers that have sat idle all summer get switched on hard, and the ones that were struggling give up.\n\nA service now is £100. A breakdown in the first cold snap means a cold house while you wait, and then the repair on top.\n\nIf yours hasn't been serviced in the last 12 months, now's the time.\n\nWhatsApp 07700 155 655 to book.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerService #GasSafe #Winter",
+    "facebook": "Every year it goes the same way. The first properly cold week, boilers that have sat idle all summer get switched on hard, and the ones that were struggling give up.\n\nA service now is £100. A breakdown in the first cold snap means a cold house while you wait, and then the repair on top.\n\nIf yours hasn't been serviced in the last 12 months, now's the time.\n\nWhatsApp 07700 155 655 to book.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-before-the-cold",
+    "googlebusiness": "Every year it goes the same way. The first properly cold week, boilers that have sat idle all summer get switched on hard, and the ones that were struggling give up.\n\nA service now is £100. A breakdown in the first cold snap means a cold house while you wait, and then the repair on top.\n\nIf yours hasn't been serviced in the last 12 months, now's the time.\n\nWhatsApp 07700 155 655 to book.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-before-the-cold"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-before-the-cold"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Book it before the cold week",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/14-before-the-cold.jpg",
+    "image_source": "gen:clipboard_vaillant",
+    "status": "pending"
+  },
+  {
+    "id": "post_376",
+    "batch": "v5",
+    "format": "fault_code",
+    "pillar": "tips",
+    "topic": "Baxi showing E133?",
+    "service_slug": "boiler-repair",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20Baxi%20is%20showing%20E133.",
+    "short_link_slug": "wa-baxi-e133",
+    "instagram": "E133 on a Baxi means the boiler has lost its gas supply or its flame. Baxi's manual calls it \"interruption of gas supply or flame failure\".\n\nCheck the gas is on by trying the hob. On a prepayment meter, check the credit, because sometimes that's all it is. In a cold snap, check the condensate pipe outside hasn't frozen.\n\nThen reset once. If E133 keeps coming back with the gas definitely on, it needs an engineer.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.\nOr tap WhatsApp in our bio.\n\n#Southampton #Baxi #BoilerRepair #GasSafe",
+    "facebook": "E133 on a Baxi means the boiler has lost its gas supply or its flame. Baxi's manual calls it \"interruption of gas supply or flame failure\".\n\nCheck the gas is on by trying the hob. On a prepayment meter, check the credit, because sometimes that's all it is. In a cold snap, check the condensate pipe outside hasn't frozen.\n\nThen reset once. If E133 keeps coming back with the gas definitely on, it needs an engineer.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-baxi-e133",
+    "googlebusiness": "E133 on a Baxi means the boiler has lost its gas supply or its flame. Baxi's manual calls it \"interruption of gas supply or flame failure\".\n\nCheck the gas is on by trying the hob. On a prepayment meter, check the credit, because sometimes that's all it is. In a cold snap, check the condensate pipe outside hasn't frozen.\n\nThen reset once. If E133 keeps coming back with the gas definitely on, it needs an engineer.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-baxi-e133"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-baxi-e133"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Baxi showing E133?",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/15-baxi-e133.jpg",
+    "image_source": "brand:IMG_1253.JPG",
+    "status": "pending"
+  },
+  {
+    "id": "post_377",
+    "batch": "v5",
+    "format": "real_job",
+    "pillar": "work",
+    "topic": "What goes back in",
+    "service_slug": "central-heating",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%20keep%20having%20to%20top%20up%20my%20boiler%20pressure.",
+    "short_link_slug": "wa-inhibitor",
+    "instagram": "Inhibitor going into a system after work on it.\n\nIt's a chemical that stops the inside of your radiators and boiler corroding. That corrosion is where black sludge comes from.\n\nEvery time the system is drained, or topped up with fresh water, the inhibitor gets diluted a bit more. So if you're topping up your pressure every few weeks, you're also slowly washing out the protection.\n\nTwo good reasons to get a pressure leak found rather than living with it.\n\nWhatsApp 07700 155 655 to get it looked at.\nOr tap WhatsApp in our bio.\n\n#Southampton #CentralHeating #RealJob #GasSafe",
+    "facebook": "Inhibitor going into a system after work on it.\n\nIt's a chemical that stops the inside of your radiators and boiler corroding. That corrosion is where black sludge comes from.\n\nEvery time the system is drained, or topped up with fresh water, the inhibitor gets diluted a bit more. So if you're topping up your pressure every few weeks, you're also slowly washing out the protection.\n\nTwo good reasons to get a pressure leak found rather than living with it.\n\nWhatsApp 07700 155 655 to get it looked at.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-inhibitor",
+    "googlebusiness": "Inhibitor going into a system after work on it.\n\nIt's a chemical that stops the inside of your radiators and boiler corroding. That corrosion is where black sludge comes from.\n\nEvery time the system is drained, or topped up with fresh water, the inhibitor gets diluted a bit more. So if you're topping up your pressure every few weeks, you're also slowly washing out the protection.\n\nTwo good reasons to get a pressure leak found rather than living with it.\n\nWhatsApp 07700 155 655 to get it looked at.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-inhibitor"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-inhibitor"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "What goes back in",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/16-inhibitor.jpg",
+    "image_source": "work:IMG_1851.JPG",
+    "status": "pending",
+    "check": "What was this job? After a flush, or a filter clean?"
+  },
+  {
+    "id": "post_378",
+    "batch": "v5",
+    "format": "group_question",
+    "pillar": "trust",
+    "topic": "How to check a gas engineer",
+    "service_slug": "gas-safety",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%27d%20like%20to%20book%20some%20gas%20work.",
+    "short_link_slug": "wa-check-engineer",
+    "instagram": "\"Looking for a reliable gas fitter near me.\" That one comes up in local groups a lot.\n\nWhoever you find, check their Gas Safe ID card before they touch anything gas. The front has their photo, their licence number and an expiry date. The back lists the work they're qualified to do, like boilers or cookers.\n\nYou can check any engineer on the Gas Safe Register website, or by calling 0800 408 5500. It takes a minute.\n\nAnyone genuine will be happy to show you. I'll show you mine on the doorstep.\n\nWhatsApp 07700 155 655 to book.\nOr tap WhatsApp in our bio.\n\n#Southampton #GasSafe #GasEngineer #Hampshire",
+    "facebook": "\"Looking for a reliable gas fitter near me.\" That one comes up in local groups a lot.\n\nWhoever you find, check their Gas Safe ID card before they touch anything gas. The front has their photo, their licence number and an expiry date. The back lists the work they're qualified to do, like boilers or cookers.\n\nYou can check any engineer on the Gas Safe Register website, or by calling 0800 408 5500. It takes a minute.\n\nAnyone genuine will be happy to show you. I'll show you mine on the doorstep.\n\nWhatsApp 07700 155 655 to book.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-check-engineer",
+    "googlebusiness": "\"Looking for a reliable gas fitter near me.\" That one comes up in local groups a lot.\n\nWhoever you find, check their Gas Safe ID card before they touch anything gas. The front has their photo, their licence number and an expiry date. The back lists the work they're qualified to do, like boilers or cookers.\n\nYou can check any engineer on the Gas Safe Register website, or by calling 0800 408 5500. It takes a minute.\n\nAnyone genuine will be happy to show you. I'll show you mine on the doorstep.\n\nWhatsApp 07700 155 655 to book.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-check-engineer"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-check-engineer"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "How to check a gas engineer",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/17-check-engineer.jpg",
+    "image_source": "brand:IMG_1248.JPG",
+    "status": "pending"
+  },
+  {
+    "id": "post_379",
+    "batch": "v5",
+    "format": "service_price",
+    "pillar": "cost_reveal",
+    "topic": "Landlords: CP12 from £90",
+    "service_slug": "cp12",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%20need%20a%20landlord%20gas%20safety%20certificate%20%28CP12%29.",
+    "short_link_slug": "wa-cp12",
+    "instagram": "Landlords, your gas safety certificate has to be renewed every 12 months, and your tenants need a copy.\n\nWith me a CP12 is £90, covering up to two gas appliances. Extra appliances like a hob or gas fire are £20 to £50 each.\n\nYou can have the check done up to two months before the old one runs out and keep the same renewal date, so there's no reason to leave it to the last week.\n\nWhatsApp 07700 155 655 to book.\nOr tap WhatsApp in our bio.\n\n#Southampton #Landlords #CP12 #GasSafe",
+    "facebook": "Landlords, your gas safety certificate has to be renewed every 12 months, and your tenants need a copy.\n\nWith me a CP12 is £90, covering up to two gas appliances. Extra appliances like a hob or gas fire are £20 to £50 each.\n\nYou can have the check done up to two months before the old one runs out and keep the same renewal date, so there's no reason to leave it to the last week.\n\nWhatsApp 07700 155 655 to book.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-cp12",
+    "googlebusiness": "Landlords, your gas safety certificate has to be renewed every 12 months, and your tenants need a copy.\n\nWith me a CP12 is £90, covering up to two gas appliances. Extra appliances like a hob or gas fire are £20 to £50 each.\n\nYou can have the check done up to two months before the old one runs out and keep the same renewal date, so there's no reason to leave it to the last week.\n\nWhatsApp 07700 155 655 to book.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-cp12"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-cp12"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Landlords: CP12 from £90",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/18-cp12.jpg",
+    "image_source": "gen:meter_flare",
+    "status": "pending"
+  },
+  {
+    "id": "post_380",
+    "batch": "v5",
+    "format": "checks",
+    "pillar": "tips",
+    "topic": "Pipe dripping outside?",
+    "service_slug": "boiler-repair",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20there%27s%20a%20pipe%20dripping%20outside%20from%20my%20boiler.",
+    "short_link_slug": "wa-prv-pipe",
+    "instagram": "Copper pipe poking out of your wall that drips, or a green stain on the brick under it? That's usually the pressure relief pipe from your boiler.\n\nWhen the pressure inside gets too high, the relief valve lets water out through that pipe so nothing gets damaged. If it's dripping regularly, something is pushing the pressure up. Common causes are an expansion vessel that's lost its charge, or a filling loop left slightly open.\n\nWorth a look: does your boiler's pressure climb above 2.5 bar when the heating's on?\n\nOn my price list an expansion vessel recharge is £100 to £160.\n\nWhatsApp 07700 155 655 to get it sorted.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerRepair #BoilerPressure #GasSafe",
+    "facebook": "Copper pipe poking out of your wall that drips, or a green stain on the brick under it? That's usually the pressure relief pipe from your boiler.\n\nWhen the pressure inside gets too high, the relief valve lets water out through that pipe so nothing gets damaged. If it's dripping regularly, something is pushing the pressure up. Common causes are an expansion vessel that's lost its charge, or a filling loop left slightly open.\n\nWorth a look: does your boiler's pressure climb above 2.5 bar when the heating's on?\n\nOn my price list an expansion vessel recharge is £100 to £160.\n\nWhatsApp 07700 155 655 to get it sorted.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-prv-pipe",
+    "googlebusiness": "Copper pipe poking out of your wall that drips, or a green stain on the brick under it? That's usually the pressure relief pipe from your boiler.\n\nWhen the pressure inside gets too high, the relief valve lets water out through that pipe so nothing gets damaged. If it's dripping regularly, something is pushing the pressure up. Common causes are an expansion vessel that's lost its charge, or a filling loop left slightly open.\n\nWorth a look: does your boiler's pressure climb above 2.5 bar when the heating's on?\n\nOn my price list an expansion vessel recharge is £100 to £160.\n\nWhatsApp 07700 155 655 to get it sorted.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-prv-pipe"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-prv-pipe"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Pipe dripping outside?",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/19-prv-pipe.jpg",
+    "image_source": "work:IMG_1774.JPG",
+    "status": "pending",
+    "check": "Is IMG_1774 a pressure relief discharge pipe?"
+  },
+  {
+    "id": "post_381",
+    "batch": "v5",
+    "format": "fault_code",
+    "pillar": "tips",
+    "topic": "Worcester showing EA?",
+    "service_slug": "boiler-repair",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20Worcester%20is%20showing%20an%20EA%20fault%20code.",
+    "short_link_slug": "wa-worcester-ea",
+    "instagram": "EA 227 or EA 229 on a Worcester Greenstar is an ignition fault. The boiler tried to light and couldn't detect a flame. On some models it tries up to five times before locking out.\n\nSame checks as any ignition fault. Is the gas on at the hob? Credit on a prepayment meter? In frosty weather, is the condensate pipe outside frozen?\n\nReset it once. On a lot of Greenstars that's the reset button, and on some older ones you turn the control knob fully anticlockwise and back. If the code comes straight back, leave it and get it looked at.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.\nOr tap WhatsApp in our bio.\n\n#Southampton #WorcesterBosch #BoilerRepair #GasSafe",
+    "facebook": "EA 227 or EA 229 on a Worcester Greenstar is an ignition fault. The boiler tried to light and couldn't detect a flame. On some models it tries up to five times before locking out.\n\nSame checks as any ignition fault. Is the gas on at the hob? Credit on a prepayment meter? In frosty weather, is the condensate pipe outside frozen?\n\nReset it once. On a lot of Greenstars that's the reset button, and on some older ones you turn the control knob fully anticlockwise and back. If the code comes straight back, leave it and get it looked at.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-worcester-ea",
+    "googlebusiness": "EA 227 or EA 229 on a Worcester Greenstar is an ignition fault. The boiler tried to light and couldn't detect a flame. On some models it tries up to five times before locking out.\n\nSame checks as any ignition fault. Is the gas on at the hob? Credit on a prepayment meter? In frosty weather, is the condensate pipe outside frozen?\n\nReset it once. On a lot of Greenstars that's the reset button, and on some older ones you turn the control knob fully anticlockwise and back. If the code comes straight back, leave it and get it looked at.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-worcester-ea"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-worcester-ea"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Worcester showing EA?",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/20-worcester-ea.jpg",
+    "image_source": "gen:worcester_panel",
+    "status": "pending"
+  },
+  {
+    "id": "post_382",
+    "batch": "v5",
+    "format": "season",
+    "pillar": "tips",
+    "topic": "Cold at the bottom? That's sludge",
+    "service_slug": "power-flush",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20radiators%20are%20cold%20at%20the%20bottom.",
+    "short_link_slug": "wa-sludge",
+    "instagram": "Radiators warm at the top and cold along the bottom? That's usually sludge. It's black iron oxide that settles in the bottom of the panels, and bleeding won't shift it.\n\nIt builds up over years, faster if the inhibitor has been watered down by lots of topping up. It also makes the boiler work harder than it should.\n\nThe fix is flushing it out of the system. This is one mid-flush with the hoses on. If you want to know how bad yours is first, a system health check with a water test is £130.\n\nWhatsApp 07700 155 655 to book.\nOr tap WhatsApp in our bio.\n\n#Southampton #PowerFlush #Radiators #GasSafe",
+    "facebook": "Radiators warm at the top and cold along the bottom? That's usually sludge. It's black iron oxide that settles in the bottom of the panels, and bleeding won't shift it.\n\nIt builds up over years, faster if the inhibitor has been watered down by lots of topping up. It also makes the boiler work harder than it should.\n\nThe fix is flushing it out of the system. This is one mid-flush with the hoses on. If you want to know how bad yours is first, a system health check with a water test is £130.\n\nWhatsApp 07700 155 655 to book.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-sludge",
+    "googlebusiness": "Radiators warm at the top and cold along the bottom? That's usually sludge. It's black iron oxide that settles in the bottom of the panels, and bleeding won't shift it.\n\nIt builds up over years, faster if the inhibitor has been watered down by lots of topping up. It also makes the boiler work harder than it should.\n\nThe fix is flushing it out of the system. This is one mid-flush with the hoses on. If you want to know how bad yours is first, a system health check with a water test is £130.\n\nWhatsApp 07700 155 655 to book.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-sludge"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-sludge"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Cold at the bottom? That's sludge",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/21-sludge.jpg",
+    "image_source": "work:IMG_1383.JPG",
+    "status": "pending",
+    "check": "Is IMG_1383 a flush in progress?"
+  },
+  {
+    "id": "post_383",
+    "batch": "v5",
+    "format": "group_question",
+    "pillar": "local",
+    "topic": "Boiler playing up? Send me this",
+    "service_slug": "boiler-repair",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20boiler%20is%20playing%20up.%20Here%20are%20the%20details%3A",
+    "short_link_slug": "wa-what-to-send",
+    "instagram": "\"Bit of an issue with my parents' Worcester combi.\" Posts like that come up in local groups all the time, and the first replies are always questions.\n\nIf you message me, these four things let me work out what's wrong and bring the right parts:\n\nThe make and model. It's on the front, or on a label underneath.\nAny code on the display. A photo is perfect.\nWhat the pressure gauge says.\nWhether you've lost heating, hot water or both.\n\nWhatsApp them to 07700 155 655.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerRepair #Plumber #GasSafe",
+    "facebook": "\"Bit of an issue with my parents' Worcester combi.\" Posts like that come up in local groups all the time, and the first replies are always questions.\n\nIf you message me, these four things let me work out what's wrong and bring the right parts:\n\nThe make and model. It's on the front, or on a label underneath.\nAny code on the display. A photo is perfect.\nWhat the pressure gauge says.\nWhether you've lost heating, hot water or both.\n\nWhatsApp them to 07700 155 655.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-what-to-send",
+    "googlebusiness": "\"Bit of an issue with my parents' Worcester combi.\" Posts like that come up in local groups all the time, and the first replies are always questions.\n\nIf you message me, these four things let me work out what's wrong and bring the right parts:\n\nThe make and model. It's on the front, or on a label underneath.\nAny code on the display. A photo is perfect.\nWhat the pressure gauge says.\nWhether you've lost heating, hot water or both.\n\nWhatsApp them to 07700 155 655.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-what-to-send"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-what-to-send"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Boiler playing up? Send me this",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/22-what-to-send.jpg",
+    "image_source": "brand:IMG_1256.JPG",
+    "status": "pending"
+  },
+  {
+    "id": "post_384",
+    "batch": "v5",
+    "format": "service_price",
+    "pillar": "cost_reveal",
+    "topic": "Why the £160 service exists",
+    "service_slug": "boiler-service",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%27d%20like%20to%20book%20a%20strip-down%20service.",
+    "short_link_slug": "wa-strip-down",
+    "instagram": "Case off on an older boiler. That brown crust across the heat exchanger fins is years of build-up.\n\nIt still worked, which is the problem. A boiler like this carries on quietly burning more gas than it should, until one day it doesn't.\n\nA standard service at £100 checks everything and cleans what's needed. When the burner and heat exchanger need properly stripping and cleaning like this, it's the full strip-down service at £160.\n\nWhatsApp 07700 155 655 to book.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerService #GasSafe #HeatingEngineer",
+    "facebook": "Case off on an older boiler. That brown crust across the heat exchanger fins is years of build-up.\n\nIt still worked, which is the problem. A boiler like this carries on quietly burning more gas than it should, until one day it doesn't.\n\nA standard service at £100 checks everything and cleans what's needed. When the burner and heat exchanger need properly stripping and cleaning like this, it's the full strip-down service at £160.\n\nWhatsApp 07700 155 655 to book.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-strip-down",
+    "googlebusiness": "Case off on an older boiler. That brown crust across the heat exchanger fins is years of build-up.\n\nIt still worked, which is the problem. A boiler like this carries on quietly burning more gas than it should, until one day it doesn't.\n\nA standard service at £100 checks everything and cleans what's needed. When the burner and heat exchanger need properly stripping and cleaning like this, it's the full strip-down service at £160.\n\nWhatsApp 07700 155 655 to book.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-strip-down"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-strip-down"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Why the £160 service exists",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/23-strip-down.jpg",
+    "image_source": "work:IMG_2259.JPG",
+    "status": "pending",
+    "check": "What was this job? OK to call it a strip-down candidate?"
+  },
+  {
+    "id": "post_385",
+    "batch": "v5",
+    "format": "service_price",
+    "pillar": "cost_reveal",
+    "topic": "Your warranty probably needs this",
+    "service_slug": "boiler-service",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%27d%20like%20to%20book%20an%20annual%20service%20for%20my%20boiler%20warranty.",
+    "short_link_slug": "wa-warranty",
+    "instagram": "Got a newer boiler with a long warranty? Read the small print. Most manufacturers make a yearly service by a Gas Safe engineer a condition of the warranty.\n\nSkip a year and the cover can be void, which you'll only find out when you try to claim for a big repair.\n\nA yearly service is £100. Keep the paperwork somewhere you'll find it.\n\nWhatsApp 07700 155 655 to book.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerService #WorcesterBosch #GasSafe",
+    "facebook": "Got a newer boiler with a long warranty? Read the small print. Most manufacturers make a yearly service by a Gas Safe engineer a condition of the warranty.\n\nSkip a year and the cover can be void, which you'll only find out when you try to claim for a big repair.\n\nA yearly service is £100. Keep the paperwork somewhere you'll find it.\n\nWhatsApp 07700 155 655 to book.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-warranty",
+    "googlebusiness": "Got a newer boiler with a long warranty? Read the small print. Most manufacturers make a yearly service by a Gas Safe engineer a condition of the warranty.\n\nSkip a year and the cover can be void, which you'll only find out when you try to claim for a big repair.\n\nA yearly service is £100. Keep the paperwork somewhere you'll find it.\n\nWhatsApp 07700 155 655 to book.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-warranty"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-warranty"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Your warranty probably needs this",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/24-warranty.jpg",
+    "image_source": "work:IMG_1381.JPG",
+    "status": "pending"
+  },
+  {
+    "id": "post_386",
+    "batch": "v5",
+    "format": "season",
+    "pillar": "tips",
+    "topic": "Boiler sounds like a kettle?",
+    "service_slug": "boiler-repair",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20boiler%20is%20making%20a%20kettle%20noise.",
+    "short_link_slug": "wa-kettling",
+    "instagram": "Rumbling, or a noise like a kettle coming to the boil? That's called kettling.\n\nIt happens when water overheats in part of the heat exchanger, usually because scale or sludge is restricting the flow. Southampton's hard water doesn't help.\n\nIt's not an emergency, but it is a boiler working harder than it should, and it tends to get worse. Get it looked at before winter rather than during it.\n\nWhatsApp 07700 155 655 to get it booked in.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerRepair #HardWater #GasSafe",
+    "facebook": "Rumbling, or a noise like a kettle coming to the boil? That's called kettling.\n\nIt happens when water overheats in part of the heat exchanger, usually because scale or sludge is restricting the flow. Southampton's hard water doesn't help.\n\nIt's not an emergency, but it is a boiler working harder than it should, and it tends to get worse. Get it looked at before winter rather than during it.\n\nWhatsApp 07700 155 655 to get it booked in.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-kettling",
+    "googlebusiness": "Rumbling, or a noise like a kettle coming to the boil? That's called kettling.\n\nIt happens when water overheats in part of the heat exchanger, usually because scale or sludge is restricting the flow. Southampton's hard water doesn't help.\n\nIt's not an emergency, but it is a boiler working harder than it should, and it tends to get worse. Get it looked at before winter rather than during it.\n\nWhatsApp 07700 155 655 to get it booked in.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-kettling"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-kettling"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Boiler sounds like a kettle?",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/25-kettling.jpg",
+    "image_source": "work:IMG_1140.JPG",
+    "status": "pending"
+  },
+  {
+    "id": "post_387",
+    "batch": "v5",
+    "format": "group_question",
+    "pillar": "local",
+    "topic": "Do you know where yours is?",
+    "service_slug": "plumbing",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20stopcock%20won%27t%20turn.",
+    "short_link_slug": "wa-stopcock",
+    "instagram": "\"Our kitchen pipe has just burst.\" That's a real post from a local group, and the first thing anyone needs in that moment is the stopcock.\n\nIt's usually under the kitchen sink, where the water main comes up through the floor. Sometimes it's in a downstairs loo or under the stairs. Find yours today, before you need it, and check it turns.\n\nClockwise shuts it off. If it's seized solid, don't force it. A stuck stopcock is a small job to replace.\n\nIf yours won't budge, WhatsApp 07700 155 655.\nOr tap WhatsApp in our bio.\n\n#Southampton #Plumber #Stopcock #Winter",
+    "facebook": "\"Our kitchen pipe has just burst.\" That's a real post from a local group, and the first thing anyone needs in that moment is the stopcock.\n\nIt's usually under the kitchen sink, where the water main comes up through the floor. Sometimes it's in a downstairs loo or under the stairs. Find yours today, before you need it, and check it turns.\n\nClockwise shuts it off. If it's seized solid, don't force it. A stuck stopcock is a small job to replace.\n\nIf yours won't budge, WhatsApp 07700 155 655.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-stopcock",
+    "googlebusiness": "\"Our kitchen pipe has just burst.\" That's a real post from a local group, and the first thing anyone needs in that moment is the stopcock.\n\nIt's usually under the kitchen sink, where the water main comes up through the floor. Sometimes it's in a downstairs loo or under the stairs. Find yours today, before you need it, and check it turns.\n\nClockwise shuts it off. If it's seized solid, don't force it. A stuck stopcock is a small job to replace.\n\nIf yours won't budge, WhatsApp 07700 155 655.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-stopcock"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-stopcock"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Do you know where yours is?",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/26-stopcock.jpg",
+    "image_source": "gen:stopcock",
+    "status": "pending"
+  },
+  {
+    "id": "post_388",
+    "batch": "v5",
+    "format": "real_job",
+    "pillar": "work",
+    "topic": "When was yours last emptied?",
+    "service_slug": "boiler-service",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%27d%20like%20to%20book%20a%20service%20and%20filter%20clean.",
+    "short_link_slug": "wa-mag-filter",
+    "instagram": "That black cylinder on the pipes under a lot of boilers is a magnetic filter. It catches bits of iron sludge moving round your system before they reach the boiler.\n\nIt only works if someone empties it. Left for years, it fills up and stops catching anything.\n\nIf you've got one and can't remember the last time it was cleaned out, mention it when you book your service.\n\nWhatsApp 07700 155 655 to book.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerService #CentralHeating #GasSafe",
+    "facebook": "That black cylinder on the pipes under a lot of boilers is a magnetic filter. It catches bits of iron sludge moving round your system before they reach the boiler.\n\nIt only works if someone empties it. Left for years, it fills up and stops catching anything.\n\nIf you've got one and can't remember the last time it was cleaned out, mention it when you book your service.\n\nWhatsApp 07700 155 655 to book.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-mag-filter",
+    "googlebusiness": "That black cylinder on the pipes under a lot of boilers is a magnetic filter. It catches bits of iron sludge moving round your system before they reach the boiler.\n\nIt only works if someone empties it. Left for years, it fills up and stops catching anything.\n\nIf you've got one and can't remember the last time it was cleaned out, mention it when you book your service.\n\nWhatsApp 07700 155 655 to book.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-mag-filter"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-mag-filter"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "When was yours last emptied?",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/27-mag-filter.jpg",
+    "image_source": "work:IMG_1468.JPG",
+    "status": "pending",
+    "check": "Do you clean the magnetic filter on a standard service? If not, I'll change the last line."
+  },
+  {
+    "id": "post_389",
+    "batch": "v5",
+    "format": "fault_code",
+    "pillar": "tips",
+    "topic": "Low pressure? Here are the codes",
+    "service_slug": "boiler-repair",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20boiler%20is%20showing%20a%20low%20pressure%20code.",
+    "short_link_slug": "wa-low-pressure-codes",
+    "instagram": "Low water pressure is behind a lot of boiler lockouts, and each brand shows it with a different code.\n\nVaillant: F.22\nIdeal Logic: F1\nBaxi: E119\n\nMost boilers have a pressure gauge on the front too. With the heating off it should read about 1 to 1.5 bar.\n\nIf it's low, top it up with the filling loop and reset. If it keeps dropping, there's a leak somewhere, and that's the bit that needs finding.\n\nWhatsApp 07700 155 655 to get the leak found.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerPressure #BoilerRepair #GasSafe",
+    "facebook": "Low water pressure is behind a lot of boiler lockouts, and each brand shows it with a different code.\n\nVaillant: F.22\nIdeal Logic: F1\nBaxi: E119\n\nMost boilers have a pressure gauge on the front too. With the heating off it should read about 1 to 1.5 bar.\n\nIf it's low, top it up with the filling loop and reset. If it keeps dropping, there's a leak somewhere, and that's the bit that needs finding.\n\nWhatsApp 07700 155 655 to get the leak found.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-low-pressure-codes",
+    "googlebusiness": "Low water pressure is behind a lot of boiler lockouts, and each brand shows it with a different code.\n\nVaillant: F.22\nIdeal Logic: F1\nBaxi: E119\n\nMost boilers have a pressure gauge on the front too. With the heating off it should read about 1 to 1.5 bar.\n\nIf it's low, top it up with the filling loop and reset. If it keeps dropping, there's a leak somewhere, and that's the bit that needs finding.\n\nWhatsApp 07700 155 655 to get the leak found.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-low-pressure-codes"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-low-pressure-codes"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Low pressure? Here are the codes",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/28-low-pressure-codes.jpg",
+    "image_source": "gen:gauge_crouch",
+    "status": "pending"
+  },
+  {
+    "id": "post_390",
+    "batch": "v5",
+    "format": "season",
+    "pillar": "tips",
+    "topic": "Clocks go back this Sunday",
+    "service_slug": "heating-controls",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20heating%20timer%20needs%20looking%20at.",
+    "short_link_slug": "wa-clocks-back",
+    "instagram": "The clocks go back this Sunday, 25 October.\n\nSmart thermostats and most newer timers change on their own. Older timers and a lot of basic programmers don't, so for the next few months your heating would come on an hour out.\n\nCheck it on Sunday morning. If the heating came on at 5 when you set it for 6, that's your answer. It's usually just the time setting, and the manual shows you how.\n\nIf the timer's dead or the display's gone blank, that's a quick swap.\n\nWhatsApp 07700 155 655 if yours needs replacing.\nOr tap WhatsApp in our bio.\n\n#Southampton #CentralHeating #ClocksGoBack #GasSafe",
+    "facebook": "The clocks go back this Sunday, 25 October.\n\nSmart thermostats and most newer timers change on their own. Older timers and a lot of basic programmers don't, so for the next few months your heating would come on an hour out.\n\nCheck it on Sunday morning. If the heating came on at 5 when you set it for 6, that's your answer. It's usually just the time setting, and the manual shows you how.\n\nIf the timer's dead or the display's gone blank, that's a quick swap.\n\nWhatsApp 07700 155 655 if yours needs replacing.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-clocks-back",
+    "googlebusiness": "The clocks go back this Sunday, 25 October.\n\nSmart thermostats and most newer timers change on their own. Older timers and a lot of basic programmers don't, so for the next few months your heating would come on an hour out.\n\nCheck it on Sunday morning. If the heating came on at 5 when you set it for 6, that's your answer. It's usually just the time setting, and the manual shows you how.\n\nIf the timer's dead or the display's gone blank, that's a quick swap.\n\nWhatsApp 07700 155 655 if yours needs replacing.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-clocks-back"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-clocks-back"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Clocks go back this Sunday",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/29-clocks-back.jpg",
+    "image_source": "work:IMG_1733.JPG",
+    "status": "pending",
+    "not_before": "2026-10-21",
+    "not_after": "2026-10-24"
+  },
+  {
+    "id": "post_391",
+    "batch": "v5",
+    "format": "season",
+    "pillar": "emergency",
+    "topic": "Frozen pipe? Warm water, not boiling",
+    "service_slug": "boiler-repair",
+    "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20boiler%20has%20stopped%20and%20I%20think%20the%20condensate%20pipe%20is%20frozen.",
+    "short_link_slug": "wa-frozen-condensate",
+    "instagram": "One of the most common winter breakdowns isn't a broken boiler at all. It's a frozen condensate pipe.\n\nModern boilers drain water out through a plastic pipe, usually down an outside wall. In a hard frost it freezes, the water backs up, and the boiler locks out, often with an ignition fault code.\n\nThe fix: pour warm water, not boiling, slowly along the outside section of the pipe until it thaws. Boiling water can crack it. Then reset the boiler.\n\nIf yours freezes every winter, the pipe can be insulated or rerouted so it stops happening.\n\nWhatsApp 07700 155 655 if it won't come back on.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerRepair #Winter #GasSafe",
+    "facebook": "One of the most common winter breakdowns isn't a broken boiler at all. It's a frozen condensate pipe.\n\nModern boilers drain water out through a plastic pipe, usually down an outside wall. In a hard frost it freezes, the water backs up, and the boiler locks out, often with an ignition fault code.\n\nThe fix: pour warm water, not boiling, slowly along the outside section of the pipe until it thaws. Boiling water can crack it. Then reset the boiler.\n\nIf yours freezes every winter, the pipe can be insulated or rerouted so it stops happening.\n\nWhatsApp 07700 155 655 if it won't come back on.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-frozen-condensate",
+    "googlebusiness": "One of the most common winter breakdowns isn't a broken boiler at all. It's a frozen condensate pipe.\n\nModern boilers drain water out through a plastic pipe, usually down an outside wall. In a hard frost it freezes, the water backs up, and the boiler locks out, often with an ignition fault code.\n\nThe fix: pour warm water, not boiling, slowly along the outside section of the pipe until it thaws. Boiling water can crack it. Then reset the boiler.\n\nIf yours freezes every winter, the pipe can be insulated or rerouted so it stops happening.\n\nWhatsApp 07700 155 655 if it won't come back on.",
+    "platform_data": {
+      "instagram": {
+        "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-frozen-condensate"
+      },
+      "googlebusiness": {
+        "callToAction": {
+          "type": "BOOK",
+          "url": "https://u.bettercallwes.co.uk/wa-frozen-condensate"
+        }
+      }
+    },
+    "twitter": "",
+    "image_type": "prerendered",
+    "image_hint": "prerendered",
+    "caption": "Frozen pipe? Warm water, not boiling",
+    "image_prompt": "",
+    "prerendered_image": "images/v5/30-frozen-condensate.jpg",
+    "image_source": "gen:condensate_frost",
+    "status": "pending",
+    "not_before": "2026-10-26"
+  }
+]

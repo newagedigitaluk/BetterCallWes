@@ -37,7 +37,6 @@
       "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/central-heating.webp"
     ],
     "used_work_images": [
-      "/home/wes/Coding/Projects/Better Call Wes/website/Brand Images/Work Images/IMG_0318.JPG",
       "/home/wes/Coding/Projects/Better Call Wes/website/Brand Images/Work Images/IMG_1468.JPG",
       "/home/wes/Coding/Projects/Better Call Wes/website/Brand Images/Work Images/IMG_1701.jpg",
       "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/system-flushing.webp",
@@ -66,12 +65,10 @@
       "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/toilet-repairs.webp",
       "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/radiators.webp",
       "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/toilet-repair.webp",
-      "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/outdoor-taps.webp"
+      "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/outdoor-taps.webp",
+      "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/smart-controls.webp"
     ],
     "used_asset_images": [
-      "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/southampton-cityscape.webp",
-      "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/bathroom-shower.png",
-      "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/heating-radiator.webp",
       "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/heating-radiator.png",
       "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/copper-pipework.webp",
       "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/wes-profile.webp",
@@ -98,7 +95,10 @@
       "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/central-heating.webp",
       "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/van-work.webp",
       "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/../logo.png",
-      "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/tap-after-chrome.webp"
+      "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/tap-after-chrome.webp",
+      "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/plumber-tools.webp",
+      "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/southampton-cityscape.webp",
+      "/home/wes/Coding/Projects/Better Call Wes/website/site/assets/images/powerflush-kit.webp"
     ],
     "generic_short_links": {
       "boiler-repair": "https://u.bettercallwes.co.uk/boiler-repair",
@@ -5836,9 +5836,9 @@
       "image_hint": "asset:radiator",
       "caption": "Bleed the rads before the cold ♨️",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows a clean white panel radiator mounted on the wall of a cosy UK living room, with a sofa and knitted throw, a houseplant and framed botanical art nearby. No people are in frame. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the upper third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Bleed the rads before the cold ♨️\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-10T08:10:20.743334+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260810_080704_43786b0f-28d0-4129-8f22-f78e2c3c2d87.png",
       "short_link": "https://u.bettercallwes.co.uk/p220-bleed-before-first-burn"
     },
     {
@@ -5856,9 +5856,9 @@
       "image_hint": "brand:wes_with_tools",
       "caption": "The noise I dread hearing 👂",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes working hands-on at a heating or plumbing job inside a UK home — kneeling or crouching at a radiator, boiler, tap or flush rig, wearing a branded navy polo shirt, with his tools around him. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"The noise I dread hearing 👂\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-10T13:11:44.889718+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260810_130704_062ef9d5-7837-4e54-b652-9eeaae7f1d87.png",
       "short_link": "https://u.bettercallwes.co.uk/p221-noise-i-dread"
     },
     {
@@ -5876,9 +5876,9 @@
       "image_hint": "work:install",
       "caption": "New combi, old terrace 🔧",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes mid-installation on a boiler job in a UK home — a new Worcester combi being positioned or already mounted, bare copper pipework, brass fittings and tools laid out on a dust sheet. Wes wears a navy polo shirt. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"New combi, old terrace 🔧\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-10T18:11:53.501860+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260810_180703_d898a726-da92-47e3-8aa6-ae4e24645a3d.png",
       "short_link": "https://u.bettercallwes.co.uk/p222-highfield-combi-swap"
     },
     {
@@ -5896,9 +5896,9 @@
       "image_hint": "brand:wes_with_tools",
       "caption": "I explain it before I fix it 🗣️",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes working hands-on at a heating or plumbing job inside a UK home — kneeling or crouching at a radiator, boiler, tap or flush rig, wearing a branded navy polo shirt, with his tools around him. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"I explain it before I fix it 🗣️\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-11T08:11:24.525677+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260811_080703_0084409b-928b-4762-8244-dec4d45b9e89.png",
       "short_link": "https://u.bettercallwes.co.uk/p223-explain-before-i-fix"
     },
     {
@@ -5916,9 +5916,9 @@
       "image_hint": "brand:wes_portrait",
       "caption": "What happens when I get it wrong 🙋🏿‍♂️",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image is a real photograph of Wes standing outdoors in front of purple wisteria flowers, smiling, wearing a navy polo shirt with the Better Call Wes logo. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"What happens when I get it wrong 🙋🏿‍♂️\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-11T13:10:52.554884+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260811_130707_0f40493a-c2a4-4018-a972-615f4c4e1ca4.png",
       "short_link": "https://u.bettercallwes.co.uk/p224-when-i-get-it-wrong"
     },
     {
@@ -5936,9 +5936,9 @@
       "image_hint": "asset:heatex",
       "caption": "Service now vs breakdown later 💷",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows two Baxi heat exchangers side by side on a service mat — the left one clean with bright silver fins, the right one thick with black carbon and debris build-up. A genuine clean-versus-dirty pair. No people are in frame. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the upper third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Service now vs breakdown later 💷\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-11T18:10:27.374867+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260811_180704_57a40fda-60de-45fd-90c2-8c23d83d0fe3.png",
       "short_link": "https://u.bettercallwes.co.uk/p225-service-vs-callout-cost"
     },
     {
@@ -5956,9 +5956,9 @@
       "image_hint": "asset:tools",
       "caption": "The tool everyone gets wrong 🔧",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image is a clean overhead flat-lay of a plumber's tools on a wooden surface — a Fluke multimeter, an adjustable wrench, a Ridgid pipe cutter, copper elbow fittings, a pipe bender and a roll of PTFE tape. No people are in frame. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the upper third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"The tool everyone gets wrong 🔧\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-12T08:12:35.233302+00:00",
+      "image_url_used": "https://litter.catbox.moe/j3v2fd.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p226-tool-everyone-gets-wrong"
     },
     {
@@ -5976,9 +5976,9 @@
       "image_hint": "brand:wes_with_phone",
       "caption": "She still texts me every Christmas 💬",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes fitting a round smart thermostat to a wall while a second hand holds a phone displaying the heating app set to 18°C. Wes wears a branded navy polo shirt. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"She still texts me every Christmas 💬\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-12T13:10:16.481223+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260812_130705_885c8e16-ce8d-42fa-9ba5-ad985cd2a5de.png",
       "short_link": "https://u.bettercallwes.co.uk/p227-texts-me-at-christmas"
     },
     {
@@ -5996,9 +5996,9 @@
       "image_hint": "asset:logo_mascot",
       "caption": "Where's Wes today? ⚓",
       "image_prompt": "TASK: Place the cartoon mascot character from the source image into a new scene.\n\nSOURCE: The input image is the Better Call Wes logo featuring a cartoon mascot of a Black African plumber in a navy polo holding an adjustable wrench and a phone, set on an orange circle. Preserve the mascot's exact appearance, style, colours and proportions. Ignore the wordmark — do not reproduce any logo text.\n\nSCENE: A photograph of Town Quay in Southampton — the waterfront with the Isle of Wight ferry terminal, moored boats, harbour railings and the water beyond, grey-blue coastal light, with the cartoon mascot standing playfully in the foreground giving a thumbs up — deliberate cartoon-on-photo contrast, like a mascot sticker on a postcard.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Where's Wes today? ⚓\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No other text. Keep the mascot's identity exact. No watermark. No fake logos.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-12T18:10:29.377873+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260812_180704_925c939c-93a4-4451-9b93-11c9622338e6.png",
       "short_link": "https://u.bettercallwes.co.uk/p228-wes-town-quay"
     },
     {
@@ -6016,9 +6016,9 @@
       "image_hint": "asset:boiler",
       "caption": "Check your pressure after summer 📉",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows a modern wall-mounted gas combi boiler in a UK home — a sealed white-cased unit with a small digital display, clean copper pipework and isolation valves running below it, and a magnetic filter on the return pipe. No people are in frame. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Check your pressure after summer 📉\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-13T08:10:20.894863+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260813_080704_a16447a0-fd25-4cf8-84cc-5dec1063ac18.png",
       "short_link": "https://u.bettercallwes.co.uk/p229-pressure-after-summer"
     },
     {
@@ -6036,9 +6036,9 @@
       "image_hint": "brand:wes_portrait",
       "caption": "Please stop apologising for this 🙃",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image is a real photograph of Wes standing outdoors in front of purple wisteria flowers, smiling, wearing a navy polo shirt with the Better Call Wes logo. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Please stop apologising for this 🙃\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-13T13:10:39.286963+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260813_130704_fbd84db7-3711-4929-948f-9f34df7c6f99.png",
       "short_link": "https://u.bettercallwes.co.uk/p230-stop-apologising"
     },
     {
@@ -6057,10 +6057,11 @@
       "caption": "Real review — Elaine ⭐",
       "image_prompt": "",
       "prerendered_image": "review_cards/review-03-elaine.png",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
-      "short_link": "https://u.bettercallwes.co.uk/p231-review-elaine"
+      "status": "sent",
+      "sent_at": "2026-08-13T18:07:40.594689+00:00",
+      "image_url_used": "https://d2ol7oe51mr4n9.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/9537b275-4f42-4742-b78c-5b594e9e1c8e.png",
+      "short_link": "https://u.bettercallwes.co.uk/p231-review-elaine",
+      "notes": "2026-08-13: catbox.moe outage (412) meant FB+GBP posted without the review card; IG failed entirely. Card re-sent to Wes for manual attach on FB/GBP; IG re-posted 2026-08-13 with image. Pipeline switched to Higgsfield CDN as primary host."
     },
     {
       "id": "post_323",
@@ -6077,9 +6078,9 @@
       "image_hint": "work:powerflush",
       "caption": "This came out of one filter 🪣",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes mid power-flush in a branded navy polo — either kneeling beside a black Kamco power-flush rig holding an orange flush hose connected to the boiler with an ADEY MagnaClean filter visible, or wearing blue gloves and pouring jet-black sludge water out of a MagnaClean filter into a clear bucket. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"This came out of one filter 🪣\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-14T08:11:33.430534+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260814_080703_fc0af764-2af9-4230-b2d5-433df7dd8804.png",
       "short_link": "https://u.bettercallwes.co.uk/p232-magnetic-filter-sludge"
     },
     {
@@ -6097,9 +6098,9 @@
       "image_hint": "brand:wes_with_tools",
       "caption": "Why I never rush a gas job 🔥",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes working hands-on at a heating or plumbing job inside a UK home — kneeling or crouching at a radiator, boiler, tap or flush rig, wearing a branded navy polo shirt, with his tools around him. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Why I never rush a gas job 🔥\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-14T13:10:09.587021+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260814_130704_0c66a30e-60ed-4727-a91a-ab27a2738ffa.png",
       "short_link": "https://u.bettercallwes.co.uk/p233-never-rush-a-gas-job"
     },
     {
@@ -6117,9 +6118,9 @@
       "image_hint": "asset:boiler",
       "caption": "Lag this pipe before the freeze 🧊",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows a modern wall-mounted gas combi boiler in a UK home — a sealed white-cased unit with a small digital display, clean copper pipework and isolation valves running below it, and a magnetic filter on the return pipe. No people are in frame. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the upper third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Lag this pipe before the freeze 🧊\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-14T18:09:57.618148+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260814_180704_0940c678-6633-4b75-9aa2-f0e6a955e587.png",
       "short_link": "https://u.bettercallwes.co.uk/p234-lag-condensate-pipe"
     },
     {
@@ -6137,9 +6138,9 @@
       "image_hint": "brand:wes_portrait",
       "caption": "What I actually eat on the road 🥪",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image is a real photograph of Wes standing outdoors in front of purple wisteria flowers, smiling, wearing a navy polo shirt with the Better Call Wes logo. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"What I actually eat on the road 🥪\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-15T08:10:00.652504+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260815_080704_dad459b7-c771-4e85-be78-c10e9a75b030.png",
       "short_link": "https://u.bettercallwes.co.uk/p235-what-i-eat-on-the-road"
     },
     {
@@ -6157,9 +6158,9 @@
       "image_hint": "brand:wes_portrait",
       "caption": "What I'd tell my younger self 🕰️",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image is a real photograph of Wes standing outdoors in front of purple wisteria flowers, smiling, wearing a navy polo shirt with the Better Call Wes logo. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"What I'd tell my younger self 🕰️\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-15T13:10:04.976885+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260815_130704_0c420508-30e6-4f81-8122-9546b6ed3b45.png",
       "short_link": "https://u.bettercallwes.co.uk/p236-tell-my-younger-self"
     },
     {
@@ -6177,9 +6178,9 @@
       "image_hint": "asset:van_southampton",
       "caption": "Swaythling — plenty of work here 🏘️",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image is a Better Call Wes location shot — either the black Ford Transit Custom SWB panel van parked on a UK driveway with its side door open, or an aerial sunset view of the Southampton skyline showing the bridge over the Itchen, the marina and the river. No people in frame. If the van is present it is the only van — do not substitute a different vehicle, colour or model. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Swaythling — plenty of work here 🏘️\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-15T18:09:50.002432+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260815_180704_bc91cf38-3a11-44a5-98da-6febb7162273.png",
       "short_link": "https://u.bettercallwes.co.uk/p237-swaythling"
     },
     {
@@ -6197,9 +6198,9 @@
       "image_hint": "work:boiler_repair",
       "caption": "Four signs of a tired pump 🔊",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes kneeling at a boiler in a utility cupboard with the control panel opened, holding a Fluke multimeter against the board, tools on the floor beside him. Wes wears a navy polo shirt. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Four signs of a tired pump 🔊\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-16T08:09:50.695911+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260816_080705_de3bf77b-b942-4517-a0b9-c41cce0ba987.png",
       "short_link": "https://u.bettercallwes.co.uk/p238-tired-pump-signs"
     },
     {
@@ -6217,9 +6218,9 @@
       "image_hint": "brand:wes_portrait",
       "caption": "Best cup of tea on a job ☕",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image is a real photograph of Wes standing outdoors in front of purple wisteria flowers, smiling, wearing a navy polo shirt with the Better Call Wes logo. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Best cup of tea on a job ☕\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-16T13:10:15.039518+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260816_130704_711c7dcc-ead6-4257-a7c5-8300473dd761.png",
       "short_link": "https://u.bettercallwes.co.uk/p239-best-cup-of-tea"
     },
     {
@@ -6237,9 +6238,9 @@
       "image_hint": "work:smart_install",
       "caption": "Smart controls, fitted properly 📱",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes in a hallway using a screwdriver on a round Nest-style thermostat dial mounted on the wall, mid-install. Wes wears a navy polo shirt. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Smart controls, fitted properly 📱\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-16T18:10:51.609802+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260816_180705_dbadfb00-dfbc-405d-be07-6db4adf433f8.png",
       "short_link": "https://u.bettercallwes.co.uk/p240-smart-stat-before-cold"
     },
     {
@@ -6257,9 +6258,9 @@
       "image_hint": "brand:wes_with_tools",
       "caption": "My least favourite job 😬",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes working hands-on at a heating or plumbing job inside a UK home — kneeling or crouching at a radiator, boiler, tap or flush rig, wearing a branded navy polo shirt, with his tools around him. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"My least favourite job 😬\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-17T08:10:25.561172+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260817_080704_a740baaf-d446-48fa-86da-e0d70eddce7c.png",
       "short_link": "https://u.bettercallwes.co.uk/p241-least-favourite-job"
     },
     {
@@ -6277,9 +6278,9 @@
       "image_hint": "brand:wes_with_phone",
       "caption": "I photograph it before I touch it 📸",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes fitting a round smart thermostat to a wall while a second hand holds a phone displaying the heating app set to 18°C. Wes wears a branded navy polo shirt. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"I photograph it before I touch it 📸\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-17T13:10:38.096121+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260817_130705_e6a5ce10-7e99-4031-a2d0-7494f89aaa42.png",
       "short_link": "https://u.bettercallwes.co.uk/p242-photograph-before-touching"
     },
     {
@@ -6297,9 +6298,9 @@
       "image_hint": "brand:wes_with_tools",
       "caption": "Bitterne Park, I'm around 🏡",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes working hands-on at a heating or plumbing job inside a UK home — kneeling or crouching at a radiator, boiler, tap or flush rig, wearing a branded navy polo shirt, with his tools around him. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Bitterne Park, I'm around 🏡\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-17T18:07:26.912371+00:00",
+      "image_url_used": "https://litter.catbox.moe/eaxhyk.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p243-bitterne-park"
     },
     {
@@ -6317,10 +6318,11 @@
       "image_hint": "work:boiler_repair",
       "caption": "Autumn is the cheapest time 📅",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes kneeling at a boiler in a utility cupboard with the control panel opened, holding a Fluke multimeter against the board, tools on the floor beside him. Wes wears a navy polo shirt. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Autumn is the cheapest time 📅\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
-      "short_link": "https://u.bettercallwes.co.uk/p244-autumn-cheapest-time"
+      "status": "sent",
+      "sent_at": "2026-08-18T08:07:20.309650+00:00",
+      "image_url_used": "https://litter.catbox.moe/488gnx.jpg",
+      "short_link": "https://u.bettercallwes.co.uk/p244-autumn-cheapest-time",
+      "notes": "2026-08-20: Higgsfield outage meant original post had no image; IG re-posted with locally-rendered banner. FB/GBP need manual attach."
     },
     {
       "id": "post_336",
@@ -6337,9 +6339,9 @@
       "image_hint": "brand:wes_portrait",
       "caption": "The hardest part of working for myself 💭",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image is a real photograph of Wes standing outdoors in front of purple wisteria flowers, smiling, wearing a navy polo shirt with the Better Call Wes logo. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"The hardest part of working for myself 💭\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-18T13:09:50.324397+00:00",
+      "image_url_used": "https://litter.catbox.moe/w13fkq.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p245-hardest-thing-self-employed"
     },
     {
@@ -6357,9 +6359,9 @@
       "image_hint": "asset:gas",
       "caption": "Test your CO alarm today ⚠️",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows a domestic gas meter installation — yellow gas pipe, an Elster BK-G4 meter, and brass isolation valves and taps. A clean equipment shot with no people in frame. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the upper third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Test your CO alarm today ⚠️\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-18T18:07:27.367727+00:00",
+      "image_url_used": "https://litter.catbox.moe/zgntn7.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p246-co-alarm-before-winter"
     },
     {
@@ -6377,9 +6379,9 @@
       "image_hint": "brand:wes_portrait",
       "caption": "Why I don't chase big contracts 🚫",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image is a real photograph of Wes standing outdoors in front of purple wisteria flowers, smiling, wearing a navy polo shirt with the Better Call Wes logo. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Why I don't chase big contracts 🚫\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-19T08:08:21.269042+00:00",
+      "image_url_used": "https://litter.catbox.moe/yyps2i.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p247-no-big-contracts"
     },
     {
@@ -6397,9 +6399,9 @@
       "image_hint": "brand:wes_portrait",
       "caption": "Let the customer finish 👂",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image is a real photograph of Wes standing outdoors in front of purple wisteria flowers, smiling, wearing a navy polo shirt with the Better Call Wes logo. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Let the customer finish 👂\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-19T13:07:32.188021+00:00",
+      "image_url_used": "https://litter.catbox.moe/2f33oo.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p248-learned-about-listening"
     },
     {
@@ -6416,10 +6418,10 @@
       "image_type": "asset",
       "image_hint": "asset:logo_mascot",
       "caption": "Where's Wes today? ⛴️",
-      "image_prompt": "TASK: Place the cartoon mascot character from the source image into a new scene.\n\nSOURCE: The input image is the Better Call Wes logo featuring a cartoon mascot of a Black African plumber in a navy polo holding an adjustable wrench and a phone, set on an orange circle. Preserve the mascot's exact appearance, style, colours and proportions. Ignore the wordmark — do not reproduce any logo text.\n\nSCENE: A photograph of the Hythe Ferry pier on Southampton Water — the wooden pier and pier railway, the small passenger ferry moored alongside, Southampton's waterfront across the water, bright breezy daylight, with the cartoon mascot standing playfully in the foreground giving a thumbs up — deliberate cartoon-on-photo contrast, like a mascot sticker on a postcard.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Where's Wes today? ⛴️\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No other text. Keep the mascot's identity exact. No watermark. No fake logos.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "image_prompt": "TASK: Place the cartoon mascot character from the source image into a new scene.\n\nSOURCE: The input image is the Better Call Wes logo featuring a cartoon mascot of a Black African plumber in a navy polo holding an adjustable wrench and a phone, set on an orange circle. Preserve the mascot's face shape, skin tone, hairstyle, navy polo, cartoon line-art style, colours and proportions (see SMILE note below for the one exception). Ignore the wordmark — do not reproduce any logo text.\n\nSMILE (IMPORTANT): Render the mascot's smile as a full, even row of bright WHITE teeth, with exactly ONE gold tooth among them (as in the logo — the gold tooth is part of the character and must be kept). The surrounding teeth must be clearly visible and white. Do NOT render a dark or black open mouth, shadowed gaps, or missing teeth — in previous renders only the gold tooth showed against a dark mouth, which read as having no other teeth. The smile must look healthy, warm and friendly at a glance.\n\nSCENE: A photograph of the Hythe Ferry pier on Southampton Water — the wooden pier and pier railway, the small passenger ferry moored alongside, Southampton's waterfront across the water, bright breezy daylight, with the cartoon mascot standing playfully in the foreground giving a thumbs up — deliberate cartoon-on-photo contrast, like a mascot sticker on a postcard.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Where's Wes today? ⛴️\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No other text. Keep the mascot's identity exact, with the corrected white-toothed smile. No watermark. No fake logos.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
+      "status": "sent",
+      "sent_at": "2026-08-19T18:10:13.419051+00:00",
+      "image_url_used": "https://d8j0ntlcm91z4.cloudfront.net/user_35sd8zZYYU3UaERJv4Qnbq3SGpG/hf_20260819_180704_40309b2b-8fa8-47fa-bdc8-e7f00465e25b.png",
       "short_link": "https://u.bettercallwes.co.uk/p249-wes-hythe-ferry"
     },
     {
@@ -6437,9 +6439,9 @@
       "image_hint": "work:radiator_swap",
       "caption": "Before you switch the heating on 🎚️",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes kneeling in a hallway, using a screwdriver on a white panel radiator, wearing a branded navy polo shirt. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Before you switch the heating on 🎚️\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-20T08:07:28.722225+00:00",
+      "image_url_used": "https://litter.catbox.moe/o5oufi.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p250-first-switch-on"
     },
     {
@@ -6457,8 +6459,8 @@
       "image_hint": "brand:wes_with_tools",
       "caption": "Some jobs are worth less money 💷",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes working hands-on at a heating or plumbing job inside a UK home — kneeling or crouching at a radiator, boiler, tap or flush rig, wearing a branded navy polo shirt, with his tools around him. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Some jobs are worth less money 💷\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
+      "status": "sent",
+      "sent_at": "2026-08-20T13:07:28.906865+00:00",
       "image_url_used": null,
       "short_link": "https://u.bettercallwes.co.uk/p251-jobs-worth-less-money"
     },
@@ -6477,9 +6479,9 @@
       "image_hint": "work:tap_install",
       "caption": "Seized solid. Cartridge, not tap. 🔧",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes in a kitchen mid tap job — holding a blue tap cartridge with the replacement cartridge still in its packaging on the worktop. Wes wears a navy polo shirt. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Seized solid. Cartridge, not tap. 🔧\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-20T18:07:34.660354+00:00",
+      "image_url_used": "https://litter.catbox.moe/lyh5ua.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p252-seized-kitchen-tap"
     },
     {
@@ -6497,9 +6499,9 @@
       "image_hint": "brand:wes_portrait",
       "caption": "What a bad quote looks like 📄",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image is a real photograph of Wes standing outdoors in front of purple wisteria flowers, smiling, wearing a navy polo shirt with the Better Call Wes logo. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"What a bad quote looks like 📄\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-20T20:43:18.912751+00:00",
+      "image_url_used": "https://litter.catbox.moe/zx81tq.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p253-bad-quote-my-side"
     },
     {
@@ -6517,9 +6519,9 @@
       "image_hint": "brand:wes_portrait",
       "caption": "The compliment that meant most 🫶🏿",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image is a real photograph of Wes standing outdoors in front of purple wisteria flowers, smiling, wearing a navy polo shirt with the Better Call Wes logo. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"The compliment that meant most 🫶🏿\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-20T20:52:50.399974+00:00",
+      "image_url_used": "https://litter.catbox.moe/8elaxn.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p254-compliment-meant-most"
     },
     {
@@ -6537,9 +6539,9 @@
       "image_hint": "brand:wes_portrait",
       "caption": "Millbrook — I'm just up the road 🏘️",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image is a real photograph of Wes standing outdoors in front of purple wisteria flowers, smiling, wearing a navy polo shirt with the Better Call Wes logo. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Millbrook — I'm just up the road 🏘️\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-21T08:08:29.470094+00:00",
+      "image_url_used": "https://litter.catbox.moe/hu0r14.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p255-millbrook"
     },
     {
@@ -6557,8 +6559,8 @@
       "image_hint": "brand:wes_portrait",
       "caption": "What my guarantee actually means 📝",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image is a real photograph of Wes standing outdoors in front of purple wisteria flowers, smiling, wearing a navy polo shirt with the Better Call Wes logo. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"What my guarantee actually means 📝\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
+      "status": "sent",
+      "sent_at": "2026-08-21T13:09:45.194346+00:00",
       "image_url_used": null,
       "short_link": "https://u.bettercallwes.co.uk/p256-guarantee-in-practice"
     },
@@ -6577,9 +6579,9 @@
       "image_hint": "brand:wes_portrait",
       "caption": "How I got my first customer 📞",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image is a real photograph of Wes standing outdoors in front of purple wisteria flowers, smiling, wearing a navy polo shirt with the Better Call Wes logo. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"How I got my first customer 📞\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-21T13:18:59.977437+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1787318298900_guzx5jsl_bcw_banner_post_348.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p257-my-first-customer"
     },
     {
@@ -6597,9 +6599,9 @@
       "image_hint": "asset:pipe",
       "caption": "Lag the pipes you can see 🧣",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows a close-up of neat copper pipework — multiple junction fittings, a brass compression fitting, and a black magnetic filter on a tidy parallel pipe run against a plain wall. No people are in frame. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the upper third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Lag the pipes you can see 🧣\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-21T18:07:59.751084+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1787335656746_s5od3pz2_bcw_banner_post_349.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p258-lag-exposed-pipes"
     },
     {
@@ -6617,9 +6619,9 @@
       "image_hint": "asset:tools",
       "caption": "Why the van stays tidy 🧰",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image is a clean overhead flat-lay of a plumber's tools on a wooden surface — a Fluke multimeter, an adjustable wrench, a Ridgid pipe cutter, copper elbow fittings, a pipe bender and a roll of PTFE tape. No people are in frame. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the upper third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Why the van stays tidy 🧰\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-22T08:08:03.938657+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1787386055719_xxdd3wf6_bcw_banner_post_350.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p259-why-i-keep-van-tidy"
     },
     {
@@ -6637,9 +6639,9 @@
       "image_hint": "brand:wes_portrait",
       "caption": "Why I won't undercut other trades 🤝🏿",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image is a real photograph of Wes standing outdoors in front of purple wisteria flowers, smiling, wearing a navy polo shirt with the Better Call Wes logo. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Why I won't undercut other trades 🤝🏿\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-22T13:08:00.200170+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1787404055302_vcyk9qn6_bcw_banner_post_351.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p260-dont-undercut-trades"
     },
     {
@@ -6658,9 +6660,9 @@
       "caption": "Real review — Tracey ⭐",
       "image_prompt": "",
       "prerendered_image": "review_cards/review-08-tracey.png",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-22T18:07:27.520001+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1787422022335_5bhdvhbo_review-08-tracey.png",
       "short_link": "https://u.bettercallwes.co.uk/p261-review-tracey"
     },
     {
@@ -6678,9 +6680,9 @@
       "image_hint": "work:pipe_repair",
       "caption": "The leak wasn't where the damp was 🔦",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes kneeling under a kitchen sink with a torch and a wrench, looking up at the waste pipework mid-inspection. Wes wears a navy polo shirt. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"The leak wasn't where the damp was 🔦\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-23T08:08:10.509120+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1787472455950_6i917mi6_bcw_banner_post_353.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p262-leak-three-metres-away"
     },
     {
@@ -6698,9 +6700,9 @@
       "image_hint": "brand:wes_with_tools",
       "caption": "Why I still work alone 👤",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes working hands-on at a heating or plumbing job inside a UK home — kneeling or crouching at a radiator, boiler, tap or flush rig, wearing a branded navy polo shirt, with his tools around him. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Why I still work alone 👤\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-23T13:08:05.020468+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1787490459204_bfixwyau_bcw_banner_post_354.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p263-why-i-work-alone"
     },
     {
@@ -6718,9 +6720,9 @@
       "image_hint": "work:boiler_repair",
       "caption": "Heating dead at 11pm? 🌙",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes kneeling at a boiler in a utility cupboard with the control panel opened, holding a Fluke multimeter against the board, tools on the floor beside him. Wes wears a navy polo shirt. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Heating dead at 11pm? 🌙\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-23T18:07:59.671619+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1787508455459_v0wvoi9c_bcw_banner_post_355.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p264-heating-dies-at-11pm"
     },
     {
@@ -6738,9 +6740,9 @@
       "image_hint": "brand:wes_with_phone",
       "caption": "What winter does to my diary 📆",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes fitting a round smart thermostat to a wall while a second hand holds a phone displaying the heating app set to 18°C. Wes wears a branded navy polo shirt. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"What winter does to my diary 📆\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-24T08:08:05.922897+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1787558856450_qyswhhbr_bcw_banner_post_356.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p265-what-winter-does-to-my-diary"
     },
     {
@@ -6758,9 +6760,9 @@
       "image_hint": "brand:wes_portrait",
       "caption": "The postcode I know best 📍",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image is a real photograph of Wes standing outdoors in front of purple wisteria flowers, smiling, wearing a navy polo shirt with the Better Call Wes logo. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"The postcode I know best 📍\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-24T13:08:10.077392+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1787576855486_o6ogvq8i_bcw_banner_post_357.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p266-postcode-i-know-best"
     },
     {
@@ -6778,9 +6780,9 @@
       "image_hint": "brand:wes_with_tools",
       "caption": "Freemantle — always work here 🏠",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes working hands-on at a heating or plumbing job inside a UK home — kneeling or crouching at a radiator, boiler, tap or flush rig, wearing a branded navy polo shirt, with his tools around him. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"Freemantle — always work here 🏠\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-24T18:08:04.503976+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1787594855980_wyo39mgk_bcw_banner_post_358.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p267-freemantle"
     },
     {
@@ -6798,9 +6800,9 @@
       "image_hint": "brand:wes_with_tools",
       "caption": "What a quiet day looks like 🗓️",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes working hands-on at a heating or plumbing job inside a UK home — kneeling or crouching at a radiator, boiler, tap or flush rig, wearing a branded navy polo shirt, with his tools around him. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"What a quiet day looks like 🗓️\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-25T13:07:39.908135+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1787663222354_qrrowr6v_bcw_banner_post_359.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p268-what-i-do-on-a-quiet-day"
     },
     {
@@ -6818,9 +6820,9 @@
       "image_hint": "asset:van",
       "caption": "I said no to a van wrap 🚐",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows a black Ford Transit Custom SWB panel van parked on the driveway of a modern UK home with its side door open. Wide shot, no people in frame. This is the only van — do not substitute a different vehicle, colour or model. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"I said no to a van wrap 🚐\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-26T13:07:31.844767+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1787749622484_lptnn9ff_bcw_banner_post_360.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p269-turned-down-van-wrap"
     },
     {
@@ -6838,10 +6840,1073 @@
       "image_hint": "brand:wes_with_tools",
       "caption": "What makes a job satisfying ✅",
       "image_prompt": "TASK: Add a caption banner overlay to the source photo.\n\nSOURCE: The input image shows Wes working hands-on at a heating or plumbing job inside a UK home — kneeling or crouching at a radiator, boiler, tap or flush rig, wearing a branded navy polo shirt, with his tools around him. Wes is a Black African British man with dark skin, wearing professional navy workwear. Keep his facial features, skin tone, expression, and uniform exactly as in the source. Preserve the following exactly: subject, hardware, pipework, valves, labels, wall texture, lighting direction, shadows, camera angle, crop, and colour grade. Do NOT add, remove, or alter any hardware, fittings, tools, or background elements beyond those already present.\n\nCHANGE: Add ONE caption banner in the lower third.\n- Banner style: solid rectangle, brand navy #0A2540, 88% opacity, full-width, 14% of image height, clean edges\n- Small orange #FF6B00 accent bar, 4px, along the top edge of the banner\n- Headline (EXACT TEXT, verbatim, no substitutions, no duplicates): \"What makes a job satisfying ✅\"\n- Typography: bold sans-serif, white, centred, generous kerning, optically sized for social-feed legibility\n\nCONSTRAINTS: Render the headline verbatim. No extra words. No ghosted or duplicate text. No watermark. No logo. Keep everything outside the banner pixel-identical to the source.\n\nUSE CASE: Instagram social post, square 1:1, 1080x1080.",
-      "status": "pending",
-      "sent_at": null,
-      "image_url_used": null,
+      "status": "sent",
+      "sent_at": "2026-08-27T13:07:34.599819+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1787836022566_ztvm3cjw_bcw_banner_post_361.jpg",
       "short_link": "https://u.bettercallwes.co.uk/p270-what-makes-a-job-satisfying"
+    },
+    {
+      "id": "post_362",
+      "batch": "v5",
+      "format": "season",
+      "pillar": "tips",
+      "topic": "Heating on for the first time?",
+      "service_slug": "boiler-service",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%27d%20like%20to%20book%20a%20boiler%20service.",
+      "short_link_slug": "wa-heating-on",
+      "instagram": "Putting the heating on for the first time since spring? Give it a proper test before you actually need it.\n\nTurn the thermostat up a few degrees above the room temperature and leave it 20 minutes. Then walk round and feel every radiator.\n\nWarm all over is what you want. Cold at the top means air, and you can bleed that yourself. Cold along the bottom usually means sludge. If nothing comes on at all, look at the pressure gauge on the boiler before anything else.\n\nIf it's been more than a year since the last service, book it now. The first cold week is when everyone rings round at once.\n\nWhatsApp 07700 155 655 to book a service.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerService #CentralHeating #GasSafe",
+      "facebook": "Putting the heating on for the first time since spring? Give it a proper test before you actually need it.\n\nTurn the thermostat up a few degrees above the room temperature and leave it 20 minutes. Then walk round and feel every radiator.\n\nWarm all over is what you want. Cold at the top means air, and you can bleed that yourself. Cold along the bottom usually means sludge. If nothing comes on at all, look at the pressure gauge on the boiler before anything else.\n\nIf it's been more than a year since the last service, book it now. The first cold week is when everyone rings round at once.\n\nWhatsApp 07700 155 655 to book a service.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-heating-on",
+      "googlebusiness": "Putting the heating on for the first time since spring? Give it a proper test before you actually need it.\n\nTurn the thermostat up a few degrees above the room temperature and leave it 20 minutes. Then walk round and feel every radiator.\n\nWarm all over is what you want. Cold at the top means air, and you can bleed that yourself. Cold along the bottom usually means sludge. If nothing comes on at all, look at the pressure gauge on the boiler before anything else.\n\nIf it's been more than a year since the last service, book it now. The first cold week is when everyone rings round at once.\n\nWhatsApp 07700 155 655 to book a service.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-heating-on"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-heating-on"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Heating on for the first time?",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/01-heating-on.jpg",
+      "image_source": "gen:thermostat",
+      "status": "sent",
+      "short_link": "https://u.bettercallwes.co.uk/wa-heating-on",
+      "sent_at": "2026-09-25T13:07:21.222168+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1790341622396_rauyts7j_01-heating-on.jpg"
+    },
+    {
+      "id": "post_363",
+      "batch": "v5",
+      "format": "checks",
+      "pillar": "tips",
+      "topic": "Check these before you book",
+      "service_slug": "boiler-repair",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20boiler%20has%20stopped%20working.",
+      "short_link_slug": "wa-check-first",
+      "instagram": "Boiler stopped? Four things to check before you book anyone. Worth saving for later.\n\n1. Pressure. Look at the gauge on the front. With the heating off it should sit around 1 to 1.5 bar. Below 1, a lot of boilers switch themselves off.\n\n2. Gas. Does the hob light? If you're on a prepayment meter, check the credit.\n\n3. Thermostat. Is it actually asking for heat? Flat batteries in a wireless stat catch people out every winter.\n\n4. Reset. Press it once. If the fault comes straight back, leave it.\n\nIf all four check out and it still won't go, that's when you need an engineer.\n\nWhatsApp 07700 155 655 and get booked in.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerRepair #BoilerPressure #GasSafe",
+      "facebook": "Boiler stopped? Four things to check before you book anyone. Worth saving for later.\n\n1. Pressure. Look at the gauge on the front. With the heating off it should sit around 1 to 1.5 bar. Below 1, a lot of boilers switch themselves off.\n\n2. Gas. Does the hob light? If you're on a prepayment meter, check the credit.\n\n3. Thermostat. Is it actually asking for heat? Flat batteries in a wireless stat catch people out every winter.\n\n4. Reset. Press it once. If the fault comes straight back, leave it.\n\nIf all four check out and it still won't go, that's when you need an engineer.\n\nWhatsApp 07700 155 655 and get booked in.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-check-first",
+      "googlebusiness": "Boiler stopped? Four things to check before you book anyone. Worth saving for later.\n\n1. Pressure. Look at the gauge on the front. With the heating off it should sit around 1 to 1.5 bar. Below 1, a lot of boilers switch themselves off.\n\n2. Gas. Does the hob light? If you're on a prepayment meter, check the credit.\n\n3. Thermostat. Is it actually asking for heat? Flat batteries in a wireless stat catch people out every winter.\n\n4. Reset. Press it once. If the fault comes straight back, leave it.\n\nIf all four check out and it still won't go, that's when you need an engineer.\n\nWhatsApp 07700 155 655 and get booked in.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-check-first"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-check-first"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Check these before you book",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/02-check-first.jpg",
+      "image_source": "work:IMG_1896.JPG",
+      "status": "sent",
+      "short_link": "https://u.bettercallwes.co.uk/wa-check-first",
+      "sent_at": "2026-09-26T13:07:25.593519+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1790428021811_6t5s8rrj_02-check-first.jpg"
+    },
+    {
+      "id": "post_364",
+      "batch": "v5",
+      "format": "fault_code",
+      "pillar": "tips",
+      "topic": "Vaillant showing F.28?",
+      "service_slug": "boiler-repair",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20Vaillant%20is%20showing%20F.28.",
+      "short_link_slug": "wa-vaillant-f28",
+      "instagram": "F.28 on a Vaillant means it tried to light and couldn't. Vaillant's own manual calls it \"ignition unsuccessful\".\n\nBefore you ring anyone, check the gas is on by trying the hob. On a prepayment meter, check there's credit. On a frosty morning, a frozen condensate pipe outside can cause it too.\n\nThen press reset once. If F.28 comes back, stop resetting, because doing it over and over won't fix it. The usual culprits are the ignition electrode, its lead, or the gas valve, and that needs someone to look at it.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.\nOr tap WhatsApp in our bio.\n\n#Southampton #Vaillant #BoilerRepair #GasSafe",
+      "facebook": "F.28 on a Vaillant means it tried to light and couldn't. Vaillant's own manual calls it \"ignition unsuccessful\".\n\nBefore you ring anyone, check the gas is on by trying the hob. On a prepayment meter, check there's credit. On a frosty morning, a frozen condensate pipe outside can cause it too.\n\nThen press reset once. If F.28 comes back, stop resetting, because doing it over and over won't fix it. The usual culprits are the ignition electrode, its lead, or the gas valve, and that needs someone to look at it.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-vaillant-f28",
+      "googlebusiness": "F.28 on a Vaillant means it tried to light and couldn't. Vaillant's own manual calls it \"ignition unsuccessful\".\n\nBefore you ring anyone, check the gas is on by trying the hob. On a prepayment meter, check there's credit. On a frosty morning, a frozen condensate pipe outside can cause it too.\n\nThen press reset once. If F.28 comes back, stop resetting, because doing it over and over won't fix it. The usual culprits are the ignition electrode, its lead, or the gas valve, and that needs someone to look at it.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-vaillant-f28"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-vaillant-f28"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Vaillant showing F.28?",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/03-vaillant-f28.jpg",
+      "image_source": "gen:vaillant_reset",
+      "status": "sent",
+      "short_link": "https://u.bettercallwes.co.uk/wa-vaillant-f28",
+      "sent_at": "2026-09-27T13:07:25.215791+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1790514422397_fq09fjvi_03-vaillant-f28.jpg"
+    },
+    {
+      "id": "post_365",
+      "batch": "v5",
+      "format": "real_job",
+      "pillar": "work",
+      "topic": "Why it wouldn't light",
+      "service_slug": "boiler-repair",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20boiler%20keeps%20failing%20to%20light.",
+      "short_link_slug": "wa-electrodes",
+      "instagram": "These came out of a boiler that kept failing to light.\n\nThe ignition electrodes, the metal pins that make the spark, had worn. The burner door seal had gone hard too. Both got replaced and it fired first time.\n\nIf your boiler clicks away trying to light and then locks out, this is one of the first places to look.\n\nWhatsApp 07700 155 655 to get yours looked at.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerRepair #RealJob #GasSafe",
+      "facebook": "These came out of a boiler that kept failing to light.\n\nThe ignition electrodes, the metal pins that make the spark, had worn. The burner door seal had gone hard too. Both got replaced and it fired first time.\n\nIf your boiler clicks away trying to light and then locks out, this is one of the first places to look.\n\nWhatsApp 07700 155 655 to get yours looked at.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-electrodes",
+      "googlebusiness": "These came out of a boiler that kept failing to light.\n\nThe ignition electrodes, the metal pins that make the spark, had worn. The burner door seal had gone hard too. Both got replaced and it fired first time.\n\nIf your boiler clicks away trying to light and then locks out, this is one of the first places to look.\n\nWhatsApp 07700 155 655 to get yours looked at.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-electrodes"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-electrodes"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Why it wouldn't light",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/04-electrodes.jpg",
+      "image_source": "work:IMG_1753.jpg",
+      "status": "sent",
+      "check": "Is this right: worn ignition electrodes and a hardened burner door seal, both replaced? Which make was it?",
+      "short_link": "https://u.bettercallwes.co.uk/wa-electrodes",
+      "sent_at": "2026-09-28T13:07:27.410343+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1790600823019_b8g1uq5x_04-electrodes.jpg"
+    },
+    {
+      "id": "post_366",
+      "batch": "v5",
+      "format": "service_price",
+      "pillar": "cost_reveal",
+      "topic": "What a £100 service covers",
+      "service_slug": "boiler-service",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%27d%20like%20to%20book%20a%20boiler%20service.",
+      "short_link_slug": "wa-service-100",
+      "instagram": "A standard boiler service with me is £100 and takes 45 minutes to an hour. This is what you're paying for.\n\nThe case comes off. I check the burner, the heat exchanger and the seals, and clean what needs it. I clear the condensate trap. I test the flue gases with an analyser, which tells me whether it's burning cleanly and safely. Gas pressure gets checked, and so do the safety devices.\n\nYou get a written report at the end.\n\nIf it's been neglected and the burner and heat exchanger need properly stripping and cleaning, that's the full strip-down service at £160. If yours needs it, I'll tell you before I do it.\n\nWhatsApp 07700 155 655 to book.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerService #GasSafe #HeatingEngineer",
+      "facebook": "A standard boiler service with me is £100 and takes 45 minutes to an hour. This is what you're paying for.\n\nThe case comes off. I check the burner, the heat exchanger and the seals, and clean what needs it. I clear the condensate trap. I test the flue gases with an analyser, which tells me whether it's burning cleanly and safely. Gas pressure gets checked, and so do the safety devices.\n\nYou get a written report at the end.\n\nIf it's been neglected and the burner and heat exchanger need properly stripping and cleaning, that's the full strip-down service at £160. If yours needs it, I'll tell you before I do it.\n\nWhatsApp 07700 155 655 to book.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-service-100",
+      "googlebusiness": "A standard boiler service with me is £100 and takes 45 minutes to an hour. This is what you're paying for.\n\nThe case comes off. I check the burner, the heat exchanger and the seals, and clean what needs it. I clear the condensate trap. I test the flue gases with an analyser, which tells me whether it's burning cleanly and safely. Gas pressure gets checked, and so do the safety devices.\n\nYou get a written report at the end.\n\nIf it's been neglected and the burner and heat exchanger need properly stripping and cleaning, that's the full strip-down service at £160. If yours needs it, I'll tell you before I do it.\n\nWhatsApp 07700 155 655 to book.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-service-100"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-service-100"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "What a £100 service covers",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/05-service-100.jpg",
+      "image_source": "gen:service_torch",
+      "status": "sent",
+      "check": "Does this list match what you actually do on a standard service?",
+      "short_link": "https://u.bettercallwes.co.uk/wa-service-100",
+      "sent_at": "2026-09-29T13:07:25.120406+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1790687222300_r2o47a7x_05-service-100.jpg"
+    },
+    {
+      "id": "post_367",
+      "batch": "v5",
+      "format": "group_question",
+      "pillar": "local",
+      "topic": "Smell gas? Don't borrow a detector",
+      "service_slug": "gas-leak",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20the%20gas%20emergency%20service%20has%20made%20my%20gas%20safe%20and%20I%20need%20a%20repair.",
+      "short_link_slug": "wa-gas-detector",
+      "instagram": "Someone in a local Facebook group asked if anyone had a gas detector they could borrow.\n\nIf you can smell gas, please don't go looking for one. Do this instead.\n\nTurn the gas off at the meter. The lever by the meter goes across the pipe to shut it.\nOpen doors and windows.\nDon't touch light switches or anything electrical, and no naked flames.\nRing the National Gas Emergency Service on 0800 111 999. It's free, 24 hours a day.\n\nThey'll come out and make it safe. Once they have, I can find the fault and fix it.\n\nFor the repair afterwards, WhatsApp 07700 155 655.\nOr tap WhatsApp in our bio.\n\n#Southampton #GasSafety #GasSafe #Hampshire",
+      "facebook": "Someone in a local Facebook group asked if anyone had a gas detector they could borrow.\n\nIf you can smell gas, please don't go looking for one. Do this instead.\n\nTurn the gas off at the meter. The lever by the meter goes across the pipe to shut it.\nOpen doors and windows.\nDon't touch light switches or anything electrical, and no naked flames.\nRing the National Gas Emergency Service on 0800 111 999. It's free, 24 hours a day.\n\nThey'll come out and make it safe. Once they have, I can find the fault and fix it.\n\nFor the repair afterwards, WhatsApp 07700 155 655.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-gas-detector",
+      "googlebusiness": "Someone in a local Facebook group asked if anyone had a gas detector they could borrow.\n\nIf you can smell gas, please don't go looking for one. Do this instead.\n\nTurn the gas off at the meter. The lever by the meter goes across the pipe to shut it.\nOpen doors and windows.\nDon't touch light switches or anything electrical, and no naked flames.\nRing the National Gas Emergency Service on 0800 111 999. It's free, 24 hours a day.\n\nThey'll come out and make it safe. Once they have, I can find the fault and fix it.\n\nFor the repair afterwards, WhatsApp 07700 155 655.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-gas-detector"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-gas-detector"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Smell gas? Don't borrow a detector",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/06-gas-detector.jpg",
+      "image_source": "gen:meter_sunburst",
+      "status": "sent",
+      "short_link": "https://u.bettercallwes.co.uk/wa-gas-detector",
+      "sent_at": "2026-09-30T13:07:28.177152+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1790773621965_4fdh5ps2_06-gas-detector.jpg"
+    },
+    {
+      "id": "post_368",
+      "batch": "v5",
+      "format": "personal",
+      "pillar": "personal",
+      "topic": "WhatsApp me. Here's what happens.",
+      "service_slug": "boiler-repair",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%27d%20like%20to%20book%20a%20job.",
+      "short_link_slug": "wa-whatsapp",
+      "instagram": "The quickest way to get me booked is a WhatsApp.\n\nSend a message to 07700 155 655 saying what's wrong. If there's a code on the boiler, add a photo of the display.\n\nMy booking assistant replies, asks the questions I'd ask, and offers you times from my actual diary. Pick one and you're booked. No voicemail, no waiting for a call back.\n\nYour photos go straight onto the job, so I turn up knowing what I'm looking at.\n\nWhatsApp 07700 155 655.\nOr tap WhatsApp in our bio.\n\n#Southampton #Plumber #BoilerRepair #GasSafe",
+      "facebook": "The quickest way to get me booked is a WhatsApp.\n\nSend a message to 07700 155 655 saying what's wrong. If there's a code on the boiler, add a photo of the display.\n\nMy booking assistant replies, asks the questions I'd ask, and offers you times from my actual diary. Pick one and you're booked. No voicemail, no waiting for a call back.\n\nYour photos go straight onto the job, so I turn up knowing what I'm looking at.\n\nWhatsApp 07700 155 655.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-whatsapp",
+      "googlebusiness": "The quickest way to get me booked is a WhatsApp.\n\nSend a message to 07700 155 655 saying what's wrong. If there's a code on the boiler, add a photo of the display.\n\nMy booking assistant replies, asks the questions I'd ask, and offers you times from my actual diary. Pick one and you're booked. No voicemail, no waiting for a call back.\n\nYour photos go straight onto the job, so I turn up knowing what I'm looking at.\n\nWhatsApp 07700 155 655.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-whatsapp"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-whatsapp"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "WhatsApp me. Here's what happens.",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/07-whatsapp.jpg",
+      "image_source": "brand:IMG_1250.JPG",
+      "status": "sent",
+      "short_link": "https://u.bettercallwes.co.uk/wa-whatsapp",
+      "sent_at": "2026-10-01T13:07:19.816303+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1790860022227_8p8m8g7h_07-whatsapp.jpg"
+    },
+    {
+      "id": "post_369",
+      "batch": "v5",
+      "format": "season",
+      "pillar": "tips",
+      "topic": "Pressure dropped over summer?",
+      "service_slug": "boiler-repair",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20boiler%20keeps%20losing%20pressure.",
+      "short_link_slug": "wa-pressure-dropped",
+      "instagram": "Heating back on and the boiler's showing low pressure? Summer is when slow leaks show up, because nobody's looking at the gauge.\n\nWith the heating off, the needle should sit around 1 to 1.5 bar. If it's under 1, you can usually top it up yourself with the filling loop under the boiler. Open it slowly, watch the gauge, and close it firmly at about 1.5. Your boiler manual shows where it is on your model.\n\nTopping up once after bleeding radiators is normal. Doing it every few weeks isn't. The water is going somewhere, often out through the pressure relief valve, or a slow weep at a valve somewhere. That's a repair worth doing before winter.\n\nWhatsApp 07700 155 655 to get it found and fixed.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerPressure #BoilerRepair #GasSafe",
+      "facebook": "Heating back on and the boiler's showing low pressure? Summer is when slow leaks show up, because nobody's looking at the gauge.\n\nWith the heating off, the needle should sit around 1 to 1.5 bar. If it's under 1, you can usually top it up yourself with the filling loop under the boiler. Open it slowly, watch the gauge, and close it firmly at about 1.5. Your boiler manual shows where it is on your model.\n\nTopping up once after bleeding radiators is normal. Doing it every few weeks isn't. The water is going somewhere, often out through the pressure relief valve, or a slow weep at a valve somewhere. That's a repair worth doing before winter.\n\nWhatsApp 07700 155 655 to get it found and fixed.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-pressure-dropped",
+      "googlebusiness": "Heating back on and the boiler's showing low pressure? Summer is when slow leaks show up, because nobody's looking at the gauge.\n\nWith the heating off, the needle should sit around 1 to 1.5 bar. If it's under 1, you can usually top it up yourself with the filling loop under the boiler. Open it slowly, watch the gauge, and close it firmly at about 1.5. Your boiler manual shows where it is on your model.\n\nTopping up once after bleeding radiators is normal. Doing it every few weeks isn't. The water is going somewhere, often out through the pressure relief valve, or a slow weep at a valve somewhere. That's a repair worth doing before winter.\n\nWhatsApp 07700 155 655 to get it found and fixed.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-pressure-dropped"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-pressure-dropped"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Pressure dropped over summer?",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/08-pressure-dropped.jpg",
+      "image_source": "gen:wes_boiler",
+      "status": "sent",
+      "short_link": "https://u.bettercallwes.co.uk/wa-pressure-dropped",
+      "sent_at": "2026-10-02T13:07:25.886525+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1790946422304_n9pqaft3_08-pressure-dropped.jpg"
+    },
+    {
+      "id": "post_370",
+      "batch": "v5",
+      "format": "fault_code",
+      "pillar": "tips",
+      "topic": "Ideal showing L2?",
+      "service_slug": "boiler-repair",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20Ideal%20boiler%20is%20showing%20L2.",
+      "short_link_slug": "wa-ideal-l2",
+      "instagram": "L2 on an Ideal Logic is an ignition lockout. The boiler tried to light, didn't see a flame, and gave up.\n\nThe checks are the same as any ignition fault. Make sure the gas is on and the hob lights. On a prepayment meter, check the credit. In cold weather, look at the plastic condensate pipe outside, because a frozen one can cause this on a lot of boilers.\n\nPress reset once. If L2 comes back, don't keep resetting. It needs someone to look at the ignition side.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.\nOr tap WhatsApp in our bio.\n\n#Southampton #IdealBoiler #BoilerRepair #GasSafe",
+      "facebook": "L2 on an Ideal Logic is an ignition lockout. The boiler tried to light, didn't see a flame, and gave up.\n\nThe checks are the same as any ignition fault. Make sure the gas is on and the hob lights. On a prepayment meter, check the credit. In cold weather, look at the plastic condensate pipe outside, because a frozen one can cause this on a lot of boilers.\n\nPress reset once. If L2 comes back, don't keep resetting. It needs someone to look at the ignition side.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-ideal-l2",
+      "googlebusiness": "L2 on an Ideal Logic is an ignition lockout. The boiler tried to light, didn't see a flame, and gave up.\n\nThe checks are the same as any ignition fault. Make sure the gas is on and the hob lights. On a prepayment meter, check the credit. In cold weather, look at the plastic condensate pipe outside, because a frozen one can cause this on a lot of boilers.\n\nPress reset once. If L2 comes back, don't keep resetting. It needs someone to look at the ignition side.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-ideal-l2"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-ideal-l2"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Ideal showing L2?",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/09-ideal-l2.jpg",
+      "image_source": "gen:ideal_logic",
+      "status": "sent",
+      "short_link": "https://u.bettercallwes.co.uk/wa-ideal-l2",
+      "sent_at": "2026-10-03T13:07:22.649450+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1791032822200_ubvh5mzi_09-ideal-l2.jpg"
+    },
+    {
+      "id": "post_371",
+      "batch": "v5",
+      "format": "real_job",
+      "pillar": "work",
+      "topic": "Heat exchanger swap",
+      "service_slug": "boiler-repair",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%27d%20like%20my%20boiler%20looked%20at.",
+      "short_link_slug": "wa-heat-exchanger",
+      "instagram": "Heat exchanger swap. The new one is at the top. The one that came out is underneath.\n\nThe heat exchanger is where the burner's heat passes into your heating water. Look at the corrosion and deposits on the old one. That builds up over years, and the boiler burns less efficiently the whole time it's happening.\n\nServicing won't make a heat exchanger last forever, but catching build-up early is a lot cheaper than replacing one.\n\nWhatsApp 07700 155 655 to book a service or a repair.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerRepair #RealJob #GasSafe",
+      "facebook": "Heat exchanger swap. The new one is at the top. The one that came out is underneath.\n\nThe heat exchanger is where the burner's heat passes into your heating water. Look at the corrosion and deposits on the old one. That builds up over years, and the boiler burns less efficiently the whole time it's happening.\n\nServicing won't make a heat exchanger last forever, but catching build-up early is a lot cheaper than replacing one.\n\nWhatsApp 07700 155 655 to book a service or a repair.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-heat-exchanger",
+      "googlebusiness": "Heat exchanger swap. The new one is at the top. The one that came out is underneath.\n\nThe heat exchanger is where the burner's heat passes into your heating water. Look at the corrosion and deposits on the old one. That builds up over years, and the boiler burns less efficiently the whole time it's happening.\n\nServicing won't make a heat exchanger last forever, but catching build-up early is a lot cheaper than replacing one.\n\nWhatsApp 07700 155 655 to book a service or a repair.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-heat-exchanger"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-heat-exchanger"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Heat exchanger swap",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/10-heat-exchanger.jpg",
+      "image_source": "card:hx",
+      "status": "sent",
+      "check": "Right that this was a heat exchanger replacement (new one left, the one that came out right)? Anything about the job worth adding?",
+      "short_link": "https://u.bettercallwes.co.uk/wa-heat-exchanger",
+      "sent_at": "2026-10-04T13:07:25.703481+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1791119221517_gmhi78m1_10-heat-exchanger.jpg"
+    },
+    {
+      "id": "post_372",
+      "batch": "v5",
+      "format": "season",
+      "pillar": "tips",
+      "topic": "Cold at the top? Bleed it.",
+      "service_slug": "radiators",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20radiators%20aren%27t%20heating%20properly.",
+      "short_link_slug": "wa-bleed-rads",
+      "instagram": "Radiator warm at the bottom and cold at the top? That's trapped air, and you can sort it yourself in five minutes.\n\nTurn the heating off and let the radiators cool. Put the bleed key in the valve at the top corner and hold a cloth under it. Turn it a quarter turn anticlockwise. You'll hear air hiss out. When water starts to come out, close it.\n\nThen check the boiler pressure. Bleeding lets water out, so it often needs topping back up to about 1 to 1.5 bar.\n\nCold along the bottom and warm at the top is a different problem. That's usually sludge, and bleeding won't touch it.\n\nIf it's more than air, WhatsApp 07700 155 655.\nOr tap WhatsApp in our bio.\n\n#Southampton #Radiators #CentralHeating #GasSafe",
+      "facebook": "Radiator warm at the bottom and cold at the top? That's trapped air, and you can sort it yourself in five minutes.\n\nTurn the heating off and let the radiators cool. Put the bleed key in the valve at the top corner and hold a cloth under it. Turn it a quarter turn anticlockwise. You'll hear air hiss out. When water starts to come out, close it.\n\nThen check the boiler pressure. Bleeding lets water out, so it often needs topping back up to about 1 to 1.5 bar.\n\nCold along the bottom and warm at the top is a different problem. That's usually sludge, and bleeding won't touch it.\n\nIf it's more than air, WhatsApp 07700 155 655.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-bleed-rads",
+      "googlebusiness": "Radiator warm at the bottom and cold at the top? That's trapped air, and you can sort it yourself in five minutes.\n\nTurn the heating off and let the radiators cool. Put the bleed key in the valve at the top corner and hold a cloth under it. Turn it a quarter turn anticlockwise. You'll hear air hiss out. When water starts to come out, close it.\n\nThen check the boiler pressure. Bleeding lets water out, so it often needs topping back up to about 1 to 1.5 bar.\n\nCold along the bottom and warm at the top is a different problem. That's usually sludge, and bleeding won't touch it.\n\nIf it's more than air, WhatsApp 07700 155 655.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-bleed-rads"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-bleed-rads"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Cold at the top? Bleed it.",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/11-bleed-rads.jpg",
+      "image_source": "gen:bleed_rad",
+      "status": "sent",
+      "short_link": "https://u.bettercallwes.co.uk/wa-bleed-rads",
+      "sent_at": "2026-10-05T13:07:29.131935+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1791205621465_zv5dgngx_11-bleed-rads.jpg"
+    },
+    {
+      "id": "post_373",
+      "batch": "v5",
+      "format": "group_question",
+      "pillar": "local",
+      "topic": "Older boiler? Still worth a service",
+      "service_slug": "boiler-service",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%27d%20like%20to%20book%20a%20service%20on%20an%20older%20boiler.",
+      "short_link_slug": "wa-older-boiler",
+      "instagram": "Someone in a local group asked who'd service their Potterton Promax.\n\nThere's an idea that older boilers are past the point of servicing. It's the other way round. The older it is, the more a yearly check matters. Seals age and burners get dirty, and left alone a small fault turns into a breakdown.\n\nAn older boiler that's looked after can keep running safely for years. A standard service is £100 whatever the age. A back boiler is £120.\n\nWhatsApp 07700 155 655 to book.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerService #GasSafe #Hampshire",
+      "facebook": "Someone in a local group asked who'd service their Potterton Promax.\n\nThere's an idea that older boilers are past the point of servicing. It's the other way round. The older it is, the more a yearly check matters. Seals age and burners get dirty, and left alone a small fault turns into a breakdown.\n\nAn older boiler that's looked after can keep running safely for years. A standard service is £100 whatever the age. A back boiler is £120.\n\nWhatsApp 07700 155 655 to book.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-older-boiler",
+      "googlebusiness": "Someone in a local group asked who'd service their Potterton Promax.\n\nThere's an idea that older boilers are past the point of servicing. It's the other way round. The older it is, the more a yearly check matters. Seals age and burners get dirty, and left alone a small fault turns into a breakdown.\n\nAn older boiler that's looked after can keep running safely for years. A standard service is £100 whatever the age. A back boiler is £120.\n\nWhatsApp 07700 155 655 to book.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-older-boiler"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-older-boiler"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Older boiler? Still worth a service",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/12-older-boiler.jpg",
+      "image_source": "work:IMG_4990.jpg",
+      "status": "sent",
+      "check": "Photo is an older boiler with the case off, not a Potterton Promax. Fine as a general image?",
+      "short_link": "https://u.bettercallwes.co.uk/wa-older-boiler",
+      "sent_at": "2026-10-06T13:07:26.983647+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1791292022602_fnwji7xa_12-older-boiler.jpg"
+    },
+    {
+      "id": "post_374",
+      "batch": "v5",
+      "format": "checks",
+      "pillar": "tips",
+      "topic": "Heating works but no hot water?",
+      "service_slug": "boiler-repair",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20heating%20works%20but%20I%27ve%20got%20no%20hot%20water.",
+      "short_link_slug": "wa-no-hot-water",
+      "instagram": "Radiators hot, but the taps run cold? On a combi, the usual suspect is the diverter valve. It's the part that switches the boiler between heating and hot water. This is one I took out.\n\nTwo things to check first. Is the pressure above 1 bar? Is the hot tap fully open? Some combis won't fire for hot water on a trickle.\n\nIf both are fine, it's likely the diverter. On my price list a diverter valve replacement is £180 to £250, parts and labour.\n\nWhatsApp 07700 155 655 to get it booked in.\nOr tap WhatsApp in our bio.\n\n#Southampton #CombiBoiler #BoilerRepair #GasSafe",
+      "facebook": "Radiators hot, but the taps run cold? On a combi, the usual suspect is the diverter valve. It's the part that switches the boiler between heating and hot water. This is one I took out.\n\nTwo things to check first. Is the pressure above 1 bar? Is the hot tap fully open? Some combis won't fire for hot water on a trickle.\n\nIf both are fine, it's likely the diverter. On my price list a diverter valve replacement is £180 to £250, parts and labour.\n\nWhatsApp 07700 155 655 to get it booked in.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-no-hot-water",
+      "googlebusiness": "Radiators hot, but the taps run cold? On a combi, the usual suspect is the diverter valve. It's the part that switches the boiler between heating and hot water. This is one I took out.\n\nTwo things to check first. Is the pressure above 1 bar? Is the hot tap fully open? Some combis won't fire for hot water on a trickle.\n\nIf both are fine, it's likely the diverter. On my price list a diverter valve replacement is £180 to £250, parts and labour.\n\nWhatsApp 07700 155 655 to get it booked in.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-no-hot-water"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-no-hot-water"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Heating works but no hot water?",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/13-no-hot-water.jpg",
+      "image_source": "work:IMG_1771.JPG",
+      "status": "sent",
+      "check": "Is IMG_1771 a diverter valve assembly?",
+      "short_link": "https://u.bettercallwes.co.uk/wa-no-hot-water",
+      "sent_at": "2026-10-07T13:07:22.636642+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1791378421540_78wpprah_13-no-hot-water.jpg"
+    },
+    {
+      "id": "post_375",
+      "batch": "v5",
+      "format": "season",
+      "pillar": "tips",
+      "topic": "Book it before the cold week",
+      "service_slug": "boiler-service",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%27d%20like%20to%20book%20a%20boiler%20service.",
+      "short_link_slug": "wa-before-the-cold",
+      "instagram": "Every year it goes the same way. The first properly cold week, boilers that have sat idle all summer get switched on hard, and the ones that were struggling give up.\n\nA service now is £100. A breakdown in the first cold snap means a cold house while you wait, and then the repair on top.\n\nIf yours hasn't been serviced in the last 12 months, now's the time.\n\nWhatsApp 07700 155 655 to book.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerService #GasSafe #Winter",
+      "facebook": "Every year it goes the same way. The first properly cold week, boilers that have sat idle all summer get switched on hard, and the ones that were struggling give up.\n\nA service now is £100. A breakdown in the first cold snap means a cold house while you wait, and then the repair on top.\n\nIf yours hasn't been serviced in the last 12 months, now's the time.\n\nWhatsApp 07700 155 655 to book.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-before-the-cold",
+      "googlebusiness": "Every year it goes the same way. The first properly cold week, boilers that have sat idle all summer get switched on hard, and the ones that were struggling give up.\n\nA service now is £100. A breakdown in the first cold snap means a cold house while you wait, and then the repair on top.\n\nIf yours hasn't been serviced in the last 12 months, now's the time.\n\nWhatsApp 07700 155 655 to book.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-before-the-cold"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-before-the-cold"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Book it before the cold week",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/14-before-the-cold.jpg",
+      "image_source": "gen:clipboard_vaillant",
+      "status": "sent",
+      "short_link": "https://u.bettercallwes.co.uk/wa-before-the-cold",
+      "sent_at": "2026-10-08T13:07:26.529568+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1791464822323_33wm35h1_14-before-the-cold.jpg"
+    },
+    {
+      "id": "post_376",
+      "batch": "v5",
+      "format": "fault_code",
+      "pillar": "tips",
+      "topic": "Baxi showing E133?",
+      "service_slug": "boiler-repair",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20Baxi%20is%20showing%20E133.",
+      "short_link_slug": "wa-baxi-e133",
+      "instagram": "E133 on a Baxi means the boiler has lost its gas supply or its flame. Baxi's manual calls it \"interruption of gas supply or flame failure\".\n\nCheck the gas is on by trying the hob. On a prepayment meter, check the credit, because sometimes that's all it is. In a cold snap, check the condensate pipe outside hasn't frozen.\n\nThen reset once. If E133 keeps coming back with the gas definitely on, it needs an engineer.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.\nOr tap WhatsApp in our bio.\n\n#Southampton #Baxi #BoilerRepair #GasSafe",
+      "facebook": "E133 on a Baxi means the boiler has lost its gas supply or its flame. Baxi's manual calls it \"interruption of gas supply or flame failure\".\n\nCheck the gas is on by trying the hob. On a prepayment meter, check the credit, because sometimes that's all it is. In a cold snap, check the condensate pipe outside hasn't frozen.\n\nThen reset once. If E133 keeps coming back with the gas definitely on, it needs an engineer.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-baxi-e133",
+      "googlebusiness": "E133 on a Baxi means the boiler has lost its gas supply or its flame. Baxi's manual calls it \"interruption of gas supply or flame failure\".\n\nCheck the gas is on by trying the hob. On a prepayment meter, check the credit, because sometimes that's all it is. In a cold snap, check the condensate pipe outside hasn't frozen.\n\nThen reset once. If E133 keeps coming back with the gas definitely on, it needs an engineer.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-baxi-e133"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-baxi-e133"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Baxi showing E133?",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/15-baxi-e133.jpg",
+      "image_source": "brand:IMG_1253.JPG",
+      "status": "sent",
+      "short_link": "https://u.bettercallwes.co.uk/wa-baxi-e133",
+      "sent_at": "2026-10-09T13:07:17.972256+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1791551221596_n2n20fq4_15-baxi-e133.jpg"
+    },
+    {
+      "id": "post_377",
+      "batch": "v5",
+      "format": "real_job",
+      "pillar": "work",
+      "topic": "What goes back in",
+      "service_slug": "central-heating",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%20keep%20having%20to%20top%20up%20my%20boiler%20pressure.",
+      "short_link_slug": "wa-inhibitor",
+      "instagram": "Inhibitor going into a system after work on it.\n\nIt's a chemical that stops the inside of your radiators and boiler corroding. That corrosion is where black sludge comes from.\n\nEvery time the system is drained, or topped up with fresh water, the inhibitor gets diluted a bit more. So if you're topping up your pressure every few weeks, you're also slowly washing out the protection.\n\nTwo good reasons to get a pressure leak found rather than living with it.\n\nWhatsApp 07700 155 655 to get it looked at.\nOr tap WhatsApp in our bio.\n\n#Southampton #CentralHeating #RealJob #GasSafe",
+      "facebook": "Inhibitor going into a system after work on it.\n\nIt's a chemical that stops the inside of your radiators and boiler corroding. That corrosion is where black sludge comes from.\n\nEvery time the system is drained, or topped up with fresh water, the inhibitor gets diluted a bit more. So if you're topping up your pressure every few weeks, you're also slowly washing out the protection.\n\nTwo good reasons to get a pressure leak found rather than living with it.\n\nWhatsApp 07700 155 655 to get it looked at.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-inhibitor",
+      "googlebusiness": "Inhibitor going into a system after work on it.\n\nIt's a chemical that stops the inside of your radiators and boiler corroding. That corrosion is where black sludge comes from.\n\nEvery time the system is drained, or topped up with fresh water, the inhibitor gets diluted a bit more. So if you're topping up your pressure every few weeks, you're also slowly washing out the protection.\n\nTwo good reasons to get a pressure leak found rather than living with it.\n\nWhatsApp 07700 155 655 to get it looked at.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-inhibitor"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-inhibitor"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "What goes back in",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/16-inhibitor.jpg",
+      "image_source": "work:IMG_1851.JPG",
+      "status": "sent",
+      "check": "What was this job? After a flush, or a filter clean?",
+      "short_link": "https://u.bettercallwes.co.uk/wa-inhibitor",
+      "sent_at": "2026-10-10T13:07:21.002465+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1791637622203_6x2dvlit_16-inhibitor.jpg"
+    },
+    {
+      "id": "post_378",
+      "batch": "v5",
+      "format": "group_question",
+      "pillar": "trust",
+      "topic": "How to check a gas engineer",
+      "service_slug": "gas-safety",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%27d%20like%20to%20book%20some%20gas%20work.",
+      "short_link_slug": "wa-check-engineer",
+      "instagram": "\"Looking for a reliable gas fitter near me.\" That one comes up in local groups a lot.\n\nWhoever you find, check their Gas Safe ID card before they touch anything gas. The front has their photo, their licence number and an expiry date. The back lists the work they're qualified to do, like boilers or cookers.\n\nYou can check any engineer on the Gas Safe Register website, or by calling 0800 408 5500. It takes a minute.\n\nAnyone genuine will be happy to show you. I'll show you mine on the doorstep.\n\nWhatsApp 07700 155 655 to book.\nOr tap WhatsApp in our bio.\n\n#Southampton #GasSafe #GasEngineer #Hampshire",
+      "facebook": "\"Looking for a reliable gas fitter near me.\" That one comes up in local groups a lot.\n\nWhoever you find, check their Gas Safe ID card before they touch anything gas. The front has their photo, their licence number and an expiry date. The back lists the work they're qualified to do, like boilers or cookers.\n\nYou can check any engineer on the Gas Safe Register website, or by calling 0800 408 5500. It takes a minute.\n\nAnyone genuine will be happy to show you. I'll show you mine on the doorstep.\n\nWhatsApp 07700 155 655 to book.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-check-engineer",
+      "googlebusiness": "\"Looking for a reliable gas fitter near me.\" That one comes up in local groups a lot.\n\nWhoever you find, check their Gas Safe ID card before they touch anything gas. The front has their photo, their licence number and an expiry date. The back lists the work they're qualified to do, like boilers or cookers.\n\nYou can check any engineer on the Gas Safe Register website, or by calling 0800 408 5500. It takes a minute.\n\nAnyone genuine will be happy to show you. I'll show you mine on the doorstep.\n\nWhatsApp 07700 155 655 to book.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-check-engineer"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-check-engineer"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "How to check a gas engineer",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/17-check-engineer.jpg",
+      "image_source": "brand:IMG_1248.JPG",
+      "status": "sent",
+      "short_link": "https://u.bettercallwes.co.uk/wa-check-engineer",
+      "sent_at": "2026-10-11T13:07:20.317705+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1791724021709_6w0ev7zm_17-check-engineer.jpg"
+    },
+    {
+      "id": "post_379",
+      "batch": "v5",
+      "format": "service_price",
+      "pillar": "cost_reveal",
+      "topic": "Landlords: CP12 from £90",
+      "service_slug": "cp12",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%20need%20a%20landlord%20gas%20safety%20certificate%20%28CP12%29.",
+      "short_link_slug": "wa-cp12",
+      "instagram": "Landlords, your gas safety certificate has to be renewed every 12 months, and your tenants need a copy.\n\nWith me a CP12 is £90, covering up to two gas appliances. Extra appliances like a hob or gas fire are £20 to £50 each.\n\nYou can have the check done up to two months before the old one runs out and keep the same renewal date, so there's no reason to leave it to the last week.\n\nWhatsApp 07700 155 655 to book.\nOr tap WhatsApp in our bio.\n\n#Southampton #Landlords #CP12 #GasSafe",
+      "facebook": "Landlords, your gas safety certificate has to be renewed every 12 months, and your tenants need a copy.\n\nWith me a CP12 is £90, covering up to two gas appliances. Extra appliances like a hob or gas fire are £20 to £50 each.\n\nYou can have the check done up to two months before the old one runs out and keep the same renewal date, so there's no reason to leave it to the last week.\n\nWhatsApp 07700 155 655 to book.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-cp12",
+      "googlebusiness": "Landlords, your gas safety certificate has to be renewed every 12 months, and your tenants need a copy.\n\nWith me a CP12 is £90, covering up to two gas appliances. Extra appliances like a hob or gas fire are £20 to £50 each.\n\nYou can have the check done up to two months before the old one runs out and keep the same renewal date, so there's no reason to leave it to the last week.\n\nWhatsApp 07700 155 655 to book.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-cp12"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-cp12"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Landlords: CP12 from £90",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/18-cp12.jpg",
+      "image_source": "gen:meter_flare",
+      "status": "sent",
+      "short_link": "https://u.bettercallwes.co.uk/wa-cp12",
+      "sent_at": "2026-10-12T13:07:26.334997+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1791810421730_bvbsk3y8_18-cp12.jpg"
+    },
+    {
+      "id": "post_380",
+      "batch": "v5",
+      "format": "checks",
+      "pillar": "tips",
+      "topic": "Pipe dripping outside?",
+      "service_slug": "boiler-repair",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20there%27s%20a%20pipe%20dripping%20outside%20from%20my%20boiler.",
+      "short_link_slug": "wa-prv-pipe",
+      "instagram": "Copper pipe poking out of your wall that drips, or a green stain on the brick under it? That's usually the pressure relief pipe from your boiler.\n\nWhen the pressure inside gets too high, the relief valve lets water out through that pipe so nothing gets damaged. If it's dripping regularly, something is pushing the pressure up. Common causes are an expansion vessel that's lost its charge, or a filling loop left slightly open.\n\nWorth a look: does your boiler's pressure climb above 2.5 bar when the heating's on?\n\nOn my price list an expansion vessel recharge is £100 to £160.\n\nWhatsApp 07700 155 655 to get it sorted.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerRepair #BoilerPressure #GasSafe",
+      "facebook": "Copper pipe poking out of your wall that drips, or a green stain on the brick under it? That's usually the pressure relief pipe from your boiler.\n\nWhen the pressure inside gets too high, the relief valve lets water out through that pipe so nothing gets damaged. If it's dripping regularly, something is pushing the pressure up. Common causes are an expansion vessel that's lost its charge, or a filling loop left slightly open.\n\nWorth a look: does your boiler's pressure climb above 2.5 bar when the heating's on?\n\nOn my price list an expansion vessel recharge is £100 to £160.\n\nWhatsApp 07700 155 655 to get it sorted.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-prv-pipe",
+      "googlebusiness": "Copper pipe poking out of your wall that drips, or a green stain on the brick under it? That's usually the pressure relief pipe from your boiler.\n\nWhen the pressure inside gets too high, the relief valve lets water out through that pipe so nothing gets damaged. If it's dripping regularly, something is pushing the pressure up. Common causes are an expansion vessel that's lost its charge, or a filling loop left slightly open.\n\nWorth a look: does your boiler's pressure climb above 2.5 bar when the heating's on?\n\nOn my price list an expansion vessel recharge is £100 to £160.\n\nWhatsApp 07700 155 655 to get it sorted.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-prv-pipe"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-prv-pipe"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Pipe dripping outside?",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/19-prv-pipe.jpg",
+      "image_source": "work:IMG_1774.JPG",
+      "status": "sent",
+      "check": "Is IMG_1774 a pressure relief discharge pipe?",
+      "short_link": "https://u.bettercallwes.co.uk/wa-prv-pipe",
+      "sent_at": "2026-10-13T13:07:23.446095+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1791896822411_wafw0kjn_19-prv-pipe.jpg"
+    },
+    {
+      "id": "post_381",
+      "batch": "v5",
+      "format": "fault_code",
+      "pillar": "tips",
+      "topic": "Worcester showing EA?",
+      "service_slug": "boiler-repair",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20Worcester%20is%20showing%20an%20EA%20fault%20code.",
+      "short_link_slug": "wa-worcester-ea",
+      "instagram": "EA 227 or EA 229 on a Worcester Greenstar is an ignition fault. The boiler tried to light and couldn't detect a flame. On some models it tries up to five times before locking out.\n\nSame checks as any ignition fault. Is the gas on at the hob? Credit on a prepayment meter? In frosty weather, is the condensate pipe outside frozen?\n\nReset it once. On a lot of Greenstars that's the reset button, and on some older ones you turn the control knob fully anticlockwise and back. If the code comes straight back, leave it and get it looked at.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.\nOr tap WhatsApp in our bio.\n\n#Southampton #WorcesterBosch #BoilerRepair #GasSafe",
+      "facebook": "EA 227 or EA 229 on a Worcester Greenstar is an ignition fault. The boiler tried to light and couldn't detect a flame. On some models it tries up to five times before locking out.\n\nSame checks as any ignition fault. Is the gas on at the hob? Credit on a prepayment meter? In frosty weather, is the condensate pipe outside frozen?\n\nReset it once. On a lot of Greenstars that's the reset button, and on some older ones you turn the control knob fully anticlockwise and back. If the code comes straight back, leave it and get it looked at.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-worcester-ea",
+      "googlebusiness": "EA 227 or EA 229 on a Worcester Greenstar is an ignition fault. The boiler tried to light and couldn't detect a flame. On some models it tries up to five times before locking out.\n\nSame checks as any ignition fault. Is the gas on at the hob? Credit on a prepayment meter? In frosty weather, is the condensate pipe outside frozen?\n\nReset it once. On a lot of Greenstars that's the reset button, and on some older ones you turn the control knob fully anticlockwise and back. If the code comes straight back, leave it and get it looked at.\n\nWhatsApp a photo of the display to 07700 155 655 to get it booked in.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-worcester-ea"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-worcester-ea"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Worcester showing EA?",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/20-worcester-ea.jpg",
+      "image_source": "gen:worcester_panel",
+      "status": "sent",
+      "short_link": "https://u.bettercallwes.co.uk/wa-worcester-ea",
+      "sent_at": "2026-10-14T13:07:19.062754+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1791983221616_6jbvw1yx_20-worcester-ea.jpg"
+    },
+    {
+      "id": "post_382",
+      "batch": "v5",
+      "format": "season",
+      "pillar": "tips",
+      "topic": "Cold at the bottom? That's sludge",
+      "service_slug": "power-flush",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20radiators%20are%20cold%20at%20the%20bottom.",
+      "short_link_slug": "wa-sludge",
+      "instagram": "Radiators warm at the top and cold along the bottom? That's usually sludge. It's black iron oxide that settles in the bottom of the panels, and bleeding won't shift it.\n\nIt builds up over years, faster if the inhibitor has been watered down by lots of topping up. It also makes the boiler work harder than it should.\n\nThe fix is flushing it out of the system. This is one mid-flush with the hoses on. If you want to know how bad yours is first, a system health check with a water test is £130.\n\nWhatsApp 07700 155 655 to book.\nOr tap WhatsApp in our bio.\n\n#Southampton #PowerFlush #Radiators #GasSafe",
+      "facebook": "Radiators warm at the top and cold along the bottom? That's usually sludge. It's black iron oxide that settles in the bottom of the panels, and bleeding won't shift it.\n\nIt builds up over years, faster if the inhibitor has been watered down by lots of topping up. It also makes the boiler work harder than it should.\n\nThe fix is flushing it out of the system. This is one mid-flush with the hoses on. If you want to know how bad yours is first, a system health check with a water test is £130.\n\nWhatsApp 07700 155 655 to book.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-sludge",
+      "googlebusiness": "Radiators warm at the top and cold along the bottom? That's usually sludge. It's black iron oxide that settles in the bottom of the panels, and bleeding won't shift it.\n\nIt builds up over years, faster if the inhibitor has been watered down by lots of topping up. It also makes the boiler work harder than it should.\n\nThe fix is flushing it out of the system. This is one mid-flush with the hoses on. If you want to know how bad yours is first, a system health check with a water test is £130.\n\nWhatsApp 07700 155 655 to book.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-sludge"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-sludge"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Cold at the bottom? That's sludge",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/21-sludge.jpg",
+      "image_source": "work:IMG_1383.JPG",
+      "status": "sent",
+      "check": "Is IMG_1383 a flush in progress?",
+      "short_link": "https://u.bettercallwes.co.uk/wa-sludge",
+      "sent_at": "2026-10-15T13:07:21.609291+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1792069622229_9w2piutn_21-sludge.jpg"
+    },
+    {
+      "id": "post_383",
+      "batch": "v5",
+      "format": "group_question",
+      "pillar": "local",
+      "topic": "Boiler playing up? Send me this",
+      "service_slug": "boiler-repair",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20boiler%20is%20playing%20up.%20Here%20are%20the%20details%3A",
+      "short_link_slug": "wa-what-to-send",
+      "instagram": "\"Bit of an issue with my parents' Worcester combi.\" Posts like that come up in local groups all the time, and the first replies are always questions.\n\nIf you message me, these four things let me work out what's wrong and bring the right parts:\n\nThe make and model. It's on the front, or on a label underneath.\nAny code on the display. A photo is perfect.\nWhat the pressure gauge says.\nWhether you've lost heating, hot water or both.\n\nWhatsApp them to 07700 155 655.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerRepair #Plumber #GasSafe",
+      "facebook": "\"Bit of an issue with my parents' Worcester combi.\" Posts like that come up in local groups all the time, and the first replies are always questions.\n\nIf you message me, these four things let me work out what's wrong and bring the right parts:\n\nThe make and model. It's on the front, or on a label underneath.\nAny code on the display. A photo is perfect.\nWhat the pressure gauge says.\nWhether you've lost heating, hot water or both.\n\nWhatsApp them to 07700 155 655.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-what-to-send",
+      "googlebusiness": "\"Bit of an issue with my parents' Worcester combi.\" Posts like that come up in local groups all the time, and the first replies are always questions.\n\nIf you message me, these four things let me work out what's wrong and bring the right parts:\n\nThe make and model. It's on the front, or on a label underneath.\nAny code on the display. A photo is perfect.\nWhat the pressure gauge says.\nWhether you've lost heating, hot water or both.\n\nWhatsApp them to 07700 155 655.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-what-to-send"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-what-to-send"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Boiler playing up? Send me this",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/22-what-to-send.jpg",
+      "image_source": "brand:IMG_1256.JPG",
+      "status": "sent",
+      "short_link": "https://u.bettercallwes.co.uk/wa-what-to-send",
+      "sent_at": "2026-10-16T13:07:21.052099+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1792156021799_vw5kert4_22-what-to-send.jpg"
+    },
+    {
+      "id": "post_384",
+      "batch": "v5",
+      "format": "service_price",
+      "pillar": "cost_reveal",
+      "topic": "Why the £160 service exists",
+      "service_slug": "boiler-service",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%27d%20like%20to%20book%20a%20strip-down%20service.",
+      "short_link_slug": "wa-strip-down",
+      "instagram": "Case off on an older boiler. That brown crust across the heat exchanger fins is years of build-up.\n\nIt still worked, which is the problem. A boiler like this carries on quietly burning more gas than it should, until one day it doesn't.\n\nA standard service at £100 checks everything and cleans what's needed. When the burner and heat exchanger need properly stripping and cleaning like this, it's the full strip-down service at £160.\n\nWhatsApp 07700 155 655 to book.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerService #GasSafe #HeatingEngineer",
+      "facebook": "Case off on an older boiler. That brown crust across the heat exchanger fins is years of build-up.\n\nIt still worked, which is the problem. A boiler like this carries on quietly burning more gas than it should, until one day it doesn't.\n\nA standard service at £100 checks everything and cleans what's needed. When the burner and heat exchanger need properly stripping and cleaning like this, it's the full strip-down service at £160.\n\nWhatsApp 07700 155 655 to book.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-strip-down",
+      "googlebusiness": "Case off on an older boiler. That brown crust across the heat exchanger fins is years of build-up.\n\nIt still worked, which is the problem. A boiler like this carries on quietly burning more gas than it should, until one day it doesn't.\n\nA standard service at £100 checks everything and cleans what's needed. When the burner and heat exchanger need properly stripping and cleaning like this, it's the full strip-down service at £160.\n\nWhatsApp 07700 155 655 to book.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-strip-down"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-strip-down"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Why the £160 service exists",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/23-strip-down.jpg",
+      "image_source": "work:IMG_2259.JPG",
+      "status": "sent",
+      "check": "What was this job? OK to call it a strip-down candidate?",
+      "short_link": "https://u.bettercallwes.co.uk/wa-strip-down",
+      "sent_at": "2026-10-17T13:07:21.863506+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1792242422259_1yh5efnk_23-strip-down.jpg"
+    },
+    {
+      "id": "post_385",
+      "batch": "v5",
+      "format": "service_price",
+      "pillar": "cost_reveal",
+      "topic": "Your warranty probably needs this",
+      "service_slug": "boiler-service",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%27d%20like%20to%20book%20an%20annual%20service%20for%20my%20boiler%20warranty.",
+      "short_link_slug": "wa-warranty",
+      "instagram": "Got a newer boiler with a long warranty? Read the small print. Most manufacturers make a yearly service by a Gas Safe engineer a condition of the warranty.\n\nSkip a year and the cover can be void, which you'll only find out when you try to claim for a big repair.\n\nA yearly service is £100. Keep the paperwork somewhere you'll find it.\n\nWhatsApp 07700 155 655 to book.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerService #WorcesterBosch #GasSafe",
+      "facebook": "Got a newer boiler with a long warranty? Read the small print. Most manufacturers make a yearly service by a Gas Safe engineer a condition of the warranty.\n\nSkip a year and the cover can be void, which you'll only find out when you try to claim for a big repair.\n\nA yearly service is £100. Keep the paperwork somewhere you'll find it.\n\nWhatsApp 07700 155 655 to book.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-warranty",
+      "googlebusiness": "Got a newer boiler with a long warranty? Read the small print. Most manufacturers make a yearly service by a Gas Safe engineer a condition of the warranty.\n\nSkip a year and the cover can be void, which you'll only find out when you try to claim for a big repair.\n\nA yearly service is £100. Keep the paperwork somewhere you'll find it.\n\nWhatsApp 07700 155 655 to book.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-warranty"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-warranty"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Your warranty probably needs this",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/24-warranty.jpg",
+      "image_source": "work:IMG_1381.JPG",
+      "status": "sent",
+      "short_link": "https://u.bettercallwes.co.uk/wa-warranty",
+      "sent_at": "2026-10-18T13:07:26.028729+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1792328821898_foobumo8_24-warranty.jpg"
+    },
+    {
+      "id": "post_386",
+      "batch": "v5",
+      "format": "season",
+      "pillar": "tips",
+      "topic": "Boiler sounds like a kettle?",
+      "service_slug": "boiler-repair",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20boiler%20is%20making%20a%20kettle%20noise.",
+      "short_link_slug": "wa-kettling",
+      "instagram": "Rumbling, or a noise like a kettle coming to the boil? That's called kettling.\n\nIt happens when water overheats in part of the heat exchanger, usually because scale or sludge is restricting the flow. Southampton's hard water doesn't help.\n\nIt's not an emergency, but it is a boiler working harder than it should, and it tends to get worse. Get it looked at before winter rather than during it.\n\nWhatsApp 07700 155 655 to get it booked in.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerRepair #HardWater #GasSafe",
+      "facebook": "Rumbling, or a noise like a kettle coming to the boil? That's called kettling.\n\nIt happens when water overheats in part of the heat exchanger, usually because scale or sludge is restricting the flow. Southampton's hard water doesn't help.\n\nIt's not an emergency, but it is a boiler working harder than it should, and it tends to get worse. Get it looked at before winter rather than during it.\n\nWhatsApp 07700 155 655 to get it booked in.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-kettling",
+      "googlebusiness": "Rumbling, or a noise like a kettle coming to the boil? That's called kettling.\n\nIt happens when water overheats in part of the heat exchanger, usually because scale or sludge is restricting the flow. Southampton's hard water doesn't help.\n\nIt's not an emergency, but it is a boiler working harder than it should, and it tends to get worse. Get it looked at before winter rather than during it.\n\nWhatsApp 07700 155 655 to get it booked in.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-kettling"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-kettling"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Boiler sounds like a kettle?",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/25-kettling.jpg",
+      "image_source": "work:IMG_1140.JPG",
+      "status": "sent",
+      "short_link": "https://u.bettercallwes.co.uk/wa-kettling",
+      "sent_at": "2026-10-19T13:07:20.861169+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1792415222019_m9t68pml_25-kettling.jpg"
+    },
+    {
+      "id": "post_387",
+      "batch": "v5",
+      "format": "group_question",
+      "pillar": "local",
+      "topic": "Do you know where yours is?",
+      "service_slug": "plumbing",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20stopcock%20won%27t%20turn.",
+      "short_link_slug": "wa-stopcock",
+      "instagram": "\"Our kitchen pipe has just burst.\" That's a real post from a local group, and the first thing anyone needs in that moment is the stopcock.\n\nIt's usually under the kitchen sink, where the water main comes up through the floor. Sometimes it's in a downstairs loo or under the stairs. Find yours today, before you need it, and check it turns.\n\nClockwise shuts it off. If it's seized solid, don't force it. A stuck stopcock is a small job to replace.\n\nIf yours won't budge, WhatsApp 07700 155 655.\nOr tap WhatsApp in our bio.\n\n#Southampton #Plumber #Stopcock #Winter",
+      "facebook": "\"Our kitchen pipe has just burst.\" That's a real post from a local group, and the first thing anyone needs in that moment is the stopcock.\n\nIt's usually under the kitchen sink, where the water main comes up through the floor. Sometimes it's in a downstairs loo or under the stairs. Find yours today, before you need it, and check it turns.\n\nClockwise shuts it off. If it's seized solid, don't force it. A stuck stopcock is a small job to replace.\n\nIf yours won't budge, WhatsApp 07700 155 655.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-stopcock",
+      "googlebusiness": "\"Our kitchen pipe has just burst.\" That's a real post from a local group, and the first thing anyone needs in that moment is the stopcock.\n\nIt's usually under the kitchen sink, where the water main comes up through the floor. Sometimes it's in a downstairs loo or under the stairs. Find yours today, before you need it, and check it turns.\n\nClockwise shuts it off. If it's seized solid, don't force it. A stuck stopcock is a small job to replace.\n\nIf yours won't budge, WhatsApp 07700 155 655.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-stopcock"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-stopcock"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Do you know where yours is?",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/26-stopcock.jpg",
+      "image_source": "gen:stopcock",
+      "status": "sent",
+      "short_link": "https://u.bettercallwes.co.uk/wa-stopcock",
+      "sent_at": "2026-10-20T13:07:26.055254+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1792501622135_dvuyah69_26-stopcock.jpg"
+    },
+    {
+      "id": "post_388",
+      "batch": "v5",
+      "format": "real_job",
+      "pillar": "work",
+      "topic": "When was yours last emptied?",
+      "service_slug": "boiler-service",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20I%27d%20like%20to%20book%20a%20service%20and%20filter%20clean.",
+      "short_link_slug": "wa-mag-filter",
+      "instagram": "That black cylinder on the pipes under a lot of boilers is a magnetic filter. It catches bits of iron sludge moving round your system before they reach the boiler.\n\nIt only works if someone empties it. Left for years, it fills up and stops catching anything.\n\nIf you've got one and can't remember the last time it was cleaned out, mention it when you book your service.\n\nWhatsApp 07700 155 655 to book.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerService #CentralHeating #GasSafe",
+      "facebook": "That black cylinder on the pipes under a lot of boilers is a magnetic filter. It catches bits of iron sludge moving round your system before they reach the boiler.\n\nIt only works if someone empties it. Left for years, it fills up and stops catching anything.\n\nIf you've got one and can't remember the last time it was cleaned out, mention it when you book your service.\n\nWhatsApp 07700 155 655 to book.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-mag-filter",
+      "googlebusiness": "That black cylinder on the pipes under a lot of boilers is a magnetic filter. It catches bits of iron sludge moving round your system before they reach the boiler.\n\nIt only works if someone empties it. Left for years, it fills up and stops catching anything.\n\nIf you've got one and can't remember the last time it was cleaned out, mention it when you book your service.\n\nWhatsApp 07700 155 655 to book.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-mag-filter"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-mag-filter"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "When was yours last emptied?",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/27-mag-filter.jpg",
+      "image_source": "work:IMG_1468.JPG",
+      "status": "sent",
+      "check": "Do you clean the magnetic filter on a standard service? If not, I'll change the last line.",
+      "short_link": "https://u.bettercallwes.co.uk/wa-mag-filter",
+      "sent_at": "2026-10-22T13:07:19.685018+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1792674421809_s19ctha7_27-mag-filter.jpg"
+    },
+    {
+      "id": "post_389",
+      "batch": "v5",
+      "format": "fault_code",
+      "pillar": "tips",
+      "topic": "Low pressure? Here are the codes",
+      "service_slug": "boiler-repair",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20boiler%20is%20showing%20a%20low%20pressure%20code.",
+      "short_link_slug": "wa-low-pressure-codes",
+      "instagram": "Low water pressure is behind a lot of boiler lockouts, and each brand shows it with a different code.\n\nVaillant: F.22\nIdeal Logic: F1\nBaxi: E119\n\nMost boilers have a pressure gauge on the front too. With the heating off it should read about 1 to 1.5 bar.\n\nIf it's low, top it up with the filling loop and reset. If it keeps dropping, there's a leak somewhere, and that's the bit that needs finding.\n\nWhatsApp 07700 155 655 to get the leak found.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerPressure #BoilerRepair #GasSafe",
+      "facebook": "Low water pressure is behind a lot of boiler lockouts, and each brand shows it with a different code.\n\nVaillant: F.22\nIdeal Logic: F1\nBaxi: E119\n\nMost boilers have a pressure gauge on the front too. With the heating off it should read about 1 to 1.5 bar.\n\nIf it's low, top it up with the filling loop and reset. If it keeps dropping, there's a leak somewhere, and that's the bit that needs finding.\n\nWhatsApp 07700 155 655 to get the leak found.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-low-pressure-codes",
+      "googlebusiness": "Low water pressure is behind a lot of boiler lockouts, and each brand shows it with a different code.\n\nVaillant: F.22\nIdeal Logic: F1\nBaxi: E119\n\nMost boilers have a pressure gauge on the front too. With the heating off it should read about 1 to 1.5 bar.\n\nIf it's low, top it up with the filling loop and reset. If it keeps dropping, there's a leak somewhere, and that's the bit that needs finding.\n\nWhatsApp 07700 155 655 to get the leak found.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-low-pressure-codes"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-low-pressure-codes"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Low pressure? Here are the codes",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/28-low-pressure-codes.jpg",
+      "image_source": "gen:gauge_crouch",
+      "status": "sent",
+      "short_link": "https://u.bettercallwes.co.uk/wa-low-pressure-codes",
+      "sent_at": "2026-10-23T13:07:31.916453+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1792760821951_mp0ktw9g_28-low-pressure-codes.jpg"
+    },
+    {
+      "id": "post_390",
+      "batch": "v5",
+      "format": "season",
+      "pillar": "tips",
+      "topic": "Clocks go back this Sunday",
+      "service_slug": "heating-controls",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20heating%20timer%20needs%20looking%20at.",
+      "short_link_slug": "wa-clocks-back",
+      "instagram": "The clocks go back this Sunday, 25 October.\n\nSmart thermostats and most newer timers change on their own. Older timers and a lot of basic programmers don't, so for the next few months your heating would come on an hour out.\n\nCheck it on Sunday morning. If the heating came on at 5 when you set it for 6, that's your answer. It's usually just the time setting, and the manual shows you how.\n\nIf the timer's dead or the display's gone blank, that's a quick swap.\n\nWhatsApp 07700 155 655 if yours needs replacing.\nOr tap WhatsApp in our bio.\n\n#Southampton #CentralHeating #ClocksGoBack #GasSafe",
+      "facebook": "The clocks go back this Sunday, 25 October.\n\nSmart thermostats and most newer timers change on their own. Older timers and a lot of basic programmers don't, so for the next few months your heating would come on an hour out.\n\nCheck it on Sunday morning. If the heating came on at 5 when you set it for 6, that's your answer. It's usually just the time setting, and the manual shows you how.\n\nIf the timer's dead or the display's gone blank, that's a quick swap.\n\nWhatsApp 07700 155 655 if yours needs replacing.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-clocks-back",
+      "googlebusiness": "The clocks go back this Sunday, 25 October.\n\nSmart thermostats and most newer timers change on their own. Older timers and a lot of basic programmers don't, so for the next few months your heating would come on an hour out.\n\nCheck it on Sunday morning. If the heating came on at 5 when you set it for 6, that's your answer. It's usually just the time setting, and the manual shows you how.\n\nIf the timer's dead or the display's gone blank, that's a quick swap.\n\nWhatsApp 07700 155 655 if yours needs replacing.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-clocks-back"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-clocks-back"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Clocks go back this Sunday",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/29-clocks-back.jpg",
+      "image_source": "work:IMG_1733.JPG",
+      "status": "sent",
+      "not_before": "2026-10-21",
+      "not_after": "2026-10-24",
+      "short_link": "https://u.bettercallwes.co.uk/wa-clocks-back",
+      "sent_at": "2026-10-21T13:07:20.672137+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1792588022269_an2ltbon_29-clocks-back.jpg"
+    },
+    {
+      "id": "post_391",
+      "batch": "v5",
+      "format": "season",
+      "pillar": "emergency",
+      "topic": "Frozen pipe? Warm water, not boiling",
+      "service_slug": "boiler-repair",
+      "service_url": "https://wa.me/447700155655?text=Hi%20Wes%2C%20my%20boiler%20has%20stopped%20and%20I%20think%20the%20condensate%20pipe%20is%20frozen.",
+      "short_link_slug": "wa-frozen-condensate",
+      "instagram": "One of the most common winter breakdowns isn't a broken boiler at all. It's a frozen condensate pipe.\n\nModern boilers drain water out through a plastic pipe, usually down an outside wall. In a hard frost it freezes, the water backs up, and the boiler locks out, often with an ignition fault code.\n\nThe fix: pour warm water, not boiling, slowly along the outside section of the pipe until it thaws. Boiling water can crack it. Then reset the boiler.\n\nIf yours freezes every winter, the pipe can be insulated or rerouted so it stops happening.\n\nWhatsApp 07700 155 655 if it won't come back on.\nOr tap WhatsApp in our bio.\n\n#Southampton #BoilerRepair #Winter #GasSafe",
+      "facebook": "One of the most common winter breakdowns isn't a broken boiler at all. It's a frozen condensate pipe.\n\nModern boilers drain water out through a plastic pipe, usually down an outside wall. In a hard frost it freezes, the water backs up, and the boiler locks out, often with an ignition fault code.\n\nThe fix: pour warm water, not boiling, slowly along the outside section of the pipe until it thaws. Boiling water can crack it. Then reset the boiler.\n\nIf yours freezes every winter, the pipe can be insulated or rerouted so it stops happening.\n\nWhatsApp 07700 155 655 if it won't come back on.\nTap to open WhatsApp: https://u.bettercallwes.co.uk/wa-frozen-condensate",
+      "googlebusiness": "One of the most common winter breakdowns isn't a broken boiler at all. It's a frozen condensate pipe.\n\nModern boilers drain water out through a plastic pipe, usually down an outside wall. In a hard frost it freezes, the water backs up, and the boiler locks out, often with an ignition fault code.\n\nThe fix: pour warm water, not boiling, slowly along the outside section of the pipe until it thaws. Boiling water can crack it. Then reset the boiler.\n\nIf yours freezes every winter, the pipe can be insulated or rerouted so it stops happening.\n\nWhatsApp 07700 155 655 if it won't come back on.",
+      "platform_data": {
+        "instagram": {
+          "firstComment": "WhatsApp Wes: https://u.bettercallwes.co.uk/wa-frozen-condensate"
+        },
+        "googlebusiness": {
+          "callToAction": {
+            "type": "BOOK",
+            "url": "https://u.bettercallwes.co.uk/wa-frozen-condensate"
+          }
+        }
+      },
+      "twitter": "",
+      "image_type": "prerendered",
+      "image_hint": "prerendered",
+      "caption": "Frozen pipe? Warm water, not boiling",
+      "image_prompt": "",
+      "prerendered_image": "images/v5/30-frozen-condensate.jpg",
+      "image_source": "gen:condensate_frost",
+      "status": "sent",
+      "not_before": "2026-10-26",
+      "short_link": "https://u.bettercallwes.co.uk/wa-frozen-condensate",
+      "sent_at": "2026-10-26T13:07:32.402939+00:00",
+      "image_url_used": "https://media.zernio.com/temp/1793020022239_pwr9f6zk_30-frozen-condensate.jpg"
     }
   ]
 }

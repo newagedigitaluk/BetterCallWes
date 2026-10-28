@@ -100,6 +100,27 @@ def main():
 
     # Save the updated bank
     BANK_PATH.write_text(json.dumps(bank, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    # Reels carry their own WhatsApp links too (batch v5 onward).
+    reels_path = BANK_PATH.parent / "reels_bank.json"
+    rbank = json.loads(reels_path.read_text(encoding="utf-8"))
+    for reel in rbank.get("reels", []):
+        if (reel.get("short_link_slug") and not reel.get("short_link")
+                and reel.get("status") == "pending"):
+            try:
+                result = client.create_short_link(
+                    url=reel["service_url"], name=reel["short_link_slug"],
+                    folder="Better Call Wes",
+                    title=f"BCW {reel['id']} — {reel.get('topic', '')[:60]}",
+                )
+                reel["short_link"] = result.get("data", {}).get("short_link")
+                created += 1
+                print(f"  ✅ {reel['short_link_slug']:28s} → {reel['short_link']}")
+                time.sleep(0.3)
+            except Exception as e:
+                failed.append((reel["short_link_slug"], str(e)))
+                print(f"  ❌ {reel['short_link_slug']:28s} → {e}")
+    reels_path.write_text(json.dumps(rbank, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"\n💾 Saved {created} new short_link URLs to content_bank.json")
     print(f"   Swapped generic→per-post URLs in {swapped} platform text fields")
 

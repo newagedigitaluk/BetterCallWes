@@ -55,3 +55,9 @@ website/booking-api/outreach-state.json
 
 # Google Local Services lead log - customer numbers and messages
 website/scripts/google/lsa-state.json
+
+# Social pipeline working files (27-28 Oct 2026): source renders and reel builds are large and regenerable; the finished post images are tracked.
+website/social/images/*/src/
+website/social/images/*/reels/
+website/social/state/
+website/social/*.bak-*

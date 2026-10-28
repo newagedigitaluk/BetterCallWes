@@ -56,41 +56,59 @@ def notify_telegram(text: str) -> bool:
 
     Added after Kie credits silently ran out on 2026-05-30 and Instagram
     went dark for 12 days with nobody noticing."""
+    # Telegram retired 2026-10-24: alerts go by email through the shared
+    # ~/.local/bin/mail-notify helper (same one-argument interface it always had).
     try:
-        import requests
-        env_path = Path.home() / ".claude" / "channels" / "telegram-bcw" / ".env"
-        access_path = Path.home() / ".claude" / "channels" / "telegram-bcw" / "access.json"
-        token = None
-        for ln in env_path.read_text().splitlines():
-            if ln.startswith("TELEGRAM_BOT_TOKEN="):
-                token = ln.split("=", 1)[1].strip()
-        chat_id = json.loads(access_path.read_text())["allowFrom"][0]
-        if not token or not chat_id:
-            return False
-        r = requests.post(
-            f"https://api.telegram.org/bot{token}/sendMessage",
-            json={"chat_id": chat_id, "text": text},
-            timeout=10,
-        )
-        return r.status_code == 200
+        import subprocess
+        r = subprocess.run([str(Path.home() / ".local" / "bin" / "mail-notify"), f"BCW social: {text}"],
+                           capture_output=True, text=True, timeout=45)
+        if r.returncode != 0:
+            log(f"  (alert send failed: {r.stderr.strip()[:200]})")
+        return r.returncode == 0
     except Exception as e:
-        log(f"  (telegram alert failed: {e})")
+        log(f"  (alert send failed: {e})")
         return False
 
 
+def in_window(item: dict, today: str = None) -> bool:
+    """True if a post/reel may go out today.
+
+    Optional `not_before` / `not_after` (YYYY-MM-DD, UK date) pin seasonal
+    posts to the days they make sense: the clocks-going-back post must not
+    go out a week after the clocks changed.
+    """
+    today = today or datetime.now().date().isoformat()
+    if item.get("not_before") and today < item["not_before"]:
+        return False
+    if item.get("not_after") and today > item["not_after"]:
+        return False
+    return True
+
+
 def get_next_post(bank: dict) -> dict | None:
-    """Return first approved post, or first pending post if none approved."""
-    for post in bank["posts"]:
-        if post.get("status") == "approved":
+    """Return the next post to publish.
+
+    A dated post whose window is open goes first, so seasonal posts land on
+    time even if the queue is running late. Otherwise: first approved post,
+    then first pending post, skipping anything outside its window.
+    """
+    live = [p for p in bank["posts"]
+            if p.get("status") in ("approved", "pending") and in_window(p)]
+    for post in live:
+        if post.get("not_before"):
             return post
-    for post in bank["posts"]:
-        if post.get("status") == "pending":
-            return post
+    for status in ("approved", "pending"):
+        for post in live:
+            if post.get("status") == status:
+                return post
     return None
 
 
 def count_pending(bank: dict) -> int:
-    return sum(1 for p in bank["posts"] if p.get("status") in ("pending", "approved"))
+    return sum(1 for p in bank["posts"]
+               if p.get("status") in ("pending", "approved")
+               and (not p.get("not_after")
+                    or p["not_after"] >= datetime.now().date().isoformat()))
 
 
 def get_accounts(bank: dict) -> dict:
@@ -191,35 +209,29 @@ def post_to_platforms(
         if not content.strip():
             log(f"  ℹ️  Skipping {platform} — no content")
             continue
-        # Retry transient failures (5xx / timeouts). Zernio intermittently
-        # returns 503, which used to silently drop a whole platform for that
-        # post. 4xx are NOT retried — those are our payload's fault and
-        # retrying just repeats the same rejection.
+        # Transient retries (5xx / 429 / timeouts) now live inside
+        # ZernioClient._post_idempotent, which holds the x-request-id that
+        # makes a replay safe. Retrying out here as well would issue a fresh
+        # request id each time — the one case that can genuinely double-post —
+        # and stack the backoffs past the cron timeout.
         last_err = None
-        for attempt in range(1, 4):
-            try:
-                result = client.create_post(
-                    content=content,
-                    platform=platform,
-                    account_id=account_id,
-                    media_url=media_url,
-                )
+        try:
+            result = client.create_post(
+                content=content,
+                platform=platform,
+                account_id=account_id,
+                media_url=media_url,
+                platform_data=(post.get("platform_data") or {}).get(platform),
+            )
+            if result.get("duplicate"):
+                results[platform] = f"duplicate:{result.get('existingPostId')}"
+                log(f"  ↩️  {platform.capitalize()}: already posted in the last "
+                    f"24h — Zernio returned the existing post")
+            else:
                 results[platform] = result.get("id", "posted")
-                log(f"  ✅ {platform.capitalize()}: posted successfully"
-                    + (f" (attempt {attempt})" if attempt > 1 else ""))
-                last_err = None
-                break
-            except Exception as e:
-                last_err = e
-                status = getattr(getattr(e, "response", None), "status_code", None)
-                transient = status is None or status >= 500 or status == 429
-                if transient and attempt < 3:
-                    wait = attempt * 5
-                    log(f"  ⏳ {platform.capitalize()} attempt {attempt} failed "
-                        f"({status or type(e).__name__}) — retrying in {wait}s")
-                    time.sleep(wait)
-                    continue
-                break
+                log(f"  ✅ {platform.capitalize()}: posted successfully")
+        except Exception as e:
+            last_err = e
         if last_err is not None:
             log(f"  ❌ {platform.capitalize()} failed: {last_err}")
             results[platform] = f"ERROR: {last_err}"
@@ -268,8 +280,9 @@ def main():
     # Get next post
     post = get_next_post(bank)
     if not post:
-        log("❌ No pending posts found.")
-        sys.exit(1)
+        # Posts exist but none is due yet (all dated for later).
+        log("⏸  Nothing due today — remaining posts are dated for later.")
+        return
 
     status_label = "✅ approved" if post.get("status") == "approved" else "⏳ pending (not reviewed)"
     log(f"📝 Posting: '{post['topic']}' (pillar: {post['pillar']}, status: {status_label})")
@@ -382,22 +395,38 @@ def main():
     except Exception as e:
         log(f"  ❌ Higgsfield image generation failed: {e}")
         gen_image_url = None
-        # FALLBACK: post the real base photo as-is (no caption overlay).
-        # A real photo beats no image — and Instagram HARD-FAILS without an
-        # image, so 'proceeding without image' silently blacked out IG for
-        # 12 days when Kie credits ran out (May 30 – Jun 11 2026). Never again.
+        rendered_locally = False
+        # FALLBACK TIER 2: render the caption banner ourselves with Pillow.
+        # A navy rectangle with white text needs no AI, and this keeps posts
+        # ON-BRAND during a Higgsfield outage instead of publishing a bare,
+        # captionless photo (which is what happened 2026-08-17→20).
         if real_image_path:
-            log("  🔄 FALLBACK: posting the real base photo without overlay.")
             try:
-                gen_image_url = zernio.upload_image_for_kie(real_image_path)
+                from caption_banner import render as render_banner
+                caption = post.get("caption", "")
+                position = "bottom" if post.get("pillar") == "before_after" else "top"
+                out = f"/tmp/bcw_banner_{post.get('id','x')}.jpg"
+                render_banner(real_image_path, caption, out, position=position)
+                log(f"  🎨 FALLBACK: rendered caption banner locally ({os.path.basename(out)})")
+                gen_image_url = zernio.upload_image_for_kie(out)
+                rendered_locally = True
             except Exception as e2:
-                log(f"  ⚠️  Fallback upload also failed: {e2}")
+                log(f"  ⚠️  Local banner render failed: {e2}")
+                # FALLBACK TIER 3: the bare base photo. Still better than no
+                # image — Instagram HARD-FAILS on imageless posts.
+                try:
+                    log("  🔄 FALLBACK: posting the real base photo without overlay.")
+                    gen_image_url = zernio.upload_image_for_kie(real_image_path)
+                except Exception as e3:
+                    log(f"  ⚠️  Fallback upload also failed: {e3}")
         else:
             log("  Proceeding without image (no base photo available)...")
         notify_telegram(
-            f"⚠️ BCW social: Higgsfield image generation FAILED for "
-            f"{post.get('id','?')} ({str(e)[:120]}). "
-            + ("Posted real photo without overlay." if gen_image_url
+            f"⚠️ BCW social: AI image generation failed for {post.get('id','?')} "
+            f"({str(e)[:100]}). "
+            + ("Posted with a locally-rendered caption banner — still on-brand, "
+               "no action needed." if rendered_locally
+               else "Posted real photo without overlay." if gen_image_url
                else "Posted TEXT-ONLY — Instagram will fail.")
         )
     kie_image_url = gen_image_url  # downstream variable name kept
