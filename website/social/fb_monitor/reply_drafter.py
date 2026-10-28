@@ -1,6 +1,14 @@
 """
 Generate a tailored reply for a Facebook group lead post.
 
+Six-point format (from research/content/local-trade-social-playbook.md):
+  1. Name: first name from the post author
+  2. Empathy: one phrase acknowledging the specific problem
+  3. Credential: Gas Safe engineer / plumber, local to Southampton
+  4. Action: what to WhatsApp and what Wes will do next
+  5. Urgency: availability language calibrated to real urgency (weekday only)
+  6. Sign-off: short URL for the relevant service + name + phone
+
 V1: template-based with keyword routing. Fast, deterministic, no LLM cost.
 V2 (later): swap _draft_reply for a Claude Haiku call for more nuanced replies
 when the post is ambiguous.
@@ -16,7 +24,7 @@ The drafted reply ALWAYS:
 import random
 
 
-# Short links — match the generic_short_links created in content_bank.json
+# Short links: match the generic_short_links created in content_bank.json
 SHORT = {
     "boiler-repair":   "https://u.bettercallwes.co.uk/boiler-repair",
     "boiler-service":  "https://u.bettercallwes.co.uk/boiler-service",
@@ -36,7 +44,7 @@ SHORT = {
 PHONE = "07700 155 655"
 WA    = "wa.me/447700155655"
 
-# Topic detection: ordered — first match wins (most specific first)
+# Topic detection: ordered, first match wins (most specific first)
 TOPIC_RULES = [
     # (keywords_to_match_any_of, service_slug)
     (["no hot water", "no heat", "no heating", "boiler not working", "boiler broken", "boiler stopped"], "boiler-repair"),
@@ -56,18 +64,51 @@ TOPIC_RULES = [
     (["plumb", "plumber"],  "plumbing"),
 ]
 
-# Reply openers — rotate to avoid sounding canned across many replies
+# Point 1: Name openers (rotate to avoid sounding canned across many replies)
 OPENERS = [
-    "Hi {name}, ",
-    "Hey {name}, ",
-    "{name} — ",
-    "Hi {name}, sorry to hear that. ",
-    "Hi {name}, ",
+    "Hi {name},\n",
+    "Hey {name},\n",
+    "Hi {name},\n",
+    "Hi {name},\n",
 ]
 
-# Urgency detection — GENUINE emergencies only. This gates the "I can come
+# Point 2: Empathy, topic-specific acknowledgement of the problem
+EMPATHY = {
+    "boiler-repair":   "Sorry to hear the boiler's out. No heating is rough.",
+    "boiler-service":  "Happy to help sort your annual service.",
+    "boiler-install":  "Happy to help with a new boiler. I'll give you an honest quote.",
+    "power-flush":     "Sludge and cold radiators are frustrating. I can sort that.",
+    "cp12":            "Happy to help with the certificate.",
+    "gas-safety":      "Happy to help with the gas safety check.",
+    "radiators":       "Cold or uneven radiators are usually a quick fix.",
+    "pipe-leak":       "Sorry to hear about the leak. Turn off the stopcock if you haven't already.",
+    "tap-repair":      "Dripping taps are annoying. Usually just a cartridge or washer.",
+    "shower-repair":   "Sorry to hear the shower's playing up.",
+    "toilet-repair":   "Sorry to hear the toilet is giving you trouble.",
+    "smart-controls":  "Happy to help with the thermostat install.",
+    "plumbing":        "Happy to help with this.",
+}
+
+# Point 3 + 4: Credential + Action
+BODIES = {
+    "boiler-repair":   "Gas Safe engineer in Southampton. WhatsApp me a quick video of the boiler ({wa}) and I'll diagnose before I come out so I bring the right parts.",
+    "boiler-service":  "Gas Safe engineer in Southampton. Annual service covers full combustion + safety checks. WhatsApp me ({wa}) for a slot.",
+    "boiler-install":  "Gas Safe engineer in Southampton. WhatsApp ({wa}) a photo of your current boiler + space and I'll send a price.",
+    "power-flush":     "Gas Safe engineer in Southampton. I do power flushes with proper kit. WhatsApp me ({wa}) and I'll talk you through it.",
+    "cp12":            "Gas Safe engineer in Southampton. Full inspection, certificate issued same day. WhatsApp the property address ({wa}) and I'll fit you in.",
+    "gas-safety":      "Gas Safe engineer in Southampton. Full check and certificate same day. WhatsApp ({wa}) to book.",
+    "radiators":       "Gas Safe engineer in Southampton. WhatsApp me a photo ({wa}) and I'll tell you what's involved.",
+    "pipe-leak":       "Plumber in Southampton. WhatsApp me a video ({wa}) and I'll tell you what's needed.",
+    "tap-repair":      "Plumber in Southampton. WhatsApp me ({wa}) and I can pop round.",
+    "shower-repair":   "Plumber in Southampton. WhatsApp me ({wa}) with what's happening and I'll sort it.",
+    "toilet-repair":   "Plumber in Southampton. WhatsApp me ({wa}) and I'll get back to you with a price.",
+    "smart-controls":  "Heating engineer in Southampton, install Hive/Nest/Tado regularly. WhatsApp me ({wa}) and I'll quote you.",
+    "plumbing":        "Local plumber in Southampton. WhatsApp me ({wa}) with a photo and I'll get back to you fast.",
+}
+
+# Urgency detection: GENUINE emergencies only. This gates the "I can come
 # today" language, so it must not fire on soft words. The old list included
-# "help", "kids", "baby", "winter", "today" — which flagged most posts urgent
+# "help", "kids", "baby", "winter", "today", which flagged most posts urgent
 # and put same-day promises in replies Wes couldn't always honour.
 URGENT = [
     "urgent", "emergency", "asap", "no heating", "no hot water", "no heat",
@@ -102,68 +143,55 @@ def draft_reply(
     location_hint: str = "",
 ) -> dict:
     """
-    Generate a tailored reply.
+    Generate a tailored reply using the six-point format.
+
+    Six points: name → empathy → credential → action → urgency → sign-off.
 
     Returns:
         {
-          "topic":   detected service slug,
-          "urgent":  bool,
+          "topic":     detected service slug,
+          "urgent":    bool,
           "short_url": Linke short URL chosen for this reply,
-          "reply":   the full reply text ready to copy/paste
+          "reply":     the full reply text ready to copy/paste,
+          "points":    dict of the six individual point strings (for display)
         }
     """
     topic = detect_topic(post_text)
     urgent = detect_urgency(post_text)
-    short_url = SHORT.get(topic, SHORT["boiler-repair"])
+    short_url = SHORT.get(topic, SHORT["plumbing"])
 
     first_name = detect_name(post_text, author_name)
+
+    # Point 1: Name
     if first_name:
-        opener = random.choice(OPENERS).format(name=first_name).replace("  ", " ")
-        # Ensure single trailing space
-        opener = opener.rstrip() + " "
+        p1_name = random.choice(OPENERS).format(name=first_name)
     else:
-        opener = "Hi, "
+        p1_name = "Hi,\n"
 
-    # Topic-specific body, kept SHORT (FB group replies that are long get scrolled past)
-    BODIES = {
-        "boiler-repair":   "Gas Safe engineer here in Southampton — happy to take a look. WhatsApp me a quick video of the boiler ({wa}) and I'll diagnose before the visit so I bring the right parts.",
-        "boiler-service":  "Local Gas Safe engineer in Southampton — happy to sort that. Annual service covers full combustion + safety checks. Drop me a WhatsApp ({wa}) for a slot.",
-        "boiler-install":  "Local Gas Safe engineer in Southampton — happy to give you an honest quote. WhatsApp ({wa}) a photo of your current boiler + spot and I'll send a price.",
-        "power-flush":     "Sounds like sludge. I'm a Gas Safe engineer in Southampton — do power flushes with proper kit. WhatsApp ({wa}) and I'll talk you through it.",
-        "cp12":            "I do CP12s across Southampton — full inspection, certificate issued same day. WhatsApp the property address ({wa}) and I'll fit you in.",
-        "gas-safety":      "Gas Safe engineer in Southampton — full check and certificate same day. WhatsApp ({wa}) to book.",
-        "radiators":       "Sounds like trapped air or sludge. Happy to take a look — Gas Safe engineer in Southampton. WhatsApp ({wa}) and I'll sort it.",
-        "pipe-leak":       "Plumber in Southampton — turn off the stopcock if you haven't already. WhatsApp me a video ({wa}) and I'll tell you what's involved.",
-        "tap-repair":      "Plumber in Southampton — usually a cartridge or washer, quick fix. WhatsApp ({wa}) and I can pop round.",
-        "shower-repair":   "Plumber in Southampton — happy to take a look. WhatsApp ({wa}) and I'll sort it.",
-        "toilet-repair":   "Plumber in Southampton — happy to take a look. WhatsApp ({wa}) and I'll get back to you with a price.",
-        "smart-controls":  "Heating engineer in Southampton — install Hive/Nest/Tado regularly. WhatsApp ({wa}) and I'll quote you.",
-        "plumbing":        "Local plumber in Southampton — happy to help. WhatsApp ({wa}) with a photo and I'll get back to you fast.",
-    }
+    # Point 2: Empathy
+    p2_empathy = EMPATHY[topic]
 
-    body = BODIES[topic].format(wa=WA)
+    # Point 3 + 4: Credential + Action (combined, naturally reads as one sentence)
+    p34_body = BODIES[topic].format(wa=WA)
 
-    # Availability language — Wes's rules:
-    #   Urgent + weekday  → "can come out today" is fine (shows real interest,
-    #                       and he'll prioritise a genuine emergency).
-    #   Urgent + weekend  → he doesn't really work weekends; be honest but
-    #                       keep the door ajar rather than promising.
-    #   Not urgent        → NO availability claim at all — interest only.
+    # Point 5: Urgency close
     from datetime import datetime
     is_weekend = datetime.now().weekday() >= 5  # Sat/Sun
     if urgent and not is_weekend:
-        urgency_note = ("\n\nThis sounds urgent — I can come out today if needed. "
-                        "WhatsApp me now and I'll confirm.")
+        p5_urgency = "This sounds urgent. I can come today if needed. Message me now and I'll confirm."
     elif urgent and is_weekend:
-        urgency_note = ("\n\nMessage me now — I'll see what I can do, and worst "
-                        "case get you booked in first thing next week.")
+        p5_urgency = "Message me now. I'll see what I can do, worst case book you in first thing next week."
     else:
-        urgency_note = "\n\nNo pressure — happy to help whenever suits you."
+        p5_urgency = "No pressure, happy to help whenever suits you."
+
+    # Point 6: Sign-off
+    p6_signoff = f"More info: {short_url} | Wes, {PHONE}"
 
     reply = (
-        f"{opener}{body}{urgency_note}\n\n"
-        f"More info: {short_url}\n"
-        f"Wes — {PHONE}"
+        f"{p1_name}{p2_empathy}\n"
+        f"{p34_body}\n\n"
+        f"{p5_urgency}\n\n"
+        f"{p6_signoff}"
     )
 
     return {
@@ -171,6 +199,13 @@ def draft_reply(
         "urgent": urgent,
         "short_url": short_url,
         "reply": reply,
+        "points": {
+            "1_name":       p1_name.strip(),
+            "2_empathy":    p2_empathy,
+            "3_credential": p34_body,
+            "5_urgency":    p5_urgency,
+            "6_signoff":    p6_signoff,
+        },
     }
 
 

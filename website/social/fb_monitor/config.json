@@ -1,16 +1,17 @@
 {
   "_comment": "Facebook group monitoring config — used by fb_monitor.py. Lead matches are routed through mail-notify (class lead) and pushed to Wes's phone by the HQ loop.",
+  "_groups_note": "Set label to the group name so alerts show where the post came from. Set priority:true on the 2-3 groups that produce the most leads — those are visited first every cycle instead of being shuffled.",
   "groups": [
-    { "url": "https://www.facebook.com/groups/880153462667948",  "label": "" },
-    { "url": "https://www.facebook.com/groups/465323237747416",  "label": "" },
-    { "url": "https://www.facebook.com/groups/443720566768341",  "label": "" },
-    { "url": "https://www.facebook.com/groups/128168103676701",  "label": "" },
-    { "url": "https://www.facebook.com/groups/816555855142708",  "label": "" },
-    { "url": "https://www.facebook.com/groups/1037246376807929", "label": "" },
-    { "url": "https://www.facebook.com/groups/198607530579005",  "label": "" },
-    { "url": "https://www.facebook.com/groups/2525323134203223", "label": "" },
-    { "url": "https://www.facebook.com/groups/274058486585426",  "label": "" },
-    { "url": "https://www.facebook.com/groups/1005647172815019", "label": "" }
+    { "url": "https://www.facebook.com/groups/880153462667948",  "label": "", "priority": false },
+    { "url": "https://www.facebook.com/groups/465323237747416",  "label": "", "priority": false },
+    { "url": "https://www.facebook.com/groups/443720566768341",  "label": "", "priority": false },
+    { "url": "https://www.facebook.com/groups/128168103676701",  "label": "", "priority": false },
+    { "url": "https://www.facebook.com/groups/816555855142708",  "label": "", "priority": false },
+    { "url": "https://www.facebook.com/groups/1037246376807929", "label": "", "priority": false },
+    { "url": "https://www.facebook.com/groups/198607530579005",  "label": "", "priority": false },
+    { "url": "https://www.facebook.com/groups/2525323134203223", "label": "", "priority": false },
+    { "url": "https://www.facebook.com/groups/274058486585426",  "label": "", "priority": false },
+    { "url": "https://www.facebook.com/groups/1005647172815019", "label": "", "priority": false }
   ],
   "_filter_note": "Two-tier: STRONG terms pass on their own; a WEAK term passes only with an INTENT phrase within filters.weak_intent_max_words of it, or when two different weak terms plus any intent phrase appear; EXCLUDE phrases hard-reject. Intent phrases are whole-word; a trailing * allows a prefix (repair* = repairs, repaired). Every pass is then put to the LLM gate below. Groups are all Southampton-local so no geo filter.",
   "keywords": {
@@ -23,9 +24,10 @@
   "urgent":  ["urgent", "emergency", "asap", "tonight", "today", "no heating", "no hot water", "kids", "baby", "elderly", "winter", "help", "flooding", "burst"],
   "polling": {
     "interval_minutes": 15,
-    "startup_jitter_seconds": 180,
+    "startup_jitter_seconds": 60,
     "max_posts_per_group": 20,
-    "lookback_hours": 4
+    "lookback_hours": 4,
+    "alert_max_age_hours": 6
   },
   "filters": {
     "require_trade_match": true,
