@@ -77,3 +77,43 @@ Alert lines in the log now carry the whole post on one line with the matched ter
 - Too quiet: `grep "Gate said no" fb_monitor.log` lists what the gate dropped, with the post text. If a real lead is in there, adjust `GATE_SYSTEM` in `fb_monitor.py` or remove the exclude that caught it, then `--replay`.
 - Alerts tagged "unchecked: lead gate unavailable": the model call is failing; the reason is on the `lead gate error` line in the log. The usual cause is the key file in `config.gate.api_key_file` moving.
 - Repeats again: check `state/seen_posts.json` is still a dict and under 50,000 keys.
+
+## 2026-11-01: gate-rejection audit (24 Oct to 1 Nov)
+
+J57 reviewed all `🚫 Gate said no` lines from the first live run on 2026-10-24 16:15 through to today. 16 rejection instances, 13 distinct posts.
+
+### Verdict: 2 genuine leads dropped, 11 distinct posts correctly rejected
+
+**False negatives (real job requests wrongly silenced):**
+
+| When | Terms matched | Post text |
+|---|---|---|
+| 2026-10-25 12:16 | radiator | "Water leaks from the joint of this radiator pipe. Anyone can check and fix it." |
+| 2026-10-26 14:03 | plumber, blocked toilet | "Southampton plumber needed for blocked toilet. Hi everyone, I'm looking for someone local in Southa..." |
+
+Both share the same root cause. The scraper sends the full page text for a group, and that text can contain several posts. In each case the first post in the block was off-topic (bodybuilding coach; fence repair), so the model answered no even though a genuine job request appeared later in the same text block. The leads are a week old and not recoverable.
+
+**Correctly dropped (11 distinct posts, some seen more than once):**
+
+| When | Terms | Why correct |
+|---|---|---|
+| 2026-10-24 16:48 | leaking | Roofer request, not plumbing |
+| 2026-10-24 17:19 | plumber | Army veteran plumber sharing a feel-good story; underlying "Electrician & Plumber needed" post had already alerted at 11:18 |
+| 2026-10-24 19:17 | plumbing | Army veteran plumber sharing a poppy story |
+| 2026-10-25 06:17 | boiler | Ceiling replacement above a boiler - plasterer job |
+| 2026-10-25 16:45 | combi | Stihl combi hedge cutter for sale |
+| 2026-10-25 19:48 | central heating, plumbing, powerflush | KJP Plumbing and Heating competitor ad |
+| 2026-10-26 14:17 | underfloor heating | Prospect Heat Solutions company post |
+| 2026-10-27 09:30 | boiler | Same ceiling-above-boiler plasterer request (repeat) |
+| 2026-10-28 08:18, 10:17 | gas, anyone know | Strong smell of gas near Southampton docks - public safety report, not a job request |
+| 2026-10-30 07:01 | plumber, heating engineer | D.R Gas Works competitor self-promotion |
+| 2026-10-30 18:01, 20:31 | hob, recommend | Electrician wanted to hard-wire an inductive hob - not plumbing or gas |
+| 2026-11-01 08:16 | central heating, plumbing, powerflush | KJP Plumbing and Heating competitor ad (repeat) |
+
+### Suggested fix
+
+Add one sentence to `GATE_SYSTEM` in `fb_monitor.py`:
+
+> "The text may contain more than one post. Answer yes if ANY post in the text is a request for plumbing, heating, gas or drainage work that a Gas Safe plumber could quote for."
+
+No keyword or exclude changes are needed. This is a one-line prompt edit; use `--replay` after to confirm the two false negatives would now pass.
