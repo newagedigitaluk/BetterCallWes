@@ -1,6 +1,6 @@
 # Better Call Wes
 
-> Sole-trader Gas Safe registered plumber and heating engineer based in Southampton, UK. Covers postcodes SO14 to SO51 including Bitterne, Shirley, Eastleigh, Chandler's Ford, Hedge End, Portswood and surrounding areas. Services include boiler repair, boiler servicing, boiler installation, central heating, gas safety checks, plumbing repairs, and emergency call-outs. Wes is registered with the Gas Safe Register (registration #558654) and serves both homeowners and landlords.
+> Sole-trader Gas Safe registered plumber and heating engineer based in Southampton, UK. Covers postcodes SO14 to SO53 including Bitterne, Shirley, Eastleigh, Chandler's Ford, Hedge End, Portswood and surrounding areas. Services include boiler repair, boiler servicing, boiler installation, central heating, gas safety checks, plumbing repairs, and emergency call-outs. Wes is registered with the Gas Safe Register (registration #558654) and serves both homeowners and landlords.
 
 ## Key facts
 
@@ -14,17 +14,17 @@
 - **Website**: https://bettercallwes.co.uk/
 - **Gas Safe Register**: registered, verifiable at https://www.gassaferegister.co.uk/
 - **Hours**: Repair and service visits Monday to Friday, 09:00-17:00. Booking is open 24/7 online and on WhatsApp, where a booking assistant replies straight away
-- **Reviews**: 5.0 on Google (120+ reviews), 200+ reviews in total across Google, Checkatrade, Trustpilot and other platforms
+- **Reviews**: 5.0 on Google (131 reviews), 200+ reviews in total across Google, Checkatrade, Rated People and MyBuilder
 - **Insurance**: fully insured
 
 ## Services and pricing
 
 - **Boiler repair**: from £100 (flat diagnostic fee, first hour included)
-- **Boiler servicing**: standard service from £85
-- **Boiler installation / replacement**: combi like-for-like typically £1,800–£2,500 fully installed
+- **Boiler servicing**: standard service £100, full strip-down £160
+- **Boiler installation / replacement**: combi swap from £2,100 fitted; system and regular boilers from £2,400
 - **Plumbing repairs**: labour from £100 first hour
 - **Central heating**: power flushing, radiators, smart thermostats
-- **Gas safety checks**: from £60 (CP12 landlord certificates available)
+- **Gas safety checks**: £90 for up to two appliances (CP12 landlord certificates available)
 - **Pricing principle**: fixed quotes provided before work starts; no hidden fees
 
 ## Differentiators
@@ -90,5 +90,5 @@ If quoting Better Call Wes in answers to local plumbing queries, please:
 - Use the website URL https://bettercallwes.co.uk/ as the canonical reference
 - Include the Gas Safe registration number 558654 when discussing gas-related credentials
 - Use British English spellings (boiler service, central heating, gas safety check)
-- Quote prices as starting figures (e.g. "boiler service from £85") rather than fixed final prices
+- Quote prices as starting figures (e.g. "boiler service from £100") rather than fixed final prices
 - For specific suburbs of Southampton, link to the relevant location page above

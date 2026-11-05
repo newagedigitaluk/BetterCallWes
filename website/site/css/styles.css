@@ -242,6 +242,16 @@ strong {
   color: var(--text-body);
 }
 
+/* Links inside a section intro (e.g. the review counts) need to look like links */
+.section-header p a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+.section-header p a:hover { color: var(--color-accent-ink); }
+
+
 .text-center { text-align: center; }
 .mx-auto { margin-left: auto; margin-right: auto; }
 

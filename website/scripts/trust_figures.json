@@ -1,0 +1,11 @@
+{
+  "_how_to_update": "Edit the figures here, then run: python3 website/scripts/update_trust_figures.py",
+  "as_of": "2026-11-05",
+  "google_rating": "5.0",
+  "google_count": "131",
+  "total_count": "200+",
+  "site_count": "4",
+  "site_count_word": "four",
+  "review_sites": ["Google", "Checkatrade", "Rated People", "MyBuilder"],
+  "google_url": "https://www.google.com/maps?cid=11419610005595517822"
+}
