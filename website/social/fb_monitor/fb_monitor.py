@@ -395,7 +395,13 @@ GATE_SYSTEM = (
     "services; people looking for work, apprenticeships or training; students "
     "introducing themselves; items for sale or wanted; complaints or chat about "
     "companies, deliveries or bills; requests for other trades where no plumbing, "
-    "heating, gas or drainage work is involved; posts too short or vague to tell.\n\n"
+    "heating, gas or drainage work is involved; posts too short or vague to tell; "
+    "residents of a communal building (tower block, purpose-built flats, housing "
+    "estate) asking whether neighbours share the same problem (a communal utility "
+    "fault that a sole trader cannot quote for, not a private job) - key signals "
+    "are phrases like 'anyone else having this problem', 'anyone else got no hot "
+    "water', 'is it just me', 'is anyone else affected', or naming a specific "
+    "tower block alongside a complaint rather than a request for a tradesperson.\n\n"
     "Reply with one word: yes or no."
 )
 _GATE_MAX_CHARS = 1500
