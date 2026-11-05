@@ -1253,7 +1253,8 @@ a.badge:hover, .badge:hover {
   bottom: 0;
   z-index: 900; /* under the sticky header and its menu */
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* WhatsApp is the main action: widest slot, on the right under the thumb */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.7fr);
   gap: 8px;
   padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
   background: var(--color-white);
@@ -1278,11 +1279,13 @@ a.badge:hover, .badge:hover {
   font-size: 0.95rem;
   white-space: nowrap;
 }
-.floating-call { background: var(--color-primary); color: var(--text-white); }
+/* Only WhatsApp is filled; Call and Book are outlined so the main action stands out */
 .floating-cta  { background: var(--color-whatsapp); color: var(--color-on-accent); }
-.floating-book { background: var(--color-accent); color: var(--color-on-accent); }
-.floating-call:hover { color: var(--text-white); }
-.floating-cta:hover, .floating-book:hover { color: var(--color-on-accent); }
+.floating-call,
+.floating-book { background: var(--color-white); color: var(--color-primary); border: 2px solid var(--color-primary); }
+.floating-book { border-color: var(--color-accent); }
+.floating-cta:hover { color: var(--color-on-accent); }
+.floating-call:hover, .floating-book:hover { color: var(--color-primary); }
 .floating-cta-group svg { width: 18px; height: 18px; flex-shrink: 0; }
 
 @media (max-width: 767px) {
