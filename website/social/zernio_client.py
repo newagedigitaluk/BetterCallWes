@@ -287,30 +287,42 @@ class ZernioClient:
     def upload_video(self, local_path: str) -> str:
         """Upload an MP4 and return a public URL for posting as a Reel.
 
-        Zernio only tags the file as video when the multipart part carries an
-        explicit video/mp4 content-type — without it the API stores it as
-        application/octet-stream and the platforms reject the post.
+        Zernio uses a presign + PUT flow for video (docs.zernio.com/guides/media-uploads):
+          1. POST /media/presign to get a time-limited upload URL and a permanent public URL.
+          2. PUT the file bytes directly to the upload URL (no auth header, just Content-Type).
+          3. Return the publicUrl for use in the post payload.
+
+        The old direct POST /media multipart approach stopped working for video: the endpoint
+        no longer returns type="video" in its response, causing the type check to raise, which
+        is what killed the 26 Oct reel run.
         """
         if not os.path.exists(local_path):
             raise FileNotFoundError(f"Video not found: {local_path}")
         filename = os.path.basename(local_path)
-        with open(local_path, "rb") as f:
-            data = f.read()
-        files = {"files": (filename, io.BytesIO(data), "video/mp4")}
-        resp = requests.post(
-            f"{BASE_URL}/media", files=files,
-            headers={"Authorization": f"Bearer {self.api_key}"},
-            timeout=300,
+        size = os.path.getsize(local_path)
+
+        presign_resp = self.session.post(
+            f"{BASE_URL}/media/presign",
+            json={"filename": filename, "contentType": "video/mp4", "size": size},
+            timeout=30,
         )
-        resp.raise_for_status()
-        entry = (resp.json().get("files") or [{}])[0]
-        if entry.get("type") != "video":
-            raise RuntimeError(f"Zernio did not register the upload as video: {entry}")
-        url = entry.get("url")
-        if not url:
-            raise RuntimeError(f"No URL returned for video upload: {entry}")
-        print(f"  [Zernio media] Video uploaded: {url}")
-        return url
+        presign_resp.raise_for_status()
+        presign = presign_resp.json()
+        upload_url = presign.get("uploadUrl")
+        public_url = presign.get("publicUrl")
+        if not upload_url or not public_url:
+            raise RuntimeError(f"Unexpected presign response: {presign}")
+
+        with open(local_path, "rb") as f:
+            put_resp = requests.put(
+                upload_url, data=f,
+                headers={"Content-Type": "video/mp4"},
+                timeout=600,
+            )
+        put_resp.raise_for_status()
+
+        print(f"  [Zernio media] Video uploaded: {public_url}")
+        return public_url
 
     def create_reel(self, content: str, platform: str, account_id: str,
                     video_url: str, video_path: str = None,

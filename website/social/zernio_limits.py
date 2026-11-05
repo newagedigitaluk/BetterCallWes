@@ -2,7 +2,7 @@
 Zernio / platform limits, transcribed from the official docs (docs.zernio.com),
 plus a preflight validator so we never ship a post that the platform will reject.
 
-Sources (read 2026-08-24):
+Sources (read 2026-08-24, re-checked 2026-11-05):
   docs.zernio.com                       — auth, POST /posts shape, platform list
   docs.zernio.com/guides/media-uploads  — media flow, per-platform media counts
   docs.zernio.com/guides/rate-limits    — 429 + Retry-After semantics
@@ -55,7 +55,7 @@ IG_FEED_RATIO_RANGE = (0.8, 1.91)
 # Video / Reels limits
 # ---------------------------------------------------------------------------
 REEL_SPEC = {
-    "instagram": {"min_s": 3, "max_s": 90,  "max_bytes": 300 * 1024 * 1024},
+    "instagram": {"min_s": 3, "max_s": 900, "max_bytes": 300 * 1024 * 1024},  # 15 min per Zernio docs
     "facebook":  {"min_s": 3, "max_s": 60,  "max_bytes": 4 * 1024**3},
 }
 REEL_RESOLUTION = (1080, 1920)   # 9:16
