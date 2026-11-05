@@ -1231,46 +1231,59 @@ a.badge:hover, .badge:hover {
 .footer-bottom a { color: var(--text-white-muted); }
 .footer-bottom a:hover { color: var(--color-accent-ink); }
 
-/* ════════════════════ Floating mobile CTAs ════════════════════ */
+/* ════════════════════ Mobile action bar ════════════════════ */
+/* One bar with all three actions. js/cta-bar.js keeps it down while the page's own
+   first button is on screen, so a phone never shows the same button twice. If the
+   script never runs, the hiding class is never added and the bar simply stays up. */
 
 .floating-cta-group {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
-  z-index: 1100;
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 10px;
-  align-items: flex-end;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 900; /* under the sticky header and its menu */
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+  background: var(--color-white);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -6px 18px oklch(0.24 0.03 250 / 0.10);
+  transition: transform 220ms var(--ease-out);
 }
+.js-cta-bar .floating-cta-group:not(.is-visible) { transform: translateY(110%); }
 
-.floating-book,
-.floating-cta {
+.floating-call,
+.floating-cta,
+.floating-book {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 6px;
   min-height: 48px;
-  padding: 12px 20px;
-  border-radius: var(--radius-full);
+  padding: 0 8px;
+  border-radius: var(--radius-sm);
   font-weight: 700;
   font-stretch: var(--stretch-label);
   font-size: 0.95rem;
-  box-shadow: var(--shadow-lg);
-  color: var(--color-on-accent);
-  transition: transform var(--t-fast) var(--ease-out);
+  white-space: nowrap;
 }
+.floating-call { background: var(--color-primary); color: var(--text-white); }
+.floating-cta  { background: var(--color-whatsapp); color: var(--color-on-accent); }
+.floating-book { background: var(--color-accent); color: var(--color-on-accent); }
+.floating-call:hover { color: var(--text-white); }
+.floating-cta:hover, .floating-book:hover { color: var(--color-on-accent); }
+.floating-cta-group svg { width: 18px; height: 18px; flex-shrink: 0; }
 
-.floating-book { background: var(--color-accent); }
-.floating-cta { background: var(--color-whatsapp); }
-
-.floating-book:hover,
-.floating-cta:hover {
-  transform: translateY(-2px);
-  color: var(--color-on-accent);
+@media (max-width: 767px) {
+  /* keep the footer clear of the bar */
+  body:has(.floating-cta-group) { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
 }
-
 @media (min-width: 768px) {
-  .floating-cta-group, .floating-cta { display: none; }
+  .floating-cta-group { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .floating-cta-group { transition: none; }
 }
 
 /* ════════════════════ Legacy compatibility (restyled, no glass) ════════════════════ */
@@ -1672,4 +1685,20 @@ a.badge:hover, .badge:hover {
   .footer-grid { grid-template-columns: 1fr; gap: 2.25rem; }
 
   .cta-buttons { flex-direction: column; align-items: stretch; }
+}
+
+/* Phones: the header carries the phone number as a call button. Booking is in the
+   hero and the action bar, so the header's Book button would only repeat it.
+   :has() keeps the Book button on any page whose header has no phone link. */
+@media (max-width: 640px) {
+  .main-nav:has(.nav-phone) .btn { display: none; }
+  .main-nav .nav-phone {
+    display: inline-flex;
+    min-height: 44px;
+    margin-left: 0;
+    padding: 0.45rem 0.85rem;
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+  }
 }
