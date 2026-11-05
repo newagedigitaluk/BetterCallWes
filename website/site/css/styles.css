@@ -1276,8 +1276,11 @@ a.badge:hover, .badge:hover {
 .floating-cta-group svg { width: 18px; height: 18px; flex-shrink: 0; }
 
 @media (max-width: 767px) {
-  /* keep the footer clear of the bar */
-  body:has(.floating-cta-group) { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
+  /* Keep the end of the page clear of the bar. The space goes inside the navy
+     footer so it never shows as a pale strip when the bar is down; pages
+     without a .footer fall back to padding on the body. */
+  body:has(.floating-cta-group):has(.footer) .footer { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
+  body:has(.floating-cta-group):not(:has(.footer)) { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
 }
 @media (min-width: 768px) {
   .floating-cta-group { display: none; }
