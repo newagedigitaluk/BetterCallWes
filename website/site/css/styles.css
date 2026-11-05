@@ -20,6 +20,16 @@
   /* WhatsApp green is reserved for WhatsApp actions only */
   --color-whatsapp: #25D366;
   --color-whatsapp-hover: #1EBE5D;
+  /* WhatsApp's own dark green. White text on #25D366 is 2:1; on this it is 7.7:1. */
+  --color-whatsapp-deep: oklch(0.434 0.075 182.2);
+  /* Text that sits ON an orange or green fill. White on #FF6B00 is 2.9:1 and on
+     #25D366 is 2:1, both AA failures. Deep navy reads like van signwriting and
+     passes on every fill and hover state (4.7 to 8.5:1). */
+  --color-on-accent: var(--color-primary-deep);
+  /* Orange used AS text (labels, prices, links). The brand orange is 2.9:1 on the
+     light surfaces, so text gets a burnt orange (4.6 to 5.2:1). Dark surfaces
+     switch it back below, because burnt orange on navy is only 2.8:1. */
+  --color-accent-ink: oklch(0.548 0.158 44.6);
 
   /* ── Neutrals, tinted toward the navy hue (never pure black/white) ── */
   --color-bg: oklch(0.978 0.005 245);
@@ -28,7 +38,7 @@
 
   --text-dark: oklch(0.24 0.03 250);
   --text-body: oklch(0.42 0.025 250);
-  --text-light: oklch(0.56 0.02 250);
+  --text-light: oklch(0.52 0.02 250);  /* 0.56 was 4.1:1 on bg-alt */
   --text-white: oklch(0.985 0.004 245);
   --text-white-muted: oklch(0.985 0.004 245 / 0.78);
 
@@ -173,6 +183,14 @@ strong {
   color: inherit;
 }
 
+/* Dark surfaces: orange text goes back to the brand orange (5.2:1 on navy).
+   The attribute selectors catch the many sections made navy by inline style. */
+.hero, .hero-home, .page-hero, .area-hero, .service-hero, .section-navy,
+.cta-section, .craft-band-overlay, .trust-strip, .footer,
+[style*="background: var(--color-primary)"], [style*="background:var(--color-primary)"] {
+  --color-accent-ink: var(--color-accent);
+}
+
 /* Eyebrow label above headings */
 .section-label {
   display: inline-block;
@@ -181,7 +199,7 @@ strong {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   margin-bottom: 0.85rem;
 }
 
@@ -270,12 +288,12 @@ strong {
 
 .btn-primary {
   background: var(--color-accent);
-  color: var(--text-white);
+  color: var(--color-on-accent);
   box-shadow: var(--shadow-accent);
 }
 .btn-primary:hover {
   background: var(--color-accent-hover);
-  color: var(--text-white);
+  color: var(--color-on-accent);
 }
 
 .btn-dark {
@@ -289,11 +307,11 @@ strong {
 
 .btn-whatsapp {
   background: var(--color-whatsapp);
-  color: var(--text-white);
+  color: var(--color-on-accent);
 }
 .btn-whatsapp:hover {
   background: var(--color-whatsapp-hover);
-  color: var(--text-white);
+  color: var(--color-on-accent);
 }
 
 .btn-outline {
@@ -340,7 +358,7 @@ strong {
   transition: color var(--t-fast) var(--ease-out), gap var(--t-fast) var(--ease-out);
 }
 .learn-more:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   gap: 0.7rem;
 }
 
@@ -419,7 +437,7 @@ strong {
   color: var(--color-primary);
   border-radius: var(--radius-sm);
 }
-.nav-phone:hover { color: var(--color-accent); }
+.nav-phone:hover { color: var(--color-accent-ink); }
 
 .main-nav .btn {
   margin-left: 0.4rem;
@@ -511,7 +529,7 @@ strong {
   border-bottom: 1px solid var(--line);
 }
 .mobile-nav a:last-child { border-bottom: none; }
-.mobile-nav a:hover { color: var(--color-accent); }
+.mobile-nav a:hover { color: var(--color-accent-ink); }
 
 .top-bar { display: none; }
 
@@ -577,7 +595,7 @@ strong {
 }
 
 .rating-badge .stars {
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   letter-spacing: 0.12em;
   font-size: 1rem;
 }
@@ -608,7 +626,7 @@ strong {
 .trust-strip svg {
   width: 17px;
   height: 17px;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 
 /* Interior page hero (services hub, about, contact etc.) */
@@ -669,7 +687,7 @@ strong {
   gap: 0.5rem;
   align-items: center;
 }
-.area-hero .crumb a:hover { color: var(--color-accent); }
+.area-hero .crumb a:hover { color: var(--color-accent-ink); }
 
 .area-hero h1 {
   color: var(--text-white);
@@ -748,7 +766,7 @@ strong {
 
 .svc-price em {
   font-style: normal;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 
 /* ════════════════════ Legacy service cards (hub + interior pages) ════════════════════ */
@@ -832,7 +850,7 @@ strong {
   font-weight: 800;
   font-stretch: var(--stretch-display);
   font-size: 1rem;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   letter-spacing: 0.08em;
   margin-bottom: 0.9rem;
 }
@@ -893,7 +911,7 @@ a.badge:hover, .badge:hover {
 /* ════════════════════ Reviews ════════════════════ */
 
 .stars {
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   letter-spacing: 0.1em;
 }
 
@@ -987,11 +1005,11 @@ a.badge:hover, .badge:hover {
   min-height: 44px;
 }
 
-.faq-question:hover { color: var(--color-accent); }
+.faq-question:hover { color: var(--color-accent-ink); }
 
 .faq-question i, .faq-question svg {
   flex-shrink: 0;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   transition: transform var(--t-med) var(--ease-out);
 }
 
@@ -1202,7 +1220,7 @@ a.badge:hover, .badge:hover {
   transition: color var(--t-fast) var(--ease-out);
 }
 
-.footer-links a:hover { color: var(--color-accent); }
+.footer-links a:hover { color: var(--color-accent-ink); }
 
 .footer-bottom {
   border-top: 1px solid var(--line-on-dark);
@@ -1211,7 +1229,7 @@ a.badge:hover, .badge:hover {
 }
 
 .footer-bottom a { color: var(--text-white-muted); }
-.footer-bottom a:hover { color: var(--color-accent); }
+.footer-bottom a:hover { color: var(--color-accent-ink); }
 
 /* ════════════════════ Floating mobile CTAs ════════════════════ */
 
@@ -1238,7 +1256,7 @@ a.badge:hover, .badge:hover {
   font-stretch: var(--stretch-label);
   font-size: 0.95rem;
   box-shadow: var(--shadow-lg);
-  color: var(--text-white);
+  color: var(--color-on-accent);
   transition: transform var(--t-fast) var(--ease-out);
 }
 
@@ -1248,7 +1266,7 @@ a.badge:hover, .badge:hover {
 .floating-book:hover,
 .floating-cta:hover {
   transform: translateY(-2px);
-  color: var(--text-white);
+  color: var(--color-on-accent);
 }
 
 @media (min-width: 768px) {
@@ -1301,7 +1319,7 @@ a.badge:hover, .badge:hover {
   font-stretch: var(--stretch-label);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 
 .dropdown-item-all {
@@ -1391,7 +1409,7 @@ a.badge:hover, .badge:hover {
 .cred-row i, .cred-row svg {
   width: 19px;
   height: 19px;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 
 /* Area badge groups */
@@ -1456,7 +1474,7 @@ a.badge:hover, .badge:hover {
   transition: color var(--t-fast) var(--ease-out);
 }
 
-.faq-list summary:hover { color: var(--color-accent); }
+.faq-list summary:hover { color: var(--color-accent-ink); }
 .faq-list summary::-webkit-details-marker { display: none; }
 
 .faq-list summary::after {
@@ -1464,7 +1482,7 @@ a.badge:hover, .badge:hover {
   font-size: 1.5rem;
   font-weight: 400;
   line-height: 1;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   flex-shrink: 0;
 }
 
@@ -1478,7 +1496,7 @@ a.badge:hover, .badge:hover {
 }
 
 .inline-link {
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   font-weight: 600;
 }
 .inline-link:hover { text-decoration: underline; }
@@ -1546,7 +1564,7 @@ a.badge:hover, .badge:hover {
 
 .btn-google {
   background: var(--color-white);
-  color: #1a73e8;
+  color: #1967d2;  /* Google blue, darkened: #1a73e8 was 4.45:1 */
   border: 1px solid var(--line);
 }
 .btn-google:hover { color: #1557b0; box-shadow: var(--shadow-md); }
