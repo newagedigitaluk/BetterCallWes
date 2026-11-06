@@ -71,33 +71,70 @@ def _strip_emoji(s: str) -> str:
     return " ".join("".join(c for c in (s or "") if ord(c) < 0x2000).split())
 
 
-def build_overlay(caption: str, body: str = "", out_png: str = None) -> str:
+def build_overlay(caption: str, body: str = "", out_png: str = None,
+                  hook_lines: list = None) -> str:
     """Transparent 1080x1920 PNG: hook banner at top, optional body line,
-    brand strip + CTA at the bottom."""
+    brand strip + CTA at the bottom.
+
+    If hook_lines is a list of 2-3 strings (topic/pain, But-turn, snapback),
+    each line is rendered separately: line 2 (the turn) in orange so the
+    contrast reads clearly even on mute.  When hook_lines is not supplied,
+    caption is used as before.
+    """
     out_png = out_png or tempfile.mktemp(suffix=".png")
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
 
     # ---- hook block, top third (must be readable in the first frame) ----
-    caption = _strip_emoji(caption)
-    size = 86
-    while size > 46:
-        f = ImageFont.truetype(FONT_BOLD, size)
-        lines = _wrap(d, caption, f, W - 140)
-        if len(lines) <= 3:
-            break
-        size -= 6
-    line_h = int(size * 1.18)
-    block_h = line_h * len(lines)
-    top = 250
-    # dark scrim so text stays readable over any photo
-    d.rectangle([0, top - 60, W, top + block_h + 46], fill=NAVY + (219,))
-    d.rectangle([0, top - 60, W, top - 52], fill=ORANGE + (255,))
-    y = top
-    for ln in lines:
-        tw = d.textlength(ln, font=f)
-        d.text(((W - tw) / 2, y), ln, font=f, fill=WHITE)
-        y += line_h
+    if hook_lines:
+        # Structured 2-3 line hook: pick a font size that fits all lines.
+        cleaned = [_strip_emoji(ln) for ln in hook_lines if ln]
+        size = 86
+        while size > 46:
+            f = ImageFont.truetype(FONT_BOLD, size)
+            all_wrapped = [_wrap(d, ln, f, W - 140) for ln in cleaned]
+            total_lines = sum(len(w) for w in all_wrapped)
+            if total_lines <= 5:
+                break
+            size -= 6
+        line_h = int(size * 1.18)
+        # Measure total block height (extra gap between hook-lines)
+        gap = int(size * 0.35)
+        total_h = sum(line_h * len(w) for w in all_wrapped) + gap * (len(all_wrapped) - 1)
+        top = 250
+        d.rectangle([0, top - 60, W, top + total_h + 46], fill=NAVY + (219,))
+        d.rectangle([0, top - 60, W, top - 52], fill=ORANGE + (255,))
+        y = top
+        for idx, (src_line, wrapped) in enumerate(zip(cleaned, all_wrapped)):
+            # Line 2 (index 1) is the "But" turn: render in orange.
+            colour = ORANGE if idx == 1 else WHITE
+            for ln in wrapped:
+                tw = d.textlength(ln, font=f)
+                d.text(((W - tw) / 2, y), ln, font=f, fill=colour)
+                y += line_h
+            if idx < len(all_wrapped) - 1:
+                y += gap
+        block_h = y - top
+    else:
+        caption = _strip_emoji(caption)
+        size = 86
+        while size > 46:
+            f = ImageFont.truetype(FONT_BOLD, size)
+            lines = _wrap(d, caption, f, W - 140)
+            if len(lines) <= 3:
+                break
+            size -= 6
+        line_h = int(size * 1.18)
+        block_h = line_h * len(lines)
+        top = 250
+        # dark scrim so text stays readable over any photo
+        d.rectangle([0, top - 60, W, top + block_h + 46], fill=NAVY + (219,))
+        d.rectangle([0, top - 60, W, top - 52], fill=ORANGE + (255,))
+        y = top
+        for ln in lines:
+            tw = d.textlength(ln, font=f)
+            d.text(((W - tw) / 2, y), ln, font=f, fill=WHITE)
+            y += line_h
 
     # ---- body line, under the hook ----
     body = _strip_emoji(body)
@@ -163,10 +200,11 @@ def next_footage() -> Path | None:
 
 def build(caption: str, body: str = "", base_image: str = None,
           footage: str = None, out: str = "/tmp/reel.mp4",
-          seconds: int = DEFAULT_SECONDS) -> str:
+          seconds: int = DEFAULT_SECONDS,
+          hook_lines: list = None) -> str:
     """Build a vertical reel. Uses `footage` if given, else Ken Burns on
-    `base_image`."""
-    overlay = build_overlay(caption, body)
+    `base_image`. Pass hook_lines to render the structured 3-line hook."""
+    overlay = build_overlay(caption, body, hook_lines=hook_lines)
 
     if footage:
         # Real clip: fit to 1080x1920, trim, composite overlay, strip audio
@@ -221,5 +259,9 @@ if __name__ == "__main__":
     ap.add_argument("--image", default=None)
     ap.add_argument("--footage", default=None)
     ap.add_argument("--out", default="/tmp/reel.mp4")
+    ap.add_argument("--hook-line", dest="hook_lines", action="append",
+                    metavar="LINE",
+                    help="Structured hook line (pass 2-3 times for a 3-line hook).")
     a = ap.parse_args()
-    print(build(a.caption, a.body, a.image, a.footage, a.out))
+    print(build(a.caption, a.body, a.image, a.footage, a.out,
+                hook_lines=a.hook_lines))

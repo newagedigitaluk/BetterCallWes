@@ -45,6 +45,57 @@ def save_bank(bank: dict):
     BANK_PATH.write_text(json.dumps(bank, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
+_VAGUE_OPENERS = (
+    "you won't believe",
+    "wait until you see",
+    "this is amazing",
+    "check this out",
+    "so today",
+    "so i",
+    "in this video",
+)
+
+_BUT_WORDS = ("but ", "but,", "except ", "thing is", "however ", "actually,")
+
+
+def validate_hook(reel: dict) -> None:
+    """Raise ValueError if the hook for this reel breaks the house checklist.
+
+    Rules (from HOOKS.md):
+    - hook_lines must have 2 or 3 entries.
+    - Line 1 must not start with 'I' or 'My' (I-led).
+    - Line 1 must not be a vague opener (topic unclear by end of line).
+    - Line 2 must start with a turn word (But / Except / Thing is / etc.).
+    - There must be contrast (not all lines saying the same thing).
+    """
+    lines = reel.get("hook_lines")
+    if not lines:
+        return  # No hook_lines present: skip validation (older reels).
+    if len(lines) < 2 or len(lines) > 3:
+        raise ValueError(
+            f"hook_lines must have 2 or 3 entries, got {len(lines)} "
+            f"for reel {reel.get('id')}."
+        )
+    first = lines[0].strip()
+    if first.lower().startswith(("i ", "i'", "my ", "me ")):
+        raise ValueError(
+            f"Hook line 1 starts with 'I'/'My'/'Me' in reel {reel.get('id')}. "
+            "Rewrite using 'you' or 'your'."
+        )
+    for opener in _VAGUE_OPENERS:
+        if first.lower().startswith(opener):
+            raise ValueError(
+                f"Hook line 1 is a vague opener ('{opener}') in reel "
+                f"{reel.get('id')}. Topic must be clear by end of line 1."
+            )
+    second = lines[1].strip().lower()
+    if not any(second.startswith(w) for w in _BUT_WORDS):
+        raise ValueError(
+            f"Hook line 2 must start with a turn word (But / Except / "
+            f"Thing is / etc.) in reel {reel.get('id')}. Got: '{lines[1]}'."
+        )
+
+
 def main():
     dry = "--dry-run" in sys.argv
     bank = load_bank()
@@ -86,11 +137,19 @@ def main():
             log("❌ No base image either — cannot build a reel.")
             sys.exit(1)
 
+    try:
+        validate_hook(reel)
+    except ValueError as e:
+        log(f"❌ Hook validation failed: {e}")
+        notify_telegram(f"BCW reels: hook rejected for {reel.get('id')} ({str(e)[:120]})")
+        sys.exit(1)
+
     out = f"/tmp/bcw_reel_{reel['id']}.mp4"
     try:
         build(caption=reel["hook"], body=reel.get("body", ""),
               base_image=base_image, footage=str(clip) if clip else None,
-              out=out, seconds=reel.get("seconds", 11))
+              out=out, seconds=reel.get("seconds", 11),
+              hook_lines=reel.get("hook_lines"))
         log(f"✅ Built {os.path.basename(out)} ({os.path.getsize(out)//1024} KB)")
     except Exception as e:
         log(f"❌ Reel build failed: {e}")
