@@ -24,6 +24,7 @@ node_modules/
 # Personal financial data — NEVER commit
 Financial Docs/
 *.csv
+!seo-reports/*.csv
 
 # Separate project (Remotion reels) — keep local
 reels/
