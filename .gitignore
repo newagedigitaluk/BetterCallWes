@@ -62,3 +62,6 @@ website/social/images/*/src/
 website/social/images/*/reels/
 website/social/state/
 website/social/*.bak-*
+
+# Inbox watcher record of what has been flagged
+website/scripts/servicem8/inbox-watch-state.json
